@@ -89,25 +89,56 @@ Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
 \end{enumerate}
 
 
-\section{Język akcji}
+\section{Język akcji $\Omega$}
 
-Język definiujemy jako parę:
-$\Omega = (F,Ac)$, gdzie: F - niepusty zbiór zmiennych (fluenty), Ac - niepusty zbiór akcji. Akcję definiujemy jako parę (A,w), gdzie A - akcja, w - wykonawca.\\
-
-\textbf{Syntaktyka języka} 
+\subsection{Definicja języka}
+$\Omega$ jest rodziną języków, w której każdy język $\mathcal{L}$ określony jest nad sygnaturą 
+\begin{center}
+$\Upsilon=(F,A,W)$
+\end{center}
+gdzie: 
 \begin{itemize}
-\item initially $\alpha$
-\item $\alpha$ after $(A_{1},w_{1}), ..., (A_{n},w_{n})$
-\item $(A,w)$ causes $\alpha$
-\item $(A,w)$ causes $\alpha$ if $\pi$
-\item observable $\alpha$ after $(A_{1},w_{1}), ..., (A_{n},w_{n})$
-\item impossible $(A,w)$ if $\pi$
-\item $(A,w)$ releases $f$ if $\pi$
-\item $(A,w)$ typically causes $\alpha$ if $\pi$
-\item always $\alpha$
+\item $F$ - niepusty zbiór zmiennych (fluenty)
+\item $A$ - niepusty zbiór akcji
+\item $W$ - niepusty zbiór wykonawców (aktorów), przy czym $\epsilon\in W$, gdzie $\epsilon$ oznacza kogokolwiek
 \end{itemize}
 
-
+\subsection{Syntaktyka języka} 
+W języku  $\Omega$ występują następnujące typy zdań:
+\begin{itemize}
+\item {\large\texttt{initially $\alpha$}}\\
+formuła $\alpha$ zachodzi w stanie początkowym
+\item {\large\texttt{$\alpha$ after $(A_{1},w_{1}), ..., (A_{n},w_{n})$}}\\
+formuła $\alpha$ zachodzi po wykonaniu sekwencji $(A_{1},w_{1}), ..., (A_{n},w_{n})$, gdzie $A_{i}$ jest akcją, zaś $w_{i}$ jej wykonawcą
+\item {\large\texttt{$(A,w)$ causes $\alpha$}}\\
+skutkiem wykonania akcji $A$ przez wykonawcę $w$ jest stan, w którym spełniona jest formuła $\alpha$
+\item {\large\texttt{$(A,w)$ causes $\alpha$ if $\pi$}}\\
+skutkiem wykonania akcji $A$ przez wykonawcę $w$ w stanie spełniającym warunek $\pi$ jest stan, w którym spełniona jest formuła $\alpha$
+\item {\large\texttt{observable $\alpha$ after $(A_{1},w_{1}), ..., (A_{n},w_{n})$}}\\
+po wykonaniu sekwencji $(A_{1},w_{1}), ..., (A_{n},w_{n})$, gdzie $A_{i}$ jest akcją, zaś $w_{i}$ jej wykonawcą, w stanie początkowym może (ale nie musi) zachodzić formuła $\alpha$
+\item {\large\texttt{impossible $(A,w)$ if $\pi$}}\\
+niemożliwe jest wykonanie akcji $A$ przez wykonawcę $w$ w stanie spełniającym warunek $\pi$
+\item {\large\texttt{$(A,w)$ releases $f$ if $\pi$}}\\
+wykonanie akcji $A$ przez wykonawcę $w$ w stanie spełniającym warunek $\pi$ może (ale nie musi) zmienić wartość zmiennej $f$
+\item {\large\texttt{$(A,w)$ typically causes $\alpha$ if $\pi$}}\\
+skutkiem wykonania akcji $A$ przez wykonawcę $w$ w stanie spełniającym warunek $\pi$ na ogół jest stan, w którym spełniona jest formuła $\alpha$
+\item {\large\texttt{always $\alpha$}}\\
+formuła $\alpha$ jest spełniona w każdym stanie
+\end{itemize}
+gdzie $\alpha$ jest dowolną kombinacją zmiennych (fluentów): 
+\begin{center}
+$\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor \alpha_{2} | \alpha_{1} \to \alpha_{2} | \alpha_{1} \leftrightarrow \alpha_{2} $
+\end{center}
+\subsection{Syntaktyka języka} 
+\subsubsection{Stan}
+Stanem będziemy nazywać dowolną fukcję $\sigma:F\to \{1,0\}$, która przypisuje zmiennym wartości logiczne. Jeśli $\sigma(f)=1$, to znaczy, że zmienna $f$ zachodzi w stanie $\sigma$. Funkcję tę można rozszerzyć na zbiór wszystkich formuł nad zbiorem zmiennych $F$ wedug zasad obowiązujących w klasycznej logice zdań.
+\subsubsection{Struktura}
+Strukturą nazywamy układ $S=(\Sigma, \sigma_{0}, ResAb, ResN)$, gdzie:
+\begin{itemize}
+\item $\Sigma$ - zbiór stanów
+\item $\sigma_{0} \in \Sigma$ - stan początkowy
+\item $ResAb, ResN$ : $A\times W \times \Sigma \to 2^{\Sigma}$ są funkcjami przejść. $ResAb$ jest funkcją przejść nietypowych, $ResN$ jest funkcją przejść typowych oraz $ResAb \cap ResN= \emptyset$ 
+\end{itemize}
 \section{Język kwerend}
 \begin{itemize}
 \item \textbf{Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?}\\ 
