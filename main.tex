@@ -42,7 +42,6 @@ Waszkiewicz Piotr\\
 Zawadzka Anna\\
 
 \end{flushright}
-\\[1.2cm]
 %----------------------------------------------------------------------------------------
 
 \vfill
@@ -129,9 +128,13 @@ gdzie $\alpha$ jest dowolną kombinacją zmiennych (fluentów):
 \begin{center}
 $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor \alpha_{2} | \alpha_{1} \to \alpha_{2} | \alpha_{1} \leftrightarrow \alpha_{2} $
 \end{center}
-\subsection{Syntaktyka języka} 
+
+
+\subsection{Semantyka języka} 
+
 \subsubsection{Stan}
 Stanem będziemy nazywać dowolną fukcję $\sigma:F\to \{1,0\}$, która przypisuje zmiennym wartości logiczne. Jeśli $\sigma(f)=1$, to znaczy, że zmienna $f$ zachodzi w stanie $\sigma$. Funkcję tę można rozszerzyć na zbiór wszystkich formuł nad zbiorem zmiennych $F$ wedug zasad obowiązujących w klasycznej logice zdań.
+
 \subsubsection{Struktura}
 Strukturą nazywamy układ $S=(\Sigma, \sigma_{0}, ResAb, ResN)$, gdzie:
 \begin{itemize}
@@ -139,6 +142,36 @@ Strukturą nazywamy układ $S=(\Sigma, \sigma_{0}, ResAb, ResN)$, gdzie:
 \item $\sigma_{0} \in \Sigma$ - stan początkowy
 \item $ResAb, ResN$ : $A\times W \times \Sigma \to 2^{\Sigma}$ są funkcjami przejść. $ResAb$ jest funkcją przejść nietypowych, $ResN$ jest funkcją przejść typowych oraz $ResAb \cap ResN= \emptyset$ 
 \end{itemize}
+
+\subsubsection{Model dziedziny}
+W celu zdefiniowania pojęcia modelu dziedziny wprowadzone zostaną następujące funkcje pomocnicze:
+\begin{enumerate}
+	\item $Res_{0}$ : $Ac \times \Sigma \to 2^{\Sigma}$ konstruowane na podstawie zdań efektów akcji.
+	\[ \forall_{A \in Ac, \sigma \in \Sigma} Res_{0}(A,\sigma) = \{\sigma' \in \Sigma: (A \textbf{ causes } \alpha \textbf{ if } \pi) \in D \land (\sigma \vdash \pi) \Rightarrow (\sigma' \vdash \alpha) \}  \]
+	Oznacza to, że $Res_{0}$ konstruuje się bez minimalizacji zmian.
+	\item Funkcję $Res^{-}$ wyznacza się stosując minimalizację zmian.
+	\item Funkcję $Res^{+} : Ac \times \Sigma \to 2^{\Sigma}$ spełniającą warunek $\forall_{A \in Ac, \sigma \in \Sigma}$:
+	\[ Res_{0}^{+}(A,\sigma) = \{\sigma' \in Res_{0}(A,\sigma) : (A \textbf{ typically causes } \beta \textbf{ if } \pi) \in D \land (\sigma \vdash \varphi) \Rightarrow (\sigma' \vdash \beta) \}  \]
+\end{enumerate}
+
+Niech D będzie dziedziną akcji języka $AT$ i niech $S=(\Sigma, \sigma_{0}, TesAb, ResN)$ będzie strukturą dla $AT$. Mówimy, że S jest modelem D $\leftrightarrow$ spełnione są warunki:
+\begin{itemize}
+	\item $\Sigma$ jest zbiorem stanów z dziedziny D
+	\item każde zdanie obserwacji i każde zdanie wartości z dziedziny D jest prawdziwe w S
+	\item $\forall_{ A \in Ac, \sigma \in \Sigma } ResN(A, \sigma)$ jest zbiorem tych wszystkich stanów $\sigma' \in Res_{0}^{+}(A, \sigma)$, dla których zbiory $New(A, \sigma, \sigma')$ są minimalne
+	\item $\forall_{A \in Ac, \sigma \in \Sigma} ResAb(A, \sigma) = Res^{-}(A, \sigma) | ResN(A, \sigma)$
+\end{itemize}
+Warto zwrócić uwagę na to, że skutki \textit{pewne} dla akcji traktowane są jak \textit{typowe}.
+
+\subsubsection{Funkcja przejścia}
+Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstrukcja funkcji $\Psi_{S} : Ac^{*} \times \Sigma \to \Sigma$ wygląda następująco:
+\begin{itemize}
+	\item $\Phi_{S}(\epsilon,\sigma)=\sigma$ gdzie $\epsilon$ oznacza ciąg pusty
+	\item jeśli $\Phi_{S}((A_{1}, \dots, A_{n}),\sigma)$ jest określona to
+	\[\Phi_{S}((A_{1},\dots,A_{n}),\sigma) \in ResAb(A_{n}, \Phi_{S}(A_{1},\dots,A_{n-1})) \cup ResN(A_{n}, \Phi_{S}(A_{1},\dots,A_{n-1}))\]
+\end{itemize}
+
+
 \section{Język kwerend}
 \begin{itemize}
 \item \textbf{Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?}\\ 
