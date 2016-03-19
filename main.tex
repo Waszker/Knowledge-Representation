@@ -129,6 +129,20 @@ gdzie $\alpha$ jest dowolną kombinacją zmiennych (fluentów):
 $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor \alpha_{2} | \alpha_{1} \to \alpha_{2} | \alpha_{1} \leftrightarrow \alpha_{2} $
 \end{center}
 
+\subsubsection{Przykład 1}
+
+
+\textit{Farmer Bill i indyk Fred pracują razem nad pewnym projektem programistycznym. Zakładamy, że początkowo kod jest czytelny i kompilowalny. Bill to niedoświadczony programista, więc gdy dopisze on jakiś fragment cały kod przestaje być czytelny, a nierzadko przestaje się też kompilować. Indyk Fred jest z kolei weteranem branży IT, więc jego kod kompiluje się zawsze (gdy pracuje on z czytelnym kodem) lub prawie zawsze (gdy kod jest nieczytelny). W razie potrzeby Fred refaktoryzuje cały kod, dzięki czemu poprawia się jego czytelność. Bill i Fred zgodnie ustalili, że nie będą dopisywać nowego fragmentu kodu jeżeli dotychczasowy się nie kompiluje. W takim wypadku któryś z nich musi go najpierw zdebugować.}
+
+
+\bigskip \noindent
+initially compiles $\wedge$ cleanCode \\
+(Bill,code) causes $\neg$cleanCode \\
+(Bill,code) releases compiles if compiles \\
+(Fred,code) causes compiles if cleanCode \\
+(Fred,code) typically causes compiles if $\neg$cleanCode \\
+(Fred,refactor) causes cleanCode
+
 
 \subsection{Semantyka języka} 
 
