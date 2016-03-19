@@ -12,6 +12,7 @@
 		partakes, releases, typically
     },
     keywordstyle={\bfseries},
+    keywordstyle=[2]\textsc,
     frame=single,
 }
 
@@ -114,7 +115,7 @@ gdzie:
 \end{itemize}
 
 \subsection{Syntaktyka języka} 
-W języku  $\Omega$ występują następnujące typy zdań:
+W języku  $\Omega$ występują następujące typy zdań:
 \begin{itemize}
 \item {\large\texttt{initially $\alpha$}}\\
 formuła $\alpha$ zachodzi w stanie początkowym
@@ -151,7 +152,6 @@ $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor
 \lstset{
 	style=main,
 	keywords=[2]{Code, Debug, Refactor},
-	keywordstyle=[2]\textsc
 }
 \begin{lstlisting}[mathescape=true]
 initially compiles $\wedge$ cleanCode
@@ -167,7 +167,7 @@ impossible (Code,$\epsilon$) if $\neg$compiles
 \subsection{Semantyka języka} 
 
 \subsubsection{Stan}
-Stanem będziemy nazywać dowolną fukcję $\sigma:F\to \{1,0\}$, która przypisuje zmiennym wartości logiczne. Jeśli $\sigma(f)=1$, to znaczy, że zmienna $f$ zachodzi w stanie $\sigma$. Funkcję tę można rozszerzyć na zbiór wszystkich formuł nad zbiorem zmiennych $F$ wedug zasad obowiązujących w klasycznej logice zdań.
+Stanem będziemy nazywać dowolną funkcję $\sigma:F\to \{1,0\}$, która przypisuje zmiennym wartości logiczne. Jeśli $\sigma(f)=1$, to znaczy, że zmienna $f$ zachodzi w stanie $\sigma$. Funkcję tę można rozszerzyć na zbiór wszystkich formuł nad zbiorem zmiennych $F$ według zasad obowiązujących w klasycznej logice zdań.
 
 \subsubsection{Struktura}
 Strukturą nazywamy układ $S=(\Sigma, \sigma_{0}, ResAb, ResN)$, gdzie:
