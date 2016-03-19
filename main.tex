@@ -2,40 +2,24 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{polski}
-\usepackage{listings}
+\usepackage{listings} %code environment
 \frenchspacing
 \setcounter{tocdepth}{2}
+
+\lstset{
+	keywords={
+		after, always, causes, if, impossible, initially, observable, 
+		partakes, releases, typically
+    },
+    keywordstyle={\bfseries},
+    frame=single,
+}
 
 \begin{document}
 	
 \begin{titlepage}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
-
-%\lstset{
-%	keywords={
-%		after, always, causes, if, impossible, initially, observable, 
-%		partakes, releases, typically
-%    },keywordstyle={\bfseries},
-%}
-
-\lstset{%
-    backgroundcolor=\color{yellow!20},%
-    basicstyle=\small\ttfamily,%
-    numbers=left, numberstyle=\color{gray}\tiny, stepnumber=1
-}
-\lstset{keywords={%  
-		ACS,  after,  always, at, causes, ever,
-		generally,  if, imposible,  initially,  
-		invokes,  involved, -,  OBS,  perfomed,
-		releases, triggers, typically,  when
-    },keywordstyle={\bfseries},
-    frame=single,
-    breaklines=true,
-    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
-}
-
-
 
 \center
 
