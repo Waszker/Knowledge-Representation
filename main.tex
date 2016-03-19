@@ -146,25 +146,25 @@ Strukturą nazywamy układ $S=(\Sigma, \sigma_{0}, ResAb, ResN)$, gdzie:
 \subsubsection{Model dziedziny}
 W celu zdefiniowania pojęcia modelu dziedziny wprowadzone zostaną następujące funkcje pomocnicze:
 \begin{enumerate}
-	\item $Res_{0}$ : $Ac \times \Sigma \to 2^{\Sigma}$ konstruowane na podstawie zdań efektów akcji.
-	\[ \forall_{A \in Ac, \sigma \in \Sigma} Res_{0}(A,\sigma) = \{\sigma' \in \Sigma: (A \textbf{ causes } \alpha \textbf{ if } \pi) \in D \land (\sigma \vdash \pi) \Rightarrow (\sigma' \vdash \alpha) \}  \]
+	\item $Res_{0}$ : $A \times \Sigma \to 2^{\Sigma}$ konstruowane na podstawie zdań efektów akcji.
+	\[ \forall_{A \in A, \sigma \in \Sigma} Res_{0}(A,\sigma) = \{\sigma' \in \Sigma: (A \textbf{ causes } \alpha \textbf{ if } \pi) \in D \land (\sigma \vdash \pi) \Rightarrow (\sigma' \vdash \alpha) \}  \]
 	Oznacza to, że $Res_{0}$ konstruuje się bez minimalizacji zmian.
 	\item Funkcję $Res^{-}$ wyznacza się stosując minimalizację zmian.
-	\item Funkcję $Res^{+} : Ac \times \Sigma \to 2^{\Sigma}$ spełniającą warunek $\forall_{A \in Ac, \sigma \in \Sigma}$:
+	\item Funkcję $Res^{+} : A \times \Sigma \to 2^{\Sigma}$ spełniającą warunek $\forall_{A \in A, \sigma \in \Sigma}$:
 	\[ Res_{0}^{+}(A,\sigma) = \{\sigma' \in Res_{0}(A,\sigma) : (A \textbf{ typically causes } \beta \textbf{ if } \pi) \in D \land (\sigma \vdash \varphi) \Rightarrow (\sigma' \vdash \beta) \}  \]
 \end{enumerate}
 
-Niech D będzie dziedziną akcji języka $AT$ i niech $S=(\Sigma, \sigma_{0}, TesAb, ResN)$ będzie strukturą dla $AT$. Mówimy, że S jest modelem D $\leftrightarrow$ spełnione są warunki:
+Niech D będzie dziedziną akcji języka $\Omega$ i niech $S=(\Sigma, \sigma_{0}, TesAb, ResN)$ będzie strukturą dla $\Omega$. Mówimy, że S jest modelem D $\leftrightarrow$ spełnione są warunki:
 \begin{itemize}
 	\item $\Sigma$ jest zbiorem stanów z dziedziny D
 	\item każde zdanie obserwacji i każde zdanie wartości z dziedziny D jest prawdziwe w S
-	\item $\forall_{ A \in Ac, \sigma \in \Sigma } ResN(A, \sigma)$ jest zbiorem tych wszystkich stanów $\sigma' \in Res_{0}^{+}(A, \sigma)$, dla których zbiory $New(A, \sigma, \sigma')$ są minimalne
-	\item $\forall_{A \in Ac, \sigma \in \Sigma} ResAb(A, \sigma) = Res^{-}(A, \sigma) | ResN(A, \sigma)$
+	\item $\forall_{ A \in A, \sigma \in \Sigma } ResN(A, \sigma)$ jest zbiorem tych wszystkich stanów $\sigma' \in Res_{0}^{+}(A, \sigma)$, dla których zbiory $New(A, \sigma, \sigma')$ są minimalne
+	\item $\forall_{A \in A, \sigma \in \Sigma} ResAb(A, \sigma) = Res^{-}(A, \sigma) | ResN(A, \sigma)$
 \end{itemize}
 Warto zwrócić uwagę na to, że skutki \textit{pewne} dla akcji traktowane są jak \textit{typowe}.
 
 \subsubsection{Funkcja przejścia}
-Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstrukcja funkcji $\Psi_{S} : Ac^{*} \times \Sigma \to \Sigma$ wygląda następująco:
+Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstrukcja funkcji $\Psi_{S} : A^{*} \times \Sigma \to \Sigma$ wygląda następująco:
 \begin{itemize}
 	\item $\Phi_{S}(\epsilon,\sigma)=\sigma$ gdzie $\epsilon$ oznacza ciąg pusty
 	\item jeśli $\Phi_{S}((A_{1}, \dots, A_{n}),\sigma)$ jest określona to
