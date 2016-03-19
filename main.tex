@@ -187,6 +187,47 @@ initially compiles $\wedge$ cleanCode
 impossible (Code,$\epsilon$) if $\neg$compiles
 \end{lstlisting}
 
+\subsubsection{Przykład 3}
+
+
+\textit{Alicja może być pomniejszona, lub być swojego normalnego, wysokiego wzrostu. Początkowo Alicja jest wysoka. Wypicie Eliksiru pomnniejsza Alicję, natomiast zjedzenie Ciastka ją powiększa.
+\\
+Kot z Cheshire nigdy nie zje Ciastka, a wypicie przez niego Eliksiru zwykle go ujawnia, jeśli jest niewidzialny. Kot początkowo jest niewidzialny.
+\\
+Kapelusznik początkowo nie jest szalony. Wypicie Eliksiru może doprowadzić go do szaleństwa, a zjedzenie Ciastka zwykle powoduje powrót do zdrowych zmysłów.
+\\
+Ciastko jest tylko jedno więc znika po jego zjedzeniu i nie można próbować go zjeść, natomiast duża, nieprzeźroczysta butelka Eliksiru nie musi być pusta po napitku z niej.
+\\
+Biały Królik nigdy nie zje ciastka, a wypicie przez niego Eliksiru powoduje magiczne pojawienie się Ciastka z powrotem.
+\\
+Początkowo Ciastko jest dostępne, a butelka pełna Eliksiru.}
+
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{EatCake, DrinkElixir, BringCake, BringElixir},
+}
+\begin{lstlisting}[mathescape=true]
+initially $\neg$AliceSmall
+initially CakeAvailable $\wedge$ ElixirAvailable 
+initially $\neg$HatterMad $\wedge$ CatInvisible
+
+(EatCake,Alice) causes $\neg$AliceSmall
+impossible (EatCake,CheshireCat)
+(EatCake,Hatter) typically causes $\neg$HatterMad if HatterMad
+impossible (EatCake,WhiteRabbit)
+(EatCake,$\epsilon$) causes $\neg$CakeAvailable
+impossible (EatCake,$\epsilon$) if $\neg$CakeAvailable
+
+(DrinkElixir,Alice) causes AliceSmall if ElixirAvailable
+(DrinkElixir,CheshireCat) typically causes $\neg$CatInvisible if ElixirAvailable
+(DrinkElixir,Hatter) releases HatterMad if $\neg$HatterMad $\wedge$ if ElixirAvailable
+(DrinkElixir,WhiteRabbit) causes CakeAvailable if ElixirAvailable
+(DrinkElixir,$\epsilon$) releases ElixirAvailable if ElixirAvailable
+
+\end{lstlisting}
+
+
 \subsection{Semantyka języka} 
 
 \subsubsection{Stan}
