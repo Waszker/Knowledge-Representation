@@ -147,30 +147,30 @@ Strukturą nazywamy układ $S=(\Sigma, \sigma_{0}, ResAb, ResN)$, gdzie:
 W celu zdefiniowania pojęcia modelu dziedziny wprowadzone zostaną następujące funkcje pomocnicze:
 \begin{enumerate}
 	\item $Res_{0}$ : $A \times W \times \Sigma \to 2^{\Sigma}$ konstruowane na podstawie zdań efektów akcji.
-	\[ \forall_{a \in A, w \in W, \sigma \in \Sigma} Res_{0}(a,w,\sigma) = \{\sigma' \in \Sigma: ((a, w) \textbf{ causes } \alpha \textbf{ if } \pi) \in D \land (\sigma \models \pi) \Rightarrow (\sigma' \models \alpha) \}  \]
+	\[ \forall_{a \in A, w \in W, \sigma \in \Sigma} Res_{0}(a,\sigma) = \{\sigma' \in \Sigma: ((a, w) \textbf{ causes } \alpha \textbf{ if } \pi) \in D \land (\sigma \models \pi) \Rightarrow (\sigma' \models \alpha) \}  \]
 	Oznacza to, że $Res_{0}$ konstruuje się bez minimalizacji zmian.
 	\item Funkcję $Res^{-}$ wyznacza się stosując minimalizację zmian.
 	\item Funkcję $Res^{+} : A \times W \times \Sigma \to 2^{\Sigma}$ spełniającą warunek $\forall_{a \in A, w \in W, \sigma \in \Sigma}$:
-	\[ Res_{0}^{+}(a, w,\sigma) = \]
-	\[ \{\sigma' \in Res_{0}(a, w,\sigma) : ((a, w) \textbf{ typically causes } \beta \textbf{ if } \pi) \in D \land (\sigma \models \varphi) \Rightarrow (\sigma' \models \beta) \}  \]
+	\[ Res_{0}^{+}((a, w),\sigma) = \]
+	\[ \{\sigma' \in Res_{0}((a, w),\sigma) : ((a, w) \textbf{ typically causes } \beta \textbf{ if } \pi) \in D \land (\sigma \models \varphi) \Rightarrow (\sigma' \models \beta) \}  \]
 \end{enumerate}
 
 Niech D będzie dziedziną akcji języka $\Omega$ i niech $S=(\Sigma, \sigma_{0}, ResAb, ResN)$ będzie strukturą dla $\Omega$. Mówimy, że S jest modelem D $\leftrightarrow$ spełnione są warunki:
 \begin{itemize}
 	\item $\Sigma$ jest zbiorem stanów z dziedziny D
 	\item każde zdanie obserwacji i każde zdanie wartości z dziedziny D jest prawdziwe w S
-	\item $\forall_{ a \in A, w \in W, \sigma \in \Sigma } ResN(a, w, \sigma)$ jest zbiorem tych wszystkich stanów $\sigma' \in Res_{0}^{+}(a, w, \sigma)$, dla których zbiory $New(a, w, \sigma, \sigma')$ są minimalne
-	\item $\forall_{a \in A, w \in W, \sigma \in \Sigma} ResAb(a, w, \sigma) = Res^{-}(a, w, \sigma) | ResN(a, w, \sigma)$
+	\item $\forall_{ a \in A, w \in W, \sigma \in \Sigma } ResN((a, w), \sigma)$ jest zbiorem tych wszystkich stanów $\sigma' \in Res_{0}^{+}((a, w), \sigma)$, dla których zbiory $New((a, w), \sigma, \sigma')$ są minimalne
+	\item $\forall_{a \in A, w \in W, \sigma \in \Sigma} ResAb((a, w), \sigma) = Res^{-}((a, w), \sigma) | ResN((a, w), \sigma)$
 \end{itemize}
 Warto zwrócić uwagę na to, że skutki \textit{pewne} dla akcji traktowane są jak \textit{typowe}.
 
-\subsubsection{Funkcja częściowa}
+\subsubsection{Funkcja przejścia}
 Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstrukcja funkcji $\Psi_{S} : (A \times W)^{*} \times \Sigma \to \Sigma$ wygląda następująco:
 \begin{itemize}
-	\item $\Phi_{S}(a,\epsilon,\sigma)=\sigma$ gdzie $\epsilon$ oznacza ciąg pusty
-	\item jeśli $\Phi_{S}(((a_{1}, w_{1}), \dots, (a_{n}, w_{n})),\sigma)$ jest określona to
-	\[\Phi_{S}(((a_{1}, w_{1}), \dots, (a_{n}, w_{n})),\sigma) \in ResAb((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1}))) \]
-	\[ \cup ResN((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1})))\]
+	\item $\Phi_{S}(\epsilon,\sigma)=\sigma$ gdzie $\epsilon$ oznacza ciąg pusty
+	\item jeśli $\Phi_{S}(((A \times W)_{1}, \dots, (A \times W)_{n}),\sigma)$ jest określona to
+	\[\Phi_{S}(((A \times W)_{1},\dots,(A \times W)_{n}),\sigma) \in ResAb((A \times W)_{n}, \Phi_{S}((A \times W)_{1},\dots,(A \times W)_{n-1})) \]
+	\[ \cup ResN((A \times W)_{n}, \Phi_{S}((A \times W)_{1},\dots,(A \times W)_{n-1}))\]
 \end{itemize}
 
 
