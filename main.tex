@@ -142,7 +142,7 @@ $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor
 \subsubsection{Przykład 1}
 
 
-\textit{Farmer Bill i indyk Fred pracują razem nad pewnym projektem programistycznym. Zakładamy, że początkowo kod jest czytelny i kompilowalny. Bill to niedoświadczony programista, więc gdy dopisze on jakiś fragment cały kod przestaje być czytelny, a nierzadko przestaje się też kompilować. Indyk Fred jest z kolei weteranem branży IT, więc jego kod kompiluje się zawsze (gdy pracuje on z czytelnym kodem) lub prawie zawsze (gdy kod jest nieczytelny). W razie potrzeby Fred refaktoryzuje cały kod, dzięki czemu poprawia się jego czytelność. Bill i Fred zgodnie ustalili, że nie będą dopisywać nowego fragmentu kodu jeżeli dotychczasowy się nie kompiluje. W takim wypadku któryś z nich musi go najpierw zdebugować.}
+\textit{Farmer Bill i indyk Fred pracują razem nad pewnym projektem programistycznym. Zakładamy, że początkowo kod jest czytelny i kompilowalny. Bill to niedoświadczony programista, więc gdy dopisze on jakiś fragment cały kod przestaje być czytelny, a nierzadko przestaje się też kompilować. Indyk Fred jest z kolei weteranem branży IT, więc jego kod kompiluje się zawsze (gdy pracuje on z czytelnym kodem) lub prawie zawsze (gdy kod jest nieczytelny). W razie potrzeby Fred refaktoryzuje cały kod, dzięki czemu poprawia się jego czytelność. Bill i Fred zgodnie ustalili, że nie będą dopisywać nowych fragmentów kodu jeżeli dotychczasowy się nie kompiluje. W takim wypadku któryś z nich musi go najpierw zdebugować (co potrafi każdy programista mając odpowiednio dużo czasu).}
 
 \bigskip
 \begin{lstlisting}[mathescape=true]
@@ -153,6 +153,7 @@ initially compiles $\wedge$ $\neg$cleanCode
 (code,Fred) typically causes compiles if $\neg$cleanCode
 (refactor,Fred) causes cleanCode
 (debug,$\epsilon$) causes compiles
+impossible (code,$\epsilon$) if $\neg$compiles
 \end{lstlisting}
 
 \subsection{Semantyka języka} 
