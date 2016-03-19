@@ -2,6 +2,7 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{polski}
+\usepackage{listings}
 \frenchspacing
 \setcounter{tocdepth}{2}
 
@@ -10,6 +11,31 @@
 \begin{titlepage}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+%\lstset{
+%	keywords={
+%		after, always, causes, if, impossible, initially, observable, 
+%		partakes, releases, typically
+%    },keywordstyle={\bfseries},
+%}
+
+\lstset{%
+    backgroundcolor=\color{yellow!20},%
+    basicstyle=\small\ttfamily,%
+    numbers=left, numberstyle=\color{gray}\tiny, stepnumber=1
+}
+\lstset{keywords={%  
+		ACS,  after,  always, at, causes, ever,
+		generally,  if, imposible,  initially,  
+		invokes,  involved, -,  OBS,  perfomed,
+		releases, triggers, typically,  when
+    },keywordstyle={\bfseries},
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+
+
 
 \center
 
@@ -134,15 +160,16 @@ $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor
 
 \textit{Farmer Bill i indyk Fred pracują razem nad pewnym projektem programistycznym. Zakładamy, że początkowo kod jest czytelny i kompilowalny. Bill to niedoświadczony programista, więc gdy dopisze on jakiś fragment cały kod przestaje być czytelny, a nierzadko przestaje się też kompilować. Indyk Fred jest z kolei weteranem branży IT, więc jego kod kompiluje się zawsze (gdy pracuje on z czytelnym kodem) lub prawie zawsze (gdy kod jest nieczytelny). W razie potrzeby Fred refaktoryzuje cały kod, dzięki czemu poprawia się jego czytelność. Bill i Fred zgodnie ustalili, że nie będą dopisywać nowego fragmentu kodu jeżeli dotychczasowy się nie kompiluje. W takim wypadku któryś z nich musi go najpierw zdebugować.}
 
-
-\bigskip \noindent
-initially compiles $\wedge$ cleanCode \\
-(Bill,code) causes $\neg$cleanCode \\
-(Bill,code) releases compiles if compiles \\
-(Fred,code) causes compiles if cleanCode \\
-(Fred,code) typically causes compiles if $\neg$cleanCode \\
-(Fred,refactor) causes cleanCode
-
+\bigskip
+\begin{lstlisting}[mathescape=true]
+initially compiles $\wedge$ $\neg$cleanCode
+(code,Bill) causes $\neg$cleanCode
+(code,Bill) releases compiles if compiles
+(code,Fred) causes compiles if cleanCode
+(code,Fred) typically causes compiles if $\neg$cleanCode
+(refactor,Fred) causes cleanCode
+(debug,$\epsilon$) causes compiles
+\end{lstlisting}
 
 \subsection{Semantyka języka} 
 
