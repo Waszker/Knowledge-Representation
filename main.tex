@@ -20,6 +20,7 @@
 \begin{titlepage}
 
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Action}[1]{\textsc{#1}}
 
 \center
 
@@ -147,13 +148,13 @@ $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor
 \bigskip
 \begin{lstlisting}[mathescape=true]
 initially compiles $\wedge$ cleanCode
-(code,Bill) causes $\neg$cleanCode
-(code,Bill) releases compiles if compiles
-(code,Fred) causes compiles if cleanCode
-(code,Fred) typically causes compiles if $\neg$cleanCode
-(refactor,Fred) causes cleanCode
-(debug,$\epsilon$) causes compiles
-impossible (code,$\epsilon$) if $\neg$compiles
+(Code,Bill) causes $\neg$cleanCode
+(Code,Bill) releases compiles if compiles
+(Code,Fred) causes compiles if cleanCode
+(Code,Fred) typically causes compiles if $\neg$cleanCode
+(Refactor,Fred) causes cleanCode
+(Debug,$\epsilon$) causes compiles
+impossible (Code,$\epsilon$) if $\neg$compiles
 \end{lstlisting}
 
 \subsection{Semantyka języka} 
