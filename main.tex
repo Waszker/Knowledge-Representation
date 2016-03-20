@@ -269,19 +269,52 @@ Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstru
 	\[\Phi_{S}(((a_{1}, w_{1}), \dots, (a_{n}, w_{n})),\sigma) \in ResAb((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1}))) \]
 	\[ \cup ResN((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1})))\]
 \end{itemize}
-
+\subsection{Scenariusze}
+Scenariuszem nazywamy skończony ciąg par akcja-wykonawca: $SC=((A_1,w_1),(A_2,w_2),...,(A_n,w_n))$
+\paragraph{}Przykład:\\
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Shop, Cook},
+}
+\begin{lstlisting}[mathescape=true]
+(Shop,John)
+(Cook,John)
+(Eat,John)
+\end{lstlisting}
+Powyższy scenariusz mówi, iż John wykonał kolejno akcje: \texttt{SHOP, COOK, EAT}.
 
 \section{Język kwerend}
+W celu zadawania pytań dotyczących świata opisanego powyższym językiem został stworzony język kwerend. Składa się on z następujących pytań (kwerend) pozwalających uzyskać odpowiedzi typu PRAWDA/FAŁSZ:
 \begin{itemize}
-\item \textbf{Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?}\\ 
-always/ever executable $SC$
-\item \textbf{Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?}\\ 
-always/ever/typically accessible $\gamma$ if $\pi$ when $SC$
-\item \textbf{Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?}\\ 
-always/ever/typically accessible $\gamma$ if $\pi$
-\item \textbf{Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?}\\ always/ever partakes $w$ when $SC$
+\item Q1 Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?\\
+{\large\texttt{always/ever executable $SC$}}
+
+
+\item Q2 Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?\\
+{\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$ when $SC$}}
+
+
+\item Q3 Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?\\
+{\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$}}
+
+
+\item Q4 Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?\\
+{\large\texttt{always/ever partakes $w$ when $SC$}}
 
 \end{itemize}
-
-
+\subsection{Przykłady}
+%kolejno do wcześniejszych przykładów 
+\subsubsection{Gotujący John}
+\begin{itemize}
+\item
+Scenariusz: $SC=((Shop,John),(Cook,John),(Eat,John))$\\
+Kwerenda: {\large\texttt{always executable $SC$}}\\
+Odpowiedź: \texttt{FALSE}
+\item
+Scenariusz: $SC=((Shop,John),(Cook,John),(Eat,John))$\\
+Kwerenda: {\large\texttt{ever executable $SC$}}\\
+Odpowiedź: \texttt{TRUE}
+\end{itemize}
+\subsubsection{}
+\subsubsection{}
 \end{document}
