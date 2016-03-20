@@ -146,7 +146,7 @@ $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor
 \subsubsection{Przykład 1}
 
 
-\textit{John jest entuzjastą gotowania i bardzo lubi jeść. Zakładamy, że początkowo jest głodny, jego lodówka jest pusta i nie ma on żadnego gotowego posiłku. Zawsze jeśli John jest głodny, to jest też zły. Nie może jednak nic zjeść, jeśli nie ma co. Niemożliwym jest także ugotowanie posiłku, jeśli lodówka Johna jest pusta. Aby ją uzupełnić John idzie na zakupy. Zakupy również często powodują, że John ma lepszy humor. John może teraz coś ugotować, lecz jeśli jest zły to na ogół powoduje to ogromy chaos w kuchni. Zdolności kulinarne Johna są na tyle duże, że zawsze wyjdzie mu posiłek, który jest zdatny do jedzenia. Po zjedzeniu posiłku głód mija, a humor Johna się poprawia, jeśli był zły.}
+\textit{John jest entuzjastą gotowania i bardzo lubi jeść. Zakładamy, że początkowo jest głodny, jego lodówka jest pusta i nie ma on żadnego gotowego posiłku. Zawsze jeśli John jest głodny, to jest też zły. Nie może jednak nic zjeść, jeśli nie ma co. Niemożliwym jest także ugotowanie posiłku, jeśli lodówka Johna jest pusta. Aby ją uzupełnić John idzie na zakupy. Zakupy również często powodują, że John ma lepszy humor. John może teraz coś ugotować, lecz jeśli jest zły to na ogół powoduje to ogromy chaos w kuchni. Zdolności kulinarne Johna są na tyle duże, że zawsze wyjdzie mu posiłek, który jest zdatny do jedzenia. John lubi duże porcje, więc możliwe, że po ugotowaniu posiłku znowu ma pustą lodówkę. Jest też takim łakomczuchem, że nie zostawia sobie nic na później i zjada cały posiłek. Po zjedzeniu głód mija, a humor Johna się poprawia, jeśli był zły.}
 
 \bigskip
 \lstset{
@@ -162,7 +162,8 @@ impossible (Cook,John) if emptyFridge
 (Shop,John) releases angry if angry
 (Cook,John) typically causes chaos if angry
 (Cook,John) causes hasMeal 
-(Eat,John) causes $\neg$hungry 
+(Cook,John) releases emptyFridge 
+(Eat,John) causes $\neg$hasMeal $\wedge$ $\neg$hungry 
 (Eat,John) causes $\neg$angry if angry 
 \end{lstlisting}
 
