@@ -208,10 +208,8 @@ Początkowo Ciastko jest dostępne, a butelka pełna Eliksiru.}
 	style=main,
 	keywords=[2]{EatCake, DrinkElixir, BringCake, BringElixir},
 }
-\begin{lstlisting}[mathescape=true]
-initially $\neg$AliceSmall
-initially CakeAvailable $\wedge$ ElixirAvailable 
-initially $\neg$HatterMad $\wedge$ CatInvisible
+\begin{lstlisting}[mathescape=true, breaklines=true]
+initially $\neg$AliceSmall $\wedge$ CakeAvailable $\wedge$ ElixirAvailable $\wedge$ $\neg$HatterMad $\wedge$ CatInvisible
 
 (EatCake,Alice) causes $\neg$AliceSmall
 impossible (EatCake,CheshireCat)
@@ -222,7 +220,7 @@ impossible (EatCake,$\epsilon$) if $\neg$CakeAvailable
 
 (DrinkElixir,Alice) causes AliceSmall if ElixirAvailable
 (DrinkElixir,CheshireCat) typically causes $\neg$CatInvisible if ElixirAvailable
-(DrinkElixir,Hatter) releases HatterMad if $\neg$HatterMad $\wedge$ if ElixirAvailable
+(DrinkElixir,Hatter) releases HatterMad if $\neg$HatterMad $\wedge$ ElixirAvailable
 (DrinkElixir,WhiteRabbit) causes CakeAvailable if ElixirAvailable
 (DrinkElixir,$\epsilon$) releases ElixirAvailable if ElixirAvailable
 
