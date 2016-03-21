@@ -206,26 +206,23 @@ Początkowo Ciastko jest dostępne, a butelka pełna Eliksiru.}
 \bigskip
 \lstset{
 	style=main,
-	keywords=[2]{EatCake, DrinkElixir, BringCake, BringElixir},
+	keywords=[2]{Drink, Eat},
 }
 \begin{lstlisting}[mathescape=true, breaklines=true]
-initially $\neg$AliceSmall $\wedge$ CakeAvailable $\wedge$ ElixirAvailable $\wedge$ $\neg$HatterMad $\wedge$ CatInvisible
-
-(DrinkElixir,Alice) causes AliceSmall if ElixirAvailable
-(EatCake,Alice) causes $\neg$AliceSmall
-impossible (EatCake,CheshireCat)
-(DrinkElixir,CheshireCat) typically causes $\neg$CatInvisible if ElixirAvailable
-(DrinkElixir,Hatter) releases HatterMad if $\neg$HatterMad $\wedge$ ElixirAvailable
-(EatCake,Hatter) typically causes $\neg$HatterMad if HatterMad
-(EatCake,$\epsilon$) causes $\neg$CakeAvailable
-impossible (EatCake,$\epsilon$) if $\neg$CakeAvailable
-(DrinkElixir,$\epsilon$) releases ElixirAvailable if ElixirAvailable
-impossible (EatCake,WhiteRabbit)
-(DrinkElixir,WhiteRabbit) causes CakeAvailable if ElixirAvailable
-
-
+initially $\neg$aliceSmall  $\wedge$ $\neg$hatterMad $\wedge$ $\neg$catVisible
+initially cakeExists $\wedge$ elixirExists
+(Drink,Alice) causes aliceSmall if elixirExists
+(Eat,Alice) causes $\neg$aliceSmall
+impossible (Eat,Cat)
+(Drink,Cat) typically causes catVisible if elixirExists
+(Drink,Hatter) releases hatterMad if $\neg$hatterMad $\wedge$ elixirExists
+(Eat,Hatter) typically causes $\neg$hatterMad if hatterMad
+(Eat,$\epsilon$) causes $\neg$cakeExists
+impossible (Eat,$\epsilon$) if $\neg$cakeExists
+(Drink,$\epsilon$) releases elixirExists if elixirExists
+impossible (Eat,Rabbit)
+(Drink,Rabbit) causes cakeExists if elixirExists
 \end{lstlisting}
-
 
 \subsection{Semantyka języka} 
 
