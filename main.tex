@@ -330,5 +330,19 @@ Scenariusz: $SC=((Code,Fred),(Code,Bill))$\\
 Kwerenda: {\large\texttt{always accessible compiles if cleanCode when $SC$}}\\
 Odpowiedź: \texttt{FALSE}
 \end{itemize}
-\subsubsection{}
+\subsubsection{Eliksir i ciastko}
+\begin{itemize}
+\item
+Scenariusz: $SC=((Eat,Alice),(Drink,\epsilon),(Eat,Alice))$\\
+Kwerenda: {\large\texttt{always executable $SC$}}\\
+Odpowiedź: \texttt{FALSE}
+\item
+Scenariusz: $SC=((Eat,Alice),(Drink,\epsilon),(Eat,Alice))$\\
+Kwerenda: {\large\texttt{ever executable $SC$}}\\
+Odpowiedź: \texttt{TRUE}
+\item
+Scenariusz: $SC=((Eat,Alice),(Drink,\epsilon),(Eat,Alice))$\\
+Kwerenda: {\large\texttt{always partakes $Rabbit$ when $SC$}}\\
+Odpowiedź: \texttt{TRUE}
+\end{itemize}
 \end{document}
