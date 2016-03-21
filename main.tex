@@ -321,6 +321,14 @@ Odpowiedź: \texttt{FALSE}
 Scenariusz: $SC=((Code,Fred),(Code,Bill),(Code,Fred))$\\
 Kwerenda: {\large\texttt{ever executable $SC$}}\\
 Odpowiedź: \texttt{TRUE}
+\item
+Scenariusz: $SC=((Code,Fred),(Code,Bill))$\\
+Kwerenda: {\large\texttt{typically accessible compiles if cleanCode when $SC$}}\\
+Odpowiedź: \texttt{TRUE}
+\item
+Scenariusz: $SC=((Code,Fred),(Code,Bill))$\\
+Kwerenda: {\large\texttt{always accessible compiles if cleanCode when $SC$}}\\
+Odpowiedź: \texttt{FALSE}
 \end{itemize}
 \subsubsection{}
 \end{document}
