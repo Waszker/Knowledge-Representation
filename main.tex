@@ -310,6 +310,17 @@ Odpowiedź: \texttt{FALSE}
 Scenariusz: $SC=((Shop,John),(Cook,John),(Eat,John))$\\
 Kwerenda: {\large\texttt{ever executable $SC$}}\\
 Odpowiedź: \texttt{TRUE}
+
+\item
+Scenariusz: $SC=((Cook,John),(Eat,John))$\\
+Kwerenda: {\large\texttt{always accessible hungry if angry when $SC$}}\\
+Odpowiedź: \texttt{TRUE}
+
+\item
+Scenariusz: $SC=((Cook,John),(Eat,John))$\\
+Kwerenda: {\large\texttt{ever accessible hungry if $\neg$emptyFridge}}\\
+Odpowiedź: \texttt{TRUE}
+
 \end{itemize}
 \subsubsection{Programista Fred}
 \begin{itemize}
