@@ -340,7 +340,13 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 		% TODO: Nie jestem pewien tego Res0+
 		$\forall_{S=(\Sigma, \sigma_{0}, Res_{0}^{+}) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 	\end{itemize}
-	\item Jeśli Q jest zdaniem typu Q4
+	\item Jeśli Q jest zdaniem typu Q4:
+	\begin{itemize}
+		\item z warunkiem \texttt{always}: 
+		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\forall_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+		\item z warunkiem \texttt{ever}:
+		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\exists_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+	\end{itemize}
 \end{enumerate} 
 
 
