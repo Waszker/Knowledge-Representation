@@ -147,7 +147,8 @@ gdzie $\alpha$ jest dowolną kombinacją zmiennych (fluentów):
 $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor \alpha_{2} | \alpha_{1} \to \alpha_{2} | \alpha_{1} \leftrightarrow \alpha_{2} $
 \end{center}
 
-\subsubsection{Przykład 1}
+\subsection{Przykłady} 
+\subsubsection{Gotujący John}
 
 
 \textit{John jest entuzjastą gotowania i bardzo lubi jeść. Zakładamy, że początkowo jest głodny, jego lodówka jest pusta i nie ma on żadnego gotowego posiłku. Zawsze jeśli John jest głodny, to jest też zły. Nie może jednak nic zjeść, jeśli nie ma co. Niemożliwym jest także ugotowanie posiłku, jeśli lodówka Johna jest pusta. Aby ją uzupełnić John idzie na zakupy. Zakupy również często powodują, że John ma lepszy humor. John może teraz coś ugotować, lecz jeśli jest zły to na ogół powoduje to ogromy chaos w kuchni. Zdolności kulinarne Johna są na tyle duże, że zawsze wyjdzie mu posiłek, który jest zdatny do jedzenia. John lubi duże porcje, więc możliwe, że po ugotowaniu posiłku znowu ma pustą lodówkę. Jest też takim łakomczuchem, że nie zostawia sobie nic na później i zjada cały posiłek. Po zjedzeniu głód mija, a humor Johna się poprawia.}
@@ -170,7 +171,7 @@ impossible (Cook,John) if emptyFridge
 (Eat,John) causes $\neg$hasMeal $\wedge$ $\neg$hungry $\wedge$ $\neg$angry
 \end{lstlisting}
 
-\subsubsection{Przykład 2}
+\subsubsection{Programiści Fred i Bill}
 
 
 \textit{Farmer Bill i indyk Fred pracują razem nad pewnym projektem programistycznym. Zakładamy, że początkowo kod jest czytelny i kompilowalny. Bill to niedoświadczony programista, więc gdy dopisze on jakiś fragment cały kod przestaje być czytelny, a nierzadko przestaje się też kompilować. Indyk Fred jest z kolei weteranem branży IT, więc jego kod kompiluje się zawsze (gdy pracuje on z czytelnym kodem) lub prawie zawsze (gdy kod jest nieczytelny). W razie potrzeby Fred refaktoryzuje cały kod, dzięki czemu poprawia się jego czytelność. Bill i Fred zgodnie ustalili, że nie będą dopisywać nowych fragmentów kodu jeżeli dotychczasowy się nie kompiluje. W takim wypadku któryś z nich musi go najpierw zdebugować (co potrafi każdy programista mając odpowiednio dużo czasu).}
@@ -191,7 +192,7 @@ initially compiles $\wedge$ cleanCode
 impossible (Code,$\epsilon$) if $\neg$compiles
 \end{lstlisting}
 
-\subsubsection{Przykład 3}
+\subsubsection{Alicja w krainie czarów}
 
 
 \textit{Alicja może być pomniejszona, lub być swojego normalnego, wysokiego wzrostu. Początkowo Alicja jest wysoka. Wypicie Eliksiru pomnniejsza Alicję, natomiast zjedzenie Ciastka ją powiększa.
@@ -269,17 +270,18 @@ Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstru
 	\[\Phi_{S}(((a_{1}, w_{1}), \dots, (a_{n}, w_{n})),\sigma) \in ResAb((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1}))) \]
 	\[ \cup ResN((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1})))\]
 \end{itemize}
-\subsection{Scenariusze}
-Scenariuszem nazywamy skończony ciąg par akcja-wykonawca: $SC=((A_1,w_1),(A_2,w_2),...,(A_n,w_n))$
-\paragraph{}Przykład:\\
+\subsection{Scenariusz}
+Scenariuszem nazywamy skończony ciąg par akcja-wykonawca:
+\begin{center}
+$SC=((A_1,w_1),(A_2,w_2),...,(A_n,w_n))$
+\end{center}
+\textbf{Przykład:}
 \lstset{
 	style=main,
 	keywords=[2]{Eat, Shop, Cook},
 }
 \begin{lstlisting}[mathescape=true]
-(Shop,John)
-(Cook,John)
-(Eat,John)
+(Shop,John), (Cook,John), (Eat,John)
 \end{lstlisting}
 Powyższy scenariusz mówi, iż John wykonał kolejno akcje: \texttt{SHOP, COOK, EAT}.
 
@@ -288,23 +290,23 @@ W celu zadawania pytań dotyczących świata opisanego powyższym językiem zost
 
 \subsection{Syntaktyka kwerend}
 \begin{itemize}
-\item Q1 Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?\\
+\item Q1 - Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?\\
 % TODO: A może executable from ...?
 {\large\texttt{always/ever executable $SC$}} \\
 Zdanie to mówi, że wykonując podany ciąg akcji $SC$ z dowolnego, niesprzecznego stanu zawsze(\texttt{always}) osiągnięty zostanie niesprzeczny stan końcowy, lub istnieje przynajmniej jedna ścieżka z dowolnego z tych stanów do poprawnego stanu wynikowego(\texttt{ever}).
 
 
-\item Q2 Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?\\
+\item Q2 - Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?\\
 {\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$ when $SC$}} \\
 Podobnie jak Q1 zdanie to mówi, że osiągnięcie legalnego stanu końcowego spełniającego warunek $\gamma$, startując ze stanu spełniającego warunek $\pi$, nastąpi niezależnie od wybranego punktu początkowego(\texttt{always}), przynajmniej raz(\texttt{ever}), lub zawsze pod warunkiem wyboru zawsze ścieżki akcji domyślnej(\texttt{typically}).
 
 
 
-\item Q3 Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?\\
+\item Q3 - Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?\\
 {\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$}}
 
 
-\item Q4 Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?\\
+\item Q4 - Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?\\
 {\large\texttt{always/ever partakes $w$ when $SC$}} \\
 
 \end{itemize}
@@ -374,7 +376,7 @@ Kwerenda: {\large\texttt{ever accessible hungry if $\neg$emptyFridge}}\\
 Odpowiedź: \texttt{TRUE}
 
 \end{itemize}
-\subsubsection{Programista Fred}
+\subsubsection{Programiści Fred i Bill}
 \begin{itemize}
 \item
 Scenariusz: $SC=((Code,Fred),(Code,Bill),(Code,Fred))$\\
@@ -397,7 +399,7 @@ Scenariusz: $SC=((Code,Fred),(Code,Bill))$\\
 Kwerenda: {\large\texttt{ever accessible compiles if $\neg$compiles}}\\
 Odpowiedź: \texttt{TRUE}
 \end{itemize}
-\subsubsection{Eliksir i ciastko}
+\subsubsection{Alicja w krainie czarów}
 \begin{itemize}
 \item
 Scenariusz: $SC=((Eat,Alice),(Drink,\epsilon),(Eat,Alice))$\\
