@@ -1,11 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<DirectedGraph xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+<DirectedGraph GraphDirection="TopToBottom" Layout="ForceDirected" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
   <Nodes>
-    <Node Id="{compiles,CleanCode}" Bounds="0,0,135.7,25.96" Label="{compiles, cleanCode}" />
+    <Node Id="{compiles,CleanCode}" Category="Category8" Bounds="-98.9900609236218,-51.6899404186252,135.7,25.96" Label="{compiles, cleanCode}" UseManualLocation="True" />
+    <Node Id="{compiles,~cleanCode}" Bounds="242.387859260818,-48.6099404186252,143.91,25.96" Label="{compiles, ~cleanCode}" UseManualLocation="True" />
+    <Node Id="{~compiles,CleanCode}" Bounds="-103.900160923622,204.310059581375,143.91,25.96" Label="{~compiles, cleanCode}" UseManualLocation="True" />
+    <Node Id="{~compiles,~cleanCode}" Bounds="238.415320316522,208.886104281401,152.12,25.96" Label="{~compiles, ~cleanCode}" UseManualLocation="True" />
   </Nodes>
-  <Links />
+  <Links>
+    <Link Source="{compiles,CleanCode}" Target="{compiles,CleanCode}" Bounds="-65.0650634765625,-81.68994140625,67.8455426692963,30.0000038146973" Label="(Code, Fred)" LabelBounds="-68.4943243190898,-101.518777639087,64.3066666666666,15.96" />
+    <Link Source="{compiles,CleanCode}" Target="{compiles,CleanCode}" Index="1" Bounds="-65.0650634765625,-81.68994140625,67.8455426692963,30.0000038146973" Label="(Refactor, Fred)" LabelBounds="-145.554295115416,-85.342054124181,80.2833333333333,15.96" />
+    <Link Source="{compiles,CleanCode}" Target="{compiles,CleanCode}" Index="2" Bounds="-65.0650634765625,-81.68994140625,67.8455426692963,30.0000038146973" Label="(Debug, e)" LabelBounds="-58.1073774471775,-72.6462751408013,55.0033333333333,15.96" />
+    <Link Source="{compiles,CleanCode}" Target="{compiles,~cleanCode}" Bounds="36.7099380493164,-33.8675804138184,196.678977966309,2.79716873168945" Label="(Code, Bill)" LabelBounds="90.0924484418786,-28.1154220300083,56.53,15.96" />
+    <Link Source="{compiles,CleanCode}" Target="{~compiles,~cleanCode}" Bounds="-13.9240198198112,-25.7299380493164,303.996947210583,229.197901267083" Label="(Code, Bill)" LabelBounds="65.6542244458528,15.8031773061433,56.53,15.96" />
+    <Link Source="{compiles,~cleanCode}" Target="{compiles,CleanCode}" Index="1" Bounds="45.7067604064941,-39.6305656433105,196.681118011475,2.56018447875977" Label="(Refactor, Fred)" LabelBounds="105.367935165285,-57.6492173021258,80.2833333333335,15.96" />
+    <Link Source="{compiles,~cleanCode}" Target="{compiles,~cleanCode}" Bounds="278.365386962891,-78.6099395751953,71.9502563476563,30" Label="(Code, Bill)" LabelBounds="280.574874268059,-98.4387787567315,56.53,15.96" />
+    <Link Source="{compiles,~cleanCode}" Target="{compiles,~cleanCode}" Index="1" Bounds="278.365386962891,-78.6099395751953,71.9502563476563,30" Label="(Code, Fred)" LabelBounds="339.561510384366,-92.3706965877418,64.3066666666668,15.96" />
+    <Link Source="{compiles,~cleanCode}" Target="{compiles,~cleanCode}" Index="2" Bounds="278.365386962891,-78.6099395751953,71.9502563476563,30" Label="(Debug, e)" LabelBounds="288.261470535574,-72.5087774913128,55.0033333333334,15.96" />
+    <Link Source="{compiles,~cleanCode}" Target="{~compiles,~cleanCode}" Bounds="316.371063232422,-22.6499404907227,0.90167236328125,222.536430358887" Label="(Code, Bill)" LabelBounds="320.55913340679,74.3622153482617,56.53,15.96" />
+    <Link Source="{~compiles,CleanCode}" Target="{compiles,CleanCode}" Bounds="-31.9043406615907,-16.7299825565442,0.695154872141305,221.040036877833" Label="(Debug, e)" LabelBounds="-90.5600965589022,85.8037460586441,55.0033333333333,15.96" />
+    <Link Source="{~compiles,CleanCode}" Target="{~compiles,CleanCode}" Bounds="-67.9226608276367,174.31005859375,71.9502687454224,30" Label="(Refactor, Fred)" LabelBounds="-119.754791688501,155.865275826365,80.2833333333333,15.96" />
+    <Link Source="{~compiles,~cleanCode}" Target="{compiles,~cleanCode}" Bounds="310.371063232422,-13.6516084671021,0.984405517578125,222.53771686554" Label="(Debug, e)" LabelBounds="251.594865870722,82.7399127390361,55.0033333333333,15.96" />
+    <Link Source="{~compiles,~cleanCode}" Target="{~compiles,CleanCode}" Bounds="49.0090530714103,218.359420977391,189.406273466676,2.50196674224767" Label="(Refactor, Fred)" LabelBounds="103.544106394443,223.610404363735,80.2833333333334,15.9600000000001" />
+  </Links>
+  <Categories>
+    <Category Id="Category8" Label="Category 8" Background="#FF44CCCC" IsTag="True" />
+  </Categories>
   <Properties>
+    <Property Id="Background" Label="Background" Description="The background color" DataType="System.Windows.Media.Brush" />
     <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="IsTag" DataType="System.Boolean" />
     <Property Id="Label" Label="Label" Description="Displayable label of an Annotatable object" DataType="System.String" />
+    <Property Id="LabelBounds" DataType="System.Windows.Rect" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="ZoomLevel" DataType="System.String" />
   </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="Category 8" ValueLabel="Has category">
+      <Condition Expression="HasCategory('Category8')" />
+      <Setter Property="Background" Value="#FF44CCCC" />
+    </Style>
+    <Style TargetType="Node" GroupLabel="Comment" ValueLabel="Has comment">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
 </DirectedGraph>
