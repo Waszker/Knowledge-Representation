@@ -285,13 +285,19 @@ Powyższy scenariusz mówi, iż John wykonał kolejno akcje: \texttt{SHOP, COOK,
 
 \section{Język kwerend}
 W celu zadawania pytań dotyczących świata opisanego powyższym językiem został stworzony język kwerend. Składa się on z następujących pytań (kwerend) pozwalających uzyskać odpowiedzi typu PRAWDA/FAŁSZ:
+
+\subsection{Syntaktyka kwerend}
 \begin{itemize}
 \item Q1 Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?\\
-{\large\texttt{always/ever executable $SC$}}
+% TODO: A może executable from ...?
+{\large\texttt{always/ever executable $SC$}} \\
+Zdanie to mówi, że wykonując podany ciąg akcji $SC$ z dowolnego, niesprzecznego stanu zawsze(\texttt{always}) osiągnięty zostanie niesprzeczny stan końcowy, lub istnieje przynajmniej jedna ścieżka z dowolnego z tych stanów do poprawnego stanu wynikowego(\texttt{ever}).
 
 
 \item Q2 Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?\\
-{\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$ when $SC$}}
+{\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$ when $SC$}} \\
+Podobnie jak Q1 zdanie to mówi, że osiągnięcie legalnego stanu końcowego spełniającego warunek $\gamma$, startując ze stanu spełniającego warunek $\pi$, nastąpi niezależnie od wybranego punktu początkowego(\texttt{always}), przynajmniej raz(\texttt{ever}), lub zawsze pod warunkiem wyboru zawsze ścieżki akcji domyślnej(\texttt{typically}).
+
 
 
 \item Q3 Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?\\
@@ -299,9 +305,51 @@ W celu zadawania pytań dotyczących świata opisanego powyższym językiem zost
 
 
 \item Q4 Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?\\
-{\large\texttt{always/ever partakes $w$ when $SC$}}
+{\large\texttt{always/ever partakes $w$ when $SC$}} \\
 
 \end{itemize}
+
+
+\subsection{Semantyka kwerend}
+Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
+\begin{enumerate}
+	\item Jeśli Q jest zdaniem typu Q1:
+	\begin{itemize}
+		\item z warunkiem \texttt{always}: $\forall_{S=(\Sigma, \sigma_{0}, Res) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
+		\item z warunkiem \texttt{ever}: 
+		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
+	\end{itemize}
+	\item Jeśli Q jest zdaniem typu Q2:
+	\begin{itemize}
+		\item z warunkiem \texttt{always}: 
+		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		\item z warunkiem \texttt{ever}:
+		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		\item z warunkiem \texttt{typically}:
+		% TODO: Nie jestem pewien tego Res0+
+		$\forall_{S=(\Sigma, \sigma_{0}, Res_{0}^{+}) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+	\end{itemize}
+	
+	\item Jeśli Q jest zdaniem typu Q3:
+	\begin{itemize}
+		\item z warunkiem \texttt{always}: 
+		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		\item z warunkiem \texttt{ever}:
+		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		\item z warunkiem \texttt{typically}:
+		% TODO: Nie jestem pewien tego Res0+
+		$\forall_{S=(\Sigma, \sigma_{0}, Res_{0}^{+}) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+	\end{itemize}
+	\item Jeśli Q jest zdaniem typu Q4:
+	\begin{itemize}
+		\item z warunkiem \texttt{always}: 
+		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\forall_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+		\item z warunkiem \texttt{ever}:
+		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\exists_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+	\end{itemize}
+\end{enumerate} 
+
+
 \subsection{Przykłady}
 %kolejno do wcześniejszych przykładów 
 \subsubsection{Gotujący John}
