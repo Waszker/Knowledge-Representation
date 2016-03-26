@@ -317,16 +317,16 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 \begin{enumerate}
 	\item Jeśli Q jest zdaniem typu Q1:
 	\begin{itemize}
-		\item z warunkiem \texttt{always}: $\forall_{S=(\Sigma, \sigma_{0}, Res) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
+		\item z warunkiem \texttt{always}: $\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
 		\item z warunkiem \texttt{ever}: 
-		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
+		$\exists_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
 	\end{itemize}
 	\item Jeśli Q jest zdaniem typu Q2:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
-		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{ever}:
-		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\exists_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{typically}:
 		% TODO: Nie jestem pewien tego Res0+
 		$\forall_{S=(\Sigma, \sigma_{0}, Res_{0}^{+}) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
@@ -335,9 +335,9 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 	\item Jeśli Q jest zdaniem typu Q3:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
-		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{ever}:
-		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\exists_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{typically}:
 		% TODO: Nie jestem pewien tego Res0+
 		$\forall_{S=(\Sigma, \sigma_{0}, Res_{0}^{+}) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
@@ -345,9 +345,9 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 	\item Jeśli Q jest zdaniem typu Q4:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
-		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\forall_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\forall_{(A_{i}, w_{i}) \in SC}w_{i} = w$
 		\item z warunkiem \texttt{ever}:
-		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\exists_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\exists_{(A_{i}, w_{i}) \in SC}w_{i} = w$
 	\end{itemize}
 \end{enumerate} 
 
