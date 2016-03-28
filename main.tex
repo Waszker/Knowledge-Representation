@@ -5,6 +5,8 @@
 \usepackage{listings} %code environment
 \frenchspacing
 \setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 
 \lstdefinestyle{main}{
 	keywords={
@@ -251,7 +253,7 @@ W celu zdefiniowania pojęcia modelu dziedziny wprowadzone zostaną następując
 	\[ \forall_{a \in A, w \in W, \sigma \in \Sigma} Res_{0}(a,w,\sigma) = \{\sigma' \in \Sigma: ((a, w) \textbf{ causes } \alpha \textbf{ if } \pi) \in D \land (\sigma \models \pi) \Rightarrow (\sigma' \models \alpha) \}  \]
 	Oznacza to, że $Res_{0}$ konstruuje się bez minimalizacji zmian.
 	\item Funkcję $Res^{-}$ wyznacza się stosując minimalizację zmian.
-	\item Funkcję $Res^{+} : A \times W \times \Sigma \to 2^{\Sigma}$ spełniającą warunek $\forall_{a \in A, w \in W, \sigma \in \Sigma}$:
+	\item Funkcję $Res_{0}^{+} : A \times W \times \Sigma \to 2^{\Sigma}$ spełniającą warunek $\forall_{a \in A, w \in W, \sigma \in \Sigma}$:
 	\[ Res_{0}^{+}(a, w,\sigma) = \]
 	\[ \{\sigma' \in Res_{0}(a, w,\sigma) : ((a, w) \textbf{ typically causes } \beta \textbf{ if } \pi) \in D \land (\sigma \models \varphi) \Rightarrow (\sigma' \models \beta) \}  \]
 \end{enumerate}
@@ -287,6 +289,63 @@ $SC=((A_1,w_1),(A_2,w_2),...,(A_n,w_n))$
 (Shop,John), (Cook,John), (Eat,John)
 \end{lstlisting}
 Powyższy scenariusz mówi, iż John wykonał kolejno akcje: \texttt{SHOP, COOK, EAT}.
+
+
+\subsection{Przykłady}
+\subsubsection{Gotujący John}
+
+Rozważmy następującą dziedzinę:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Shop, Cook},
+}
+\begin{lstlisting}[mathescape=true]
+initially hungry $\wedge$ $\neg$hasMeal 
+impossible (Eat,John) if $\neg$hasMeal 
+(Cook,John) typically causes hasMeal
+(Eat,John) causes $\neg$hasMeal 
+(Eat,John) releases hungry if hungry
+\end{lstlisting}
+Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sigma_{3}\}$, gdzie:\\
+$\sigma_{0}=\{h,\neg m\}$, $\sigma_{1}=\{h, m\}$, $\sigma_{2}=\{\neg h, m\}$, $\sigma_{3}=\{\neg h,\neg m\}$, zaś $h$ i $m$ oznaczają odpowiednio $hungry$ i $hasMeal$.\\
+
+\begin{minipage}[t]{0.5\textwidth}
+$Res_{0}(\textsc{Cook},John,\sigma_{0})=\Sigma$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{0})=\emptyset$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{1})=\{m\}$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{1})=\{\neg h,m\}$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{1})=\{\neg h\}$\\
+$Res^{-}(\textsc{Cook},John,\sigma_{0})=\{\sigma_{0}\}$\\
+$Res_{0}^{+}(\textsc{Cook},John,\sigma_{0})=\{\sigma_{1},\sigma_{2}\}$\\\\
+$ResN(\textsc{Cook},John,\sigma_{0})=\{\sigma_{1}\}$\\
+$ResAb(\textsc{Cook},John,\sigma_{0})=\{\sigma_{0}\}$\\\\
+$Res_{0}(\textsc{Eat},John,\sigma_{0})=\emptyset$,\\ 
+ponieważ: \\impossible $(\textsc{Eat},John)$ if $\neg$hasMeal\\\\
+$ResN(\textsc{Eat},John,\sigma_{0})=\emptyset$,\\ 
+$ResAb(\textsc{Eat},John,\sigma_{0})=\emptyset$,\\ 
+
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+$ResN(\textsc{Cook},John,\sigma_{1})=\{\sigma_{1}\}$\\
+$ResAb(\textsc{Cook},John,\sigma_{1})=\emptyset$\\\\
+$ResN(\textsc{Eat},John,\sigma_{1})=\{\sigma_{0},\sigma_{3}\}$\\ 
+$ResAb(\textsc{Eat},John,\sigma_{1})=\emptyset$\\\\
+$ResN(\textsc{Cook},John,\sigma_{2})=\{\sigma_{2}\}$\\
+$ResAb(\textsc{Cook},John,\sigma_{2})=\emptyset$\\\\
+$ResN(\textsc{Eat},John,\sigma_{2})=\{\sigma_{3}\}$\\ 
+$ResAb(\textsc{Eat},John,\sigma_{2})=\emptyset$\\\\
+$ResN(\textsc{Cook},John,\sigma_{3})=\{\sigma_{2}\}$\\
+$ResAb(\textsc{Cook},John,\sigma_{3})=\{\sigma_{3}\}$\\\\
+$ResN(\textsc{Eat},John,\sigma_{3})=\emptyset$\\ 
+$ResAb(\textsc{Eat},John,\sigma_{3})=\emptyset$\\\\
+\end{minipage}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{graphJohn}
+\caption{Graf zależności}
+\end{figure}
+
 
 \section{Język kwerend}
 W celu zadawania pytań dotyczących świata opisanego powyższym językiem został stworzony język kwerend. Składa się on z następujących pytań (kwerend) pozwalających uzyskać odpowiedzi typu PRAWDA/FAŁSZ:
