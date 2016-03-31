@@ -316,8 +316,8 @@ $\sigma_{0}=\{h,\neg m\}$, $\sigma_{1}=\{h, m\}$, $\sigma_{2}=\{\neg h, m\}$, $\
 $Res_{0}(\textsc{Cook},John,\sigma_{0})=\Sigma$\\
 $New(\textsc{Cook},John,\sigma_{0},\sigma_{0})=\emptyset$\\
 $New(\textsc{Cook},John,\sigma_{0},\sigma_{1})=\{m\}$\\
-$New(\textsc{Cook},John,\sigma_{0},\sigma_{1})=\{\neg h,m\}$\\
-$New(\textsc{Cook},John,\sigma_{0},\sigma_{1})=\{\neg h\}$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{2})=\{h,m\}$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{3})=\{h\}$\\
 $Res^{-}(\textsc{Cook},John,\sigma_{0})=\{\sigma_{0}\}$\\
 $Res_{0}^{+}(\textsc{Cook},John,\sigma_{0})=\{\sigma_{1},\sigma_{2}\}$\\\\
 $ResN(\textsc{Cook},John,\sigma_{0})=\{\sigma_{1}\}$\\
@@ -345,7 +345,88 @@ $ResAb(\textsc{Eat},John,\sigma_{3})=\emptyset$\\\\
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.7]{graphJohn}
-\caption{Graf zależności}
+\caption{Graf zależności - gotujący John}
+\end{figure}
+
+\subsubsection{Alicja w krainie czarów}
+
+Rozważmy następującą dziedzinę:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Shop, Cook},
+}
+\begin{lstlisting}[mathescape=true]
+initially $\neg$hatterMad $\wedge$ cakeExists $\wedge$ elixirExists
+(Drink,Hatter) causes hatterMad if elixirExists
+(Eat,Hatter) typically causes $\neg$hatterMad if hatterMad
+impossible (Eat,$\epsilon$) if $\neg$cakeExists
+(Drink,$\epsilon$) releases elixirExists if elixirExists
+(Eat,$\epsilon$) causes $\neg$cakeExists
+\end{lstlisting}
+Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sigma_{3},\sigma_{4},\sigma_{5},\sigma_{6},\sigma_{7}\}$, gdzie:\\
+$\sigma_{0}=\{\neg h,c, e\}$, $\sigma_{1}=\{h, c, e\}$, $\sigma_{2}=\{h, \neg c, e\}$, $\sigma_{3}=\{\neg h,\neg c, e\}, \sigma_{4}=\{h,\neg c, \neg e\}$, $\sigma_{5}=\{h, c, \neg e\}$, $\sigma_{6}=\{\neg h, c, \neg e\}$, $\sigma_{7}=\{\neg h,\neg c, \neg e\}$, zaś $h$, $c$, $e$ oznaczają odpowiednio $hatterMad$, $cakeExists$, $elixirExists$.\\
+
+
+$Res_{0}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{1})=\{h, e\}$\\
+$New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{2})=\{h, c, e\}$\\
+$New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{4})=\{h, c, e\}$\\
+$New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{5})=\{h, e\}$\\
+$Res^{-}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{5}\}$\\
+$Res_{0}^{+}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$ResN(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{5}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{0})=\emptyset$\\\\
+
+$Res_{0}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{2})=\{h, c\}$\\
+$New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{3})=\{c\}$\\
+$New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{4})=\{h, c, e\}$\\
+$New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{7})=\{c, e\}$\\
+$Res^{-}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{3}\}$\\
+$Res_{0}^{+}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{3}\}$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{0})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{1})=\{\sigma_{1}, \sigma_{5}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{1})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{1})=\{\sigma_{3}\}$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{1})=\{\sigma_{2}\}$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{2})=\{\sigma_{2}, \sigma_{4}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{2})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{2})=\emptyset$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{2})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{3})=\{\sigma_{2}, \sigma_{7}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{3})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{3})=\emptyset$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{3})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{4})=\{\sigma_{4}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{4})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{4})=\emptyset$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{4})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{5})=\{\sigma_{5}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{5})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{5})=\{\sigma_{7}\}$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{5})=\{\sigma_{4}\}$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{6})=\{\sigma_{6}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{6})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{6})=\{\sigma_{7}\}$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{6})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{7})=\{\sigma_{7}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{7})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{7})=\emptyset$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{7})=\emptyset$\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{graphalice}
+\caption{Graf zależności - Alicja w krainie czarów}
 \end{figure}
 
 
