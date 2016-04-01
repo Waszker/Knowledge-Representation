@@ -348,13 +348,79 @@ $ResAb(\textsc{Eat},John,\sigma_{3})=\emptyset$\\\\
 \caption{Graf zależności - gotujący John}
 \end{figure}
 
+\subsubsection{Programiści Fred i Bill}
+
+Rozważmy następującą dziedzinę:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Code, Debug, Refactor},
+}
+\begin{lstlisting}[mathescape=true]
+initially compiles $\wedge$ cleanCode
+(Code,Fred) causes $\neg$cleanCode
+(Code,Fred) causes compiles if cleanCode
+(Code,Fred) typically causes compiles if $\neg$cleanCode
+(Refactor,Fred) causes cleanCode
+(Debug,Fred) causes compiles
+impossible (Code,Fred) if $\neg$compiles
+\end{lstlisting}
+Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sigma_{3}\}$, gdzie:\\
+$\sigma_{0}=\{cm,cc\}$, $\sigma_{1}=\{cm,\neg cc\}$, $\sigma_{2}=\{\neg cm,cc\}$, $\sigma_{3}=\{\neg cm,\neg cc\}$, zaś $cm$ i $cc$ oznaczają odpowiednio $compiles$ i $cleanCode$.\\
+
+\begin{minipage}[t]{0.5\textwidth}
+$Res_{0}(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1},\sigma_{3}\}$\\
+$New(\textsc{Code},Fred,\sigma_{0},\sigma_{1}) = \{cc\}$\\
+$New(\textsc{Code},Fred,\sigma_{0},\sigma_{3}) = \{cm,cc\}$\\
+$Res^{-}(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1}\}$\\
+$Res_{0}^{+}(\textsc{Code},Fred,\sigma_{0}) = \emptyset$\\\
+
+$ResN(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1}\}$\\
+$ResAb(\textsc{Code},Fred,\sigma_{0}) = \emptyset$\\
+
+$Res_{0}(\textsc{Code},Fred,\sigma_{1}) = \{\sigma_{1},\sigma_{3}\}$\\
+$New(\textsc{Code},Fred,\sigma_{1},\sigma_{1}) = \emptyset$\\
+$New(\textsc{Code},Fred,\sigma_{1},\sigma_{3}) = \{cm\}$\\
+$Res^{-}(\textsc{Code},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\
+$Res_{0}^{+}(\textsc{Code},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\\
+
+$ResN(\textsc{Code},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\
+$ResAb(\textsc{Code},Fred,\sigma_{1}) = \emptyset$\\\
+
+$ResN(\textsc{Debug},Fred,\sigma_{0}) = \{\sigma_{0}\}$\\
+$ResAb(\textsc{Debug},Fred,\sigma_{0}) = \emptyset$\\\
+\end{minipage}
+
+\begin{minipage}[t]{0.5\textwidth}
+$ResN(\textsc{Debug},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\
+$ResAb(\textsc{Debug},Fred,\sigma_{1}) = \emptyset$\\\
+
+$ResN(\textsc{Debug},Fred,\sigma_{2}) = \{\sigma_{0}\}$\\
+$ResAb(\textsc{Debug},Fred,\sigma_{2}) = \emptyset$\\\
+
+$ResN(\textsc{Debug},Fred,\sigma_{3}) = \{\sigma_{1}\}$\\
+$ResAb(\textsc{Debug},Fred,\sigma_{3}) = \emptyset$\\\
+
+$ResN(\textsc{Refactor},Fred,\sigma_{0}) = \{\sigma_{0}\}$\\
+$ResAb(\textsc{Refactor},Fred,\sigma_{0}) = \emptyset$\\\
+
+$ResN(\textsc{Refactor},Fred,\sigma_{1}) = \{\sigma_{0}\}$\
+$ResAb(\textsc{Refactor},Fred,\sigma_{1}) = \emptyset$\\\
+
+$ResN(\textsc{Refactor},Fred,\sigma_{2}) = \{\sigma_{2}\}$\\
+$ResAb(\textsc{Refactor},Fred,\sigma_{2}) = \emptyset$\\\
+
+$ResN(\textsc{Refactor},Fred,\sigma_{3}) = \{\sigma_{2}\}$\\
+$ResAb(\textsc{Refactor},Fred,\sigma_{3}) = \emptyset$\\\\
+\end{minipage}
+
 \subsubsection{Alicja w krainie czarów}
 
 Rozważmy następującą dziedzinę:
 \bigskip
 \lstset{
 	style=main,
-	keywords=[2]{Eat, Shop, Cook},
+	keywords=[2]{Eat, Drink},
 }
 \begin{lstlisting}[mathescape=true]
 initially $\neg$hatterMad $\wedge$ cakeExists $\wedge$ elixirExists
