@@ -5,6 +5,8 @@
 \usepackage{listings} %code environment
 \frenchspacing
 \setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
 
 \lstdefinestyle{main}{
 	keywords={
@@ -147,10 +149,11 @@ gdzie $\alpha$ jest dowolną kombinacją zmiennych (fluentów):
 $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor \alpha_{2} | \alpha_{1} \to \alpha_{2} | \alpha_{1} \leftrightarrow \alpha_{2} $
 \end{center}
 
-\subsubsection{Przykład 1}
+\subsection{Przykłady} 
+\subsubsection{Gotujący John}
 
 
-\textit{John jest entuzjastą gotowania i bardzo lubi jeść. Zakładamy, że początkowo jest głodny, jego lodówka jest pusta i nie ma on żadnego gotowego posiłku. Zawsze jeśli John jest głodny, to jest też zły. Nie może jednak nic zjeść, jeśli nie ma co. Niemożliwym jest także ugotowanie posiłku, jeśli lodówka Johna jest pusta. Aby ją uzupełnić John idzie na zakupy. Zakupy również często powodują, że John ma lepszy humor. John może teraz coś ugotować, lecz jeśli jest zły to na ogół powoduje to ogromy chaos w kuchni. Zdolności kulinarne Johna są na tyle duże, że zawsze wyjdzie mu posiłek, który jest zdatny do jedzenia. John lubi duże porcje, więc możliwe, że po ugotowaniu posiłku znowu ma pustą lodówkę. Jest też takim łakomczuchem, że nie zostawia sobie nic na później i zjada cały posiłek. Po zjedzeniu głód mija, a humor Johna się poprawia.}
+\textit{John jest entuzjastą gotowania i bardzo lubi jeść. Zakładamy, że początkowo jest głodny, jego lodówka jest pusta, nie ma on żadnego gotowego posiłku i w jego kuchni panuje porządek. Jeśli John jest głodny, to jest też zły. Nie może jednak nic zjeść, jeśli nie ma co. Niemożliwym jest także ugotowanie posiłku, jeśli lodówka Johna jest pusta. Aby ją uzupełnić John idzie na zakupy. Zakupy również często powodują, że John ma lepszy humor. John może teraz coś ugotować, lecz jeśli jest zły to na ogół powoduje to ogromy chaos w kuchni. Zdolności kulinarne Johna są na tyle duże, że zawsze wyjdzie mu posiłek, który jest zdatny do jedzenia. John lubi duże porcje, więc możliwe, że po ugotowaniu posiłku znowu ma pustą lodówkę. Jest też takim łakomczuchem, że nie zostawia sobie nic na później i zjada cały posiłek. Po zjedzeniu głód mija, a humor Johna się poprawia.}
 
 \bigskip
 \lstset{
@@ -158,8 +161,8 @@ $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor
 	keywords=[2]{Eat, Shop, Cook},
 }
 \begin{lstlisting}[mathescape=true]
-initially hungry $\wedge$ emptyFridge $\wedge$ $\neg$hasMeal
-always hungry $\to$ angry
+initially hungry $\wedge$ angry
+initially emptyFridge $\wedge$ $\neg$hasMeal $\wedge$ $\neg$chaos 
 impossible (Eat,John) if $\neg$hasMeal 
 impossible (Cook,John) if emptyFridge
 (Shop,John) causes $\neg$emptyFridge
@@ -170,7 +173,7 @@ impossible (Cook,John) if emptyFridge
 (Eat,John) causes $\neg$hasMeal $\wedge$ $\neg$hungry $\wedge$ $\neg$angry
 \end{lstlisting}
 
-\subsubsection{Przykład 2}
+\subsubsection{Programiści Fred i Bill}
 
 
 \textit{Farmer Bill i indyk Fred pracują razem nad pewnym projektem programistycznym. Zakładamy, że początkowo kod jest czytelny i kompilowalny. Bill to niedoświadczony programista, więc gdy dopisze on jakiś fragment cały kod przestaje być czytelny, a nierzadko przestaje się też kompilować. Indyk Fred jest z kolei weteranem branży IT, więc jego kod kompiluje się zawsze (gdy pracuje on z czytelnym kodem) lub prawie zawsze (gdy kod jest nieczytelny). W razie potrzeby Fred refaktoryzuje cały kod, dzięki czemu poprawia się jego czytelność. Bill i Fred zgodnie ustalili, że nie będą dopisywać nowych fragmentów kodu jeżeli dotychczasowy się nie kompiluje. W takim wypadku któryś z nich musi go najpierw zdebugować (co potrafi każdy programista mając odpowiednio dużo czasu).}
@@ -191,7 +194,7 @@ initially compiles $\wedge$ cleanCode
 impossible (Code,$\epsilon$) if $\neg$compiles
 \end{lstlisting}
 
-\subsubsection{Przykład 3}
+\subsubsection{Alicja w krainie czarów}
 
 
 \textit{Alicja może być pomniejszona, lub być swojego normalnego, wysokiego wzrostu. Początkowo Alicja jest wysoka. Wypicie Eliksiru pomnniejsza Alicję, natomiast zjedzenie Ciastka ją powiększa.
@@ -240,6 +243,9 @@ Strukturą nazywamy układ $S=(\Sigma, \sigma_{0}, ResAb, ResN)$, gdzie:
 \item $ResAb, ResN$ : $A\times W \times \Sigma \to 2^{\Sigma}$ są funkcjami przejść. $ResAb$ jest funkcją przejść nietypowych, $ResN$ jest funkcją przejść typowych oraz $ResAb \cap ResN= \emptyset$ 
 \end{itemize}
 
+\subsubsection{Dziedzina}
+Niech $\mathcal{L}$ będzie językiem z rodziny $\Omega$. Dziedziną akcji nazywamy niepusty zbiór $D$ zdań języka $\mathcal{L}$.
+
 \subsubsection{Model dziedziny}
 W celu zdefiniowania pojęcia modelu dziedziny wprowadzone zostaną następujące funkcje pomocnicze:
 \begin{enumerate}
@@ -247,7 +253,7 @@ W celu zdefiniowania pojęcia modelu dziedziny wprowadzone zostaną następując
 	\[ \forall_{a \in A, w \in W, \sigma \in \Sigma} Res_{0}(a,w,\sigma) = \{\sigma' \in \Sigma: ((a, w) \textbf{ causes } \alpha \textbf{ if } \pi) \in D \land (\sigma \models \pi) \Rightarrow (\sigma' \models \alpha) \}  \]
 	Oznacza to, że $Res_{0}$ konstruuje się bez minimalizacji zmian.
 	\item Funkcję $Res^{-}$ wyznacza się stosując minimalizację zmian.
-	\item Funkcję $Res^{+} : A \times W \times \Sigma \to 2^{\Sigma}$ spełniającą warunek $\forall_{a \in A, w \in W, \sigma \in \Sigma}$:
+	\item Funkcję $Res_{0}^{+} : A \times W \times \Sigma \to 2^{\Sigma}$ spełniającą warunek $\forall_{a \in A, w \in W, \sigma \in \Sigma}$:
 	\[ Res_{0}^{+}(a, w,\sigma) = \]
 	\[ \{\sigma' \in Res_{0}(a, w,\sigma) : ((a, w) \textbf{ typically causes } \beta \textbf{ if } \pi) \in D \land (\sigma \models \varphi) \Rightarrow (\sigma' \models \beta) \}  \]
 \end{enumerate}
@@ -269,42 +275,254 @@ Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstru
 	\[\Phi_{S}(((a_{1}, w_{1}), \dots, (a_{n}, w_{n})),\sigma) \in ResAb((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1}))) \]
 	\[ \cup ResN((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1})))\]
 \end{itemize}
-\subsection{Scenariusze}
-Scenariuszem nazywamy skończony ciąg par akcja-wykonawca: $SC=((A_1,w_1),(A_2,w_2),...,(A_n,w_n))$
-\paragraph{}Przykład:\\
+\subsection{Konstrukcja modeli}\mbox{}\\
+Przy wyznaczaniu funkcji przejścia stosujemy zasadę zaczerpniętą z języka $AR$, tj. stany niedopuszczalne są eliminowane przed minimalizacją zmian.
+\subsection{Scenariusz}
+Scenariuszem nazywamy skończony ciąg par akcja-wykonawca:
+\begin{center}
+$SC=((A_1,w_1),(A_2,w_2),...,(A_n,w_n))$
+\end{center}
+\textbf{Przykład:}
 \lstset{
 	style=main,
 	keywords=[2]{Eat, Shop, Cook},
 }
 \begin{lstlisting}[mathescape=true]
-(Shop,John)
-(Cook,John)
-(Eat,John)
+(Shop,John), (Cook,John), (Eat,John)
 \end{lstlisting}
 Powyższy scenariusz mówi, iż John wykonał kolejno akcje: \texttt{SHOP, COOK, EAT}.
+
+
+\subsection{Przykłady}
+\subsubsection{Gotujący John}
+
+Rozważmy następującą dziedzinę:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Shop, Cook},
+}
+\begin{lstlisting}[mathescape=true]
+initially hungry $\wedge$ $\neg$hasMeal 
+impossible (Eat,John) if $\neg$hasMeal 
+(Cook,John) typically causes hasMeal
+(Eat,John) causes $\neg$hasMeal 
+(Eat,John) releases hungry if hungry
+\end{lstlisting}
+Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sigma_{3}\}$, gdzie:\\
+$\sigma_{0}=\{h,\neg m\}$, $\sigma_{1}=\{h, m\}$, $\sigma_{2}=\{\neg h, m\}$, $\sigma_{3}=\{\neg h,\neg m\}$, zaś $h$ i $m$ oznaczają odpowiednio $hungry$ i $hasMeal$.\\
+
+\begin{minipage}[t]{0.5\textwidth}
+$Res_{0}(\textsc{Cook},John,\sigma_{0})=\Sigma$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{0})=\emptyset$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{1})=\{m\}$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{2})=\{\neg h,m\}$\\
+$New(\textsc{Cook},John,\sigma_{0},\sigma_{3})=\{\neg h\}$\\
+$Res^{-}(\textsc{Cook},John,\sigma_{0})=\{\sigma_{0}\}$\\
+$Res_{0}^{+}(\textsc{Cook},John,\sigma_{0})=\{\sigma_{1},\sigma_{2}\}$\\\\
+$ResN(\textsc{Cook},John,\sigma_{0})=\{\sigma_{1}\}$\\
+$ResAb(\textsc{Cook},John,\sigma_{0})=\{\sigma_{0}\}$\\\\
+$Res_{0}(\textsc{Eat},John,\sigma_{0})=\emptyset$,\\ 
+ponieważ: \\impossible $(\textsc{Eat},John)$ if $\neg$hasMeal\\\\
+$ResN(\textsc{Eat},John,\sigma_{0})=\emptyset$,\\ 
+$ResAb(\textsc{Eat},John,\sigma_{0})=\emptyset$,\\ 
+
+\end{minipage}
+\begin{minipage}[t]{0.5\textwidth}
+$ResN(\textsc{Cook},John,\sigma_{1})=\{\sigma_{1}\}$\\
+$ResAb(\textsc{Cook},John,\sigma_{1})=\emptyset$\\\\
+$ResN(\textsc{Eat},John,\sigma_{1})=\{\sigma_{0},\sigma_{3}\}$\\ 
+$ResAb(\textsc{Eat},John,\sigma_{1})=\emptyset$\\\\
+$ResN(\textsc{Cook},John,\sigma_{2})=\{\sigma_{2}\}$\\
+$ResAb(\textsc{Cook},John,\sigma_{2})=\emptyset$\\\\
+$ResN(\textsc{Eat},John,\sigma_{2})=\{\sigma_{3}\}$\\ 
+$ResAb(\textsc{Eat},John,\sigma_{2})=\emptyset$\\\\
+$ResN(\textsc{Cook},John,\sigma_{3})=\{\sigma_{2}\}$\\
+$ResAb(\textsc{Cook},John,\sigma_{3})=\{\sigma_{3}\}$\\\\
+$ResN(\textsc{Eat},John,\sigma_{3})=\emptyset$\\ 
+$ResAb(\textsc{Eat},John,\sigma_{3})=\emptyset$\\\\
+\end{minipage}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{graphJohn}
+\caption{Graf zależności - gotujący John}
+\end{figure}
+
+\subsubsection{Programiści Fred i Bill}
+
+Rozważmy następującą dziedzinę:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Code, Debug, Refactor},
+}
+\begin{lstlisting}[mathescape=true]
+initially compiles $\wedge$ cleanCode
+(Code,Fred) causes $\neg$cleanCode
+(Code,Fred) causes compiles if cleanCode
+(Code,Fred) typically causes compiles if $\neg$cleanCode
+(Refactor,Fred) causes cleanCode
+(Debug,Fred) causes compiles
+impossible (Code,Fred) if $\neg$compiles
+\end{lstlisting}
+Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sigma_{3}\}$, gdzie:\\
+$\sigma_{0}=\{cm,cc\}$, $\sigma_{1}=\{cm,\neg cc\}$, $\sigma_{2}=\{\neg cm,cc\}$, $\sigma_{3}=\{\neg cm,\neg cc\}$, zaś $cm$ i $cc$ oznaczają odpowiednio $compiles$ i $cleanCode$.\\
+
+\begin{minipage}[t]{0.5\textwidth}
+$Res_{0}(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1},\sigma_{3}\}$\\
+$New(\textsc{Code},Fred,\sigma_{0},\sigma_{1}) = \{cc\}$\\
+$New(\textsc{Code},Fred,\sigma_{0},\sigma_{3}) = \{cm,cc\}$\\
+$Res^{-}(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1}\}$\\
+$Res_{0}^{+}(\textsc{Code},Fred,\sigma_{0}) = \emptyset$\\\
+
+$ResN(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1}\}$\\
+$ResAb(\textsc{Code},Fred,\sigma_{0}) = \emptyset$\\
+
+$Res_{0}(\textsc{Code},Fred,\sigma_{1}) = \{\sigma_{1},\sigma_{3}\}$\\
+$New(\textsc{Code},Fred,\sigma_{1},\sigma_{1}) = \emptyset$\\
+$New(\textsc{Code},Fred,\sigma_{1},\sigma_{3}) = \{cm\}$\\
+$Res^{-}(\textsc{Code},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\
+$Res_{0}^{+}(\textsc{Code},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\\
+
+$ResN(\textsc{Code},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\
+$ResAb(\textsc{Code},Fred,\sigma_{1}) = \emptyset$\\\
+
+$ResN(\textsc{Debug},Fred,\sigma_{0}) = \{\sigma_{0}\}$\\
+$ResAb(\textsc{Debug},Fred,\sigma_{0}) = \emptyset$\\\
+\end{minipage}
+
+\begin{minipage}[t]{0.5\textwidth}
+$ResN(\textsc{Debug},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\
+$ResAb(\textsc{Debug},Fred,\sigma_{1}) = \emptyset$\\\
+
+$ResN(\textsc{Debug},Fred,\sigma_{2}) = \{\sigma_{0}\}$\\
+$ResAb(\textsc{Debug},Fred,\sigma_{2}) = \emptyset$\\\
+
+$ResN(\textsc{Debug},Fred,\sigma_{3}) = \{\sigma_{1}\}$\\
+$ResAb(\textsc{Debug},Fred,\sigma_{3}) = \emptyset$\\\
+
+$ResN(\textsc{Refactor},Fred,\sigma_{0}) = \{\sigma_{0}\}$\\
+$ResAb(\textsc{Refactor},Fred,\sigma_{0}) = \emptyset$\\\
+
+$ResN(\textsc{Refactor},Fred,\sigma_{1}) = \{\sigma_{0}\}$\
+$ResAb(\textsc{Refactor},Fred,\sigma_{1}) = \emptyset$\\\
+
+$ResN(\textsc{Refactor},Fred,\sigma_{2}) = \{\sigma_{2}\}$\\
+$ResAb(\textsc{Refactor},Fred,\sigma_{2}) = \emptyset$\\\
+
+$ResN(\textsc{Refactor},Fred,\sigma_{3}) = \{\sigma_{2}\}$\\
+$ResAb(\textsc{Refactor},Fred,\sigma_{3}) = \emptyset$\\\\
+\end{minipage}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{graphProgrammers}
+\caption{Graf zależności - Programiści Fred i Bill}
+\end{figure}
+
+\subsubsection{Alicja w krainie czarów}
+
+Rozważmy następującą dziedzinę:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Drink},
+}
+\begin{lstlisting}[mathescape=true]
+initially $\neg$hatterMad $\wedge$ cakeExists $\wedge$ elixirExists
+(Drink,Hatter) causes hatterMad if elixirExists
+(Eat,Hatter) typically causes $\neg$hatterMad if hatterMad
+impossible (Eat,$\epsilon$) if $\neg$cakeExists
+(Drink,$\epsilon$) releases elixirExists if elixirExists
+(Eat,$\epsilon$) causes $\neg$cakeExists
+\end{lstlisting}
+Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sigma_{3},\sigma_{4},\sigma_{5},\sigma_{6},\sigma_{7}\}$, gdzie:\\
+$\sigma_{0}=\{\neg h,c, e\}$, $\sigma_{1}=\{h, c, e\}$, $\sigma_{2}=\{h, \neg c, e\}$, $\sigma_{3}=\{\neg h,\neg c, e\}, \sigma_{4}=\{h,\neg c, \neg e\}$, $\sigma_{5}=\{h, c, \neg e\}$, $\sigma_{6}=\{\neg h, c, \neg e\}$, $\sigma_{7}=\{\neg h,\neg c, \neg e\}$, zaś $h$, $c$, $e$ oznaczają odpowiednio $hatterMad$, $cakeExists$, $elixirExists$.\\
+
+
+$Res_{0}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{1})=\{h, e\}$\\
+$New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{2})=\{h, c, e\}$\\
+$New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{4})=\{h, c, e\}$\\
+$New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{5})=\{h, e\}$\\
+$Res^{-}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{5}\}$\\
+$Res_{0}^{+}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$ResN(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{5}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{0})=\emptyset$\\\\
+
+$Res_{0}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{2})=\{h, c\}$\\
+$New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{3})=\{c\}$\\
+$New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{4})=\{h, c, e\}$\\
+$New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{7})=\{c, e\}$\\
+$Res^{-}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{3}\}$\\
+$Res_{0}^{+}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{3}\}$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{0})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{1})=\{\sigma_{1}, \sigma_{5}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{1})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{1})=\{\sigma_{3}\}$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{1})=\{\sigma_{2}\}$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{2})=\{\sigma_{2}, \sigma_{4}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{2})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{2})=\emptyset$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{2})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{3})=\{\sigma_{2}, \sigma_{7}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{3})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{3})=\emptyset$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{3})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{4})=\{\sigma_{4}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{4})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{4})=\emptyset$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{4})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{5})=\{\sigma_{5}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{5})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{5})=\{\sigma_{7}\}$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{5})=\{\sigma_{4}\}$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{6})=\{\sigma_{6}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{6})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{6})=\{\sigma_{7}\}$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{6})=\emptyset$\\
+
+$ResN(\textsc{Drink},Hatter,\sigma_{7})=\{\sigma_{7}\}$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{7})=\emptyset$\\
+$ResN(\textsc{Eat},Hatter,\sigma_{7})=\emptyset$\\
+$ResAb(\textsc{Eat},Hatter,\sigma_{7})=\emptyset$\\
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.7]{graphalice}
+\caption{Graf zależności - Alicja w krainie czarów}
+\end{figure}
+
 
 \section{Język kwerend}
 W celu zadawania pytań dotyczących świata opisanego powyższym językiem został stworzony język kwerend. Składa się on z następujących pytań (kwerend) pozwalających uzyskać odpowiedzi typu PRAWDA/FAŁSZ:
 
 \subsection{Syntaktyka kwerend}
 \begin{itemize}
-\item Q1 Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?\\
+\item Q1 - Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?\\
 % TODO: A może executable from ...?
 {\large\texttt{always/ever executable $SC$}} \\
 Zdanie to mówi, że wykonując podany ciąg akcji $SC$ z dowolnego, niesprzecznego stanu zawsze(\texttt{always}) osiągnięty zostanie niesprzeczny stan końcowy, lub istnieje przynajmniej jedna ścieżka z dowolnego z tych stanów do poprawnego stanu wynikowego(\texttt{ever}).
 
 
-\item Q2 Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?\\
+\item Q2 - Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?\\
 {\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$ when $SC$}} \\
 Podobnie jak Q1 zdanie to mówi, że osiągnięcie legalnego stanu końcowego spełniającego warunek $\gamma$, startując ze stanu spełniającego warunek $\pi$, nastąpi niezależnie od wybranego punktu początkowego(\texttt{always}), przynajmniej raz(\texttt{ever}), lub zawsze pod warunkiem wyboru zawsze ścieżki akcji domyślnej(\texttt{typically}).
 
 
 
-\item Q3 Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?\\
+\item Q3 - Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?\\
 {\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$}}
 
 
-\item Q4 Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?\\
+\item Q4 - Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?\\
 {\large\texttt{always/ever partakes $w$ when $SC$}} \\
 
 \end{itemize}
@@ -315,16 +533,16 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 \begin{enumerate}
 	\item Jeśli Q jest zdaniem typu Q1:
 	\begin{itemize}
-		\item z warunkiem \texttt{always}: $\forall_{S=(\Sigma, \sigma_{0}, Res) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
+		\item z warunkiem \texttt{always}: $\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
 		\item z warunkiem \texttt{ever}: 
-		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
+		$\exists_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
 	\end{itemize}
 	\item Jeśli Q jest zdaniem typu Q2:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
-		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{ever}:
-		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\exists_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{typically}:
 		% TODO: Nie jestem pewien tego Res0+
 		$\forall_{S=(\Sigma, \sigma_{0}, Res_{0}^{+}) \in D, \sigma_{0} \models \pi, SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))} \Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
@@ -333,9 +551,9 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 	\item Jeśli Q jest zdaniem typu Q3:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
-		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{ever}:
-		$\exists_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\exists_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{typically}:
 		% TODO: Nie jestem pewien tego Res0+
 		$\forall_{S=(\Sigma, \sigma_{0}, Res_{0}^{+}) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
@@ -343,9 +561,9 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 	\item Jeśli Q jest zdaniem typu Q4:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
-		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\forall_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\forall_{(A_{i}, w_{i}) \in SC}w_{i} = w$
 		\item z warunkiem \texttt{ever}:
-		$\forall_{S=(\Sigma, \sigma_{0}, Res) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\exists_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\exists_{(A_{i}, w_{i}) \in SC}w_{i} = w$
 	\end{itemize}
 \end{enumerate} 
 
@@ -374,7 +592,7 @@ Kwerenda: {\large\texttt{ever accessible hungry if $\neg$emptyFridge}}\\
 Odpowiedź: \texttt{TRUE}
 
 \end{itemize}
-\subsubsection{Programista Fred}
+\subsubsection{Programiści Fred i Bill}
 \begin{itemize}
 \item
 Scenariusz: $SC=((Code,Fred),(Code,Bill),(Code,Fred))$\\
@@ -397,7 +615,7 @@ Scenariusz: $SC=((Code,Fred),(Code,Bill))$\\
 Kwerenda: {\large\texttt{ever accessible compiles if $\neg$compiles}}\\
 Odpowiedź: \texttt{TRUE}
 \end{itemize}
-\subsubsection{Eliksir i ciastko}
+\subsubsection{Alicja w krainie czarów}
 \begin{itemize}
 \item
 Scenariusz: $SC=((Eat,Alice),(Drink,\epsilon),(Eat,Alice))$\\
