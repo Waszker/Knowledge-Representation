@@ -1,4 +1,5 @@
 \documentclass{article}
+\usepackage{float}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{polski}
@@ -292,7 +293,7 @@ $SC=((A_1,w_1),(A_2,w_2),...,(A_n,w_n))$
 \end{lstlisting}
 Powyższy scenariusz mówi, iż John wykonał kolejno akcje: \texttt{SHOP, COOK, EAT}.
 
-
+\newpage
 \subsection{Przykłady}
 \subsubsection{Gotujący John}
 
@@ -342,12 +343,13 @@ $ResAb(\textsc{Cook},John,\sigma_{3})=\{\sigma_{3}\}$\\\\
 $ResN(\textsc{Eat},John,\sigma_{3})=\emptyset$\\ 
 $ResAb(\textsc{Eat},John,\sigma_{3})=\emptyset$\\\\
 \end{minipage}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.7]{graphJohn}
+\includegraphics[scale=1]{John}
 \caption{Graf zależności - gotujący John}
 \end{figure}
 
+\newpage
 \subsubsection{Programiści Fred i Bill}
 
 Rozważmy następującą dziedzinę:
@@ -413,12 +415,13 @@ $ResAb(\textsc{Refactor},Fred,\sigma_{2}) = \emptyset$\\\
 $ResN(\textsc{Refactor},Fred,\sigma_{3}) = \{\sigma_{2}\}$\\
 $ResAb(\textsc{Refactor},Fred,\sigma_{3}) = \emptyset$\\\\
 \end{minipage}
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.7]{graphProgrammers}
+\includegraphics[scale=0.5]{graphProgrammers}
 \caption{Graf zależności - Programiści Fred i Bill}
 \end{figure}
 
+\newpage
 \subsubsection{Alicja w krainie czarów}
 
 Rozważmy następującą dziedzinę:
@@ -494,13 +497,14 @@ $ResAb(\textsc{Drink},Hatter,\sigma_{7})=\emptyset$\\
 $ResN(\textsc{Eat},Hatter,\sigma_{7})=\emptyset$\\
 $ResAb(\textsc{Eat},Hatter,\sigma_{7})=\emptyset$\\
 
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
-\includegraphics[scale=0.7]{graphalice}
+\includegraphics[scale=0.6]{graphalice}
 \caption{Graf zależności - Alicja w krainie czarów}
 \end{figure}
 
 
+\newpage
 \section{Język kwerend}
 W celu zadawania pytań dotyczących świata opisanego powyższym językiem został stworzony język kwerend. Składa się on z następujących pytań (kwerend) pozwalających uzyskać odpowiedzi typu PRAWDA/FAŁSZ:
 
@@ -568,7 +572,8 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 \end{enumerate} 
 
 
-\subsection{Przykłady}
+\newpage
+\subsection{Przykłady kwerend}
 %kolejno do wcześniejszych przykładów 
 \subsubsection{Gotujący John}
 \begin{itemize}
@@ -592,6 +597,8 @@ Kwerenda: {\large\texttt{ever accessible hungry if $\neg$emptyFridge}}\\
 Odpowiedź: \texttt{TRUE}
 
 \end{itemize}
+
+
 \subsubsection{Programiści Fred i Bill}
 \begin{itemize}
 \item
@@ -615,6 +622,8 @@ Scenariusz: $SC=((Code,Fred),(Code,Bill))$\\
 Kwerenda: {\large\texttt{ever accessible compiles if $\neg$compiles}}\\
 Odpowiedź: \texttt{TRUE}
 \end{itemize}
+
+
 \subsubsection{Alicja w krainie czarów}
 \begin{itemize}
 \item
