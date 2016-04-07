@@ -433,9 +433,9 @@ Rozważmy następującą dziedzinę:
 initially $\neg$hatterMad $\wedge$ cakeExists $\wedge$ elixirExists
 (Drink,Hatter) causes hatterMad if elixirExists
 (Eat,Hatter) typically causes $\neg$hatterMad if hatterMad
-impossible (Eat,$\epsilon$) if $\neg$cakeExists
-(Drink,$\epsilon$) releases elixirExists if elixirExists
-(Eat,$\epsilon$) causes $\neg$cakeExists
+impossible (Eat,Hatter) if $\neg$cakeExists
+(Drink,Hatter) releases elixirExists if elixirExists
+(Eat,Hatter) causes $\neg$cakeExists
 \end{lstlisting}
 Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sigma_{3},\sigma_{4},\sigma_{5},\sigma_{6},\sigma_{7}\}$, gdzie:\\
 $\sigma_{0}=\{\neg h,c, e\}$, $\sigma_{1}=\{h, c, e\}$, $\sigma_{2}=\{h, \neg c, e\}$, $\sigma_{3}=\{\neg h,\neg c, e\}, \sigma_{4}=\{h,\neg c, \neg e\}$, $\sigma_{5}=\{h, c, \neg e\}$, $\sigma_{6}=\{\neg h, c, \neg e\}$, $\sigma_{7}=\{\neg h,\neg c, \neg e\}$, zaś $h$, $c$, $e$ oznaczają odpowiednio $hatterMad$, $cakeExists$, $elixirExists$.\\\\
