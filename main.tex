@@ -277,7 +277,7 @@ Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstru
 	\[ \cup ResN((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1})))\]
 \end{itemize}
 \subsection{Konstrukcja modeli}\mbox{}\\
-Przy wyznaczaniu funkcji przejścia stosujemy zasadę zaczerpniętą z języka $AR$, tj. stany niedopuszczalne są eliminowane przed minimalizacją zmian.
+Przy wyznaczaniu funkcji przejścia $ResN$ i $ResAb$ stosujemy zasadę zaczerpniętą z języka $AR$, tj. stany niedopuszczalne są eliminowane przed minimalizacją zmian.
 \subsection{Scenariusz}
 Scenariuszem nazywamy skończony ciąg par akcja-wykonawca:
 \begin{center}
@@ -349,7 +349,7 @@ $ResAb(\textsc{Eat},John,\sigma_{3})=\emptyset$\\\\
 \caption{Graf zależności - gotujący John}
 \end{figure}
 
-\newpage
+
 \subsubsection{Programiści Fred i Bill}
 
 Rozważmy następującą dziedzinę:
@@ -421,7 +421,6 @@ $ResAb(\textsc{Refactor},Fred,\sigma_{3}) = \emptyset$\\\\
 \caption{Graf zależności - Programiści Fred i Bill}
 \end{figure}
 
-\newpage
 \subsubsection{Alicja w krainie czarów}
 
 Rozważmy następującą dziedzinę:
@@ -439,61 +438,51 @@ impossible (Eat,$\epsilon$) if $\neg$cakeExists
 (Eat,$\epsilon$) causes $\neg$cakeExists
 \end{lstlisting}
 Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sigma_{3},\sigma_{4},\sigma_{5},\sigma_{6},\sigma_{7}\}$, gdzie:\\
-$\sigma_{0}=\{\neg h,c, e\}$, $\sigma_{1}=\{h, c, e\}$, $\sigma_{2}=\{h, \neg c, e\}$, $\sigma_{3}=\{\neg h,\neg c, e\}, \sigma_{4}=\{h,\neg c, \neg e\}$, $\sigma_{5}=\{h, c, \neg e\}$, $\sigma_{6}=\{\neg h, c, \neg e\}$, $\sigma_{7}=\{\neg h,\neg c, \neg e\}$, zaś $h$, $c$, $e$ oznaczają odpowiednio $hatterMad$, $cakeExists$, $elixirExists$.\\
-
-
+$\sigma_{0}=\{\neg h,c, e\}$, $\sigma_{1}=\{h, c, e\}$, $\sigma_{2}=\{h, \neg c, e\}$, $\sigma_{3}=\{\neg h,\neg c, e\}, \sigma_{4}=\{h,\neg c, \neg e\}$, $\sigma_{5}=\{h, c, \neg e\}$, $\sigma_{6}=\{\neg h, c, \neg e\}$, $\sigma_{7}=\{\neg h,\neg c, \neg e\}$, zaś $h$, $c$, $e$ oznaczają odpowiednio $hatterMad$, $cakeExists$, $elixirExists$.\\\\
 $Res_{0}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
 $New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{1})=\{h, e\}$\\
 $New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{2})=\{h, c, e\}$\\
 $New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{4})=\{h, c, e\}$\\
 $New(\textsc{Drink},Hatter,\sigma_{0},\sigma_{5})=\{h, e\}$\\
 $Res^{-}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{5}\}$\\
-$Res_{0}^{+}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$Res_{0}^{+}(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\\\
 $ResN(\textsc{Drink},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{5}\}$\\
 $ResAb(\textsc{Drink},Hatter,\sigma_{0})=\emptyset$\\\\
-
 $Res_{0}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
 $New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{2})=\{h, c\}$\\
 $New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{3})=\{c\}$\\
 $New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{4})=\{h, c, e\}$\\
 $New(\textsc{Eat},Hatter,\sigma_{0},\sigma_{7})=\{c, e\}$\\
 $Res^{-}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{3}\}$\\
-$Res_{0}^{+}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\
+$Res_{0}^{+}(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{1}, \sigma_{2}, \sigma_{4}, \sigma_{5}\}$\\\\
 $ResN(\textsc{Eat},Hatter,\sigma_{0})=\{\sigma_{3}\}$\\
-$ResAb(\textsc{Eat},Hatter,\sigma_{0})=\emptyset$\\
-
+$ResAb(\textsc{Eat},Hatter,\sigma_{0})=\emptyset$\\\\
 $ResN(\textsc{Drink},Hatter,\sigma_{1})=\{\sigma_{1}, \sigma_{5}\}$\\
-$ResAb(\textsc{Drink},Hatter,\sigma_{1})=\emptyset$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{1})=\emptyset$\\\\
 $ResN(\textsc{Eat},Hatter,\sigma_{1})=\{\sigma_{3}\}$\\
-$ResAb(\textsc{Eat},Hatter,\sigma_{1})=\{\sigma_{2}\}$\\
-
+$ResAb(\textsc{Eat},Hatter,\sigma_{1})=\{\sigma_{2}\}$\\\\
 $ResN(\textsc{Drink},Hatter,\sigma_{2})=\{\sigma_{2}, \sigma_{4}\}$\\
-$ResAb(\textsc{Drink},Hatter,\sigma_{2})=\emptyset$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{2})=\emptyset$\\\\
 $ResN(\textsc{Eat},Hatter,\sigma_{2})=\emptyset$\\
-$ResAb(\textsc{Eat},Hatter,\sigma_{2})=\emptyset$\\
-
+$ResAb(\textsc{Eat},Hatter,\sigma_{2})=\emptyset$\\\\
 $ResN(\textsc{Drink},Hatter,\sigma_{3})=\{\sigma_{2}, \sigma_{7}\}$\\
-$ResAb(\textsc{Drink},Hatter,\sigma_{3})=\emptyset$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{3})=\emptyset$\\\\
 $ResN(\textsc{Eat},Hatter,\sigma_{3})=\emptyset$\\
-$ResAb(\textsc{Eat},Hatter,\sigma_{3})=\emptyset$\\
-
+$ResAb(\textsc{Eat},Hatter,\sigma_{3})=\emptyset$\\\\
 $ResN(\textsc{Drink},Hatter,\sigma_{4})=\{\sigma_{4}\}$\\
-$ResAb(\textsc{Drink},Hatter,\sigma_{4})=\emptyset$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{4})=\emptyset$\\\\
 $ResN(\textsc{Eat},Hatter,\sigma_{4})=\emptyset$\\
-$ResAb(\textsc{Eat},Hatter,\sigma_{4})=\emptyset$\\
-
+$ResAb(\textsc{Eat},Hatter,\sigma_{4})=\emptyset$\\\\
 $ResN(\textsc{Drink},Hatter,\sigma_{5})=\{\sigma_{5}\}$\\
-$ResAb(\textsc{Drink},Hatter,\sigma_{5})=\emptyset$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{5})=\emptyset$\\\\
 $ResN(\textsc{Eat},Hatter,\sigma_{5})=\{\sigma_{7}\}$\\
-$ResAb(\textsc{Eat},Hatter,\sigma_{5})=\{\sigma_{4}\}$\\
-
+$ResAb(\textsc{Eat},Hatter,\sigma_{5})=\{\sigma_{4}\}$\\\\
 $ResN(\textsc{Drink},Hatter,\sigma_{6})=\{\sigma_{6}\}$\\
-$ResAb(\textsc{Drink},Hatter,\sigma_{6})=\emptyset$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{6})=\emptyset$\\\\
 $ResN(\textsc{Eat},Hatter,\sigma_{6})=\{\sigma_{7}\}$\\
-$ResAb(\textsc{Eat},Hatter,\sigma_{6})=\emptyset$\\
-
+$ResAb(\textsc{Eat},Hatter,\sigma_{6})=\emptyset$\\\\
 $ResN(\textsc{Drink},Hatter,\sigma_{7})=\{\sigma_{7}\}$\\
-$ResAb(\textsc{Drink},Hatter,\sigma_{7})=\emptyset$\\
+$ResAb(\textsc{Drink},Hatter,\sigma_{7})=\emptyset$\\\\
 $ResN(\textsc{Eat},Hatter,\sigma_{7})=\emptyset$\\
 $ResAb(\textsc{Eat},Hatter,\sigma_{7})=\emptyset$\\
 
