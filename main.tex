@@ -371,11 +371,10 @@ Zbiór stanów dopuszczalnych to $\Sigma=\{\sigma_{0},\sigma_{1},\sigma_{2},\sig
 $\sigma_{0}=\{cm,cc\}$, $\sigma_{1}=\{cm,\neg cc\}$, $\sigma_{2}=\{\neg cm,cc\}$, $\sigma_{3}=\{\neg cm,\neg cc\}$, zaś $cm$ i $cc$ oznaczają odpowiednio $compiles$ i $cleanCode$.\\
 
 \begin{minipage}[t]{0.5\textwidth}
-$Res_{0}(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1},\sigma_{3}\}$\\
+$Res_{0}(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1}\}$\\
 $New(\textsc{Code},Fred,\sigma_{0},\sigma_{1}) = \{cc\}$\\
-$New(\textsc{Code},Fred,\sigma_{0},\sigma_{3}) = \{cm,cc\}$\\
 $Res^{-}(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1}\}$\\
-$Res_{0}^{+}(\textsc{Code},Fred,\sigma_{0}) = \emptyset$\\\
+$Res_{0}^{+}(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1}\}$\\\
 
 $ResN(\textsc{Code},Fred,\sigma_{0}) = \{\sigma_{1}\}$\\
 $ResAb(\textsc{Code},Fred,\sigma_{0}) = \emptyset$\\
@@ -392,7 +391,6 @@ $ResAb(\textsc{Code},Fred,\sigma_{1}) = \emptyset$\\\
 $ResN(\textsc{Debug},Fred,\sigma_{0}) = \{\sigma_{0}\}$\\
 $ResAb(\textsc{Debug},Fred,\sigma_{0}) = \emptyset$\\\
 \end{minipage}
-
 \begin{minipage}[t]{0.5\textwidth}
 $ResN(\textsc{Debug},Fred,\sigma_{1}) = \{\sigma_{1}\}$\\
 $ResAb(\textsc{Debug},Fred,\sigma_{1}) = \emptyset$\\\
@@ -406,7 +404,7 @@ $ResAb(\textsc{Debug},Fred,\sigma_{3}) = \emptyset$\\\
 $ResN(\textsc{Refactor},Fred,\sigma_{0}) = \{\sigma_{0}\}$\\
 $ResAb(\textsc{Refactor},Fred,\sigma_{0}) = \emptyset$\\\
 
-$ResN(\textsc{Refactor},Fred,\sigma_{1}) = \{\sigma_{0}\}$\
+$ResN(\textsc{Refactor},Fred,\sigma_{1}) = \{\sigma_{0}\}$\\
 $ResAb(\textsc{Refactor},Fred,\sigma_{1}) = \emptyset$\\\
 
 $ResN(\textsc{Refactor},Fred,\sigma_{2}) = \{\sigma_{2}\}$\\
