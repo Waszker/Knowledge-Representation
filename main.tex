@@ -90,8 +90,8 @@ System dynamiczny spełnia podane założenia:
 \item W pewnych stanach akcje mogą być niewykonalne przez pewnych (wszystkich) wykonawców
 \end{enumerate}
 
-Programem działań nazywać będziemy ciąg $((A_{1},w_{1}), (A_{2},w_{2}), …, (A_{n},w_{n}))$, 
-gdzie $A_{i}$ jest akcją, zaś $w_{i}$ jej wykonawcą lub $\epsilon$ (ktokolwiek).\\
+Programem działań nazywać będziemy ciąg $((A_{1},W_{1}), (A_{2},W_{2}), …, (A_{n},W_{n}))$, 
+gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej wykonawcą lub $\epsilon$ (ktokolwiek).\\
 
 
 Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
@@ -108,40 +108,41 @@ Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
 \subsection{Definicja języka}
 $\Omega$ jest rodziną języków, w której każdy język $\mathcal{L}$ określony jest nad sygnaturą 
 \begin{center}
-$\Upsilon=(F,A,W)$
+$\Upsilon=(F,A,V)$
 \end{center}
 gdzie: 
 \begin{itemize}
 \item $F$ - niepusty zbiór zmiennych (fluenty)
 \item $A$ - niepusty zbiór akcji
-\item $W$ - niepusty zbiór wykonawców (aktorów), przy czym $\epsilon\in W$, gdzie $\epsilon$ oznacza kogokolwiek
+\item $V$ - niepusty zbiór wykonawców (aktorów), przy czym $\epsilon\in V$, gdzie $\epsilon$ oznacza kogokolwiek
 \end{itemize}
 
-\subsection{Syntaktyka języka} 
+\subsection{Syntaktyka języka}
+Przed przystąpieniem do opisu typów zdań wprowadzone zostanie oznaczenie listy wykonawców $W \in V; W=(w_{1}, w_{2}, \dots, w_{n})$ które reprezentuje listę dopuszczalnych wykonawców danej akcji. Dodatkowo możliwy jest zapis \textit{negatywny} w postaci $W=(\neg w_{1}, \neg w_{2}, \dots, \neg w_{n})$ oznaczający wyłączenie wymienionych wykonawców z możliwości wykonywania danej akcji.
 W języku  $\Omega$ występują następujące typy zdań:
 \begin{itemize}
 \item {\large\texttt{initially $\alpha$}}\\
 formuła $\alpha$ zachodzi w stanie początkowym
-\item {\large\texttt{$\alpha$ after $(A_{1},w_{1}), ..., (A_{n},w_{n})$}}\\
-formuła $\alpha$ zachodzi po wykonaniu sekwencji $(A_{1},w_{1}), ..., (A_{n},w_{n})$, gdzie $A_{i}$ jest akcją, zaś $w_{i}$ jej wykonawcą
-\item {\large\texttt{$(A,w)$ causes $\alpha$ if $\pi$}}\\
-skutkiem wykonania akcji $A$ przez wykonawcę $w$ w stanie spełniającym warunek $\pi$ jest stan, w którym spełniona jest formuła $\alpha$. Przy czym:
+\item {\large\texttt{$\alpha$ after $(A_{1},W_{1}), ..., (A_{n},W_{n})$}}\\
+formuła $\alpha$ zachodzi po wykonaniu sekwencji $(A_{1},W_{1}), ..., (A_{n},W_{n})$, gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej niepustą listą wykonawców
+\item {\large\texttt{$(A,W)$ causes $\alpha$ if $\pi$}}\\
+skutkiem wykonania akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$ jest stan, w którym spełniona jest formuła $\alpha$. Przy czym:
 \begin{itemize}
     \item Jeśli $\pi \Leftrightarrow \top$, to powyższe zdanie zapisujemy:\\
-    {\large\texttt{$(A,w)$ causes $\alpha$ }}\\
-    oznacza to, że skutkiem wykonania akcji $A$ przez wykonawcę $w$ jest stan, w którym spełniona jest formuła $\alpha$
+    {\large\texttt{$(A,W)$ causes $\alpha$ }}\\
+    oznacza to, że skutkiem wykonania akcji $A$ przez któregokolwiek z wykonawców $W$ jest stan, w którym spełniona jest formuła $\alpha$
     \item Jeśli $\alpha \Leftrightarrow \perp$, to powyższe zdanie zapisujemy:\\
-    {\large\texttt{impossible $(A,w)$ if $\pi$}}\\
-    co oznacza, że niemożliwe jest wykonanie akcji $A$ przez wykonawcę $w$ w stanie spełniającym warunek $\pi$
+    {\large\texttt{impossible $(A,W)$ if $\pi$}}\\
+    co oznacza, że niemożliwe jest wykonanie akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$
 \end{itemize}
-\item {\large\texttt{observable $\alpha$ after $(A_{1},w_{1}), ..., (A_{n},w_{n})$}}\\
-po wykonaniu sekwencji $(A_{1},w_{1}), ..., (A_{n},w_{n})$, gdzie $A_{i}$ jest akcją, zaś $w_{i}$ jej wykonawcą, w stanie początkowym może (ale nie musi) zachodzić formuła $\alpha$
-\item {\large\texttt{$(A,w)$ releases $f$ if $\pi$}}\\
-wykonanie akcji $A$ przez wykonawcę $w$ w stanie spełniającym warunek $\pi$ może (ale nie musi) zmienić wartość zmiennej $f$
-\item {\large\texttt{$(A,w)$ typically causes $\alpha$ if $\pi$}}\\
-skutkiem wykonania akcji $A$ przez wykonawcę $w$ w stanie spełniającym warunek $\pi$ na ogół jest stan, w którym spełniona jest formuła $\alpha$
-\item {\large\texttt{typically $\alpha$ after $(A_{1},w_{1}), ..., (A_{n},w_{n})$}}\\
-formuła $\alpha$ na ogół zachodzi po wykonaniu sekwencji $(A_{1},w_{1}), ..., (A_{n},w_{n})$, gdzie $A_{i}$ jest akcją, zaś $w_{i}$ jej wykonawcą
+\item {\large\texttt{observable $\alpha$ after $(A_{1},W_{1}), ..., (A_{n},W_{n})$}}\\
+po wykonaniu sekwencji $(A_{1},W_{1}), ..., (A_{n},W_{n})$, gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej potencjalnymi wykonawcami, w stanie początkowym może (ale nie musi) zachodzić formuła $\alpha$
+\item {\large\texttt{$(A,W)$ releases $f$ if $\pi$}}\\
+wykonanie akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$ może (ale nie musi) zmienić wartość zmiennej $f$
+\item {\large\texttt{$(A,W)$ typically causes $\alpha$ if $\pi$}}\\
+skutkiem wykonania akcji $A$ przez któregokolwiek z wykonawców $w$ w stanie spełniającym warunek $\pi$ na ogół jest stan, w którym spełniona jest formuła $\alpha$
+\item {\large\texttt{typically $\alpha$ after $(A_{1},W_{1}), ..., (A_{n},W_{n})$}}\\
+formuła $\alpha$ na ogół zachodzi po wykonaniu sekwencji $(A_{1},W_{1}), ..., (A_{n},W_{n})$, gdzie $A_{i}$ jest akcją, zaś $W_{i}$ listą jej potencjalnych wykonawców
 \item {\large\texttt{always $\alpha$}}\\
 formuła $\alpha$ jest spełniona w każdym stanie
 \end{itemize}
@@ -272,16 +273,16 @@ Warto zwrócić uwagę na to, że skutki \textit{pewne} dla akcji traktowane są
 Niech $S=(\Sigma,\sigma_{0},ResAb,ResN)$ będzie strukturą dla języka. Konstrukcja funkcji $\Psi_{S} : (A \times W)^{*} \times \Sigma \to \Sigma$ wygląda następująco:
 \begin{itemize}
 	\item $\Phi_{S}(a,\epsilon,\sigma)=\sigma$ gdzie $\epsilon$ oznacza ciąg pusty
-	\item jeśli $\Phi_{S}(((a_{1}, w_{1}), \dots, (a_{n}, w_{n})),\sigma)$ jest określona to
-	\[\Phi_{S}(((a_{1}, w_{1}), \dots, (a_{n}, w_{n})),\sigma) \in ResAb((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1}))) \]
-	\[ \cup ResN((a_{n}, w_{n}), \Phi_{S}((a_{1}, w_{1}),\dots,(a_{n-1}, w_{n-1})))\]
+	\item jeśli $\Phi_{S}(((a_{1}, W_{1}), \dots, (a_{n}, W_{n})),\sigma)$ jest określona to
+	\[\Phi_{S}(((a_{1}, W_{1}), \dots, (a_{n}, W_{n})),\sigma) \in ResAb((a_{n}, W_{n}), \Phi_{S}((a_{1}, W_{1}),\dots,(a_{n-1}, W_{n-1}))) \]
+	\[ \cup ResN((a_{n}, W_{n}), \Phi_{S}((a_{1}, W_{1}),\dots,(a_{n-1}, W_{n-1})))\]
 \end{itemize}
 \subsection{Konstrukcja modeli}\mbox{}\\
 Przy wyznaczaniu funkcji przejścia $ResN$ i $ResAb$ stosujemy zasadę zaczerpniętą z języka $AR$, tj. stany niedopuszczalne są eliminowane przed minimalizacją zmian.
 \subsection{Scenariusz}
 Scenariuszem nazywamy skończony ciąg par akcja-wykonawca:
 \begin{center}
-$SC=((A_1,w_1),(A_2,w_2),...,(A_n,w_n))$
+$SC=((A_1,W_1),(A_2,W_2),...,(A_n,W_n))$
 \end{center}
 \textbf{Przykład:}
 \lstset{
@@ -526,7 +527,7 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: $\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
 		\item z warunkiem \texttt{ever}: 
-		$\exists_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D}\forall_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D}\exists_{\Phi_{S}} \Phi_{S}(((A_{1}, W_{1}), \dots, (A_{n}, W_{n})), \sigma_{0})$ jest określona
 	\end{itemize}
 	\item Jeśli Q jest zdaniem typu Q2:
 	\begin{itemize}
@@ -542,9 +543,9 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 	\item Jeśli Q jest zdaniem typu Q3:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
-		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \forall_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{ever}:
-		$\exists_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
 		\item z warunkiem \texttt{typically}:
 		% TODO: Nie jestem pewien tego Res0+
 		$\forall_{S=(\Sigma, \sigma_{0}, Res_{0}^{+}) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla funkcji $\Phi_{S}$ oraz $\Phi_{S}(SC, \sigma_{0}) \models \gamma$
@@ -552,9 +553,9 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 	\item Jeśli Q jest zdaniem typu Q4:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
-		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\forall_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\forall_{(A_{i}, W_{i}) \in SC} w \in W_{i}$
 		\item z warunkiem \texttt{ever}:
-		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\exists_{(A_{i}, w_{i}) \in SC}w_{i} = w$
+		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D, \sigma_{0} \models \pi} \exists_{SC=((A_{1}, W_{1}), \dots, (A_{n}, W_{n}))}$ taki, że $\Phi_{S}(SC, \sigma_{0})$ jest określona dla każdej funkcji $\Phi_{S}$ oraz $\exists_{(A_{i}, W_{i}) \in SC} w \in W_{i}$
 	\end{itemize}
 \end{enumerate} 
 
