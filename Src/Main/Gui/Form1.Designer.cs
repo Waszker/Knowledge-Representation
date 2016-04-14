@@ -1,4 +1,4 @@
-﻿namespace Main
+﻿namespace KR.Main.Gui
 {
     partial class Form1
     {
