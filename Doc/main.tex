@@ -53,7 +53,7 @@ Izert Piotr\\
 Pielat Mateusz\\
 Rząd Przemysław\\
 Siry Roman\\
-Waszkiewicz Piotr\\
+\textbf{Waszkiewicz Piotr}\\
 Zawadzka Anna\\
 
 \end{flushright}
@@ -118,7 +118,11 @@ gdzie:
 \end{itemize}
 
 \subsection{Syntaktyka języka}
-Przed przystąpieniem do opisu typów zdań wprowadzone zostanie oznaczenie listy wykonawców $W \in V; W=(w_{1}, w_{2}, \dots, w_{n})$ które reprezentuje listę dopuszczalnych wykonawców danej akcji. Dodatkowo możliwy jest zapis \textit{negatywny} w postaci $W=(\neg w_{1}, \neg w_{2}, \dots, \neg w_{n})$ oznaczający wyłączenie wymienionych wykonawców z możliwości wykonywania danej akcji.
+Przed przystąpieniem do opisu typów zdań wprowadzone zostanie oznaczenie listy wykonawców $W \in V; W=(w_{1}, w_{2}, \dots, w_{n})$ które reprezentuje listę dopuszczalnych wykonawców danej akcji. Dodatkowo możliwy jest zapis \textit{negatywny} w postaci $W=(\neg w_{1}, \neg w_{2}, \dots, \neg w_{n})$ oznaczający wyłączenie wymienionych wykonawców z możliwości wykonywania danej akcji.\\
+Dodatkowo przez $\alpha$ oznaczana będzie dowolna kombinacja zmiennych (fluentów): 
+\begin{center}
+$\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor \alpha_{2} | \alpha_{1} \to \alpha_{2} | \alpha_{1} \leftrightarrow \alpha_{2} $
+\end{center}\\
 W języku  $\Omega$ występują następujące typy zdań:
 \begin{itemize}
 \item {\large\texttt{initially $\alpha$}}\\
@@ -140,16 +144,14 @@ po wykonaniu sekwencji $(A_{1},W_{1}), ..., (A_{n},W_{n})$, gdzie $A_{i}$ jest a
 \item {\large\texttt{$(A,W)$ releases $f$ if $\pi$}}\\
 wykonanie akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$ może (ale nie musi) zmienić wartość zmiennej $f$
 \item {\large\texttt{$(A,W)$ typically causes $\alpha$ if $\pi$}}\\
-skutkiem wykonania akcji $A$ przez któregokolwiek z wykonawców $w$ w stanie spełniającym warunek $\pi$ na ogół jest stan, w którym spełniona jest formuła $\alpha$
+skutkiem wykonania akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$ na ogół jest stan, w którym spełniona jest formuła $\alpha$
 \item {\large\texttt{typically $\alpha$ after $(A_{1},W_{1}), ..., (A_{n},W_{n})$}}\\
 formuła $\alpha$ na ogół zachodzi po wykonaniu sekwencji $(A_{1},W_{1}), ..., (A_{n},W_{n})$, gdzie $A_{i}$ jest akcją, zaś $W_{i}$ listą jej potencjalnych wykonawców
 \item {\large\texttt{always $\alpha$}}\\
 formuła $\alpha$ jest spełniona w każdym stanie
+\item {\large\texttt{$(A,W)$ preserves $f$ if $\pi$}}\\
+wskutek wykonania akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$ zmienna $f$ nie może ulec zmianie
 \end{itemize}
-gdzie $\alpha$ jest dowolną kombinacją zmiennych (fluentów): 
-\begin{center}
-$\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor \alpha_{2} | \alpha_{1} \to \alpha_{2} | \alpha_{1} \leftrightarrow \alpha_{2} $
-\end{center}
 
 \subsection{Przykłady} 
 \subsubsection{Gotujący John}
@@ -294,7 +296,6 @@ $SC=((A_1,W_1),(A_2,W_2),...,(A_n,W_n))$
 \end{lstlisting}
 Powyższy scenariusz mówi, iż John wykonał kolejno akcje: \texttt{SHOP, COOK, EAT}.
 
-\newpage
 \subsection{Przykłady}
 \subsubsection{Gotujący John}
 
