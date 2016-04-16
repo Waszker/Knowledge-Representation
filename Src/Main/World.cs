@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using KR.Main.Model;
-using Action = KR.Main.Model.Action;
+using KR.Main.Entities;
+using Action = KR.Main.Entities.Action;
 
 namespace KR.Main
 {

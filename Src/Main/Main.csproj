@@ -55,13 +55,13 @@
     </Compile>
     <Compile Include="IGraph.cs" />
     <Compile Include="IWorld.cs" />
-    <Compile Include="Model\Action.cs" />
-    <Compile Include="Model\Actor.cs" />
-    <Compile Include="Model\Condition.cs" />
-    <Compile Include="Model\Edge.cs" />
-    <Compile Include="Model\Fluent.cs" />
-    <Compile Include="Model\Query.cs" />
-    <Compile Include="Model\State.cs" />
+    <Compile Include="Entities\Action.cs" />
+    <Compile Include="Entities\Actor.cs" />
+    <Compile Include="Entities\Condition.cs" />
+    <Compile Include="Entities\Edge.cs" />
+    <Compile Include="Entities\Fluent.cs" />
+    <Compile Include="Entities\Query.cs" />
+    <Compile Include="Entities\State.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.cs" />

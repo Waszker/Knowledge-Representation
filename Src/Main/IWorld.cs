@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using KR.Main.Model;
+using KR.Main.Entities;
 
 namespace KR.Main
 {
