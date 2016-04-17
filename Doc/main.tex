@@ -91,7 +91,7 @@ System dynamiczny spełnia podane założenia:
 \end{enumerate}
 
 Programem działań nazywać będziemy ciąg $((A_{1},W_{1}), (A_{2},W_{2}), …, (A_{n},W_{n}))$, 
-gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej wykonawcą lub $\epsilon$ (ktokolwiek).\\
+gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej listą wykonawców postaci $W_{i} = (w_{1}, w_{2}, \dots, w_{n}), n = 0, 1, 2, \dots$ gdzie dla $n = 0$ $W_{i} = \epsilon$ oznacza dowolnego wykonawcę.\\
 
 
 Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
@@ -118,7 +118,7 @@ gdzie:
 \end{itemize}
 
 \subsection{Syntaktyka języka}
-Przed przystąpieniem do opisu typów zdań wprowadzone zostanie oznaczenie listy wykonawców $W \in V; W=(w_{1}, w_{2}, \dots, w_{n})$ które reprezentuje listę dopuszczalnych wykonawców danej akcji. Dodatkowo możliwy jest zapis \textit{negatywny} w postaci $W=(\neg w_{1}, \neg w_{2}, \dots, \neg w_{n})$ oznaczający wyłączenie wymienionych wykonawców z możliwości wykonywania danej akcji.\\
+Przed przystąpieniem do opisu typów zdań doprecyzowane zostanie oznaczenie listy wykonawców $W \in V; W=(w_{1}, w_{2}, \dots, w_{n})$ które reprezentuje listę dopuszczalnych wykonawców danej akcji. Dodatkowo możliwy jest zapis \textit{negatywny} w postaci $W=(\neg w_{1}, \neg w_{2}, \dots, \neg w_{n})$ oznaczający wyłączenie wymienionych wykonawców z możliwości wykonywania danej akcji. Niedopuszczalny jest zapis łączący obie te formy, postaci $W=(w_{1}, w_{2}, \dots, w_{i}, \neg w_{i+1}, \dots, \neg w_{n})$\\
 Dodatkowo przez $\alpha$ oznaczana będzie dowolna kombinacja zmiennych (fluentów): 
 \begin{center}
 $\alpha= f | \alpha | \neg\alpha | \alpha_{1} \land \alpha_{2} | \alpha_{1} \lor \alpha_{2} | \alpha_{1} \to \alpha_{2} | \alpha_{1} \leftrightarrow \alpha_{2} $
