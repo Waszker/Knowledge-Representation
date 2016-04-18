@@ -234,6 +234,32 @@ impossible (Eat,Rabbit)
 (Drink,Rabbit) causes cakeExists if elixirExists
 \end{lstlisting}
 
+
+
+\subsubsection{Lampka Toma}
+
+\textit{
+    Student Tom ma na biurku lampkę, której używa, jeżeli musi wieczorem przygotować się na zajęcia. 
+    Gdy Tom zaczyna naukę, lampka jest zapalona.
+    Zadania są trudne i zdarza się, że Tom nie potrafi ich rozwiązać. Wtedy Tom denerwuje się i zrzuca wszystko razem z lampką z biurka. Zrzucenie na podłogę zazwyczaj powoduje, że w lampce zbije się żarówka i wtedy nie może ona świecić.
+    Tom może poza tym włączać i wyłączać lampkę, ale żarówka się od tego nie naprawi.
+}
+
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Turn_on, Turn_off, Throw_down},
+}
+\begin{lstlisting}[mathescape=true]
+initially lighted
+always lighted $\rightarrow$ $\neg$broken
+(Throw_down,Tom) usually causes broken
+(Turn_off,Tom) causes $\neg$lighted
+(Turn_on,Tom) causes lighted
+(Turn_on,Tom) preserves broken
+\end{lstlisting}
+
+
 \subsection{Semantyka języka} 
 
 \subsubsection{Stan}
