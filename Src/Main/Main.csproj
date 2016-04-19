@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KR.Main</RootNamespace>
     <AssemblyName>KR.Main</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Graph.cs" />
+    <Compile Include="Gui\DefineEntitiesTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\DefineEntitiesTab.Designer.cs">
+      <DependentUpon>DefineEntitiesTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +72,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.cs" />
+    <EmbeddedResource Include="Gui\DefineEntitiesTab.resx">
+      <DependentUpon>DefineEntitiesTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -87,6 +100,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fLetter.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\actor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\action.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
