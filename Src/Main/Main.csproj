@@ -48,11 +48,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Graph.cs" />
+    <Compile Include="Gui\DefineDomainTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\DefineDomainTab.Designer.cs">
+      <DependentUpon>DefineDomainTab.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\DefineEntitiesTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Gui\DefineEntitiesTab.Designer.cs">
       <DependentUpon>DefineEntitiesTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\DefineQueriesTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\DefineQueriesTab.Designer.cs">
+      <DependentUpon>DefineQueriesTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\DefineScenarioTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\DefineScenarioTab.Designer.cs">
+      <DependentUpon>DefineScenarioTab.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\Form1.cs">
       <SubType>Form</SubType>
@@ -72,8 +90,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.cs" />
+    <EmbeddedResource Include="Gui\DefineDomainTab.resx">
+      <DependentUpon>DefineDomainTab.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\DefineEntitiesTab.resx">
       <DependentUpon>DefineEntitiesTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\DefineQueriesTab.resx">
+      <DependentUpon>DefineQueriesTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\DefineScenarioTab.resx">
+      <DependentUpon>DefineScenarioTab.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -109,6 +136,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\action.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowLeft.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrowLeft1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

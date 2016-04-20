@@ -28,51 +28,111 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.defineEntitiesTab1 = new KR.Main.Gui.DefineEntitiesTab();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.mainLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.nextButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.previousButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.previousButton = new System.Windows.Forms.Button();
+            this.nextButton = new System.Windows.Forms.Button();
+            this.mainLayoutPanel.SuspendLayout();
+            this.nextButtonLayoutPanel.SuspendLayout();
+            this.previousButtonLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // mainLayoutPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.08273F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.91727F));
-            this.tableLayoutPanel1.Controls.Add(this.defineEntitiesTab1, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.21127F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.78873F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(689, 426);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.mainLayoutPanel.ColumnCount = 3;
+            this.mainLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.mainLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 84F));
+            this.mainLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8F));
+            this.mainLayoutPanel.Controls.Add(this.previousButtonLayoutPanel, 0, 0);
+            this.mainLayoutPanel.Controls.Add(this.nextButtonLayoutPanel, 2, 0);
+            this.mainLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.mainLayoutPanel.Name = "mainLayoutPanel";
+            this.mainLayoutPanel.RowCount = 1;
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.21127F));
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.78873F));
+            this.mainLayoutPanel.Size = new System.Drawing.Size(689, 426);
+            this.mainLayoutPanel.TabIndex = 0;
             // 
-            // defineEntitiesTab1
+            // nextButtonLayoutPanel
             // 
-            this.defineEntitiesTab1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.defineEntitiesTab1.Location = new System.Drawing.Point(3, 3);
-            this.defineEntitiesTab1.Name = "defineEntitiesTab1";
-            this.defineEntitiesTab1.Size = new System.Drawing.Size(593, 356);
-            this.defineEntitiesTab1.TabIndex = 0;
+            this.nextButtonLayoutPanel.ColumnCount = 1;
+            this.nextButtonLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.nextButtonLayoutPanel.Controls.Add(this.nextButton, 0, 1);
+            this.nextButtonLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nextButtonLayoutPanel.Location = new System.Drawing.Point(636, 3);
+            this.nextButtonLayoutPanel.Name = "nextButtonLayoutPanel";
+            this.nextButtonLayoutPanel.RowCount = 3;
+            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.nextButtonLayoutPanel.Size = new System.Drawing.Size(50, 420);
+            this.nextButtonLayoutPanel.TabIndex = 1;
+            // 
+            // previousButtonLayoutPanel
+            // 
+            this.previousButtonLayoutPanel.ColumnCount = 1;
+            this.previousButtonLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.previousButtonLayoutPanel.Controls.Add(this.previousButton, 0, 1);
+            this.previousButtonLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previousButtonLayoutPanel.Location = new System.Drawing.Point(3, 3);
+            this.previousButtonLayoutPanel.Name = "previousButtonLayoutPanel";
+            this.previousButtonLayoutPanel.RowCount = 3;
+            this.previousButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.previousButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.previousButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.previousButtonLayoutPanel.Size = new System.Drawing.Size(49, 420);
+            this.previousButtonLayoutPanel.TabIndex = 2;
+            // 
+            // previousButton
+            // 
+            this.previousButton.BackgroundImage = global::KR.Main.Properties.Resources.arrowLeft;
+            this.previousButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.previousButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previousButton.Location = new System.Drawing.Point(3, 192);
+            this.previousButton.Name = "previousButton";
+            this.previousButton.Size = new System.Drawing.Size(43, 36);
+            this.previousButton.TabIndex = 0;
+            this.previousButton.UseVisualStyleBackColor = true;
+            this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
+            // 
+            // nextButton
+            // 
+            this.nextButton.BackgroundImage = global::KR.Main.Properties.Resources.arrowRight;
+            this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.nextButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nextButton.Location = new System.Drawing.Point(3, 192);
+            this.nextButton.Name = "nextButton";
+            this.nextButton.Size = new System.Drawing.Size(44, 36);
+            this.nextButton.TabIndex = 0;
+            this.nextButton.UseVisualStyleBackColor = true;
+            this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(689, 426);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.mainLayoutPanel);
             this.Name = "Form1";
-            this.Text = "Form1";
-            this.tableLayoutPanel1.ResumeLayout(false);
+            this.Text = "Knowledge Representation";
+            this.mainLayoutPanel.ResumeLayout(false);
+            this.nextButtonLayoutPanel.ResumeLayout(false);
+            this.previousButtonLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private DefineEntitiesTab defineEntitiesTab1;
+        private System.Windows.Forms.TableLayoutPanel mainLayoutPanel;
+        private System.Windows.Forms.TableLayoutPanel nextButtonLayoutPanel;
+        private System.Windows.Forms.Button nextButton;
+        private System.Windows.Forms.TableLayoutPanel previousButtonLayoutPanel;
+        private System.Windows.Forms.Button previousButton;
     }
 }
 
