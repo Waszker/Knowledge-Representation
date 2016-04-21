@@ -12,23 +12,17 @@ namespace KR.Main.Entities
     /// </summary>
     class Domain
     {
-        private List<Initially> _initiallyClauses;
+        public List<Initially> InitiallyClauses = new List<Initially>();
+        public List<Always> AlwaysClauses = new List<Always>();
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public Domain()
-        {
-            _initiallyClauses = new List<Initially>();
-        }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sentence"></param>
-        public void AddInitiallyClause(Initially sentence)
-        {
-            _initiallyClauses.Add(sentence);
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="sentence"></param>
+        //public void AddInitiallyClause(Initially sentence)
+        //{
+        //    _initiallyClauses.Add(sentence);
+        //}
     }
 }

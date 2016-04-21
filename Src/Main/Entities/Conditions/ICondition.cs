@@ -1,6 +1,6 @@
 ﻿namespace KR.Main.Entities.Conditions
 {
-    public interface ICondition
+    interface ICondition
     {
         bool Check(State state);
     }

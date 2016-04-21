@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace KR.Main.Entities
 {
-    public class State
+    class State
     {
+        public Dictionary<Fluent, bool> Values = new Dictionary<Fluent, bool>();
         internal bool GetValueOf(Fluent fluent)
         {
-            throw new NotImplementedException();
+            return Values[fluent];
         }
     }
 }

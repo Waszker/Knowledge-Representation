@@ -6,8 +6,13 @@ using Action = KR.Main.Entities.Action;
 
 namespace KR.Main
 {
-    public sealed partial class World
+    sealed partial class World
     {
+        public List<State> States;
+        public State InitialState;
+        public List<Fluent> Fluents;
+        //public Domain Domain;
+
         private Graph _graph;
 
         public World()
