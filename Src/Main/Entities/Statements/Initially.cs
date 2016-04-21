@@ -1,11 +1,6 @@
-﻿using KR.Main.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KR.Main.Entities.Conditions;
 
-namespace KR.Main.Statements
+namespace KR.Main.Entities.Statements
 {
     /// <summary>
     /// Sentence class that represents initially clause.

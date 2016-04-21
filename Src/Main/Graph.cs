@@ -7,11 +7,11 @@ using KR.Main.Entities;
 
 namespace KR.Main
 {
-    class Graph : IGraph
+    public sealed partial class World
     {
-        public List<Edge> GetAllEdges(State fromState = null)
+        private class Graph
         {
-            throw new NotImplementedException();
+
         }
     }
 }

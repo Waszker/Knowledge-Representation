@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using KR.Main.Entities;
 
-namespace KR.Main.Builders.Implementations
+namespace KR.Main.Builders
 {
     class WorldBuilder : IWorldBuilder
     {
@@ -11,11 +11,8 @@ namespace KR.Main.Builders.Implementations
 
         private WorldBuilder() { }
 
-        public World GetResult()
+        public World Build()
         {
-            // ...
-            // Graph = ...;
-
             throw new NotImplementedException();
         }
 
@@ -30,6 +27,11 @@ namespace KR.Main.Builders.Implementations
         }
 
         public void SetFluents(List<Fluent> fluents)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetDomain(Domain domain)
         {
             throw new NotImplementedException();
         }

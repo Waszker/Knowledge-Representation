@@ -1,11 +1,4 @@
-﻿using KR.Main.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KR.Main.Conditions
+﻿namespace KR.Main.Entities.Conditions
 {
     class Negation : ICondition
     {

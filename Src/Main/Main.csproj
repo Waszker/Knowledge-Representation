@@ -47,15 +47,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Conditions\Conjunction.cs" />
-    <Compile Include="Conditions\Alternative.cs" />
-    <Compile Include="Conditions\Equivalence.cs" />
-    <Compile Include="Conditions\Implication.cs" />
-    <Compile Include="Builders\IBuilder.cs" />
-    <Compile Include="Builders\Implementations\WorldBuilder.cs" />
     <Compile Include="Builders\IWorldBuilder.cs" />
-    <Compile Include="Conditions\Negation.cs" />
+    <Compile Include="Builders\WorldBuilder.cs" />
+    <Compile Include="Entities\Conditions\Alternative.cs" />
+    <Compile Include="Entities\Conditions\Conjunction.cs" />
+    <Compile Include="Entities\Conditions\Equivalence.cs" />
+    <Compile Include="Entities\Conditions\ICondition.cs" />
+    <Compile Include="Entities\Conditions\Implication.cs" />
+    <Compile Include="Entities\Conditions\Negation.cs" />
     <Compile Include="Entities\Domain.cs" />
+    <Compile Include="Entities\Statements\Initially.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Gui\DefineDomainTab.cs">
       <SubType>UserControl</SubType>
@@ -87,17 +88,14 @@
     <Compile Include="Gui\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IGraph.cs" />
     <Compile Include="Entities\Action.cs" />
     <Compile Include="Entities\Actor.cs" />
-    <Compile Include="Entities\ICondition.cs" />
     <Compile Include="Entities\Edge.cs" />
     <Compile Include="Entities\Fluent.cs" />
     <Compile Include="Entities\Query.cs" />
     <Compile Include="Entities\State.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Statements\Initially.cs" />
     <Compile Include="World.cs" />
     <EmbeddedResource Include="Gui\DefineDomainTab.resx">
       <DependentUpon>DefineDomainTab.cs</DependentUpon>

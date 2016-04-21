@@ -1,4 +1,5 @@
 ﻿using System;
+using KR.Main.Entities.Conditions;
 
 namespace KR.Main.Entities
 {

@@ -1,4 +1,4 @@
-﻿namespace KR.Main.Entities
+﻿namespace KR.Main.Entities.Conditions
 {
     public interface ICondition
     {
