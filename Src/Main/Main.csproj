@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Conditions\Conjunction.cs" />
+    <Compile Include="Conditions\Alternative.cs" />
+    <Compile Include="Conditions\Implication.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Gui\DefineDomainTab.cs">
       <SubType>UserControl</SubType>

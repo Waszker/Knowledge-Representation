@@ -2,6 +2,6 @@
 {
     public interface ICondition
     {
-        bool Check();
+        bool Check(State state);
     }
 }
