@@ -9,7 +9,12 @@ namespace KR.Main.Builders.Implementations
 {
     class WorldBuilder : IWorldBuilder
     {
-        public IWorld GetResult()
+        private static readonly Lazy<WorldBuilder> instance = new Lazy<WorldBuilder>(() => new WorldBuilder());
+        public static WorldBuilder Instance => instance.Value;
+
+        private WorldBuilder() { }
+
+        public World GetResult()
         {
             // ...
             // Graph = ...;

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace KR.Main.Builders
 {
-    interface IWorldBuilder : IBuilder<IWorld>
+    interface IWorldBuilder : IBuilder<World>
     {
         void SetFluents(List<Fluent> fluents);
         void SetActors(List<Actor> actors);

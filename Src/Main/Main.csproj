@@ -82,7 +82,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IGraph.cs" />
-    <Compile Include="IWorld.cs" />
     <Compile Include="Entities\Action.cs" />
     <Compile Include="Entities\Actor.cs" />
     <Compile Include="Entities\Condition.cs" />
