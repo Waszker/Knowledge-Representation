@@ -56,6 +56,7 @@
     <Compile Include="Entities\Conditions\Implication.cs" />
     <Compile Include="Entities\Conditions\Negation.cs" />
     <Compile Include="Entities\Domain.cs" />
+    <Compile Include="Entities\Statements\Always.cs" />
     <Compile Include="Entities\Statements\Initially.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Gui\DefineDomainTab.cs">

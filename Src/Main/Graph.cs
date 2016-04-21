@@ -7,7 +7,7 @@ using KR.Main.Entities;
 
 namespace KR.Main
 {
-    public sealed partial class World
+    sealed partial class World
     {
         private class Graph
         {
