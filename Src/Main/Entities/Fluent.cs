@@ -1,12 +1,14 @@
-﻿namespace KR.Main.Entities
+﻿using System;
+
+namespace KR.Main.Entities
 {
     /// <summary>
     /// Class representing fluent object.
     /// </summary>
-    class Fluent
+    class Fluent : ICondition
     {
         public string Name { get; private set; }
-        
+
         /// <summary>
         /// Creates instance of an fluent object.
         /// </summary>
@@ -14,6 +16,10 @@
         public Fluent(string name)
         {
             Name = name;
+        }
+        public bool Check(State state)
+        {
+            return state.GetValueOf(this);
         }
     }
 }
