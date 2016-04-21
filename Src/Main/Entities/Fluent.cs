@@ -6,7 +6,7 @@ namespace KR.Main.Entities
     /// <summary>
     /// Class representing fluent object.
     /// </summary>
-    class Fluent : ICondition
+    public class Fluent : ICondition
     {
         public string Name { get; private set; }
 
@@ -21,6 +21,10 @@ namespace KR.Main.Entities
         public bool Check(State state)
         {
             return state.GetValueOf(this);
+        }
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 }

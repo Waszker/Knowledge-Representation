@@ -1,4 +1,7 @@
-﻿using System.Windows.Forms;
+﻿using KR.Main.Builders;
+using KR.Main.Entities;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace KR.Main.Gui
 {
@@ -34,12 +37,22 @@ namespace KR.Main.Gui
             this.mainLayoutPanel.Controls.Add(tabs[currentTab], 1, 0);
             previousButton.Enabled = true;
             previousButton.Visible = true;
-            if (currentTab == 3)
+            
+            switch(currentTab)
             {
-                nextButton.Enabled = false;
-                nextButton.Visible = false;
+                case 0: //przeładowanie zawartości kontrolek w DefineDomainTab
+                    List<Fluent> fluentList = ((DefineEntitiesTab)tabs[0]).getFluents();
+                    break;
+                case 1: //Stworzenie świata
+                    WorldBuilder.Instance.SetFluents(((DefineEntitiesTab)tabs[0]).getFluents());
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    nextButton.Enabled = false;
+                    nextButton.Visible = false;
+                    break;
             }
-
         }
 
         private void previousButton_Click(object sender, System.EventArgs e)
