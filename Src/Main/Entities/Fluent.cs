@@ -1,6 +1,12 @@
-﻿namespace KR.Main.Entities
+﻿using System;
+
+namespace KR.Main.Entities
 {
-    class Fluent
+    class Fluent : ICondition
     {
+        public bool Check(State state)
+        {
+            return state.GetValueOf(this);
+        }
     }
 }
