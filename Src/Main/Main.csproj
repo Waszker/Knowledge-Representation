@@ -55,6 +55,7 @@
     <Compile Include="Builders\Implementations\WorldBuilder.cs" />
     <Compile Include="Builders\IWorldBuilder.cs" />
     <Compile Include="Conditions\Negation.cs" />
+    <Compile Include="Entities\Domain.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Gui\DefineDomainTab.cs">
       <SubType>UserControl</SubType>
