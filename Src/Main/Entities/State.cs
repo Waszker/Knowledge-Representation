@@ -1,6 +1,6 @@
 ﻿namespace KR.Main.Entities
 {
-    class State
+    public class State
     {
     }
 }

@@ -9,7 +9,7 @@ namespace KR.Main
     {
         public IGraph Graph { get; private set; }
 
-        public List<State> GetAllStates(Condition condition)
+        public List<State> GetAllStates(ICondition condition)
         {
             throw new NotImplementedException();
         }
