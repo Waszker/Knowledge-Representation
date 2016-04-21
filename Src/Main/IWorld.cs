@@ -5,15 +5,7 @@ namespace KR.Main
 {
     interface IWorld
     {
-        IGraph Graph { get; }
-
-        void SetFluents(List<Fluent> fluents);
-        void SetActors(List<Actor> actors);
-        void SetActions(List<Action> actions);
-        /* void SetZdania( ?? ); - do ustalenia: reprezentacja zdan dziedziny */
-
-        void Build();
-
+        IGraph Graph { get; }      
         List<State> GetAllStates(Condition condition);
     }
 }

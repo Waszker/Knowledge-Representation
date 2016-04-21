@@ -47,6 +47,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Builders\IBuilder.cs" />
+    <Compile Include="Builders\Implementations\WorldBuilder.cs" />
+    <Compile Include="Builders\IWorldBuilder.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Gui\DefineDomainTab.cs">
       <SubType>UserControl</SubType>
