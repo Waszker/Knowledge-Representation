@@ -5,47 +5,9 @@ using Action = KR.Main.Entities.Action;
 
 namespace KR.Main
 {
-    sealed class World : IWorld
+    sealed class World
     {
-        private static readonly Lazy<World> instance = new Lazy<World>(() => new World());
-        public static World Instance => instance.Value;
-
-
         public IGraph Graph { get; private set; }
-
-
-
-        private World()
-        {
-
-        }
-
-        #region Builder methods
-
-        public void SetFluents(List<Fluent> fluents)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetActors(List<Actor> actors)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetActions(List<Action> actions)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Build()
-        {
-            // ...
-            // Graph = ...;
-
-            throw new NotImplementedException();
-        }
-
-        #endregion
 
         public List<State> GetAllStates(ICondition condition)
         {

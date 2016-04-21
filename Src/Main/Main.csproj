@@ -50,6 +50,9 @@
     <Compile Include="Conditions\Conjunction.cs" />
     <Compile Include="Conditions\Alternative.cs" />
     <Compile Include="Conditions\Implication.cs" />
+    <Compile Include="Builders\IBuilder.cs" />
+    <Compile Include="Builders\Implementations\WorldBuilder.cs" />
+    <Compile Include="Builders\IWorldBuilder.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Gui\DefineDomainTab.cs">
       <SubType>UserControl</SubType>
@@ -82,7 +85,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IGraph.cs" />
-    <Compile Include="IWorld.cs" />
     <Compile Include="Entities\Action.cs" />
     <Compile Include="Entities\Actor.cs" />
     <Compile Include="Entities\ICondition.cs" />
