@@ -95,6 +95,7 @@
     <Compile Include="Entities\State.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Statements\Initially.cs" />
     <Compile Include="World.cs" />
     <EmbeddedResource Include="Gui\DefineDomainTab.resx">
       <DependentUpon>DefineDomainTab.cs</DependentUpon>
