@@ -47,7 +47,7 @@ namespace KR.Main
 
         #endregion
 
-        public List<State> GetAllStates(Condition condition)
+        public List<State> GetAllStates(ICondition condition)
         {
             throw new NotImplementedException();
         }

@@ -14,6 +14,6 @@ namespace KR.Main
 
         void Build();
 
-        List<State> GetAllStates(Condition condition);
+        List<State> GetAllStates(ICondition condition);
     }
 }
