@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KR.Main.Statements;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,5 +12,23 @@ namespace KR.Main.Entities
     /// </summary>
     class Domain
     {
+        private List<Initially> _initiallyClauses;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public Domain()
+        {
+            _initiallyClauses = new List<Initially>();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sentence"></param>
+        public void AddInitiallyClause(Initially sentence)
+        {
+            _initiallyClauses.Add(sentence);
+        }
     }
 }
