@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace KR.Main.Entities
 {
-    class State
+    public class State
     {
-        public Dictionary<Fluent, bool> Values = new Dictionary<Fluent, bool>();
-        internal bool GetValueOf(Fluent fluent)
-        {
-            return Values[fluent];
-        }
+        public readonly Dictionary<Fluent, bool> Values = new Dictionary<Fluent, bool>();
+
+
+
+        public bool this[Fluent fluent] => Values[fluent];
     }
 }

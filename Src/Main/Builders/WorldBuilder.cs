@@ -28,7 +28,7 @@ namespace KR.Main.Builders
             List<State> initialStates = states;
             foreach (var clause in _domain.AlwaysClauses)
                 initialStates = SatisfactionGenerator.Satisfy(clause.Condition, initialStates).ToList();
-            if (initialStates.Count() != 1)
+            if (initialStates.Count != 1)
                 throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
             world.InitialState = initialStates.Single();
             //mamy już wyznaczony stan początkowy
@@ -66,6 +66,7 @@ namespace KR.Main.Builders
         {
             _domain = domain;
         }
+
         private static class SatisfactionGenerator
         {
             public static IEnumerable<State> Satisfy(ICondition cond, IEnumerable<State> states)
@@ -85,10 +86,10 @@ namespace KR.Main.Builders
             private static List<bool> _buf;
             private static List<List<bool>> _result;
 
-            public static IEnumerable<State> GenerateAll(IEnumerable<Fluent> fluents)
+            public static ICollection<State> GenerateAll(ICollection<Fluent> fluents)
             {
-                BackTrack(fluents.Count());
-                return _result.Select(s =>
+                BackTrack(fluents.Count);
+                return (ICollection<State>) _result.Select(s =>
                 {
                     State state = new State();
                     int i = 0;

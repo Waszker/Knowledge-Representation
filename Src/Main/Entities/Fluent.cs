@@ -6,9 +6,9 @@ namespace KR.Main.Entities
     /// <summary>
     /// Class representing fluent object.
     /// </summary>
-    public class Fluent : ICondition
+    public class Fluent : ICondition, IEquatable<Fluent>
     {
-        public string Name { get; private set; }
+        private string _name;
 
         /// <summary>
         /// Creates instance of an fluent object.
@@ -16,15 +16,23 @@ namespace KR.Main.Entities
         /// <param name="name">fluent name</param>
         public Fluent(string name)
         {
-            Name = name;
+            _name = name;
         }
         public bool Check(State state)
         {
-            return state.GetValueOf(this);
+            return state[this];
         }
+
+        public bool Equals(Fluent other)
+        {
+            return other._name.Equals(_name);
+        }
+
         public override string ToString()
         {
-            return this.Name;
+            return this._name;
         }
+
+        
     }
 }

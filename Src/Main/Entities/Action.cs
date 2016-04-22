@@ -1,11 +1,13 @@
-﻿namespace KR.Main.Entities
+﻿using System;
+
+namespace KR.Main.Entities
 {
     /// <summary>
     /// Class representing action object.
     /// </summary>
-    class Action
+    public class Action : IEquatable<Action>
     {
-        public string Name { get; private set; }
+        public string _name;
 
         /// <summary>
         /// Creates instance of an action object.
@@ -13,7 +15,12 @@
         /// <param name="name">action name</param>
         public Action(string name)
         {
-            Name = name;
+            _name = name;
+        }
+
+        public bool Equals(Action other)
+        {
+            return other._name.Equals(_name);
         }
     }
 }

@@ -56,12 +56,15 @@
     <Compile Include="Entities\Conditions\Implication.cs" />
     <Compile Include="Entities\Conditions\Negation.cs" />
     <Compile Include="Entities\Domain.cs" />
+    <Compile Include="Entities\Statements\After.cs" />
     <Compile Include="Entities\Statements\Always.cs" />
     <Compile Include="Entities\Statements\Causes.cs" />
     <Compile Include="Entities\Statements\Impossible.cs" />
     <Compile Include="Entities\Statements\Initially.cs" />
+    <Compile Include="Entities\Statements\Observable.cs" />
     <Compile Include="Entities\Statements\Preserves.cs" />
     <Compile Include="Entities\Statements\Releases.cs" />
+    <Compile Include="Entities\Statements\TypicallyAfter.cs" />
     <Compile Include="Entities\Statements\TypicallyCauses.cs" />
     <Compile Include="Graph.cs" />
     <Compile Include="Gui\DefineDomainTab.cs">

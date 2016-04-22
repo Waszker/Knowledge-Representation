@@ -32,7 +32,7 @@ namespace KR.Main.Gui
             if(text.Length>0)
             {
                 Fluent newFluent = new Fluent(text);
-                if (!_fluents.Any(f => f.Name == newFluent.Name))
+                if (!_fluents.Any(f => f == newFluent))
                 {
                     fluentListBox.Items.Add(newFluent);
                     _fluents.Add(newFluent);

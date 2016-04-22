@@ -8,10 +8,11 @@ namespace KR.Main
 {
     sealed partial class World
     {
-        public List<State> States;
-        public State InitialState;
-        public List<Fluent> Fluents;
-        //public Domain Domain;
+        public List<State> States { get; set; }
+        public State InitialState { get; set; }
+        public List<Fluent> Fluents { get; set; }
+        public Domain Domain { get; set; }
+
 
         private Graph _graph;
 

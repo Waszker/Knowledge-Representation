@@ -12,16 +12,16 @@ namespace KR.Main.Entities
     /// </summary>
     class Domain
     {
-        public List<Initially> InitiallyClauses = new List<Initially>();
-        public List<Always> AlwaysClauses = new List<Always>();
-        public List<Causes> CausesClauses = new List<Causes>();
-        public List<Impossible> ImpossibleClauses = new List<Impossible>();
-        public List<Releases> ReleasesClauses = new List<Releases>();
-        public List<TypicallyCauses> TypicallyCausesClauses = new List<TypicallyCauses>();
-        public List<Preserves> PreservesClauses = new List<Preserves>();
-        public List<After> AfterClauses = new List<After>();
-        public List<Observable> ObservableClauses = new List<Observable>();
-        public List<TypicallyAfter> TypicallyAfterClauses = new List<TypicallyAfter>();
+        public readonly List<Initially> InitiallyClauses = new List<Initially>();
+        public readonly List<Always> AlwaysClauses = new List<Always>();
+        public readonly List<Causes> CausesClauses = new List<Causes>();
+        public readonly List<Impossible> ImpossibleClauses = new List<Impossible>();
+        public readonly List<Releases> ReleasesClauses = new List<Releases>();
+        public readonly List<TypicallyCauses> TypicallyCausesClauses = new List<TypicallyCauses>();
+        public readonly List<Preserves> PreservesClauses = new List<Preserves>();
+        public readonly List<After> AfterClauses = new List<After>();
+        public readonly List<Observable> ObservableClauses = new List<Observable>();
+        public readonly List<TypicallyAfter> TypicallyAfterClauses = new List<TypicallyAfter>();
 
 
         ///// <summary>

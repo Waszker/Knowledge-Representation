@@ -1,11 +1,13 @@
-﻿namespace KR.Main.Entities
+﻿using System;
+
+namespace KR.Main.Entities
 {
     /// <summary>
     /// Class representing actor object.
     /// </summary>
-    class Actor
+    public class Actor : IEquatable<Actor>
     {
-        public string Name { get; private set; }
+        private string _name;
 
         /// <summary>
         /// Creates instance of an actor object.
@@ -13,7 +15,17 @@
         /// <param name="name">actor name</param>
         public Actor(string name)
         {
-            Name = name;
+            _name = name;
+        }
+
+        public bool Equals(Actor other)
+        {
+            return other._name.Equals(_name);
+        }
+
+        public override string ToString()
+        {
+            return _name;
         }
     }
 }
