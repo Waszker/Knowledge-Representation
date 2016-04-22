@@ -13,7 +13,7 @@ namespace KR.Main.Entities.Statements
         public List<Tuple<Action, bool, List<Actor>>> Sequence { get; private set; }
 
         /// <summary>
-        /// Creates instance of after sentence for given effect and sequence of actions.
+        /// Creates instance of typically after sentence for given effect and sequence of actions.
         /// </summary>
         /// <param name="effect">effect for sentence</param>
         /// <param name="sequence">sequence of action with actors</param>
