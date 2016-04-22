@@ -12,6 +12,8 @@ namespace KR.Main.Builders
         public static WorldBuilder Instance => instance.Value;
 
         private List<Fluent> _fluents;
+        private List<Entities.Action> _actions;
+        private List<Actor> _actors;
         private Domain _domain;
         private WorldBuilder() { }
 
@@ -42,6 +44,10 @@ namespace KR.Main.Builders
         {
             if (_fluents == null)
                 throw new InvalidOperationException("Podaj fluenty.");
+            if (_actors == null)
+                throw new InvalidOperationException("Podaj aktorów.");
+            if (_actions == null)
+                throw new InvalidOperationException("Podaj akcje.");
             if (_domain == null)
                 throw new InvalidOperationException("Podaj domenę.");
             //sprawdzić, czy zdania domeny są wystarczające
@@ -49,12 +55,12 @@ namespace KR.Main.Builders
 
         public void SetActions(List<Entities.Action> actions)
         {
-            throw new NotImplementedException();
+            _actions = actions;
         }
 
         public void SetActors(List<Actor> actors)
         {
-            throw new NotImplementedException();
+            _actors = actors;
         }
 
         public void SetFluents(List<Fluent> fluents)

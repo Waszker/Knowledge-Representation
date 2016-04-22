@@ -40,11 +40,18 @@ namespace KR.Main.Gui
             
             switch(currentTab)
             {
-                case 0: //przeładowanie zawartości kontrolek w DefineDomainTab
+                case 0: 
                     List<Fluent> fluentList = ((DefineEntitiesTab)tabs[0]).getFluents();
+                    List<Action> actionList = ((DefineEntitiesTab)tabs[0]).getActions();
+                    List<Actor> actorList = ((DefineEntitiesTab)tabs[0]).getActors();
+                    //+przeładowanie zawartości kontrolek w DefineDomainTab
                     break;
-                case 1: //Stworzenie świata
+                case 1: 
                     WorldBuilder.Instance.SetFluents(((DefineEntitiesTab)tabs[0]).getFluents());
+                    WorldBuilder.Instance.SetActions(((DefineEntitiesTab)tabs[0]).getActions());
+                    WorldBuilder.Instance.SetActors(((DefineEntitiesTab)tabs[0]).getActors());
+                    //WorldBuilder.Instance.SetDomain();
+                    WorldBuilder.Instance.Build();
                     break;
                 case 2:
                     break;

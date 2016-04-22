@@ -22,5 +22,10 @@ namespace KR.Main.Entities
         {
             return other._name.Equals(_name);
         }
+
+        public override string ToString()
+        {
+            return this._name;
+        }
     }
 }

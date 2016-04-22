@@ -106,6 +106,7 @@
             this.deleteActorButton.TabIndex = 15;
             this.deleteActorButton.Text = "DELETE";
             this.deleteActorButton.UseVisualStyleBackColor = true;
+            this.deleteActorButton.Click += new System.EventHandler(this.deleteActorButton_Click);
             // 
             // deleteActionButton
             // 
@@ -118,6 +119,7 @@
             this.deleteActionButton.TabIndex = 14;
             this.deleteActionButton.Text = "DELETE";
             this.deleteActionButton.UseVisualStyleBackColor = true;
+            this.deleteActionButton.Click += new System.EventHandler(this.deleteActionButton_Click);
             // 
             // deleteFluentButton
             // 
@@ -311,6 +313,7 @@
             this.addActionButton.TabIndex = 5;
             this.addActionButton.Text = "ADD";
             this.addActionButton.UseVisualStyleBackColor = true;
+            this.addActionButton.Click += new System.EventHandler(this.addActionButton_Click);
             // 
             // addActorButton
             // 
@@ -323,6 +326,7 @@
             this.addActorButton.TabIndex = 6;
             this.addActorButton.Text = "ADD";
             this.addActorButton.UseVisualStyleBackColor = true;
+            this.addActorButton.Click += new System.EventHandler(this.addActorButton_Click);
             // 
             // fluentTextBox
             // 
