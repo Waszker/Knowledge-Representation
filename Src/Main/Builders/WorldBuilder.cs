@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using KR.Main.Entities;
 using System.Linq;
 using KR.Main.Entities.Conditions;
+using Action = KR.Main.Entities.Action;
 
 namespace KR.Main.Builders
 {
@@ -12,32 +13,117 @@ namespace KR.Main.Builders
         public static WorldBuilder Instance => instance.Value;
 
         private List<Fluent> _fluents;
-        private List<Entities.Action> _actions;
+        private List<Action> _actions;
         private List<Actor> _actors;
         private Domain _domain;
+
+        List<State> _states = new List<State>();
+        private List<Transition> _transitionsAbnormal = new List<Transition>();
+        private List<Transition> _transitionsNormal = new List<Transition>();
+        private List<Transition> _transitionsReleased = new List<Transition>();
+        private List<Transition> _transitionsImpossible = new List<Transition>();
+        State _initialState;
         private WorldBuilder() { }
+
+        class Transition
+        {
+            public State StartState;
+            public State EndState;
+            public Actor Actor;
+            public Action Action;
+            public Transition(Actor actor, Action action, State startState, State endState)
+            {
+                StartState = startState;
+                EndState = endState;
+                Actor = actor;
+                Action = action;
+            }
+            public Transition()
+            {
+
+            }
+        }
 
         public World Build()
         {
             Validate();
-            World world = new World();
-            List<State> states = StatesGenerator.GenerateAll(_fluents).ToList();
-            foreach (var clause in _domain.AlwaysClauses)
-                states = SatisfactionGenerator.Satisfy(clause.Condition, states).ToList();
+
+            ProcessAlways();
 
             //od teraz _states odpowiadają wierzchołkom grafu
-            world.States = states;
-            List<State> initialStates = states;
-            foreach (var clause in _domain.AlwaysClauses)
-                initialStates = SatisfactionGenerator.Satisfy(clause.Condition, initialStates).ToList();
-            if (initialStates.Count != 1)
-                throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
-            world.InitialState = initialStates.Single();
+            ProcessInitially();
             //mamy już wyznaczony stan początkowy
 
             //pozostaje wyznaczyć przejścia na podstawie zdań causes, typically causes i preserves
 
-            return world;
+            PrepareResAbResN();//TODO
+
+            ProcessReleases();
+
+            ProcessImpossible();
+
+            //teraz trzeba zbudować graf - mamy już wszystko co jest potrzebne
+
+            return new World ();
+        }
+
+        private void PrepareResAbResN()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ProcessInitially()
+        {
+            List<State> initialStates = _states;
+            foreach (var clause in _domain.AlwaysClauses)
+                initialStates = SatisfactionGenerator.Satisfy(clause.Condition, initialStates).ToList();
+            if (initialStates.Count != 1)
+                throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
+            _initialState = initialStates.Single();
+        }
+
+        private void ProcessAlways()
+        {
+            List<State> states = StatesGenerator.GenerateAll(_fluents).ToList();
+            foreach (var clause in _domain.AlwaysClauses)
+                states = SatisfactionGenerator.Satisfy(clause.Condition, states).ToList();
+            _states = states;
+        }
+
+        private void ProcessReleases()
+        {
+            //releases:
+            foreach (var clause in _domain.ReleasesClauses)//typically czy nie?
+            {
+                var actors = clause.Exclusion ? _actors.Except(clause.Actors) : clause.Actors;
+                var startStates = SatisfactionGenerator.Satisfy(clause.Condition, _states).ToList();
+                foreach (var actor in actors)
+                    foreach (var startState in startStates)
+                        foreach (var endState in _states.Where(s =>
+                        {
+                            foreach (var f in _fluents.Where(f => f != clause.Fluent))
+                                if (s.Values[f] != startState.Values[f])
+                                    return false;
+                            return true;
+                        }))
+                            _transitionsReleased.Add(new Transition { Action = clause.Action, Actor = actor, StartState = startState, EndState = endState });
+            }
+        }
+
+        private void ProcessImpossible()
+        {
+            //ograniczeie przejść przez impossible
+            foreach (var clause in _domain.ImpossibleClauses)
+            {
+                var actors = clause.Exclusion ? _actors.Except(clause.Actors) : clause.Actors;
+                foreach (var actor in actors)
+                {
+                    var startStates = SatisfactionGenerator.Satisfy(clause.Condition, _states).ToList();
+                    foreach (var startState in startStates)
+                        foreach (var endState in _states)
+                            _transitionsImpossible.Add(new Transition(actor, clause.Action, startState, endState));
+                }
+            }
         }
 
         private void Validate()
@@ -50,7 +136,7 @@ namespace KR.Main.Builders
                 throw new InvalidOperationException("Podaj akcje.");
             if (_domain == null)
                 throw new InvalidOperationException("Podaj domenę.");
-            //sprawdzić, czy zdania domeny są wystarczające
+            //sprawdzić, czy zdania domeny są wystarczające ValidateDomain();
         }
 
         public void SetActions(List<Entities.Action> actions)
