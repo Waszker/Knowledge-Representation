@@ -47,7 +47,7 @@
             this.defineQueriesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.defineQueriesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.defineQueriesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 64F));
-            this.defineQueriesPanel.Size = new System.Drawing.Size(600, 400);
+            this.defineQueriesPanel.Size = new System.Drawing.Size(884, 561);
             this.defineQueriesPanel.TabIndex = 0;
             // 
             // label1
@@ -59,7 +59,7 @@
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(594, 43);
+            this.label1.Size = new System.Drawing.Size(878, 62);
             this.label1.TabIndex = 3;
             this.label1.Text = "DEFINE QUERIES";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -70,7 +70,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.defineQueriesPanel);
             this.Name = "DefineQueriesTab";
-            this.Size = new System.Drawing.Size(600, 400);
+            this.Size = new System.Drawing.Size(884, 561);
             this.defineQueriesPanel.ResumeLayout(false);
             this.defineQueriesPanel.PerformLayout();
             this.ResumeLayout(false);

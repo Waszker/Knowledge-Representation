@@ -12,9 +12,18 @@ namespace KR.Main.Gui
 {
     public partial class DefineDomainTab : UserControl
     {
+        UserControl[] clauseControls;
+        int currentClause;
+
         public DefineDomainTab()
         {
             InitializeComponent();
+
+            currentClause = 0;
+            clauseControls = new UserControl[10];
+            clauseControls[0] = new InitiallyClauseControl();
+            this.defineDomainPanel.Controls.Add(clauseControls[0], 0, 2);
+
             chooseClauseComboBox.SelectedIndex = 0;
         }
     }

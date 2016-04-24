@@ -67,6 +67,12 @@
     <Compile Include="Entities\Statements\TypicallyAfter.cs" />
     <Compile Include="Entities\Statements\TypicallyCauses.cs" />
     <Compile Include="Graph.cs" />
+    <Compile Include="Gui\ClauseControls\CausesClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\CausesClauseControl.Designer.cs">
+      <DependentUpon>CausesClauseControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\DefineDomainTab.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -103,9 +109,18 @@
     <Compile Include="Entities\Fluent.cs" />
     <Compile Include="Entities\Query.cs" />
     <Compile Include="Entities\State.cs" />
+    <Compile Include="Gui\ClauseControls\InitiallyClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\InitiallyClauseControl.Designer.cs">
+      <DependentUpon>InitiallyClauseControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.cs" />
+    <EmbeddedResource Include="Gui\ClauseControls\CausesClauseControl.resx">
+      <DependentUpon>CausesClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\DefineDomainTab.resx">
       <DependentUpon>DefineDomainTab.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\InitiallyClauseControl.resx">
+      <DependentUpon>InitiallyClauseControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

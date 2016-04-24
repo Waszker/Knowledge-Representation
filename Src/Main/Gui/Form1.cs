@@ -31,13 +31,7 @@ namespace KR.Main.Gui
         }
 
         private void nextButton_Click(object sender, System.EventArgs e)
-        {
-            this.mainLayoutPanel.Controls.Remove(tabs[currentTab]);
-            currentTab++;
-            this.mainLayoutPanel.Controls.Add(tabs[currentTab], 1, 0);
-            previousButton.Enabled = true;
-            previousButton.Visible = true;
-            
+        {          
             switch(currentTab)
             {
                 case 0: 
@@ -60,6 +54,12 @@ namespace KR.Main.Gui
                     nextButton.Visible = false;
                     break;
             }
+
+            this.mainLayoutPanel.Controls.Remove(tabs[currentTab]);
+            currentTab++;
+            this.mainLayoutPanel.Controls.Add(tabs[currentTab], 1, 0);
+            previousButton.Enabled = true;
+            previousButton.Visible = true;
         }
 
         private void previousButton_Click(object sender, System.EventArgs e)

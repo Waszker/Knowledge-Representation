@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.mainLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.nextButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.previousButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.previousButton = new System.Windows.Forms.Button();
+            this.nextButtonLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.nextButton = new System.Windows.Forms.Button();
             this.mainLayoutPanel.SuspendLayout();
-            this.nextButtonLayoutPanel.SuspendLayout();
             this.previousButtonLayoutPanel.SuspendLayout();
+            this.nextButtonLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // mainLayoutPanel
@@ -52,23 +52,8 @@
             this.mainLayoutPanel.RowCount = 1;
             this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 85.21127F));
             this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14.78873F));
-            this.mainLayoutPanel.Size = new System.Drawing.Size(689, 426);
+            this.mainLayoutPanel.Size = new System.Drawing.Size(884, 561);
             this.mainLayoutPanel.TabIndex = 0;
-            // 
-            // nextButtonLayoutPanel
-            // 
-            this.nextButtonLayoutPanel.ColumnCount = 1;
-            this.nextButtonLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.nextButtonLayoutPanel.Controls.Add(this.nextButton, 0, 1);
-            this.nextButtonLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.nextButtonLayoutPanel.Location = new System.Drawing.Point(636, 3);
-            this.nextButtonLayoutPanel.Name = "nextButtonLayoutPanel";
-            this.nextButtonLayoutPanel.RowCount = 3;
-            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.nextButtonLayoutPanel.Size = new System.Drawing.Size(50, 420);
-            this.nextButtonLayoutPanel.TabIndex = 1;
             // 
             // previousButtonLayoutPanel
             // 
@@ -82,7 +67,7 @@
             this.previousButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
             this.previousButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.previousButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
-            this.previousButtonLayoutPanel.Size = new System.Drawing.Size(49, 420);
+            this.previousButtonLayoutPanel.Size = new System.Drawing.Size(64, 555);
             this.previousButtonLayoutPanel.TabIndex = 2;
             // 
             // previousButton
@@ -90,23 +75,44 @@
             this.previousButton.BackgroundImage = global::KR.Main.Properties.Resources.arrowLeft;
             this.previousButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.previousButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previousButton.FlatAppearance.BorderSize = 0;
+            this.previousButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.previousButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.previousButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.previousButton.Location = new System.Drawing.Point(3, 192);
+            this.previousButton.Location = new System.Drawing.Point(3, 252);
             this.previousButton.Name = "previousButton";
-            this.previousButton.Size = new System.Drawing.Size(43, 36);
+            this.previousButton.Size = new System.Drawing.Size(58, 49);
             this.previousButton.TabIndex = 0;
             this.previousButton.UseVisualStyleBackColor = true;
             this.previousButton.Click += new System.EventHandler(this.previousButton_Click);
+            // 
+            // nextButtonLayoutPanel
+            // 
+            this.nextButtonLayoutPanel.ColumnCount = 1;
+            this.nextButtonLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.nextButtonLayoutPanel.Controls.Add(this.nextButton, 0, 1);
+            this.nextButtonLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nextButtonLayoutPanel.Location = new System.Drawing.Point(815, 3);
+            this.nextButtonLayoutPanel.Name = "nextButtonLayoutPanel";
+            this.nextButtonLayoutPanel.RowCount = 3;
+            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.nextButtonLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 45F));
+            this.nextButtonLayoutPanel.Size = new System.Drawing.Size(66, 555);
+            this.nextButtonLayoutPanel.TabIndex = 1;
             // 
             // nextButton
             // 
             this.nextButton.BackgroundImage = global::KR.Main.Properties.Resources.arrowRight;
             this.nextButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.nextButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.nextButton.FlatAppearance.BorderSize = 0;
+            this.nextButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.nextButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
             this.nextButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nextButton.Location = new System.Drawing.Point(3, 192);
+            this.nextButton.Location = new System.Drawing.Point(3, 252);
             this.nextButton.Name = "nextButton";
-            this.nextButton.Size = new System.Drawing.Size(44, 36);
+            this.nextButton.Size = new System.Drawing.Size(60, 49);
             this.nextButton.TabIndex = 0;
             this.nextButton.UseVisualStyleBackColor = true;
             this.nextButton.Click += new System.EventHandler(this.nextButton_Click);
@@ -115,13 +121,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 426);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.mainLayoutPanel);
             this.Name = "Form1";
             this.Text = "Knowledge Representation";
             this.mainLayoutPanel.ResumeLayout(false);
-            this.nextButtonLayoutPanel.ResumeLayout(false);
             this.previousButtonLayoutPanel.ResumeLayout(false);
+            this.nextButtonLayoutPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
