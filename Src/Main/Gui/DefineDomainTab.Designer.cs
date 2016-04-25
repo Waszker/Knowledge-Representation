@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.defineDomainPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
             this.chooseClauseComboBox = new System.Windows.Forms.ComboBox();
             this.addClauseButton = new System.Windows.Forms.Button();
             this.clausesListBox = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.defineDomainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +55,21 @@
             this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.defineDomainPanel.Size = new System.Drawing.Size(884, 561);
             this.defineDomainPanel.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Gray;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(878, 62);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "DEFINE DOMAIN";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // chooseClauseComboBox
             // 
@@ -83,14 +98,19 @@
             // addClauseButton
             // 
             this.addClauseButton.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.addClauseButton.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.addClauseButton.FlatAppearance.BorderSize = 0;
+            this.addClauseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
+            this.addClauseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
             this.addClauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addClauseButton.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.addClauseButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.addClauseButton.ForeColor = System.Drawing.Color.White;
             this.addClauseButton.Location = new System.Drawing.Point(367, 309);
             this.addClauseButton.Name = "addClauseButton";
             this.addClauseButton.Size = new System.Drawing.Size(150, 48);
             this.addClauseButton.TabIndex = 3;
             this.addClauseButton.Text = "ADD CLAUSE";
-            this.addClauseButton.UseVisualStyleBackColor = true;
+            this.addClauseButton.UseVisualStyleBackColor = false;
             // 
             // clausesListBox
             // 
@@ -101,21 +121,6 @@
             this.clausesListBox.Name = "clausesListBox";
             this.clausesListBox.Size = new System.Drawing.Size(878, 180);
             this.clausesListBox.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Gray;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(878, 62);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "DEFINE DOMAIN";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DefineDomainTab
             // 

@@ -46,6 +46,7 @@ namespace KR.Main.Gui
                     WorldBuilder.Instance.SetActors(((DefineEntitiesTab)tabs[0]).getActors());
                     //WorldBuilder.Instance.SetDomain();
                     WorldBuilder.Instance.Build();
+                    ((DefineScenarioTab)tabs[2]).setActionsAndActors(((DefineEntitiesTab)tabs[0]).getActions(), ((DefineEntitiesTab)tabs[0]).getActors());
                     break;
                 case 2:
                     break;
