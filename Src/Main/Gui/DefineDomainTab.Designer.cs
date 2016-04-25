@@ -89,10 +89,10 @@
             "α after (A1,W1),...,(An,Wn) ",
             "typically α after (A1,W1),...,(An,Wn)",
             "observable α after (A1,W1),...,(An,Wn)"});
-            this.chooseClauseComboBox.Location = new System.Drawing.Point(10, 77);
-            this.chooseClauseComboBox.Margin = new System.Windows.Forms.Padding(10);
+            this.chooseClauseComboBox.Location = new System.Drawing.Point(60, 77);
+            this.chooseClauseComboBox.Margin = new System.Windows.Forms.Padding(60, 10, 60, 10);
             this.chooseClauseComboBox.Name = "chooseClauseComboBox";
-            this.chooseClauseComboBox.Size = new System.Drawing.Size(864, 30);
+            this.chooseClauseComboBox.Size = new System.Drawing.Size(764, 30);
             this.chooseClauseComboBox.TabIndex = 2;
             // 
             // addClauseButton
@@ -103,11 +103,11 @@
             this.addClauseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DodgerBlue;
             this.addClauseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.SkyBlue;
             this.addClauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addClauseButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.addClauseButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addClauseButton.ForeColor = System.Drawing.Color.White;
-            this.addClauseButton.Location = new System.Drawing.Point(367, 309);
+            this.addClauseButton.Location = new System.Drawing.Point(357, 303);
             this.addClauseButton.Name = "addClauseButton";
-            this.addClauseButton.Size = new System.Drawing.Size(150, 48);
+            this.addClauseButton.Size = new System.Drawing.Size(170, 60);
             this.addClauseButton.TabIndex = 3;
             this.addClauseButton.Text = "ADD CLAUSE";
             this.addClauseButton.UseVisualStyleBackColor = false;

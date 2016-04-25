@@ -1,5 +1,6 @@
 ﻿using KR.Main.Builders;
 using KR.Main.Entities;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -36,21 +37,22 @@ namespace KR.Main.Gui
             {
                 case 0: 
                     List<Fluent> fluentList = ((DefineEntitiesTab)tabs[0]).getFluents();
-                    List<Action> actionList = ((DefineEntitiesTab)tabs[0]).getActions();
+                    List<Entities.Action> actionList = ((DefineEntitiesTab)tabs[0]).getActions();
                     List<Actor> actorList = ((DefineEntitiesTab)tabs[0]).getActors();
-                    //+przeładowanie zawartości kontrolek w DefineDomainTab
+                    ((DefineDomainTab)tabs[1]).setEntities(fluentList, actionList, actorList);
                     break;
                 case 1: 
                     WorldBuilder.Instance.SetFluents(((DefineEntitiesTab)tabs[0]).getFluents());
                     WorldBuilder.Instance.SetActions(((DefineEntitiesTab)tabs[0]).getActions());
                     WorldBuilder.Instance.SetActors(((DefineEntitiesTab)tabs[0]).getActors());
                     //WorldBuilder.Instance.SetDomain();
-                    WorldBuilder.Instance.Build();
+                    //WorldBuilder.Instance.Build();
                     ((DefineScenarioTab)tabs[2]).setActionsAndActors(((DefineEntitiesTab)tabs[0]).getActions(), ((DefineEntitiesTab)tabs[0]).getActors());
+                    ((DefineScenarioTab)tabs[2]).cleanScenario();
                     break;
                 case 2:
-                    break;
-                case 3:
+                    List<Tuple<Entities.Action, Actor>> scenario = ((DefineScenarioTab)tabs[2]).getScenario();
+                    ((DefineScenarioTab)tabs[2]).cleanScenario();
                     nextButton.Enabled = false;
                     nextButton.Visible = false;
                     break;

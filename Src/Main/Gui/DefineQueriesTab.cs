@@ -15,6 +15,7 @@ namespace KR.Main.Gui
         public DefineQueriesTab()
         {
             InitializeComponent();
+            chooseQueryComboBox.SelectedIndex = 0;
         }
     }
 }

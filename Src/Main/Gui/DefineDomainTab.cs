@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KR.Main.Entities;
 
 namespace KR.Main.Gui
 {
@@ -25,6 +26,11 @@ namespace KR.Main.Gui
             this.defineDomainPanel.Controls.Add(clauseControls[0], 0, 2);
 
             chooseClauseComboBox.SelectedIndex = 0;
+        }
+
+        public void setEntities(List<Fluent> fluents, List<Entities.Action> actions, List<Actor> actors)
+        {
+
         }
     }
 }

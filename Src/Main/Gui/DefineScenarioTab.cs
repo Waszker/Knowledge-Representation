@@ -13,20 +13,57 @@ namespace KR.Main.Gui
 {
     public partial class DefineScenarioTab : UserControl
     {
+        List<Tuple<Entities.Action, Actor>> scenario;
+
         public DefineScenarioTab()
         {
             InitializeComponent();
+            scenario = new List<Tuple<Entities.Action, Actor>>();
         }
         
         public void setActionsAndActors(List<Entities.Action> actions, List<Actor> actors)
         {
             foreach (Entities.Action a in actions)
                 actionComboBox.Items.Add(a);
-            actionComboBox.SelectedIndex = 0;
+            if (actions.Count>0)
+                actionComboBox.SelectedIndex = 0;
 
             foreach (Actor a in actors)
                 actorComboBox.Items.Add(a);
-            actorComboBox.SelectedIndex = 0;
+            if (actors.Count>0)
+                actorComboBox.SelectedIndex = 0;
+        }
+
+        public void cleanScenario()
+        {
+            scenario.Clear();
+            scenarioStepsListBox.Items.Clear();
+        }
+
+        public List<Tuple<Entities.Action, Actor>> getScenario()
+        {
+            return scenario;
+        }
+
+        private void addStep_Click(object sender, EventArgs e)
+        {
+            Entities.Action action = (Entities.Action)actionComboBox.SelectedItem;
+            Actor actor = (Actor)actorComboBox.SelectedItem;
+            if (action != null && actor != null)
+            {
+                scenario.Add(new Tuple<Entities.Action, Actor>(action, actor));
+                scenarioStepsListBox.Items.Add("(" + action.ToString() + ", " + actor.ToString() + ")");
+            }
+        }
+
+        private void deleteStep_Click(object sender, EventArgs e)
+        {
+            int step = scenarioStepsListBox.SelectedIndex;
+            if (step >= 0)
+            {
+                scenario.RemoveAt(step);
+                scenarioStepsListBox.Items.RemoveAt(step);
+            }
         }
     }
 }
