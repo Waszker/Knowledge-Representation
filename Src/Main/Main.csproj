@@ -56,6 +56,10 @@
     <Compile Include="Entities\Conditions\Implication.cs" />
     <Compile Include="Entities\Conditions\Negation.cs" />
     <Compile Include="Entities\Domain.cs" />
+    <Compile Include="Entities\Queries\AccessibleAlwaysQuery.cs" />
+    <Compile Include="Entities\Queries\Query.cs" />
+    <Compile Include="Entities\Scenario.cs" />
+    <Compile Include="Entities\ScenarioStep.cs" />
     <Compile Include="Entities\Statements\After.cs" />
     <Compile Include="Entities\Statements\Always.cs" />
     <Compile Include="Entities\Statements\Causes.cs" />
@@ -107,7 +111,6 @@
     <Compile Include="Entities\Actor.cs" />
     <Compile Include="Entities\Edge.cs" />
     <Compile Include="Entities\Fluent.cs" />
-    <Compile Include="Entities\Query.cs" />
     <Compile Include="Entities\State.cs" />
     <Compile Include="Gui\ClauseControls\InitiallyClauseControl.cs">
       <SubType>UserControl</SubType>

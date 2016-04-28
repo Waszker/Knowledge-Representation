@@ -2,6 +2,6 @@
 {
     abstract class Query
     {
-        public abstract bool Evaluate();
+        public abstract bool Evaluate(World world);
     }
 }
