@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KR.Main.Entities;
+using KR.Main.Entities.Statements;
+using KR.Main.Entities.Conditions;
 
 namespace KR.Main.Gui
 {
@@ -15,6 +18,27 @@ namespace KR.Main.Gui
         public CausesClauseControl()
         {
             InitializeComponent();
+        }
+
+        public void setActions(List<Entities.Action> _actions)
+        {
+            foreach (Entities.Action a in _actions)
+                ActionComboBox.Items.Add(a);
+            if (_actions.Count > 0)
+                ActionComboBox.SelectedIndex = 0;
+        }
+
+        public void setActors(List<Actor> _actors)
+        {
+            foreach (Actor a in _actors)
+                ActorsCheckedListBox.Items.Add(a);
+            //TODO: ADD EPSILON
+        }
+
+        public Causes getClause()
+        {
+            return new Causes((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.SelectedItems.Cast<Actor>().ToList(), null, null);
+            //TODO: remove null
         }
     }
 }

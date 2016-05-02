@@ -94,6 +94,7 @@
             this.chooseClauseComboBox.Name = "chooseClauseComboBox";
             this.chooseClauseComboBox.Size = new System.Drawing.Size(764, 30);
             this.chooseClauseComboBox.TabIndex = 2;
+            this.chooseClauseComboBox.SelectedIndexChanged += new System.EventHandler(this.chooseClauseComboBox_SelectedIndexChanged);
             // 
             // addClauseButton
             // 
@@ -111,6 +112,7 @@
             this.addClauseButton.TabIndex = 3;
             this.addClauseButton.Text = "ADD CLAUSE";
             this.addClauseButton.UseVisualStyleBackColor = false;
+            this.addClauseButton.Click += new System.EventHandler(this.addClauseButton_Click);
             // 
             // clausesListBox
             // 
