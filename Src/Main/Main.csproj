@@ -175,11 +175,23 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.cs" />
+    <EmbeddedResource Include="Gui\ClauseControls\AlwaysClauseControl.resx">
+      <DependentUpon>AlwaysClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\ClauseControls\CausesClauseControl.resx">
       <DependentUpon>CausesClauseControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\ClauseControls\FormulaControl.resx">
       <DependentUpon>FormulaControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\ImpossibleClauseControl.resx">
+      <DependentUpon>ImpossibleClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\PreservesClauseControl.resx">
+      <DependentUpon>PreservesClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\ReleasesClauseControl.resx">
+      <DependentUpon>ReleasesClauseControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\ClauseControls\TypicallyCausesClauseControl.resx">
       <DependentUpon>TypicallyCausesClauseControl.cs</DependentUpon>

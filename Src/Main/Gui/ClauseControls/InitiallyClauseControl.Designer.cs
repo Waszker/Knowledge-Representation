@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InitiallyClausePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.Panel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.initialFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
-            this.InitiallyClausePanel.SuspendLayout();
+            this.Panel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // InitiallyClausePanel
+            // Panel
             // 
-            this.InitiallyClausePanel.ColumnCount = 2;
-            this.InitiallyClausePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.InitiallyClausePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.InitiallyClausePanel.Controls.Add(this.label1, 0, 0);
-            this.InitiallyClausePanel.Controls.Add(this.initialFormulaControl, 1, 0);
-            this.InitiallyClausePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InitiallyClausePanel.Location = new System.Drawing.Point(0, 0);
-            this.InitiallyClausePanel.Margin = new System.Windows.Forms.Padding(0);
-            this.InitiallyClausePanel.Name = "InitiallyClausePanel";
-            this.InitiallyClausePanel.RowCount = 1;
-            this.InitiallyClausePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.InitiallyClausePanel.Size = new System.Drawing.Size(878, 162);
-            this.InitiallyClausePanel.TabIndex = 0;
+            this.Panel.ColumnCount = 2;
+            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.Panel.Controls.Add(this.label1, 0, 0);
+            this.Panel.Controls.Add(this.initialFormulaControl, 1, 0);
+            this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel.Location = new System.Drawing.Point(0, 0);
+            this.Panel.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel.Name = "Panel";
+            this.Panel.RowCount = 1;
+            this.Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Panel.Size = new System.Drawing.Size(878, 162);
+            this.Panel.TabIndex = 0;
             // 
             // label1
             // 
@@ -77,18 +77,18 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.InitiallyClausePanel);
+            this.Controls.Add(this.Panel);
             this.Name = "InitiallyClauseControl";
             this.Size = new System.Drawing.Size(878, 162);
-            this.InitiallyClausePanel.ResumeLayout(false);
-            this.InitiallyClausePanel.PerformLayout();
+            this.Panel.ResumeLayout(false);
+            this.Panel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel InitiallyClausePanel;
+        private System.Windows.Forms.TableLayoutPanel Panel;
         private System.Windows.Forms.Label label1;
         private ClauseControls.FormulaControl initialFormulaControl;
     }

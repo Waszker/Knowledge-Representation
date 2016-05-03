@@ -72,15 +72,15 @@ namespace KR.Main.Gui.ClauseControls
                     else return null;
                 case 1:
                     if (right.getFormula() != null && left.getFormula() != null)
-                        return new Conjuction(right.getFormula(), left.getFormula());
+                        return new Alternative(right.getFormula(), left.getFormula());
                     else return null;
                 case 2:
                     if (right.getFormula() != null && left.getFormula() != null)
-                        return new Conjuction(right.getFormula(), left.getFormula());
+                        return new Implication(right.getFormula(), left.getFormula());
                     else return null;
                 case 3:
                     if (right.getFormula() != null && left.getFormula() != null)
-                        return new Conjuction(right.getFormula(), left.getFormula());
+                        return new Equivalence(right.getFormula(), left.getFormula());
                     else return null;
                 case 4:
                     if (right.getFormula() != null)

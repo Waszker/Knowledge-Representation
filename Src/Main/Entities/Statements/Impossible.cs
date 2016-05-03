@@ -28,5 +28,21 @@ namespace KR.Main.Entities.Statements
             Actors = actors;
             Condition = condition;
         }
+
+        public override string ToString()
+        {
+            string actorsList = "";
+            foreach (Actor a in Actors)
+            {
+                if (actorsList == "")
+                    actorsList = a.ToString();
+                else
+                    actorsList = actorsList + ", " + a.ToString();
+            }
+            if (Condition == null)
+                return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ")";
+            else
+                return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") if " + Condition.ToString();
+        }
     }
 }

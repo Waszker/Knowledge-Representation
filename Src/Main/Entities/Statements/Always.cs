@@ -19,5 +19,10 @@ namespace KR.Main.Entities.Statements
         {
             Condition = condition;
         }
+
+        public override string ToString()
+        {
+            return "always " + Condition.ToString();
+        }
     }
 }

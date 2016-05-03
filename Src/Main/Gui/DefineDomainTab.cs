@@ -17,6 +17,7 @@ namespace KR.Main.Gui
     {
         UserControl[] clauseControls;
         int currentClause;
+        Domain _domain;
 
         public DefineDomainTab()
         {
@@ -39,6 +40,11 @@ namespace KR.Main.Gui
             chooseClauseComboBox.SelectedIndex = 0;
         }
 
+        public Domain getDomain()
+        {
+            return _domain;
+        }
+
         public void setEntities(List<Fluent> fluents, List<Entities.Action> actions, List<Actor> actors)
         {
             ((InitiallyClauseControl)clauseControls[0]).setFluents(fluents);
@@ -48,6 +54,25 @@ namespace KR.Main.Gui
             ((TypicallyCausesClauseControl)clauseControls[2]).setActions(actions);
             ((TypicallyCausesClauseControl)clauseControls[2]).setActors(actors);
             ((TypicallyCausesClauseControl)clauseControls[2]).setFluents(fluents);
+            ((ReleasesClauseControl)clauseControls[3]).setActions(actions);
+            ((ReleasesClauseControl)clauseControls[3]).setActors(actors);
+            ((ReleasesClauseControl)clauseControls[3]).setFluents(fluents);
+            ((PreservesClauseControl)clauseControls[4]).setActions(actions);
+            ((PreservesClauseControl)clauseControls[4]).setActors(actors);
+            ((PreservesClauseControl)clauseControls[4]).setFluents(fluents);
+            ((AlwaysClauseControl)clauseControls[5]).setFluents(fluents);
+            ((ImpossibleClauseControl)clauseControls[6]).setActions(actions);
+            ((ImpossibleClauseControl)clauseControls[6]).setActors(actors);
+            ((ImpossibleClauseControl)clauseControls[6]).setFluents(fluents);
+            //((AfterClauseControl)clauseControls[7]).setActions(actions);
+            //((AfterClauseControl)clauseControls[7]).setActors(actors);
+            //((AfterClauseControl)clauseControls[7]).setFluents(fluents);
+            //((TypicallyAfterClauseControl)clauseControls[8]).setActions(actions);
+            //((TypicallyAfterClauseControl)clauseControls[8]).setActors(actors);
+            //((TypicallyAfterClauseControl)clauseControls[8]).setFluents(fluents);
+            //((ObservableClauseControl)clauseControls[9]).setActions(actions);
+            //((ObservableClauseControl)clauseControls[9]).setActors(actors);
+            //((ObservableClauseControl)clauseControls[9]).setFluents(fluents);
         }
 
         private void chooseClauseComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -82,7 +107,7 @@ namespace KR.Main.Gui
                             clausesListBox.Items.Add(stmt);
                         break;
                     }
-                /*case 3:
+                case 3:
                     {
                         Releases stmt = ((ReleasesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
@@ -110,7 +135,7 @@ namespace KR.Main.Gui
                             clausesListBox.Items.Add(stmt);
                         break;
                     }
-                case 7:
+                /*case 7:
                     {
                         After stmt = ((AfterClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
@@ -131,6 +156,18 @@ namespace KR.Main.Gui
                             clausesListBox.Items.Add(stmt);
                         break;
                     }*/
+            }
+        }
+
+        private void deleteClauseButton_Click(object sender, EventArgs e)
+        {
+            if (clausesListBox.SelectedIndex >= 0)
+            {
+                Object selectedClause = clausesListBox.SelectedItem;
+
+                //_actions.Remove(selectedAction);
+
+                clausesListBox.Items.Remove(selectedClause);
             }
         }
     }

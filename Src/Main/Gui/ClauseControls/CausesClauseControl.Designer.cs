@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.CausesClausePanel = new System.Windows.Forms.TableLayoutPanel();
+            this.Panel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -41,29 +41,29 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.conditionFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
             this.ifCheckBox = new System.Windows.Forms.CheckBox();
-            this.CausesClausePanel.SuspendLayout();
+            this.Panel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.SuspendLayout();
             // 
-            // CausesClausePanel
+            // Panel
             // 
-            this.CausesClausePanel.ColumnCount = 1;
-            this.CausesClausePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.CausesClausePanel.Controls.Add(this.tableLayoutPanel2, 0, 0);
-            this.CausesClausePanel.Controls.Add(this.tableLayoutPanel1, 0, 1);
-            this.CausesClausePanel.Controls.Add(this.tableLayoutPanel3, 0, 2);
-            this.CausesClausePanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CausesClausePanel.Location = new System.Drawing.Point(0, 0);
-            this.CausesClausePanel.Margin = new System.Windows.Forms.Padding(0);
-            this.CausesClausePanel.Name = "CausesClausePanel";
-            this.CausesClausePanel.RowCount = 3;
-            this.CausesClausePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.CausesClausePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.CausesClausePanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.CausesClausePanel.Size = new System.Drawing.Size(878, 162);
-            this.CausesClausePanel.TabIndex = 0;
+            this.Panel.ColumnCount = 1;
+            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.Panel.Controls.Add(this.tableLayoutPanel2, 0, 0);
+            this.Panel.Controls.Add(this.tableLayoutPanel1, 0, 1);
+            this.Panel.Controls.Add(this.tableLayoutPanel3, 0, 2);
+            this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Panel.Location = new System.Drawing.Point(0, 0);
+            this.Panel.Margin = new System.Windows.Forms.Padding(0);
+            this.Panel.Name = "Panel";
+            this.Panel.RowCount = 3;
+            this.Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.Panel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
+            this.Panel.Size = new System.Drawing.Size(878, 162);
+            this.Panel.TabIndex = 0;
             // 
             // tableLayoutPanel2
             // 
@@ -232,10 +232,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.CausesClausePanel);
+            this.Controls.Add(this.Panel);
             this.Name = "CausesClauseControl";
             this.Size = new System.Drawing.Size(878, 162);
-            this.CausesClausePanel.ResumeLayout(false);
+            this.Panel.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -248,7 +248,7 @@
 
         #endregion
 
-        private System.Windows.Forms.TableLayoutPanel CausesClausePanel;
+        private System.Windows.Forms.TableLayoutPanel Panel;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;

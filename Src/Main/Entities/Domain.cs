@@ -10,7 +10,7 @@ namespace KR.Main.Entities
     /// <summary>
     /// Class containing list of sentences.
     /// </summary>
-    class Domain
+    public class Domain
     {
         public readonly List<Initially> InitiallyClauses = new List<Initially>();
         public readonly List<Always> AlwaysClauses = new List<Always>();

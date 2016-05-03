@@ -31,5 +31,21 @@ namespace KR.Main.Entities.Statements
             Fluent = fluent;
             Condition = condition;
         }
+
+        public override string ToString()
+        {
+            string actorsList = "";
+            foreach (Actor a in Actors)
+            {
+                if (actorsList == "")
+                    actorsList = a.ToString();
+                else
+                    actorsList = actorsList + ", " + a.ToString();
+            }
+            if (Condition == null)
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") releases " + Fluent.ToString();
+            else
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") releases " + Fluent.ToString() + " if " + Condition.ToString();
+        }
     }
 }
