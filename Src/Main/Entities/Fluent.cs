@@ -6,7 +6,7 @@ namespace KR.Main.Entities
     /// <summary>
     /// Class representing fluent object.
     /// </summary>
-    public class Fluent : ICondition, IEquatable<Fluent>
+    public struct Fluent : ICondition, IEquatable<Fluent>
     {
         private string _name;
 
@@ -33,6 +33,10 @@ namespace KR.Main.Entities
             return this._name;
         }
 
-        
+        /*public override bool Equals(object other)
+        {
+            if (!(other is Fluent)) return false;
+            return ((Fluent)other)._name.Equals(_name);
+        }*/
     }
 }

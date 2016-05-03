@@ -101,7 +101,7 @@ namespace KR.Main.Builders
                     foreach (var startState in startStates)
                         foreach (var endState in _states.Where(s =>
                         {
-                            foreach (var f in _fluents.Where(f => f != clause.Fluent))
+                            foreach (var f in _fluents.Where(f => !f.Equals(clause.Fluent)))
                                 if (s.Values[f] != startState.Values[f])
                                     return false;
                             return true;
