@@ -64,7 +64,7 @@ namespace KR.Main.Builders
 
             //teraz trzeba zbudować graf - mamy już wszystko co jest potrzebne
 
-            return new World ();
+            return new World();
         }
 
         private void PrepareResAbResN()
@@ -181,20 +181,24 @@ namespace KR.Main.Builders
             public static ICollection<State> GenerateAll(ICollection<Fluent> fluents)
             {
                 BackTrack(fluents.Count);
-                return (ICollection<State>) _result.Select(s =>
-                {
-                    State state = new State();
-                    int i = 0;
-                    foreach (var f in fluents)
-                    {
-                        state.Values.Add(f, s[i]);
-                        i++;
-                    }
-                    return state;
-                });
+                return (ICollection<State>)_result.Select(s =>
+               {
+                   State state = new State();
+                   int i = 0;
+                   foreach (var f in fluents)
+                   {
+                       state.Values.Add(f, s[i]);
+                       i++;
+                   }
+                   return state;
+               });
             }
             private static void BackTrack(int n, int k = 0)
             {
+                if (_buf == null)
+                    _buf = new List<bool>();
+                if (_result == null)
+                    _result = new List<List<bool>>();
                 if (k == n) { _result.Add(_buf); return; }
                 _buf.Add(true);
                 BackTrack(n, k + 1);

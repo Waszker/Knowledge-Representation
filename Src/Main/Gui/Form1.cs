@@ -45,8 +45,8 @@ namespace KR.Main.Gui
                     WorldBuilder.Instance.SetFluents(((DefineEntitiesTab)tabs[0]).getFluents());
                     WorldBuilder.Instance.SetActions(((DefineEntitiesTab)tabs[0]).getActions());
                     WorldBuilder.Instance.SetActors(((DefineEntitiesTab)tabs[0]).getActors());
-                    //WorldBuilder.Instance.SetDomain(((DefineDomainTab)tabs[1]).getDomain());
-                    //WorldBuilder.Instance.Build();
+                    WorldBuilder.Instance.SetDomain(((DefineDomainTab)tabs[1]).getDomain());
+                    WorldBuilder.Instance.Build();
                     ((DefineScenarioTab)tabs[2]).setActionsAndActors(((DefineEntitiesTab)tabs[0]).getActions(), ((DefineEntitiesTab)tabs[0]).getActors());
                     ((DefineScenarioTab)tabs[2]).cleanScenario();
                     break;

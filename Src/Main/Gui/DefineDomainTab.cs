@@ -22,7 +22,7 @@ namespace KR.Main.Gui
         public DefineDomainTab()
         {
             InitializeComponent();
-
+            _domain = new Domain();
             currentClause = 0;
             clauseControls = new UserControl[10];
             clauseControls[0] = new InitiallyClauseControl();
@@ -90,70 +90,100 @@ namespace KR.Main.Gui
                     {
                         Initially stmt = ((InitiallyClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddInitiallyClause(stmt);
+                        }
                         break;
                     }
                 case 1:
                     {
                         Causes stmt = ((CausesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddCausesClause(stmt);
+                        }
                         break;
                     }
                 case 2:
                     {
                         TypicallyCauses stmt = ((TypicallyCausesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddTypicallyCausesClause(stmt);
+                        }
                         break;
                     }
                 case 3:
                     {
                         Releases stmt = ((ReleasesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddReleasesClause(stmt);
+                        }
                         break;
                     }
                 case 4:
                     {
                         Preserves stmt = ((PreservesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddPreservesClause(stmt);
+                        }
                         break;
                     }
                 case 5:
                     {
                         Always stmt = ((AlwaysClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddAlwaysClause(stmt);
+                        }
                         break;
                     }
                 case 6:
                     {
                         Impossible stmt = ((ImpossibleClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddImpossibleClause(stmt);
+                        }
                         break;
                     }
                 /*case 7:
                     {
                         After stmt = ((AfterClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddAfterClause(stmt);
+                        }
                         break;
                     }
                 case 8:
                     {
                         TypicallyAfter stmt = ((TypicallyAfterClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddTypicallyAfterClause(stmt);
+                        }
                         break;
                     }
                 case 9:
                     {
                         Observable stmt = ((ObservableClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
+                        {
                             clausesListBox.Items.Add(stmt);
+                            _domain.AddObservableClause(stmt);
+                        }
                         break;
                     }*/
             }
@@ -164,8 +194,46 @@ namespace KR.Main.Gui
             if (clausesListBox.SelectedIndex >= 0)
             {
                 Object selectedClause = clausesListBox.SelectedItem;
-
-                //_actions.Remove(selectedAction);
+                if(selectedClause is Initially)
+                {
+                    _domain.DeleteInitiallyClause((Initially)selectedClause);
+                }
+                else if (selectedClause is Causes)
+                {
+                    _domain.DeleteCausesClause((Causes)selectedClause);
+                }
+                if (selectedClause is TypicallyCauses)
+                {
+                    _domain.DeleteTypicallyCausesClause((TypicallyCauses)selectedClause);
+                }
+                else if (selectedClause is Releases)
+                {
+                    _domain.DeleteReleasesClause((Releases)selectedClause);
+                }
+                if (selectedClause is Preserves)
+                {
+                    _domain.DeletePreservesClause((Preserves)selectedClause);
+                }
+                else if (selectedClause is Always)
+                {
+                    _domain.DeleteAlwaysClause((Always)selectedClause);
+                }
+                if (selectedClause is Impossible)
+                {
+                    _domain.DeleteImpossibleClause((Impossible)selectedClause);
+                }
+                else if (selectedClause is After)
+                {
+                    _domain.DeleteAfterClause((After)selectedClause);
+                }
+                if (selectedClause is TypicallyAfter)
+                {
+                    _domain.DeleteTypicallyAfterClause((TypicallyAfter)selectedClause);
+                }
+                else if (selectedClause is Observable)
+                {
+                    _domain.DeleteObservableClause((Observable)selectedClause);
+                }
 
                 clausesListBox.Items.Remove(selectedClause);
             }

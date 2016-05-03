@@ -139,9 +139,9 @@
             this.deleteClauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteClauseButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.deleteClauseButton.ForeColor = System.Drawing.Color.White;
-            this.deleteClauseButton.Location = new System.Drawing.Point(357, 255);
+            this.deleteClauseButton.Location = new System.Drawing.Point(357, 518);
             this.deleteClauseButton.Name = "deleteClauseButton";
-            this.deleteClauseButton.Size = new System.Drawing.Size(170, 50);
+            this.deleteClauseButton.Size = new System.Drawing.Size(170, 40);
             this.deleteClauseButton.TabIndex = 6;
             this.deleteClauseButton.Text = "DELETE CLAUSE";
             this.deleteClauseButton.UseVisualStyleBackColor = false;
