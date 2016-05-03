@@ -37,10 +37,10 @@
             this.ExclusionCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.ifCheckBox = new System.Windows.Forms.CheckBox();
             this.effectFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.conditionFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
+            this.ifCheckBox = new System.Windows.Forms.CheckBox();
             this.CausesClausePanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -176,6 +176,17 @@
             this.label2.Text = "causes";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // effectFormulaControl
+            // 
+            this.effectFormulaControl.AutoSize = true;
+            this.effectFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.effectFormulaControl.Location = new System.Drawing.Point(105, 10);
+            this.effectFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.effectFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
+            this.effectFormulaControl.Name = "effectFormulaControl";
+            this.effectFormulaControl.Size = new System.Drawing.Size(124, 34);
+            this.effectFormulaControl.TabIndex = 2;
+            // 
             // tableLayoutPanel3
             // 
             this.tableLayoutPanel3.ColumnCount = 2;
@@ -192,6 +203,18 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(878, 58);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
+            // conditionFormulaControl
+            // 
+            this.conditionFormulaControl.AutoSize = true;
+            this.conditionFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.conditionFormulaControl.Enabled = false;
+            this.conditionFormulaControl.Location = new System.Drawing.Point(105, 10);
+            this.conditionFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.conditionFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
+            this.conditionFormulaControl.Name = "conditionFormulaControl";
+            this.conditionFormulaControl.Size = new System.Drawing.Size(124, 34);
+            this.conditionFormulaControl.TabIndex = 6;
+            // 
             // ifCheckBox
             // 
             this.ifCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
@@ -204,29 +227,6 @@
             this.ifCheckBox.Text = "if";
             this.ifCheckBox.UseVisualStyleBackColor = true;
             this.ifCheckBox.CheckedChanged += new System.EventHandler(this.ifCheckBox_CheckedChanged);
-            // 
-            // effectFormulaControl
-            // 
-            this.effectFormulaControl.AutoSize = true;
-            this.effectFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.effectFormulaControl.Location = new System.Drawing.Point(105, 10);
-            this.effectFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.effectFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
-            this.effectFormulaControl.Name = "effectFormulaControl";
-            this.effectFormulaControl.Size = new System.Drawing.Size(124, 34);
-            this.effectFormulaControl.TabIndex = 2;
-            // 
-            // conditionFormulaControl
-            // 
-            this.conditionFormulaControl.AutoSize = true;
-            this.conditionFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.conditionFormulaControl.Enabled = false;
-            this.conditionFormulaControl.Location = new System.Drawing.Point(105, 10);
-            this.conditionFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
-            this.conditionFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
-            this.conditionFormulaControl.Name = "conditionFormulaControl";
-            this.conditionFormulaControl.Size = new System.Drawing.Size(124, 34);
-            this.conditionFormulaControl.TabIndex = 6;
             // 
             // CausesClauseControl
             // 

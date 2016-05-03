@@ -45,6 +45,9 @@ namespace KR.Main.Gui
             ((CausesClauseControl)clauseControls[1]).setActions(actions);
             ((CausesClauseControl)clauseControls[1]).setActors(actors);
             ((CausesClauseControl)clauseControls[1]).setFluents(fluents);
+            ((TypicallyCausesClauseControl)clauseControls[2]).setActions(actions);
+            ((TypicallyCausesClauseControl)clauseControls[2]).setActors(actors);
+            ((TypicallyCausesClauseControl)clauseControls[2]).setFluents(fluents);
         }
 
         private void chooseClauseComboBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -181,6 +181,9 @@
     <EmbeddedResource Include="Gui\ClauseControls\FormulaControl.resx">
       <DependentUpon>FormulaControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\TypicallyCausesClauseControl.resx">
+      <DependentUpon>TypicallyCausesClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\DefineDomainTab.resx">
       <DependentUpon>DefineDomainTab.cs</DependentUpon>
     </EmbeddedResource>

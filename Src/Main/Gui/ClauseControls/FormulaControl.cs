@@ -62,20 +62,30 @@ namespace KR.Main.Gui.ClauseControls
 
         public ICondition getFormula()
         {
-            switch(this.formulaElementComboBox.SelectedIndex)
+            switch (this.formulaElementComboBox.SelectedIndex)
             {
                 case -1:
                     return null;
                 case 0:
-                    return new Conjuction(right.getFormula(), left.getFormula());
+                    if (right.getFormula() != null && left.getFormula() != null)
+                        return new Conjuction(right.getFormula(), left.getFormula());
+                    else return null;
                 case 1:
-                    return new Alternative(right.getFormula(), left.getFormula());
+                    if (right.getFormula() != null && left.getFormula() != null)
+                        return new Conjuction(right.getFormula(), left.getFormula());
+                    else return null;
                 case 2:
-                    return new Implication(right.getFormula(), left.getFormula());
+                    if (right.getFormula() != null && left.getFormula() != null)
+                        return new Conjuction(right.getFormula(), left.getFormula());
+                    else return null;
                 case 3:
-                    return new Equivalence(right.getFormula(), left.getFormula());
+                    if (right.getFormula() != null && left.getFormula() != null)
+                        return new Conjuction(right.getFormula(), left.getFormula());
+                    else return null;
                 case 4:
-                    return new Negation(right.getFormula());
+                    if (right.getFormula() != null)
+                        return new Negation(right.getFormula());
+                    else return null;
                 default:
                     return (Fluent)this.formulaElementComboBox.SelectedItem;
             }
