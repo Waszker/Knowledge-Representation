@@ -17,15 +17,23 @@ namespace KR.Main.Gui.ClauseControls
         FormulaControl left;
         FormulaControl right;
         List<Fluent> fluents;
+        int fiftyShadesOfGray;
         public FormulaControl()
         {
+            fiftyShadesOfGray = 80;
             InitializeComponent();
+            this.formulaElementComboBox.BackColor = Color.FromArgb(fiftyShadesOfGray, fiftyShadesOfGray, fiftyShadesOfGray);
             this.formulaElementComboBox.SelectedIndexChanged += new System.EventHandler(this.formulaElementComboBox_SelectedIndexChanged);
         }
 
-        public FormulaControl(List<Fluent> _fluents)
+        public FormulaControl(List<Fluent> _fluents, int _fiftyShadesOfGray)
         {
             InitializeComponent();
+            if (_fiftyShadesOfGray <= 255)
+                fiftyShadesOfGray = _fiftyShadesOfGray;
+            else fiftyShadesOfGray = 255;
+
+            this.formulaElementComboBox.BackColor = Color.FromArgb(fiftyShadesOfGray, fiftyShadesOfGray, fiftyShadesOfGray);
             fluents = _fluents;
             foreach (Fluent f in _fluents)
                 this.formulaElementComboBox.Items.Add(f);
@@ -49,12 +57,12 @@ namespace KR.Main.Gui.ClauseControls
             int option = this.formulaElementComboBox.SelectedIndex;
             if (option < 5)
             {
-                right = new FormulaControl(fluents);
+                right = new FormulaControl(fluents, fiftyShadesOfGray + 50);
                 this.Panel.Controls.Add(right, 2, 0);
 
                 if (option < 4)
                 {
-                    left = new FormulaControl(fluents);
+                    left = new FormulaControl(fluents, fiftyShadesOfGray + 50);
                     this.Panel.Controls.Add(left, 0, 0);
                 }
             }
