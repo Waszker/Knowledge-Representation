@@ -9,17 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KR.Main.Entities;
 using KR.Main.Entities.Statements;
-using KR.Main.Entities.Conditions;
 
-namespace KR.Main.Gui
+namespace KR.Main.Gui.ClauseControls
 {
-    public partial class CausesClauseControl : UserControl
+    public partial class PreservesClauseControl : UserControl
     {
-        public CausesClauseControl()
+        public PreservesClauseControl()
         {
             InitializeComponent();
         }
-
         public void setActions(List<Entities.Action> _actions)
         {
             foreach (Entities.Action a in _actions)
@@ -37,23 +35,19 @@ namespace KR.Main.Gui
 
         public void setFluents(List<Fluent> _fluents)
         {
-            this.effectFormulaControl.setFluents(_fluents);
+            foreach (Fluent f in _fluents)
+                fluentComboBox.Items.Add(f);
+            if (_fluents.Count > 0)
+                fluentComboBox.SelectedIndex = 0;
+
             this.conditionFormulaControl.setFluents(_fluents);
         }
 
-        public Causes getClause()
+        public Preserves getClause()
         {
-            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || effectFormulaControl.getFormula() == null)
+            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || fluentComboBox.SelectedIndex == -1 || conditionFormulaControl.getFormula() == null)
                 return null;
-            return new Causes((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), effectFormulaControl.getFormula(), ifCheckBox.Checked ? conditionFormulaControl.getFormula() : null);
-        }
-
-        private void ifCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ifCheckBox.Checked == true)
-                conditionFormulaControl.Enabled = true;
-            else
-                conditionFormulaControl.Enabled = false;
+            return new Preserves((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), (Fluent)fluentComboBox.SelectedItem, conditionFormulaControl.getFormula());
         }
     }
 }

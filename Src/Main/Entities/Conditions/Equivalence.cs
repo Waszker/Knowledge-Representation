@@ -14,5 +14,10 @@
         {
             return !(right.Check(state) ^ left.Check(state));
         }
+
+        public override string ToString()
+        {
+            return left.ToString() + " <-> " + right.ToString();
+        }
     }
 }

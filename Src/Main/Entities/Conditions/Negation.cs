@@ -11,9 +11,10 @@
         {
             return !condition.Check(state);
         }
+
         public override string ToString()
         {
-            return "~" + condition.ToString();
+            return " ¬ " + condition.ToString();
         }
     }
 }

@@ -33,6 +33,7 @@
             this.chooseClauseComboBox = new System.Windows.Forms.ComboBox();
             this.addClauseButton = new System.Windows.Forms.Button();
             this.clausesListBox = new System.Windows.Forms.ListBox();
+            this.deleteClauseButton = new System.Windows.Forms.Button();
             this.defineDomainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -44,15 +45,17 @@
             this.defineDomainPanel.Controls.Add(this.chooseClauseComboBox, 0, 1);
             this.defineDomainPanel.Controls.Add(this.addClauseButton, 0, 3);
             this.defineDomainPanel.Controls.Add(this.clausesListBox, 0, 4);
+            this.defineDomainPanel.Controls.Add(this.deleteClauseButton, 0, 5);
             this.defineDomainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defineDomainPanel.Location = new System.Drawing.Point(0, 0);
             this.defineDomainPanel.Name = "defineDomainPanel";
-            this.defineDomainPanel.RowCount = 5;
+            this.defineDomainPanel.RowCount = 6;
             this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 15F));
-            this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.defineDomainPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8F));
             this.defineDomainPanel.Size = new System.Drawing.Size(884, 561);
             this.defineDomainPanel.TabIndex = 0;
             // 
@@ -94,6 +97,7 @@
             this.chooseClauseComboBox.Name = "chooseClauseComboBox";
             this.chooseClauseComboBox.Size = new System.Drawing.Size(764, 30);
             this.chooseClauseComboBox.TabIndex = 2;
+            this.chooseClauseComboBox.SelectedIndexChanged += new System.EventHandler(this.chooseClauseComboBox_SelectedIndexChanged);
             // 
             // addClauseButton
             // 
@@ -105,22 +109,43 @@
             this.addClauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addClauseButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addClauseButton.ForeColor = System.Drawing.Color.White;
-            this.addClauseButton.Location = new System.Drawing.Point(357, 303);
+            this.addClauseButton.Location = new System.Drawing.Point(357, 294);
             this.addClauseButton.Name = "addClauseButton";
-            this.addClauseButton.Size = new System.Drawing.Size(170, 60);
+            this.addClauseButton.Size = new System.Drawing.Size(170, 50);
             this.addClauseButton.TabIndex = 3;
             this.addClauseButton.Text = "ADD CLAUSE";
             this.addClauseButton.UseVisualStyleBackColor = false;
+            this.addClauseButton.Click += new System.EventHandler(this.addClauseButton_Click);
             // 
             // clausesListBox
             // 
             this.clausesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clausesListBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.clausesListBox.FormattingEnabled = true;
             this.clausesListBox.HorizontalScrollbar = true;
-            this.clausesListBox.Location = new System.Drawing.Point(3, 378);
+            this.clausesListBox.ItemHeight = 20;
+            this.clausesListBox.Location = new System.Drawing.Point(3, 350);
             this.clausesListBox.Name = "clausesListBox";
-            this.clausesListBox.Size = new System.Drawing.Size(878, 180);
+            this.clausesListBox.Size = new System.Drawing.Size(878, 162);
             this.clausesListBox.TabIndex = 4;
+            // 
+            // deleteClauseButton
+            // 
+            this.deleteClauseButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.deleteClauseButton.BackColor = System.Drawing.Color.Silver;
+            this.deleteClauseButton.FlatAppearance.BorderSize = 0;
+            this.deleteClauseButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.deleteClauseButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.deleteClauseButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteClauseButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.deleteClauseButton.ForeColor = System.Drawing.Color.White;
+            this.deleteClauseButton.Location = new System.Drawing.Point(357, 518);
+            this.deleteClauseButton.Name = "deleteClauseButton";
+            this.deleteClauseButton.Size = new System.Drawing.Size(170, 40);
+            this.deleteClauseButton.TabIndex = 6;
+            this.deleteClauseButton.Text = "DELETE CLAUSE";
+            this.deleteClauseButton.UseVisualStyleBackColor = false;
+            this.deleteClauseButton.Click += new System.EventHandler(this.deleteClauseButton_Click);
             // 
             // DefineDomainTab
             // 
@@ -143,5 +168,6 @@
         private System.Windows.Forms.Button addClauseButton;
         private System.Windows.Forms.ListBox clausesListBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button deleteClauseButton;
     }
 }

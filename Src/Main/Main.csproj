@@ -71,11 +71,77 @@
     <Compile Include="Entities\Statements\TypicallyAfter.cs" />
     <Compile Include="Entities\Statements\TypicallyCauses.cs" />
     <Compile Include="Graph.cs" />
+    <Compile Include="Gui\ClauseControls\ActionActorsControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ActionActorsControl.Designer.cs">
+      <DependentUpon>ActionActorsControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\AfterClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\AfterClauseControl.Designer.cs">
+      <DependentUpon>AfterClauseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\AlwaysClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\AlwaysClauseControl.Designer.cs">
+      <DependentUpon>AlwaysClauseControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\ClauseControls\CausesClauseControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Gui\ClauseControls\CausesClauseControl.Designer.cs">
       <DependentUpon>CausesClauseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ExecutableQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ExecutableQueryControl.Designer.cs">
+      <DependentUpon>ExecutableQueryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\FormulaControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\FormulaControl.Designer.cs">
+      <DependentUpon>FormulaControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ImpossibleClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ImpossibleClauseControl.Designer.cs">
+      <DependentUpon>ImpossibleClauseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ObservableClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ObservableClauseControl.Designer.cs">
+      <DependentUpon>ObservableClauseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\PreservesClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\PreservesClauseControl.Designer.cs">
+      <DependentUpon>PreservesClauseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ReleasesClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\ReleasesClauseControl.Designer.cs">
+      <DependentUpon>ReleasesClauseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\TypicallyAfterClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\TypicallyAfterClauseControl.Designer.cs">
+      <DependentUpon>TypicallyAfterClauseControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\TypicallyCausesClauseControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\ClauseControls\TypicallyCausesClauseControl.Designer.cs">
+      <DependentUpon>TypicallyCausesClauseControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\DefineDomainTab.cs">
       <SubType>UserControl</SubType>
@@ -121,8 +187,35 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="World.cs" />
+    <EmbeddedResource Include="Gui\ClauseControls\ActionActorsControl.resx">
+      <DependentUpon>ActionActorsControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\AfterClauseControl.resx">
+      <DependentUpon>AfterClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\AlwaysClauseControl.resx">
+      <DependentUpon>AlwaysClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Gui\ClauseControls\CausesClauseControl.resx">
       <DependentUpon>CausesClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\ExecutableQueryControl.resx">
+      <DependentUpon>ExecutableQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\FormulaControl.resx">
+      <DependentUpon>FormulaControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\ImpossibleClauseControl.resx">
+      <DependentUpon>ImpossibleClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\PreservesClauseControl.resx">
+      <DependentUpon>PreservesClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\ReleasesClauseControl.resx">
+      <DependentUpon>ReleasesClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\ClauseControls\TypicallyCausesClauseControl.resx">
+      <DependentUpon>TypicallyCausesClauseControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\DefineDomainTab.resx">
       <DependentUpon>DefineDomainTab.cs</DependentUpon>
@@ -179,6 +272,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\arrowLeft1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Gui\QueriesControls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

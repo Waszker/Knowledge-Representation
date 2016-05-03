@@ -1,6 +1,6 @@
-﻿namespace KR.Main.Gui
+﻿namespace KR.Main.Gui.ClauseControls
 {
-    partial class InitiallyClauseControl
+    partial class AlwaysClauseControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -59,7 +59,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 162);
             this.label1.TabIndex = 0;
-            this.label1.Text = "initially";
+            this.label1.Text = "always";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // initialFormulaControl
@@ -73,12 +73,12 @@
             this.initialFormulaControl.Size = new System.Drawing.Size(124, 34);
             this.initialFormulaControl.TabIndex = 1;
             // 
-            // InitiallyClauseControl
+            // AlwaysClauseControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Panel);
-            this.Name = "InitiallyClauseControl";
+            this.Name = "AlwaysClauseControl";
             this.Size = new System.Drawing.Size(878, 162);
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();

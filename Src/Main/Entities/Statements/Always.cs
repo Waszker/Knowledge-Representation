@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KR.Main.Entities.Statements
 {
-    class Always
+    public class Always
     {
         public ICondition Condition { get; private set; }
 
@@ -18,6 +18,11 @@ namespace KR.Main.Entities.Statements
         public Always(ICondition condition)
         {
             Condition = condition;
+        }
+
+        public override string ToString()
+        {
+            return "always " + Condition.ToString();
         }
     }
 }

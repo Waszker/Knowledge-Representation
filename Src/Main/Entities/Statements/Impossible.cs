@@ -7,7 +7,7 @@ using KR.Main.Entities.Conditions;
 
 namespace KR.Main.Entities.Statements
 {
-    class Impossible
+    public class Impossible
     {
         public Action Action { get; private set; }
         public bool Exclusion { get; private set; }
@@ -27,6 +27,22 @@ namespace KR.Main.Entities.Statements
             Exclusion = exclusion;
             Actors = actors;
             Condition = condition;
+        }
+
+        public override string ToString()
+        {
+            string actorsList = "";
+            foreach (Actor a in Actors)
+            {
+                if (actorsList == "")
+                    actorsList = a.ToString();
+                else
+                    actorsList = actorsList + ", " + a.ToString();
+            }
+            if (Condition == null)
+                return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ")";
+            else
+                return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") if " + Condition.ToString();
         }
     }
 }

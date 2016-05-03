@@ -10,11 +10,11 @@ using System.Windows.Forms;
 using KR.Main.Entities;
 using KR.Main.Entities.Statements;
 
-namespace KR.Main.Gui
+namespace KR.Main.Gui.ClauseControls
 {
-    public partial class InitiallyClauseControl : UserControl
+    public partial class AlwaysClauseControl : UserControl
     {
-        public InitiallyClauseControl()
+        public AlwaysClauseControl()
         {
             InitializeComponent();
         }
@@ -24,11 +24,11 @@ namespace KR.Main.Gui
             this.initialFormulaControl.setFluents(_fluents);
         }
 
-        public Initially getClause()
+        public Always getClause()
         {
             if (initialFormulaControl.getFormula() == null)
                 return null;
-            return new Initially(initialFormulaControl.getFormula());
+            return new Always(initialFormulaControl.getFormula());
         }
     }
 }

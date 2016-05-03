@@ -14,5 +14,10 @@
         {
             return !from.Check(state) || to.Check(state);
         }
+
+        public override string ToString()
+        {
+            return from.ToString() + " -> " + to.ToString();
+        }
     }
 }

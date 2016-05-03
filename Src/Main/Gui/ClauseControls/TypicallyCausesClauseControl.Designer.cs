@@ -1,6 +1,6 @@
-﻿namespace KR.Main.Gui
+﻿namespace KR.Main.Gui.ClauseControls
 {
-    partial class CausesClauseControl
+    partial class TypicallyCausesClauseControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -173,7 +173,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 56);
             this.label2.TabIndex = 1;
-            this.label2.Text = "causes";
+            this.label2.Text = "typically causes";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // effectFormulaControl
@@ -228,12 +228,12 @@
             this.ifCheckBox.UseVisualStyleBackColor = true;
             this.ifCheckBox.CheckedChanged += new System.EventHandler(this.ifCheckBox_CheckedChanged);
             // 
-            // CausesClauseControl
+            // TypicallyCausesClauseControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.Panel);
-            this.Name = "CausesClauseControl";
+            this.Name = "TypicallyCausesClauseControl";
             this.Size = new System.Drawing.Size(878, 162);
             this.Panel.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

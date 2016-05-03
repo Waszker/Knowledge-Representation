@@ -7,15 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using KR.Main.Entities;
 using KR.Main.Entities.Statements;
-using KR.Main.Entities.Conditions;
+using KR.Main.Entities;
 
-namespace KR.Main.Gui
+namespace KR.Main.Gui.ClauseControls
 {
-    public partial class CausesClauseControl : UserControl
+    public partial class TypicallyCausesClauseControl : UserControl
     {
-        public CausesClauseControl()
+        public TypicallyCausesClauseControl()
         {
             InitializeComponent();
         }
@@ -41,11 +40,11 @@ namespace KR.Main.Gui
             this.conditionFormulaControl.setFluents(_fluents);
         }
 
-        public Causes getClause()
+        public TypicallyCauses getClause()
         {
             if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || effectFormulaControl.getFormula() == null)
                 return null;
-            return new Causes((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), effectFormulaControl.getFormula(), ifCheckBox.Checked ? conditionFormulaControl.getFormula() : null);
+            return new TypicallyCauses((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), effectFormulaControl.getFormula(), ifCheckBox.Checked ? conditionFormulaControl.getFormula() : null);
         }
 
         private void ifCheckBox_CheckedChanged(object sender, EventArgs e)

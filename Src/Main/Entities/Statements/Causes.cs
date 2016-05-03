@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KR.Main.Entities.Statements
 {
-    class Causes
+    public class Causes
     {
         public Action Action { get; private set; }
         public bool Exclusion { get; private set; }
@@ -30,6 +30,22 @@ namespace KR.Main.Entities.Statements
             Actors = actors;
             Effect = effect;
             Condition = condition;
+        }
+
+        public override string ToString()
+        {
+            string actorsList = "";
+            foreach(Actor a in Actors)
+            {
+                if (actorsList == "")
+                    actorsList = a.ToString();
+                else
+                    actorsList = actorsList + ", " + a.ToString();
+            }
+            if(Condition==null)
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") causes " + Effect.ToString();
+            else
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") causes " + Effect.ToString() + " if " + Condition.ToString();
         }
     }
 }
