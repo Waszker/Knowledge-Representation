@@ -7,7 +7,7 @@ using KR.Main.Entities.Conditions;
 
 namespace KR.Main.Entities.Statements
 {
-    class Releases
+    public class Releases
     {
         public Action Action { get; private set; }
         public bool Exclusion { get; private set; }

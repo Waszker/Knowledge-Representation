@@ -7,7 +7,7 @@ using KR.Main.Entities.Conditions;
 
 namespace KR.Main.Entities.Statements
 {
-    class TypicallyCauses
+    public class TypicallyCauses
     {
         public Action Action { get; private set; }
         public bool Exclusion { get; private set; }

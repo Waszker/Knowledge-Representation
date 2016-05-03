@@ -40,9 +40,12 @@ namespace KR.Main.Entities.Statements
                 if (actorsList == "")
                     actorsList = a.ToString();
                 else
-                    actorsList = actorsList = ", " + a.ToString();
+                    actorsList = actorsList + ", " + a.ToString();
             }
-            return "(" + Action.ToString()+ (Exclusion ? ",~ " : ", ") + actorsList + ") causes ";// + Effect.ToString() + " if " + Condition.ToString();
+            if(Condition==null)
+                return "(" + Action.ToString()+ (Exclusion ? ",~ " : ", ") + actorsList + ") causes " + Effect.ToString();
+            else
+                return "(" + Action.ToString() + (Exclusion ? ",~ " : ", ") + actorsList + ") causes " + Effect.ToString() + " if " + Condition.ToString();
         }
     }
 }

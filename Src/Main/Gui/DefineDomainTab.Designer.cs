@@ -117,8 +117,10 @@
             // clausesListBox
             // 
             this.clausesListBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clausesListBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.clausesListBox.FormattingEnabled = true;
             this.clausesListBox.HorizontalScrollbar = true;
+            this.clausesListBox.ItemHeight = 20;
             this.clausesListBox.Location = new System.Drawing.Point(3, 378);
             this.clausesListBox.Name = "clausesListBox";
             this.clausesListBox.Size = new System.Drawing.Size(878, 180);

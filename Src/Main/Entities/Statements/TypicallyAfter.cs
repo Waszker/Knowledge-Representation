@@ -7,7 +7,7 @@ using KR.Main.Entities.Conditions;
 
 namespace KR.Main.Entities.Statements
 {
-    class TypicallyAfter
+    public class TypicallyAfter
     {
         public ICondition Effect { get; private set; }
         public List<Tuple<Action, bool, List<Actor>>> Sequence { get; private set; }

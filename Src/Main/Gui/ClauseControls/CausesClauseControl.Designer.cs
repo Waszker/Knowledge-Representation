@@ -36,9 +36,11 @@
             this.ActorsCheckedListBox = new System.Windows.Forms.CheckedListBox();
             this.ExclusionCheckBox = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.ifCheckBox = new System.Windows.Forms.CheckBox();
+            this.effectFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
+            this.conditionFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
             this.CausesClausePanel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -151,6 +153,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88F));
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.effectFormulaControl, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 48);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
@@ -159,21 +162,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(878, 56);
             this.tableLayoutPanel1.TabIndex = 1;
-            // 
-            // tableLayoutPanel3
-            // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88F));
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 104);
-            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 1;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(878, 58);
-            this.tableLayoutPanel3.TabIndex = 2;
             // 
             // label2
             // 
@@ -188,18 +176,57 @@
             this.label2.Text = "causes";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label4
+            // tableLayoutPanel3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 58);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "if";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88F));
+            this.tableLayoutPanel3.Controls.Add(this.conditionFormulaControl, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.ifCheckBox, 0, 0);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 104);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 1;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(878, 58);
+            this.tableLayoutPanel3.TabIndex = 2;
+            // 
+            // ifCheckBox
+            // 
+            this.ifCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ifCheckBox.AutoSize = true;
+            this.ifCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ifCheckBox.Location = new System.Drawing.Point(65, 16);
+            this.ifCheckBox.Name = "ifCheckBox";
+            this.ifCheckBox.Size = new System.Drawing.Size(37, 25);
+            this.ifCheckBox.TabIndex = 5;
+            this.ifCheckBox.Text = "if";
+            this.ifCheckBox.UseVisualStyleBackColor = true;
+            this.ifCheckBox.CheckedChanged += new System.EventHandler(this.ifCheckBox_CheckedChanged);
+            // 
+            // effectFormulaControl
+            // 
+            this.effectFormulaControl.AutoSize = true;
+            this.effectFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.effectFormulaControl.Location = new System.Drawing.Point(105, 10);
+            this.effectFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.effectFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
+            this.effectFormulaControl.Name = "effectFormulaControl";
+            this.effectFormulaControl.Size = new System.Drawing.Size(124, 34);
+            this.effectFormulaControl.TabIndex = 2;
+            // 
+            // conditionFormulaControl
+            // 
+            this.conditionFormulaControl.AutoSize = true;
+            this.conditionFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.conditionFormulaControl.Enabled = false;
+            this.conditionFormulaControl.Location = new System.Drawing.Point(105, 10);
+            this.conditionFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
+            this.conditionFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
+            this.conditionFormulaControl.Name = "conditionFormulaControl";
+            this.conditionFormulaControl.Size = new System.Drawing.Size(124, 34);
+            this.conditionFormulaControl.TabIndex = 6;
             // 
             // CausesClauseControl
             // 
@@ -231,6 +258,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Label label4;
+        private ClauseControls.FormulaControl effectFormulaControl;
+        private System.Windows.Forms.CheckBox ifCheckBox;
+        private ClauseControls.FormulaControl conditionFormulaControl;
     }
 }

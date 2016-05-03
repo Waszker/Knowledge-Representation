@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KR.Main.Entities.Statements
 {
-    class Always
+    public class Always
     {
         public ICondition Condition { get; private set; }
 

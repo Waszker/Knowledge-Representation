@@ -5,7 +5,7 @@ namespace KR.Main.Entities.Statements
     /// <summary>
     /// Sentence class that represents initially clause.
     /// </summary>
-    class Initially
+    public class Initially
     {
         public ICondition Condition { get; private set; }
 
@@ -16,6 +16,11 @@ namespace KR.Main.Entities.Statements
         public Initially(ICondition condition)
         {
             Condition = condition;
+        }
+
+        public override string ToString()
+        {
+            return "initially " + Condition.ToString();               
         }
     }
 }

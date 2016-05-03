@@ -35,10 +35,25 @@ namespace KR.Main.Gui
             //TODO: ADD EPSILON
         }
 
+        public void setFluents(List<Fluent> _fluents)
+        {
+            this.effectFormulaControl.setFluents(_fluents);
+            this.conditionFormulaControl.setFluents(_fluents);
+        }
+
         public Causes getClause()
         {
-            return new Causes((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.SelectedItems.Cast<Actor>().ToList(), null, null);
-            //TODO: remove null
+            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || effectFormulaControl.getFormula() == null)
+                return null;
+            return new Causes((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), effectFormulaControl.getFormula(), ifCheckBox.Checked ? conditionFormulaControl.getFormula() : null);
+        }
+
+        private void ifCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ifCheckBox.Checked == true)
+                conditionFormulaControl.Enabled = true;
+            else
+                conditionFormulaControl.Enabled = false;
         }
     }
 }

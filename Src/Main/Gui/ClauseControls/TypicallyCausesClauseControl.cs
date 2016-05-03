@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using KR.Main.Entities.Statements;
+
+namespace KR.Main.Gui.ClauseControls
+{
+    public partial class TypicallyCausesClauseControl : UserControl
+    {
+        public TypicallyCausesClauseControl()
+        {
+            InitializeComponent();
+        }
+
+        public TypicallyCauses getClause()
+        {
+            return null;
+        }
+    }
+}

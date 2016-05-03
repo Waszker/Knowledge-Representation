@@ -30,6 +30,7 @@
         {
             this.InitiallyClausePanel = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
+            this.initialFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
             this.InitiallyClausePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -39,6 +40,7 @@
             this.InitiallyClausePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.InitiallyClausePanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.InitiallyClausePanel.Controls.Add(this.label1, 0, 0);
+            this.InitiallyClausePanel.Controls.Add(this.initialFormulaControl, 1, 0);
             this.InitiallyClausePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InitiallyClausePanel.Location = new System.Drawing.Point(0, 0);
             this.InitiallyClausePanel.Margin = new System.Windows.Forms.Padding(0);
@@ -52,13 +54,24 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 162);
             this.label1.TabIndex = 0;
             this.label1.Text = "initially";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // initialFormulaControl
+            // 
+            this.initialFormulaControl.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.initialFormulaControl.AutoSize = true;
+            this.initialFormulaControl.Location = new System.Drawing.Point(175, 64);
+            this.initialFormulaControl.Margin = new System.Windows.Forms.Padding(0);
+            this.initialFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
+            this.initialFormulaControl.Name = "initialFormulaControl";
+            this.initialFormulaControl.Size = new System.Drawing.Size(124, 34);
+            this.initialFormulaControl.TabIndex = 1;
             // 
             // InitiallyClauseControl
             // 
@@ -77,5 +90,6 @@
 
         private System.Windows.Forms.TableLayoutPanel InitiallyClausePanel;
         private System.Windows.Forms.Label label1;
+        private ClauseControls.FormulaControl initialFormulaControl;
     }
 }
