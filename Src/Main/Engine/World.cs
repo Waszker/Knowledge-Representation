@@ -13,8 +13,8 @@ namespace KR.Main.Engine
     {
         #region Singleton
 
-        private static readonly Lazy<World> instance = new Lazy<World>(() => new World());
-        public static World Instance => instance.Value;
+        private static readonly Lazy<World> _instance = new Lazy<World>(() => new World());
+        public static World Instance => _instance.Value;
 
         #endregion
 
@@ -27,10 +27,16 @@ namespace KR.Main.Engine
         private List<State> _states;
         private State _initialState;
 
+        private readonly Dictionary<int, ISet<State>> _resNCache;
+        private readonly Dictionary<int, ISet<State>> _resAbCache;
 
         #region Constructors and building methods
 
-        private World() {}
+        private World()
+        {
+            _resNCache = new Dictionary<int, ISet<State>>();
+            _resAbCache = new Dictionary<int, ISet<State>>();
+        }
 
         public void SetActions(List<Entities.Action> actions)
         {
@@ -283,24 +289,42 @@ namespace KR.Main.Engine
         #endregion
 
 
-
-
-
-        //TODO
-
-        public List<State> GetAllStates(ICondition condition)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public List<Edge> GetAllEdges(State fromState = null)
         {
+            //TODO
             throw new NotImplementedException();
         }
 
-        public ICollection<State> GetStates(bool abnormal, Action action, Actor actor, State state)
+        public List<State> GetStates(ICondition condition = null)
         {
-            throw new NotImplementedException();
+            if (condition == null)
+                return new List<State>(_states);
+            return new List<State>(_states.Where(condition.Check));
+        }
+
+        public ICollection<State> GetStates(bool abnormal, Action action, Actor actor, State from)
+        {
+            int keyHash = new {action, actor, from }.GetHashCode();
+
+            if (abnormal && _resAbCache.ContainsKey(keyHash))
+                return _resAbCache[keyHash];
+            if (!abnormal && _resNCache.ContainsKey(keyHash))
+                return _resNCache[keyHash];
+            
+            // Calculating Res sets for every method invocation is expensive. Not sure if there's better way tho.
+
+            var resZero = GetResZero(_states, action, actor, from);
+            var resMinus = GetResMinus(resZero, action, actor, from);
+            var resZeroPlus = GetResZeroPlus(resZero, action, actor, from);
+            var resN = GetResN(resZeroPlus, action, actor, from);
+            var resAb = GetResAb(resMinus, resN); // Calculating ResAb is cheap when ResN is given.
+
+            _resNCache.Add(keyHash, resN);
+            _resAbCache.Add(keyHash, resAb);
+
+            return abnormal ? resAb : resN;
         }
         
     }

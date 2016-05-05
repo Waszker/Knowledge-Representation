@@ -17,7 +17,7 @@ namespace KR.Main.Entities.Queries
         }
         public override bool Evaluate(World world)
         {
-            var states = world.GetAllStates(pi);
+            var states = world.GetStates(pi);
             var open=new HashSet<State>(states.SelectMany(state=>world.GetAllEdges(state).Select(edge=>edge.To)));
             var close = new HashSet<State>();
             while (open.Count > 0)

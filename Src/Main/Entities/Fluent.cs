@@ -8,7 +8,7 @@ namespace KR.Main.Entities
     /// </summary>
     public struct Fluent : ICondition, IEquatable<Fluent>
     {
-        private string _name;
+        private readonly string _name;
 
         /// <summary>
         /// Creates instance of an fluent object.
