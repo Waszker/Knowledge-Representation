@@ -1,8 +1,8 @@
-﻿using KR.Main.Builders;
-using KR.Main.Entities;
+﻿using KR.Main.Entities;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using KR.Main.Engine;
 
 namespace KR.Main.Gui
 {
@@ -42,11 +42,11 @@ namespace KR.Main.Gui
                     ((DefineDomainTab)tabs[1]).setEntities(fluentList, actionList, actorList);
                     break;
                 case 1: 
-                    WorldBuilder.Instance.SetFluents(((DefineEntitiesTab)tabs[0]).getFluents());
-                    WorldBuilder.Instance.SetActions(((DefineEntitiesTab)tabs[0]).getActions());
-                    WorldBuilder.Instance.SetActors(((DefineEntitiesTab)tabs[0]).getActors());
-                    WorldBuilder.Instance.SetDomain(((DefineDomainTab)tabs[1]).getDomain());
-                    WorldBuilder.Instance.Build();
+                    World.Instance.SetFluents(((DefineEntitiesTab)tabs[0]).getFluents());
+                    World.Instance.SetActions(((DefineEntitiesTab)tabs[0]).getActions());
+                    World.Instance.SetActors(((DefineEntitiesTab)tabs[0]).getActors());
+                    World.Instance.SetDomain(((DefineDomainTab)tabs[1]).getDomain());
+                    World.Instance.Build();
                     ((DefineScenarioTab)tabs[2]).setActionsAndActors(((DefineEntitiesTab)tabs[0]).getActions(), ((DefineEntitiesTab)tabs[0]).getActors());
                     ((DefineScenarioTab)tabs[2]).cleanScenario();
                     break;

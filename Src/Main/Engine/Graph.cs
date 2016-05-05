@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using KR.Main.Entities;
 using Action = KR.Main.Entities.Action;
 
-namespace KR.Main
+namespace KR.Main.Engine
 {
     sealed partial class World
     {
         /// <summary>
         /// Do budowy grafu potrzebuje przekazanych zbiorów ResAb i ResN. Proponuję na przykład taki interfejs, może być coś innego to tylko taki pomysł
         /// </summary>
-        interface IRes
+        public interface IRes
         {
             /// <summary>
             /// Returns collection of states - ResAb or ResN

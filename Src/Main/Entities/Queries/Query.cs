@@ -1,4 +1,6 @@
-﻿namespace KR.Main.Entities
+﻿using KR.Main.Engine;
+
+namespace KR.Main.Entities
 {
     abstract class Query
     {
