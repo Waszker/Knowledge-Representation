@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.AccessControl;
 using KR.Main.Entities;
 using KR.Main.Entities.Conditions;
-using KR.Main.Entities.Statements;
 using Action = KR.Main.Entities.Action;
 
 namespace KR.Main.Engine
 {
-    sealed partial class World : World.IRes
+    sealed partial class World
     {
         #region Singleton
 
@@ -17,7 +15,6 @@ namespace KR.Main.Engine
         public static World Instance => _instance.Value;
 
         #endregion
-
 
         private List<Fluent> _fluents;
         private List<Actor> _actors;
@@ -29,6 +26,8 @@ namespace KR.Main.Engine
 
         private readonly Dictionary<int, ISet<State>> _resNCache;
         private readonly Dictionary<int, ISet<State>> _resAbCache;
+
+        private Graph _graph;
 
         #region Constructors and building methods
 
@@ -65,6 +64,8 @@ namespace KR.Main.Engine
 
             _states = GenerateAllValidStates();
             _initialState = GetInitialState();
+
+            _graph = new Graph(_actions, _actors, _states);
             return true;
         }
 
@@ -291,20 +292,19 @@ namespace KR.Main.Engine
 
         
 
-        public List<Edge> GetAllEdges(State fromState = null)
+        public List<Edge> GetEdges(State from = null)
         {
-            //TODO
-            throw new NotImplementedException();
+            return _graph.GetEdges(from);
         }
 
-        public List<State> GetStates(ICondition condition = null)
+        public ISet<State> GetStates(ICondition condition = null)
         {
             if (condition == null)
-                return new List<State>(_states);
-            return new List<State>(_states.Where(condition.Check));
+                return new HashSet<State>(_states);
+            return new HashSet<State>(_states.Where(condition.Check));
         }
 
-        public ICollection<State> GetStates(bool abnormal, Action action, Actor actor, State from)
+        public ISet<State> GetStates(Action action, Actor actor, State from, bool abnormal)
         {
             int keyHash = new {action, actor, from }.GetHashCode();
 
