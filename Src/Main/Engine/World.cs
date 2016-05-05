@@ -138,9 +138,9 @@ namespace KR.Main.Engine
 
         #region Res and New sets
 
-        private List<State> GetResZero(List<State> validStates, Action action, Actor actor, State from)
+        private HashSet<State> GetResZero(List<State> validStates, Action action, Actor actor, State from)
         {
-            List<State> resZero = new List<State>(validStates);
+            HashSet<State> resZero = new HashSet<State>(validStates);
             bool clauseFound = false;
 
             foreach (var causesClause in _domain.CausesClauses)
@@ -155,12 +155,13 @@ namespace KR.Main.Engine
                     continue;
 
                 clauseFound = true;
-                resZero = resZero.FindAll(s => causesClause.Effect.Check(s));
+                
+                resZero.RemoveWhere(s => causesClause.Effect.Check(s));
             }
 
             // No clauses were found so the action has no effect.
             if (!clauseFound)
-                resZero = new List<State> { from };
+                resZero = new HashSet<State>() { from };
 
             foreach (var impossibleClause in _domain.ImpossibleClauses)
             {
@@ -173,15 +174,15 @@ namespace KR.Main.Engine
                 if (!impossibleClause.Condition.Check(from))
                     continue;
 
-                resZero.RemoveAll(s => impossibleClause.Condition.Check(s));
+                resZero.RemoveWhere(s => impossibleClause.Condition.Check(s));
             }
             
             return resZero;
         }
 
-        private List<State> GetResMinus(List<State> resZero, Action action, Actor actor, State from)
+        private HashSet<State> GetResMinus(HashSet<State> resZero, Action action, Actor actor, State from)
         {
-            List<State> resMinus = new List<State>();
+            HashSet<State> resMinus = new HashSet<State>();
 
             int minNewSize = int.MaxValue;
             foreach (var to in resZero)
@@ -203,9 +204,9 @@ namespace KR.Main.Engine
             return resMinus;
         }
 
-        private List<State> GetResZeroPlus(List<State> resZero, Action action, Actor actor, State from)
+        private HashSet<State> GetResZeroPlus(HashSet<State> resZero, Action action, Actor actor, State from)
         {
-            List<State> resZeroPlus = new List<State>(resZero);
+            HashSet<State> resZeroPlus = new HashSet<State>(resZero);
 
             foreach (var tCausesClause in _domain.TypicallyCausesClauses)
             {
@@ -218,7 +219,7 @@ namespace KR.Main.Engine
                 if (!tCausesClause.Condition.Check(from))
                     continue;
 
-                resZeroPlus = resZeroPlus.FindAll(s => tCausesClause.Effect.Check(s));
+                resZeroPlus.RemoveWhere(s => tCausesClause.Effect.Check(s));
             }
 
             return resZeroPlus;
