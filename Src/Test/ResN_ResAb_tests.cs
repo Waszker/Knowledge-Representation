@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using KR.Main.Engine;
 using KR.Main.Entities;
 using KR.Main.Entities.Conditions;
 using KR.Main.Entities.Statements;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Action = KR.Main.Entities.Action;
 
 namespace KR.Test
 {
@@ -96,6 +99,41 @@ namespace KR.Test
 
             Assert.AreEqual(8, allStates.Count);
             Assert.AreEqual(18, allEdges.Count);
+        }
+
+        [TestMethod]
+        public void WorldTestSimple()
+        {
+            World world = World.Instance;
+
+            var puffedUpFluent = new Fluent("Puffed up");
+            var inflateAction = new Action("Inflate");
+            var deflateAction = new Action("Deflate");
+            var blowfishActor = new Actor("Blowfish");
+
+            var domain = new Domain();
+            domain.AddInitiallyClause(new Initially(puffedUpFluent));
+            domain.AddCausesClause(new Causes(inflateAction, false, new List<Actor> { blowfishActor }, puffedUpFluent, new True()));
+            domain.AddCausesClause(new Causes(deflateAction, false, new List<Actor> { blowfishActor }, new Negation(puffedUpFluent), new True()));
+
+            world.SetFluents(new List<Fluent> { puffedUpFluent });
+            world.SetActions(new List<Action> { inflateAction, deflateAction });
+            world.SetActors(new List<Actor> { blowfishActor });
+            world.SetDomain(domain);
+
+            State puffedUpState = null;
+            State notPuffedUpState = null;
+            Assert.IsTrue(world.Build());
+            try
+            {
+                puffedUpState = world.GetStates(puffedUpFluent).Single();
+                notPuffedUpState = world.GetStates(new Negation(puffedUpFluent)).Single();
+            }
+            catch (InvalidOperationException e)
+            {
+                Assert.Fail(e.Message);
+            }
+
         }
     }
 }

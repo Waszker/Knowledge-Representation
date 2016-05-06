@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KR.Main.Entities.Conditions
 {
-    class True : ICondition
+    public class True : ICondition
     {
         public bool Check(State state)
         {

@@ -65,6 +65,9 @@ namespace KR.Main.Engine
             _states = GenerateAllValidStates();
             _initialState = GetInitialState();
 
+            _resNCache.Clear();
+            _resAbCache.Clear();
+
             _graph = new Graph(_actions, _actors, _states);
             return true;
         }
@@ -137,7 +140,7 @@ namespace KR.Main.Engine
                     else
                         throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
                 }
-                    
+
             }
             return initialState;
         }
@@ -162,13 +165,13 @@ namespace KR.Main.Engine
                     continue;
 
                 clauseFound = true;
-                
-                resZero.RemoveWhere(s => causesClause.Effect.Check(s));
+
+                resZero.RemoveWhere(s => !causesClause.Effect.Check(s));
             }
 
             // No clauses were found so the action has no effect.
             if (!clauseFound)
-                resZero = new HashSet<State>() { from };
+                resZero = new HashSet<State> { from };
 
             foreach (var impossibleClause in _domain.ImpossibleClauses)
             {
@@ -183,7 +186,7 @@ namespace KR.Main.Engine
 
                 resZero.RemoveWhere(s => impossibleClause.Condition.Check(s));
             }
-            
+
             return resZero;
         }
 
@@ -207,7 +210,7 @@ namespace KR.Main.Engine
                     resMinus.Add(to);
                 }
             }
-            
+
             return resMinus;
         }
 
@@ -226,7 +229,7 @@ namespace KR.Main.Engine
                 if (!tCausesClause.Condition.Check(from))
                     continue;
 
-                resZeroPlus.RemoveWhere(s => tCausesClause.Effect.Check(s));
+                resZeroPlus.RemoveWhere(s => !tCausesClause.Effect.Check(s));
             }
 
             return resZeroPlus;
@@ -290,7 +293,7 @@ namespace KR.Main.Engine
         #endregion
 
 
-        
+
 
         public List<Edge> GetEdges(State from = null)
         {
@@ -306,13 +309,13 @@ namespace KR.Main.Engine
 
         public ISet<State> GetStates(Action action, Actor actor, State from, bool abnormal)
         {
-            int keyHash = new {action, actor, from }.GetHashCode();
+            int keyHash = new { action, actor, from }.GetHashCode();
 
             if (abnormal && _resAbCache.ContainsKey(keyHash))
                 return _resAbCache[keyHash];
             if (!abnormal && _resNCache.ContainsKey(keyHash))
                 return _resNCache[keyHash];
-            
+
             // Calculating Res sets for every method invocation is expensive. Not sure if there's better way tho.
 
             var resZero = GetResZero(_states, action, actor, from);
@@ -326,6 +329,6 @@ namespace KR.Main.Engine
 
             return abnormal ? resAb : resN;
         }
-        
+
     }
 }
