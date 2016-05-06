@@ -43,7 +43,6 @@ namespace KR.Main.Gui
             foreach (UserControl c in clauseControls)
             {
                 c.Anchor = AnchorStyles.Right | AnchorStyles.Left;
-                c.BorderStyle = BorderStyle.FixedSingle;
             }
             this.AutoScroll = true;
 

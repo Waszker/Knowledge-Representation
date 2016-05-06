@@ -67,6 +67,8 @@
             // 
             // tableLayoutPanel2
             // 
+            this.tableLayoutPanel2.AutoScroll = true;
+            this.tableLayoutPanel2.AutoSize = true;
             this.tableLayoutPanel2.ColumnCount = 5;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
@@ -149,9 +151,11 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.effectFormulaControl, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -171,7 +175,7 @@
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 56);
+            this.label2.Size = new System.Drawing.Size(63, 56);
             this.label2.TabIndex = 1;
             this.label2.Text = "causes";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -180,7 +184,7 @@
             // 
             this.effectFormulaControl.AutoSize = true;
             this.effectFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.effectFormulaControl.Location = new System.Drawing.Point(105, 10);
+            this.effectFormulaControl.Location = new System.Drawing.Point(63, 10);
             this.effectFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.effectFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
             this.effectFormulaControl.Name = "effectFormulaControl";
@@ -189,9 +193,11 @@
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.AutoScroll = true;
+            this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.Controls.Add(this.conditionFormulaControl, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.ifCheckBox, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -208,7 +214,7 @@
             this.conditionFormulaControl.AutoSize = true;
             this.conditionFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.conditionFormulaControl.Enabled = false;
-            this.conditionFormulaControl.Location = new System.Drawing.Point(105, 10);
+            this.conditionFormulaControl.Location = new System.Drawing.Point(43, 10);
             this.conditionFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.conditionFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
             this.conditionFormulaControl.Name = "conditionFormulaControl";
@@ -220,7 +226,7 @@
             this.ifCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.ifCheckBox.AutoSize = true;
             this.ifCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ifCheckBox.Location = new System.Drawing.Point(65, 16);
+            this.ifCheckBox.Location = new System.Drawing.Point(3, 16);
             this.ifCheckBox.Name = "ifCheckBox";
             this.ifCheckBox.Size = new System.Drawing.Size(37, 25);
             this.ifCheckBox.TabIndex = 5;
@@ -236,6 +242,7 @@
             this.Name = "CausesClauseControl";
             this.Size = new System.Drawing.Size(878, 162);
             this.Panel.ResumeLayout(false);
+            this.Panel.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

@@ -144,9 +144,11 @@
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.AutoScroll = true;
+            this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.conditionFormulaControl, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -166,7 +168,7 @@
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 55);
+            this.label4.Size = new System.Drawing.Size(18, 55);
             this.label4.TabIndex = 7;
             this.label4.Text = "if";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -175,7 +177,7 @@
             // 
             this.conditionFormulaControl.AutoSize = true;
             this.conditionFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.conditionFormulaControl.Location = new System.Drawing.Point(122, 10);
+            this.conditionFormulaControl.Location = new System.Drawing.Point(18, 10);
             this.conditionFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.conditionFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
             this.conditionFormulaControl.Name = "conditionFormulaControl";
@@ -190,6 +192,7 @@
             this.Name = "ImpossibleClauseControl";
             this.Size = new System.Drawing.Size(878, 110);
             this.Panel.ResumeLayout(false);
+            this.Panel.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
