@@ -169,10 +169,11 @@ namespace KR.Main.Engine
                 resZero.RemoveWhere(s => !causesClause.Effect.Check(s));
             }
 
-            // No clauses were found so the action has no effect.
+            // No clauses were found so the action has no effect...
             if (!clauseFound)
                 resZero = new HashSet<State> { from };
 
+            // ... but we still need to check if it's executable.
             foreach (var impossibleClause in _domain.ImpossibleClauses)
             {
                 if (impossibleClause.Action != action)
@@ -185,6 +186,21 @@ namespace KR.Main.Engine
                     continue;
 
                 resZero.RemoveWhere(s => impossibleClause.Condition.Check(s));
+            }
+
+            foreach (var preservesClause in _domain.PreservesClauses)
+            {
+                if (preservesClause.Action != action)
+                    continue;
+                if (!preservesClause.Exclusion && !_actors.Contains(actor))
+                    continue;
+                if (preservesClause.Exclusion && !_actors.Except(preservesClause.Actors).Contains(actor))
+                    continue;
+                if (!preservesClause.Condition.Check(from))
+                    continue;
+
+                var fluent = preservesClause.Fluent;
+                resZero.RemoveWhere(s => s[fluent] != from[fluent]);
             }
 
             return resZero;
