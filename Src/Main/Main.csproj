@@ -55,6 +55,7 @@
     <Compile Include="Entities\Conditions\ICondition.cs" />
     <Compile Include="Entities\Conditions\Implication.cs" />
     <Compile Include="Entities\Conditions\Negation.cs" />
+    <Compile Include="Entities\Conditions\True.cs" />
     <Compile Include="Entities\Domain.cs" />
     <Compile Include="Entities\Queries\AccessibleAlwaysQuery.cs" />
     <Compile Include="Entities\Queries\Query.cs" />

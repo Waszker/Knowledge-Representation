@@ -1,6 +1,6 @@
 ﻿namespace KR.Main.Entities.Conditions
 {
-    class Alternative : ICondition
+    public class Alternative : ICondition
     {
         private ICondition left;
         private ICondition right;

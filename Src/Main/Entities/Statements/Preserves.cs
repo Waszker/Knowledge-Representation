@@ -25,6 +25,7 @@ namespace KR.Main.Entities.Statements
         /// <param name="condition">condition for sentence</param>
         public Preserves(Action action, bool exclusion, List<Actor> actors, Fluent fluent, ICondition condition)
         {
+            if (condition == null) condition = new True();
             Action = action;
             Exclusion = exclusion;
             Actors = actors;

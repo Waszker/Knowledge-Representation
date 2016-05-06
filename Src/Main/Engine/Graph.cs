@@ -28,6 +28,7 @@ namespace KR.Main.Engine
                                 {
                                     Actor = actor,
                                     Abnormal = true,
+                                    Action = action,
                                     From = state,
                                     To = resAbState,
                                 });
@@ -38,6 +39,7 @@ namespace KR.Main.Engine
                                 {
                                     Actor = actor,
                                     Abnormal = false,
+                                    Action = action,
                                     From = state,
                                     To = resNState,
                                 });

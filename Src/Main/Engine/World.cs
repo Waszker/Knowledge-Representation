@@ -7,7 +7,7 @@ using Action = KR.Main.Entities.Action;
 
 namespace KR.Main.Engine
 {
-    sealed partial class World
+    public sealed partial class World
     {
         #region Singleton
 

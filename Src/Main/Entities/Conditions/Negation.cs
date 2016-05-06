@@ -1,6 +1,6 @@
 ﻿namespace KR.Main.Entities.Conditions
 {
-    class Negation : ICondition
+    public class Negation : ICondition
     {
         private ICondition condition;
         public Negation(ICondition condition)

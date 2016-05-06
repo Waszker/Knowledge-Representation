@@ -1,6 +1,6 @@
 ﻿namespace KR.Main.Entities.Conditions
 {
-    class Conjuction : ICondition
+    public class Conjuction : ICondition
     {
         private ICondition left;
         private ICondition right;
