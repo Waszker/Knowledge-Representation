@@ -39,6 +39,9 @@
             // 
             // defineDomainPanel
             // 
+            this.defineDomainPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.defineDomainPanel.ColumnCount = 1;
             this.defineDomainPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.defineDomainPanel.Controls.Add(this.label1, 0, 0);
@@ -46,7 +49,7 @@
             this.defineDomainPanel.Controls.Add(this.addClauseButton, 0, 3);
             this.defineDomainPanel.Controls.Add(this.clausesListBox, 0, 4);
             this.defineDomainPanel.Controls.Add(this.deleteClauseButton, 0, 5);
-            this.defineDomainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.defineDomainPanel.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.defineDomainPanel.Location = new System.Drawing.Point(0, 0);
             this.defineDomainPanel.Name = "defineDomainPanel";
             this.defineDomainPanel.RowCount = 6;

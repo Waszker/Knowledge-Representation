@@ -36,9 +36,11 @@
             // 
             // Panel
             // 
+            this.Panel.AutoScroll = true;
+            this.Panel.AutoSize = true;
             this.Panel.ColumnCount = 2;
-            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.Panel.Controls.Add(this.label1, 0, 0);
             this.Panel.Controls.Add(this.initialFormulaControl, 1, 0);
             this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -57,7 +59,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 162);
+            this.label1.Size = new System.Drawing.Size(68, 162);
             this.label1.TabIndex = 0;
             this.label1.Text = "initially";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -66,7 +68,7 @@
             // 
             this.initialFormulaControl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.initialFormulaControl.AutoSize = true;
-            this.initialFormulaControl.Location = new System.Drawing.Point(175, 64);
+            this.initialFormulaControl.Location = new System.Drawing.Point(74, 64);
             this.initialFormulaControl.Margin = new System.Windows.Forms.Padding(0);
             this.initialFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
             this.initialFormulaControl.Name = "initialFormulaControl";
@@ -83,6 +85,7 @@
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
