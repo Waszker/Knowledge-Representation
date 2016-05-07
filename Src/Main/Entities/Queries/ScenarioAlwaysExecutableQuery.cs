@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KR.Main.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace KR.Main.Entities.Queries
 
         }
 
-        public override bool Evaluate()
+        public override bool Evaluate(World world)
         {
             // TODO: implement this
             throw new NotImplementedException();

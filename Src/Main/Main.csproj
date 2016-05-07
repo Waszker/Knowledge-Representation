@@ -61,6 +61,8 @@
     <Compile Include="Entities\Queries\AccessibleEverQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleTypicallyQuery.cs" />
     <Compile Include="Entities\Queries\Query.cs" />
+    <Compile Include="Entities\Queries\ScenarioAlwaysExecutableQuery.cs" />
+    <Compile Include="Entities\Queries\ScenarioExecutableQuery.cs" />
     <Compile Include="Entities\Scenario.cs" />
     <Compile Include="Entities\ScenarioStep.cs" />
     <Compile Include="Entities\Statements\After.cs" />
