@@ -125,6 +125,7 @@
             this.ClientSize = new System.Drawing.Size(884, 561);
             this.Controls.Add(this.mainLayoutPanel);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Knowledge Representation";
             this.mainLayoutPanel.ResumeLayout(false);
             this.previousButtonLayoutPanel.ResumeLayout(false);

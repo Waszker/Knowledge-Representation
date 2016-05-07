@@ -7,7 +7,7 @@ namespace KR.Main.Entities
     /// </summary>
     public class Action : IEquatable<Action>
     {
-        public string _name;
+        private readonly string _name;
 
         /// <summary>
         /// Creates instance of an action object.

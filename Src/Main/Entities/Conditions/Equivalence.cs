@@ -1,6 +1,6 @@
 ﻿namespace KR.Main.Entities.Conditions
 {
-    class Equivalence : ICondition
+    public class Equivalence : ICondition
     {
         private ICondition left;
         private ICondition right;

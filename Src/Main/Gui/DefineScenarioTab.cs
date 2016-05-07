@@ -40,9 +40,15 @@ namespace KR.Main.Gui
             scenarioStepsListBox.Items.Clear();
         }
 
-        public List<Tuple<Entities.Action, Actor>> getScenario()
+        public Scenario getScenario()
         {
-            return scenario;
+            Scenario _scenario = new Scenario();
+            foreach(Tuple<Entities.Action, Actor> step in scenario)
+            {
+                ScenarioStep s = new ScenarioStep(step.Item1, step.Item2);
+                _scenario.AddScenarioStep(s);
+            }
+            return _scenario;
         }
 
         private void addStep_Click(object sender, EventArgs e)

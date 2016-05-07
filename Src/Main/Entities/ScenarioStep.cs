@@ -7,22 +7,34 @@ using System.Threading.Tasks;
 namespace KR.Main.Entities
 {
     /// <summary>
-    /// Single step of scenario - action and set of actors (usually one specific actor or 'epsilon' - all actors).
+    /// Single step of scenario - action and antor 
     /// </summary>
-    abstract class ScenarioStep
+    public class ScenarioStep
     {
         /// <summary>
         /// Action executed in this step.
         /// </summary>
-        public Action Action
-        {
-            get; set;
-        }
+        public Action Action { get; private set; }
 
         /// <summary>
-        /// Actor(s) executing the action in this step.
+        /// Actor executing action in this step
         /// </summary>
-        /// <returns>Set of actors which execute the action</returns>
-        public abstract ICollection<Actor> GetActors();
+        public Actor Actor { get; private set; }
+
+        /// <summary>
+        /// Creates new scenario step
+        /// </summary>
+        /// <param name="_action">executed action</param>
+        /// <param name="_actor">actor executing action</param>
+        public ScenarioStep(Action _action, Actor _actor)
+        {
+            Action = _action;
+            Actor = _actor;
+        }
+
+        public override string ToString()
+        {
+            return "(" + this.Action + ", " + this.Actor + ")";
+        }
     }
 }

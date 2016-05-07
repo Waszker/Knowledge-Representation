@@ -1,8 +1,8 @@
-﻿using KR.Main.Builders;
-using KR.Main.Entities;
+﻿using KR.Main.Entities;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using KR.Main.Engine;
 
 namespace KR.Main.Gui
 {
@@ -32,26 +32,27 @@ namespace KR.Main.Gui
         }
 
         private void nextButton_Click(object sender, System.EventArgs e)
-        {          
-            switch(currentTab)
+        {
+            switch (currentTab)
             {
-                case 0: 
+                case 0:
                     List<Fluent> fluentList = ((DefineEntitiesTab)tabs[0]).getFluents();
                     List<Entities.Action> actionList = ((DefineEntitiesTab)tabs[0]).getActions();
                     List<Actor> actorList = ((DefineEntitiesTab)tabs[0]).getActors();
                     ((DefineDomainTab)tabs[1]).setEntities(fluentList, actionList, actorList);
+                    ((DefineScenarioTab)tabs[2]).setActionsAndActors(actionList, actorList);
+                    ((DefineQueriesTab)tabs[3]).setFluentsAndActors(fluentList, actorList);
+                    World.Instance.SetFluents(fluentList);
+                    World.Instance.SetActions(actionList);
+                    World.Instance.SetActors(actorList);
                     break;
-                case 1: 
-                    WorldBuilder.Instance.SetFluents(((DefineEntitiesTab)tabs[0]).getFluents());
-                    WorldBuilder.Instance.SetActions(((DefineEntitiesTab)tabs[0]).getActions());
-                    WorldBuilder.Instance.SetActors(((DefineEntitiesTab)tabs[0]).getActors());
-                    WorldBuilder.Instance.SetDomain(((DefineDomainTab)tabs[1]).getDomain());
-                    WorldBuilder.Instance.Build();
-                    ((DefineScenarioTab)tabs[2]).setActionsAndActors(((DefineEntitiesTab)tabs[0]).getActions(), ((DefineEntitiesTab)tabs[0]).getActors());
+                case 1:                    
+                    World.Instance.SetDomain(((DefineDomainTab)tabs[1]).getDomain());
+                    World.Instance.Build();
                     ((DefineScenarioTab)tabs[2]).cleanScenario();
                     break;
                 case 2:
-                    List<Tuple<Entities.Action, Actor>> scenario = ((DefineScenarioTab)tabs[2]).getScenario();
+                    ((DefineQueriesTab)tabs[3]).setScenario(((DefineScenarioTab)tabs[2]).getScenario());
                     ((DefineScenarioTab)tabs[2]).cleanScenario();
                     nextButton.Enabled = false;
                     nextButton.Visible = false;

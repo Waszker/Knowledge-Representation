@@ -149,9 +149,11 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.AutoSize = true;
             this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.fluentComboBox, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -167,7 +169,7 @@
             // 
             this.fluentComboBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.fluentComboBox.FormattingEnabled = true;
-            this.fluentComboBox.Location = new System.Drawing.Point(108, 7);
+            this.fluentComboBox.Location = new System.Drawing.Point(74, 7);
             this.fluentComboBox.Margin = new System.Windows.Forms.Padding(3, 7, 3, 3);
             this.fluentComboBox.Name = "fluentComboBox";
             this.fluentComboBox.Size = new System.Drawing.Size(257, 32);
@@ -181,16 +183,18 @@
             this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 56);
+            this.label2.Size = new System.Drawing.Size(71, 56);
             this.label2.TabIndex = 1;
             this.label2.Text = "releases";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // tableLayoutPanel3
             // 
+            this.tableLayoutPanel3.AutoScroll = true;
+            this.tableLayoutPanel3.AutoSize = true;
             this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 88F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.conditionFormulaControl, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -210,7 +214,7 @@
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Margin = new System.Windows.Forms.Padding(0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 58);
+            this.label4.Size = new System.Drawing.Size(18, 58);
             this.label4.TabIndex = 7;
             this.label4.Text = "if";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -219,7 +223,7 @@
             // 
             this.conditionFormulaControl.AutoSize = true;
             this.conditionFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.conditionFormulaControl.Location = new System.Drawing.Point(105, 10);
+            this.conditionFormulaControl.Location = new System.Drawing.Point(18, 10);
             this.conditionFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.conditionFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
             this.conditionFormulaControl.Name = "conditionFormulaControl";
@@ -234,6 +238,7 @@
             this.Name = "ReleasesClauseControl";
             this.Size = new System.Drawing.Size(878, 162);
             this.Panel.ResumeLayout(false);
+            this.Panel.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);

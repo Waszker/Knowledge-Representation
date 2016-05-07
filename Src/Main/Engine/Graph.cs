@@ -1,36 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using KR.Main.Entities;
 using Action = KR.Main.Entities.Action;
 
-namespace KR.Main
+namespace KR.Main.Engine
 {
     sealed partial class World
     {
-        /// <summary>
-        /// Do budowy grafu potrzebuje przekazanych zbiorów ResAb i ResN. Proponuję na przykład taki interfejs, może być coś innego to tylko taki pomysł
-        /// </summary>
-        interface IRes
-        {
-            /// <summary>
-            /// Returns collection of states - ResAb or ResN
-            /// </summary>
-            /// <param name="abnormal">ResAb or ResN</param>
-            /// <param name="action"></param>
-            /// <param name="actor"></param>
-            /// <param name="state"></param>
-            /// <returns>Collection of states</returns>
-            ICollection<State> GetStates(bool abnormal, Action action, Actor actor, State state);
-        }
-
         private class Graph
         {
-            private List<Edge> _edges = new List<Edge>(); 
+            private List<Edge> _edges = new List<Edge>();
 
-            public Graph(IRes res, ICollection<Action> actions, ICollection<Actor> actors, ICollection<State> states)
+            public Graph(List<Action> actions, List<Actor> actors, List<State> states)
             {
                 foreach (var state in states)
                 {
@@ -38,24 +20,26 @@ namespace KR.Main
                     {
                         foreach (var actor in actors)
                         {
-                            var resAb = res.GetStates(true, action, actor, state);
-                            var resN = res.GetStates(false, action, actor, state);
+                            var resAb = Instance.GetStates(action, actor, state, true);
+                            var resN = Instance.GetStates(action, actor, state, false);
                             foreach (var resAbState in resAb)
                             {
                                 _edges.Add(new Edge()
                                 {
                                     Actor = actor,
                                     Abnormal = true,
+                                    Action = action,
                                     From = state,
                                     To = resAbState,
                                 });
                             }
-                            foreach (var resNState in resAb)
+                            foreach (var resNState in resN)
                             {
                                 _edges.Add(new Edge()
                                 {
                                     Actor = actor,
                                     Abnormal = false,
+                                    Action = action,
                                     From = state,
                                     To = resNState,
                                 });
@@ -66,10 +50,11 @@ namespace KR.Main
             }
 
 
-            public List<Edge> GetAllEdges(State fromState = null)
+            public List<Edge> GetEdges(State from = null)
             {
-                if (fromState == null) return _edges;
-                return _edges.Where(t => t.From == fromState).ToList();
+                if (from == null)
+                    return _edges;
+                return _edges.Where(t => t.From == from).ToList();
             }
         }
     }

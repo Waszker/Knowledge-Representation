@@ -75,11 +75,11 @@
             // 
             this.AlwaysRadioButton.AutoSize = true;
             this.AlwaysRadioButton.Checked = true;
-            this.AlwaysRadioButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AlwaysRadioButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.AlwaysRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
             this.AlwaysRadioButton.Location = new System.Drawing.Point(3, 3);
             this.AlwaysRadioButton.Name = "AlwaysRadioButton";
-            this.AlwaysRadioButton.Size = new System.Drawing.Size(112, 34);
+            this.AlwaysRadioButton.Size = new System.Drawing.Size(98, 28);
             this.AlwaysRadioButton.TabIndex = 0;
             this.AlwaysRadioButton.TabStop = true;
             this.AlwaysRadioButton.Text = "always";
@@ -88,10 +88,10 @@
             // EverRadioButton
             // 
             this.EverRadioButton.AutoSize = true;
-            this.EverRadioButton.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.EverRadioButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.EverRadioButton.Location = new System.Drawing.Point(3, 50);
             this.EverRadioButton.Name = "EverRadioButton";
-            this.EverRadioButton.Size = new System.Drawing.Size(85, 34);
+            this.EverRadioButton.Size = new System.Drawing.Size(75, 28);
             this.EverRadioButton.TabIndex = 1;
             this.EverRadioButton.TabStop = true;
             this.EverRadioButton.Text = "ever";
@@ -111,10 +111,13 @@
             // 
             // ScenarioTextBox
             // 
+            this.ScenarioTextBox.BackColor = System.Drawing.Color.White;
             this.ScenarioTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ScenarioTextBox.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.ScenarioTextBox.Location = new System.Drawing.Point(281, 3);
             this.ScenarioTextBox.Multiline = true;
             this.ScenarioTextBox.Name = "ScenarioTextBox";
+            this.ScenarioTextBox.ReadOnly = true;
             this.ScenarioTextBox.Size = new System.Drawing.Size(273, 88);
             this.ScenarioTextBox.TabIndex = 2;
             // 

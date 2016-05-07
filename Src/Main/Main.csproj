@@ -47,14 +47,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Builders\IWorldBuilder.cs" />
-    <Compile Include="Builders\WorldBuilder.cs" />
+    <Compile Include="Engine\Graph.cs" />
+    <Compile Include="Engine\World.cs" />
     <Compile Include="Entities\Conditions\Alternative.cs" />
     <Compile Include="Entities\Conditions\Conjunction.cs" />
     <Compile Include="Entities\Conditions\Equivalence.cs" />
     <Compile Include="Entities\Conditions\ICondition.cs" />
     <Compile Include="Entities\Conditions\Implication.cs" />
     <Compile Include="Entities\Conditions\Negation.cs" />
+    <Compile Include="Entities\Conditions\True.cs" />
     <Compile Include="Entities\Domain.cs" />
     <Compile Include="Entities\Queries\AccessibleAlwaysQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleEverQuery.cs" />
@@ -71,7 +72,6 @@
     <Compile Include="Entities\Statements\Releases.cs" />
     <Compile Include="Entities\Statements\TypicallyAfter.cs" />
     <Compile Include="Entities\Statements\TypicallyCauses.cs" />
-    <Compile Include="Graph.cs" />
     <Compile Include="Gui\ClauseControls\ActionActorsControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,10 +96,22 @@
     <Compile Include="Gui\ClauseControls\CausesClauseControl.Designer.cs">
       <DependentUpon>CausesClauseControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\ClauseControls\ExecutableQueryControl.cs">
+    <Compile Include="Gui\QueriesControls\AccessibleQueryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Gui\ClauseControls\ExecutableQueryControl.Designer.cs">
+    <Compile Include="Gui\QueriesControls\AccessibleQueryControl.Designer.cs">
+      <DependentUpon>AccessibleQueryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\AccessibleWhenQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\AccessibleWhenQueryControl.Designer.cs">
+      <DependentUpon>AccessibleWhenQueryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\ExecutableQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\ExecutableQueryControl.Designer.cs">
       <DependentUpon>ExecutableQueryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\ClauseControls\FormulaControl.cs">
@@ -185,9 +197,14 @@
     <Compile Include="Gui\ClauseControls\InitiallyClauseControl.Designer.cs">
       <DependentUpon>InitiallyClauseControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\QueriesControls\PartakesQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\PartakesQueryControl.Designer.cs">
+      <DependentUpon>PartakesQueryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="World.cs" />
     <EmbeddedResource Include="Gui\ClauseControls\ActionActorsControl.resx">
       <DependentUpon>ActionActorsControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,7 +217,13 @@
     <EmbeddedResource Include="Gui\ClauseControls\CausesClauseControl.resx">
       <DependentUpon>CausesClauseControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Gui\ClauseControls\ExecutableQueryControl.resx">
+    <EmbeddedResource Include="Gui\QueriesControls\AccessibleQueryControl.resx">
+      <DependentUpon>AccessibleQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\QueriesControls\AccessibleWhenQueryControl.resx">
+      <DependentUpon>AccessibleWhenQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\QueriesControls\ExecutableQueryControl.resx">
       <DependentUpon>ExecutableQueryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\ClauseControls\FormulaControl.resx">
@@ -235,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\ClauseControls\InitiallyClauseControl.resx">
       <DependentUpon>InitiallyClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\QueriesControls\PartakesQueryControl.resx">
+      <DependentUpon>PartakesQueryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -274,9 +300,7 @@
   <ItemGroup>
     <None Include="Resources\arrowLeft1.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Gui\QueriesControls\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

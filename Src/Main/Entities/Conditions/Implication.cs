@@ -1,6 +1,6 @@
 ﻿namespace KR.Main.Entities.Conditions
 {
-    class Implication : ICondition
+    public class Implication : ICondition
     {
         private ICondition from;
         private ICondition to;

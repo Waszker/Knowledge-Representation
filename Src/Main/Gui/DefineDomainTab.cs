@@ -19,22 +19,33 @@ namespace KR.Main.Gui
         int currentClause;
         Domain _domain;
 
+        /// <summary>
+        /// Initializes domain tab with dynamically changing domain entries.
+        /// User can create his own clauses regardless of their size.
+        /// </summary>
         public DefineDomainTab()
         {
             InitializeComponent();
             _domain = new Domain();
             currentClause = 0;
-            clauseControls = new UserControl[10];
-            clauseControls[0] = new InitiallyClauseControl();
-            clauseControls[1] = new CausesClauseControl();
-            clauseControls[2] = new TypicallyCausesClauseControl();
-            clauseControls[3] = new ReleasesClauseControl();
-            clauseControls[4] = new PreservesClauseControl();
-            clauseControls[5] = new AlwaysClauseControl();
-            clauseControls[6] = new ImpossibleClauseControl();
-            clauseControls[7] = new AfterClauseControl();
-            clauseControls[8] = new TypicallyAfterClauseControl();
-            clauseControls[9] = new ObservableClauseControl();
+            clauseControls = new UserControl[] {
+                new InitiallyClauseControl(),
+                new CausesClauseControl(),
+                new TypicallyCausesClauseControl(),
+                new ReleasesClauseControl(),
+                new PreservesClauseControl(),
+                new AlwaysClauseControl(),
+                new ImpossibleClauseControl(),
+                new AfterClauseControl(),
+                new TypicallyAfterClauseControl(),
+                new ObservableClauseControl() };
+
+            foreach (UserControl c in clauseControls)
+            {
+                c.Anchor = AnchorStyles.Right | AnchorStyles.Left;
+            }
+            this.AutoScroll = true;
+
             this.defineDomainPanel.Controls.Add(clauseControls[0], 0, 2);
 
             chooseClauseComboBox.SelectedIndex = 0;

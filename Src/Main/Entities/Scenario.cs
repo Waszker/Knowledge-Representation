@@ -9,11 +9,33 @@ namespace KR.Main.Entities
     /// <summary>
     /// Represents scenario - actions and actors in given order.
     /// </summary>
-    class Scenario
+    public class Scenario
     {
         /// <summary>
         /// Ordered list of scenario steps.
         /// </summary>
-        public IList<ScenarioStep> Steps { get; set; }
+        public readonly List<ScenarioStep> Steps = new List<ScenarioStep>();
+
+        /// <summary>
+        /// Adds new step to scenario
+        /// </summary>
+        /// <param name="step">added step</param>
+        public void AddScenarioStep(ScenarioStep step)
+        {
+            Steps.Add(step);
+        }
+
+        public override string ToString()
+        {
+            string s = "";
+            foreach (ScenarioStep ss in Steps)
+            {
+                if (s == "")
+                    s = ss.ToString();
+                else
+                    s = s + ", " + ss.ToString();
+            }
+            return s;
+        }
     }
 }
