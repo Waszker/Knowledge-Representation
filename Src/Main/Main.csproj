@@ -95,6 +95,18 @@
     <Compile Include="Gui\ClauseControls\CausesClauseControl.Designer.cs">
       <DependentUpon>CausesClauseControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\QueriesControls\AccessibleQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\AccessibleQueryControl.Designer.cs">
+      <DependentUpon>AccessibleQueryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\AccessibleWhenQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\AccessibleWhenQueryControl.Designer.cs">
+      <DependentUpon>AccessibleWhenQueryControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gui\QueriesControls\ExecutableQueryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -203,6 +215,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\ClauseControls\CausesClauseControl.resx">
       <DependentUpon>CausesClauseControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\QueriesControls\AccessibleQueryControl.resx">
+      <DependentUpon>AccessibleQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\QueriesControls\AccessibleWhenQueryControl.resx">
+      <DependentUpon>AccessibleWhenQueryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\QueriesControls\ExecutableQueryControl.resx">
       <DependentUpon>ExecutableQueryControl.cs</DependentUpon>

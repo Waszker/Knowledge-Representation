@@ -73,6 +73,7 @@
             this.checkButton.TabIndex = 8;
             this.checkButton.Text = "CHECK";
             this.checkButton.UseVisualStyleBackColor = false;
+            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
             // 
             // chooseQueryComboBox
             // 
