@@ -35,7 +35,7 @@ namespace KR.Main.Entities.Queries
                 if (gamma.Check(state2)) return true;
                 open.Remove(state2);
                 close.Add(state2);
-                foreach (var state3 in world.GetEdges(state2).Select(edge => edge.To))
+                foreach (var state3 in world.GetEdges(state2).Select(edge => edge.To).Distinct())
                 {
                     if (!close.Contains(state3)) open.Add(state3);
                 }

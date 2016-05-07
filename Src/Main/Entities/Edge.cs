@@ -11,5 +11,9 @@
         public Action Action { get; set; }
 
         public bool Abnormal { get; set; }
+        public override string ToString()
+        {
+            return From + "->" + To;
+        }
     }
 }
