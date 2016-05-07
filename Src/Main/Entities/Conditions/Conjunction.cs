@@ -1,11 +1,11 @@
 ﻿namespace KR.Main.Entities.Conditions
 {
-    class Conjuction : ICondition
+    public class Conjunction : ICondition
     {
         private ICondition left;
         private ICondition right;
 
-        public Conjuction(ICondition right, ICondition left)
+        public Conjunction(ICondition right, ICondition left)
         {
             this.right = right;
             this.left = left;

@@ -1,6 +1,6 @@
 ﻿namespace KR.Main.Entities.Conditions
 {
-    class Negation : ICondition
+    public class Negation : ICondition
     {
         private ICondition condition;
         public Negation(ICondition condition)
@@ -14,7 +14,9 @@
 
         public override string ToString()
         {
-            return " ¬ " + condition.ToString();
+            if(condition is Fluent)
+                return " ¬ " + condition.ToString();
+            return " ¬ (" + condition.ToString()+")";
         }
     }
 }

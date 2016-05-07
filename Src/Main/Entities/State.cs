@@ -16,5 +16,9 @@ namespace KR.Main.Entities
         {
             return string.Join(" ,", Values.Where(v => v.Value).Select(v => v.Key.ToString()));
         }
+        public override bool Equals(object obj)
+        {
+            return ToString().Equals(obj.ToString());
+        }
     }
 }
