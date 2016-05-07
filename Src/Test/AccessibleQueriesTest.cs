@@ -33,7 +33,7 @@ namespace KR.Test
             var domain = new Domain();
             domain.AddCausesClause(new Causes(code, false, new List<Actor>() { Fred }, new Negation(cc), null));
             domain.AddInitiallyClause(new Initially(new Conjunction(cc, cm)));
-            domain.AddImpossibleClause(new Impossible(code, true, null, new Negation(cm)));
+            domain.AddImpossibleClause(new Impossible(code, false, new List<Actor>() { Fred }, new Negation(cm)));
             world.SetDomain(domain);
             world.Build();
             return world;
