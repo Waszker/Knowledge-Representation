@@ -153,6 +153,21 @@ namespace KR.Main.Engine
             HashSet<State> resZero = new HashSet<State>(validStates);
             bool clauseFound = false;
 
+            foreach (var impossibleClause in _domain.ImpossibleClauses)
+            {
+                if (impossibleClause.Action != action)
+                    continue;
+                if (!impossibleClause.Exclusion && !_actors.Contains(actor))
+                    continue;
+                if (impossibleClause.Exclusion && !_actors.Except(impossibleClause.Actors).Contains(actor))
+                    continue;
+                if (!impossibleClause.Condition.Check(from))
+                    continue;
+
+                resZero.Clear();
+                return resZero;
+            }
+
             foreach (var causesClause in _domain.CausesClauses)
             {
                 if (causesClause.Action != action)
@@ -169,24 +184,9 @@ namespace KR.Main.Engine
                 resZero.RemoveWhere(s => !causesClause.Effect.Check(s));
             }
 
-            // No clauses were found so the action has no effect...
+            // No clauses were found so the action has no effect.
             if (!clauseFound)
                 resZero = new HashSet<State> { from };
-
-            // ... but we still need to check if it's executable.
-            foreach (var impossibleClause in _domain.ImpossibleClauses)
-            {
-                if (impossibleClause.Action != action)
-                    continue;
-                if (!impossibleClause.Exclusion && !_actors.Contains(actor))
-                    continue;
-                if (impossibleClause.Exclusion && !_actors.Except(impossibleClause.Actors).Contains(actor))
-                    continue;
-                if (!impossibleClause.Condition.Check(from))
-                    continue;
-
-                resZero.RemoveWhere(s => impossibleClause.Condition.Check(s));
-            }
 
             foreach (var preservesClause in _domain.PreservesClauses)
             {
