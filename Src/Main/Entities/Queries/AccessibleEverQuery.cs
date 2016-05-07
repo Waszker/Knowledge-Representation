@@ -1,4 +1,5 @@
-﻿using KR.Main.Entities.Conditions;
+﻿using KR.Main.Engine;
+using KR.Main.Entities.Conditions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +20,14 @@ namespace KR.Main.Entities.Queries
         }
         public override bool Evaluate(World world)
         {
-            var states = world.GetAllStates(pi);
+            var states = world.GetStates(pi);
             return states.All(s => Accessible(world, s));
            
         }
 
         private bool Accessible(World world, State state)
         {
-            var open = new HashSet<State>(world.GetAllEdges(state).Select(edge => edge.To));
+            var open = new HashSet<State>(world.GetEdges(state).Select(edge => edge.To));
             var close = new HashSet<State>();
             while (open.Count > 0)
             {
@@ -34,7 +35,7 @@ namespace KR.Main.Entities.Queries
                 if (gamma.Check(state2)) return true;
                 open.Remove(state2);
                 close.Add(state2);
-                foreach (var state3 in world.GetAllEdges(state2).Select(edge => edge.To))
+                foreach (var state3 in world.GetEdges(state2).Select(edge => edge.To))
                 {
                     if (!close.Contains(state3)) open.Add(state3);
                 }

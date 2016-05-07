@@ -30,7 +30,7 @@ namespace KR.Test
 
             var domain = new Domain();
 
-            var initially = new Initially(new Conjuction(cakeExistsFluent, new Negation(hatterMadFluent)));
+            var initially = new Initially(new Conjunction(cakeExistsFluent, new Negation(hatterMadFluent)));
             domain.AddInitiallyClause(initially);
 
             var eatTypicallyCauses = new TypicallyCauses(eatAction, false, new List<Actor>() { hatterActor }, new Negation(hatterMadFluent), hatterMadFluent);
@@ -71,7 +71,7 @@ namespace KR.Test
 
             var domain = new Domain();
 
-            var initially = new Initially(new Conjuction(new Negation(hatterMadFluent), new Conjuction(cakeExistsFluent, elixirExistsFluent)));
+            var initially = new Initially(new Conjunction(new Negation(hatterMadFluent), new Conjunction(cakeExistsFluent, elixirExistsFluent)));
             domain.AddInitiallyClause(initially);
 
             var drinkCauses = new Causes(drinkAction, false, new List<Actor>() {hatterActor}, hatterMadFluent, elixirExistsFluent);
