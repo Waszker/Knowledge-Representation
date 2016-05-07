@@ -2,7 +2,7 @@
 
 namespace KR.Main.Entities
 {
-    abstract class Query
+    public abstract class Query
     {
         public abstract bool Evaluate(World world);
     }

@@ -25,7 +25,7 @@ namespace KR.Main.Entities.Statements
         {
             Action = action;
             Exclusion = exclusion;
-            Actors = actors;
+            Actors = actors??new List<Actor>();
             Condition = condition;
         }
 

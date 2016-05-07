@@ -28,7 +28,7 @@ namespace KR.Main.Entities.Statements
             if (condition == null) condition = new True();
             Action = action;
             Exclusion = exclusion;
-            Actors = actors;
+            Actors = actors??new List<Actor>();
             Effect = effect;
             Condition = condition;
         }

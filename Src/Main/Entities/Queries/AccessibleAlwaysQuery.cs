@@ -5,7 +5,7 @@ using KR.Main.Engine;
 
 namespace KR.Main.Entities.Queries
 {
-    class AccessibleAlwaysQuery : Query
+    public class AccessibleAlwaysQuery : Query
     {
         private ICondition gamma;
         private ICondition pi;

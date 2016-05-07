@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KR.Main.Entities.Queries
 {
-    class AccessibleEverQuery : Query
+    public class AccessibleEverQuery : Query
     {
         private ICondition gamma;
         private ICondition pi;
