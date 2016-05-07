@@ -67,5 +67,17 @@ namespace KR.Test
             Assert.AreEqual(r, true);
             Assert.AreEqual(r2, false);
         }
+
+        [TestMethod]
+        public void AccessibleTypically()
+        {
+            var q = new AccessibleTypicallyQuery(new Negation(new Fluent("cc")), new Negation(new Fluent("cm")));
+            var q2 = new AccessibleTypicallyQuery(new Fluent("cc"), new Negation(new Fluent("cc")));
+
+            var r = q.Evaluate(world);
+            var r2 = q2.Evaluate(world);
+            Assert.AreEqual(r, false);
+            Assert.AreEqual(r2, true);
+        }
     }
 }
