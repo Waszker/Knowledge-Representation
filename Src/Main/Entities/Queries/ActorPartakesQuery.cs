@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace KR.Main.Entities.Queries
 {
-    public abstract class ScenarioExecutableQuery : Query
+    public abstract class ActorPartakesQuery : Query
     {
+        protected Actor actor;
+
         protected Scenario scenario;
 
-        public ScenarioExecutableQuery(Scenario scenario)
+        public ActorPartakesQuery(Actor actor, Scenario scenario)
         {
+            this.actor = actor;
             this.scenario = scenario;
         }
     }
