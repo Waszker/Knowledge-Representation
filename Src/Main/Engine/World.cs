@@ -66,9 +66,8 @@ namespace KR.Main.Engine
             _resAbCache.Clear();
 
             _states = GenerateAllValidStates();
-            _initialState = GetInitialState(_states);
-
             _graph = new Graph(_actions, _actors, _states);
+            _initialState = GetInitialState(_states);
             return true;
         }
 
@@ -127,27 +126,13 @@ namespace KR.Main.Engine
                 candidateStates.RemoveWhere(s => !initiallyClause.Condition.Check(s));
             }
 
-            foreach (var afterClause in _domain.AfterClauses)
-            {
-                //TODO
-            }
-
-            foreach (var tAfterClause in _domain.TypicallyAfterClauses)
-            {
-                //TODO
-            }
-
-            foreach (var oAfterClause in _domain.ObservableClauses)
-            {
-                //TODO
-            }
+            // TODO call graph to process After, TypicallyAfter, ObservableAfter clauses.
 
             if (candidateStates.Count != 1)
                 throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
 
             return candidateStates.Single();
         }
-
 
         #region Res and New sets
 
