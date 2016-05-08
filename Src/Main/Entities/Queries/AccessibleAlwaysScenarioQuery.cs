@@ -30,10 +30,8 @@ namespace KR.Main.Entities.Queries
             var states = new List<State>() { startState };
             foreach(var step in scenario)
             {
-                var nextStepStates = new List<State>();
-                nextStepStates.AddRange(states.SelectMany(s => world.GetEdges(s)
-                .Where(e => e.Action.Equals(step.Action) && e.Actor.Equals(step.Actor)).Select(e => e.To)));
-                states = nextStepStates;
+                states = states.SelectMany(s => world.GetEdges(s)
+                .Where(e => e.Action.Equals(step.Action) && e.Actor.Equals(step.Actor)).Select(e => e.To)).ToList();
             }
             return states.All(s => gamma.Check(s));
         }

@@ -11,31 +11,38 @@ namespace KR.Test
     [TestClass]
     public class AccessibleQueriesTest
     {
-        private Fluent cm;
-        private World world;
-        private Fluent cc;
+        protected Fluent cm;
+        protected World world;
+        protected Fluent cc;
+        protected Actor Fred;
+        protected Actor Bill;
+        protected Action refactor;
+        protected Action debug;
+        protected Action code;
 
         public AccessibleQueriesTest()
         {
-            world = createITWorld();
+            world = CreateITWorld();
         }
 
-        private World createITWorld()
+        private World CreateITWorld()
         {
             var world = World.Instance;
             cm = new Fluent("cm");
-            var code = new Action("Code");
-            var refactor = new Action("Refactor");
-            var debug = new Action("Debug");
+            code = new Action("Code");
+            refactor = new Action("Refactor");
+            debug = new Action("Debug");
             cc = new Fluent("cc");
-            var Fred = new Actor("Fred");
-            var Bill = new Actor("Bill");
+            Fred = new Actor("Fred");
+            Bill = new Actor("Bill");
             world.SetActions(new List<Action>() { code, refactor, debug });
             world.SetActors(new List<Actor>() { Fred, Bill });
             world.SetFluents(new List<Fluent> { cc, cm });
             var domain = new Domain();
             domain.AddCausesClause(new Causes(code, false, new List<Actor>() { Bill }, new Negation(cc)));
             domain.AddInitiallyClause(new Initially(new Conjunction(cc, cm)));
+            domain.AddReleasesClause(new Releases(code, false, new List<Actor>() { Bill }, cm, cm));
+            domain.AddTypicallyCausesClause(new TypicallyCauses(code, false, new List<Actor>() { Fred }, cm, new Negation(cc)));
             domain.AddCausesClause(new Causes(refactor, false, new List<Actor>() { Fred }, cc));
             domain.AddCausesClause(new Causes(debug, true, null, cm));
             domain.AddImpossibleClause(new Impossible(code, false, new List<Actor>() { Fred }, new Negation(cm)));
@@ -52,7 +59,7 @@ namespace KR.Test
 
             var r = q.Evaluate(world);
             var r2 = q2.Evaluate(world);
-            Assert.AreEqual(r, true);
+            Assert.AreEqual(r, false);
             Assert.AreEqual(r2, false);
         }
 
@@ -65,7 +72,7 @@ namespace KR.Test
             var r = q.Evaluate(world);
             var r2 = q2.Evaluate(world);
             Assert.AreEqual(r, true);
-            Assert.AreEqual(r2, false);
+            Assert.AreEqual(r2, true);
         }
 
         [TestMethod]
@@ -76,7 +83,7 @@ namespace KR.Test
 
             var r = q.Evaluate(world);
             var r2 = q2.Evaluate(world);
-            Assert.AreEqual(r, false);
+            Assert.AreEqual(r, true);
             Assert.AreEqual(r2, true);
         }
     }
