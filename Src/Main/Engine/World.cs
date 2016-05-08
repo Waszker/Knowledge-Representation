@@ -62,18 +62,16 @@ namespace KR.Main.Engine
             if (_actions == null || _actors == null || _fluents == null || _domain == null)
                 return false;
 
-            _states = GenerateAllValidStates();
-            _initialState = GetInitialState();
-
             _resNCache.Clear();
             _resAbCache.Clear();
 
+            _states = GenerateAllValidStates();
             _graph = new Graph(_actions, _actors, _states);
+            _initialState = GetInitialState(_states);
             return true;
         }
 
         #endregion
-
 
         #region Generating valid states
 
@@ -119,32 +117,23 @@ namespace KR.Main.Engine
 
         #endregion
 
-        private State GetInitialState()
+        private State GetInitialState(List<State> validStates)
         {
-            State initialState = null;
-            foreach (var state in _states)
+            HashSet<State> candidateStates = new HashSet<State>(validStates);
+
+            foreach (var initiallyClause in _domain.InitiallyClauses)
             {
-                bool isInitial = true;
-                foreach (var clause in _domain.InitiallyClauses)
-                {
-                    if (!clause.Condition.Check(state))
-                    {
-                        isInitial = false;
-                        break;
-                    }
-                }
-                if (isInitial)
-                {
-                    if (initialState == null)
-                        initialState = state;
-                    else
-                        throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
-                }
-
+                candidateStates.RemoveWhere(s => !initiallyClause.Condition.Check(s));
             }
-            return initialState;
-        }
 
+            candidateStates = _graph.GetInitialStates(candidateStates, _domain.AfterClauses,
+                _domain.TypicallyAfterClauses, _domain.ObservableAfterClauses);
+
+            if (candidateStates.Count != 1)
+                throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
+
+            return candidateStates.Single();
+        }
 
         #region Res and New sets
 
@@ -345,6 +334,7 @@ namespace KR.Main.Engine
 
             return abnormal ? resAb : resN;
         }
+
 
     }
 }

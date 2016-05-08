@@ -37,18 +37,18 @@ namespace KR.Main.Gui.QueriesControls
             if (accessibleFormulaControl.getFormula() != null && scenario.Steps.Count > 0)
             {
 
-                //if (AlwaysRadioButton.Checked == true)
-                //{
-                //    return new ScenarioAccessibleAlwaysQuery(ifCheckBox.Checked ? ifFormulaControl.getFormula() : null, accessibleFormulaControl.getFormula(), scenario);
-                //}
-                //else if (EverRadioButton.Checked == true)
-                //{
-                //    return new ScenarioAccessibleEverQuery(ifCheckBox.Checked ? ifFormulaControl.getFormula() : null, accessibleFormulaControl.getFormula(), scenario);
-                //}
-                //else if (TypicallyRadioButton.Checked == true)
-                //{
-                //    return new ScenarioAccessibleTypicallyQuery(ifCheckBox.Checked ? ifFormulaControl.getFormula() : null, accessibleFormulaControl.getFormula(), scenario);
-                //}
+                if (AlwaysRadioButton.Checked == true)
+                {
+                    return new AccessibleAlwaysScenarioQuery(ifCheckBox.Checked ? ifFormulaControl.getFormula() : null, accessibleFormulaControl.getFormula(), scenario);
+                }
+                else if (EverRadioButton.Checked == true)
+                {
+                    return new AccessibleEverScenarioQuery(ifCheckBox.Checked ? ifFormulaControl.getFormula() : null, accessibleFormulaControl.getFormula(), scenario);
+                }
+                else if (TypicallyRadioButton.Checked == true)
+                {
+                    return new AccessibleTypicallyScenarioQuery(ifCheckBox.Checked ? ifFormulaControl.getFormula() : null, accessibleFormulaControl.getFormula(), scenario);
+                }
             }
             return null;
         }
