@@ -20,7 +20,7 @@ namespace KR.Main.Entities
         public readonly List<TypicallyCauses> TypicallyCausesClauses = new List<TypicallyCauses>();
         public readonly List<Preserves> PreservesClauses = new List<Preserves>();
         public readonly List<After> AfterClauses = new List<After>();
-        public readonly List<ObservableAfter> ObservableClauses = new List<ObservableAfter>();
+        public readonly List<ObservableAfter> ObservableAfterClauses = new List<ObservableAfter>();
         public readonly List<TypicallyAfter> TypicallyAfterClauses = new List<TypicallyAfter>();
 
 
@@ -98,11 +98,11 @@ namespace KR.Main.Entities
 
         public void AddObservableClause(ObservableAfter clause)
         {
-            ObservableClauses.Add(clause);
+            ObservableAfterClauses.Add(clause);
         }
         public void DeleteObservableClause(ObservableAfter clause)
         {
-            ObservableClauses.Remove(clause);
+            ObservableAfterClauses.Remove(clause);
         }
 
         public void AddTypicallyAfterClause(TypicallyAfter clause)

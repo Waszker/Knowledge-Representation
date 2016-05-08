@@ -5,7 +5,7 @@ using KR.Main.Entities.Statements;
 
 namespace KR.Main.Entities
 {
-    public class State
+    public class State : IEquatable<State>
     {
         public readonly Dictionary<Fluent, bool> Values = new Dictionary<Fluent, bool>();
 
@@ -27,9 +27,19 @@ namespace KR.Main.Entities
         {
             return string.Join(" ,", Values.Where(v => v.Value).Select(v => v.Key.ToString()));
         }
-        public override bool Equals(object obj)
+
+        public bool Equals(State other)
         {
-            return ToString().Equals(obj.ToString());
+            if (Values.Count != other.Values.Count)
+                return false;
+
+            var keys = Values.Keys;
+            foreach (var key in keys)
+            {
+                if (Values[key] != other.Values[key])
+                    return false;
+            }
+            return true;
         }
     }
 }

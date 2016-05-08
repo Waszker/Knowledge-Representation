@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using KR.Main.Entities;
+using KR.Main.Entities.Statements;
 using Action = KR.Main.Entities.Action;
 
 namespace KR.Main.Engine
@@ -55,6 +56,24 @@ namespace KR.Main.Engine
                 if (from == null)
                     return _edges;
                 return _edges.Where(t => t.From == from).ToList();
+            }
+
+            public HashSet<State> GetInitialStates(HashSet<State> candidates, List<After> afterClauses, List<TypicallyAfter> tAfterClauses, 
+                List<ObservableAfter> oAfterClauses)
+            {
+                HashSet<State> initialStates = new HashSet<State>(candidates);
+
+                /*
+                 *  TODO
+                 *  Przefiltrować zbiór initialStates tak, żeby zostały zwrócone tylko stany początkowe spełniające wszystkie ograniczenia 
+                 *  narzucone przez zdania 'After', 'Typically After', 'Observable After'.
+                 * 
+                 *  Jeżeli wyjdzie ich więcej niż jeden albo równe zero, to zwracać odpowiednio wszystkie albo pustą listę - wtedy klasa
+                 *  World wywołująca tę metodę rzuci odpowiedni wyjątek.
+                 *  
+                 */
+
+                return initialStates;
             }
         }
     }
