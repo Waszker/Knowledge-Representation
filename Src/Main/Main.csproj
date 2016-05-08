@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Engine\Graph.cs" />
     <Compile Include="Engine\World.cs" />
+    <Compile Include="Entities\AfterTriple.cs" />
     <Compile Include="Entities\Conditions\Alternative.cs" />
     <Compile Include="Entities\Conditions\Conjunction.cs" />
     <Compile Include="Entities\Conditions\Equivalence.cs" />
