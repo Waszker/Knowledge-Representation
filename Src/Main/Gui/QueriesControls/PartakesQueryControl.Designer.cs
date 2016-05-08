@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.ActorComboBox = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.AlwaysRadioButton = new System.Windows.Forms.RadioButton();
             this.EverRadioButton = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.ScenarioTextBox = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ActorComboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -61,6 +61,29 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(494, 155);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // ActorComboBox
+            // 
+            this.ActorComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ActorComboBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ActorComboBox.FormattingEnabled = true;
+            this.ActorComboBox.Location = new System.Drawing.Point(249, 20);
+            this.ActorComboBox.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
+            this.ActorComboBox.Name = "ActorComboBox";
+            this.ActorComboBox.Size = new System.Drawing.Size(242, 32);
+            this.ActorComboBox.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(126, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(117, 77);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "partakes";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel2
             // 
@@ -128,29 +151,6 @@
             this.ScenarioTextBox.ReadOnly = true;
             this.ScenarioTextBox.Size = new System.Drawing.Size(365, 72);
             this.ScenarioTextBox.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label2.Location = new System.Drawing.Point(126, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(117, 77);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "partakes";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // ActorComboBox
-            // 
-            this.ActorComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ActorComboBox.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ActorComboBox.FormattingEnabled = true;
-            this.ActorComboBox.Location = new System.Drawing.Point(249, 20);
-            this.ActorComboBox.Margin = new System.Windows.Forms.Padding(3, 20, 3, 3);
-            this.ActorComboBox.Name = "ActorComboBox";
-            this.ActorComboBox.Size = new System.Drawing.Size(242, 32);
-            this.ActorComboBox.TabIndex = 4;
             // 
             // PartakesQueryControl
             // 

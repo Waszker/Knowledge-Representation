@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace KR.Main.Entities
     /// <summary>
     /// Represents scenario - actions and actors in given order.
     /// </summary>
-    public class Scenario
+    public class Scenario : IEnumerable<ScenarioStep>
     {
         /// <summary>
         /// Ordered list of scenario steps.
@@ -25,6 +26,11 @@ namespace KR.Main.Entities
             Steps.Add(step);
         }
 
+        public IEnumerator<ScenarioStep> GetEnumerator()
+        {
+            throw new NotImplementedException();
+        }
+
         public override string ToString()
         {
             string s = "";
@@ -36,6 +42,11 @@ namespace KR.Main.Entities
                     s = s + ", " + ss.ToString();
             }
             return s;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Steps.GetEnumerator();
         }
     }
 }
