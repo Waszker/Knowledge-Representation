@@ -30,5 +30,10 @@ namespace KR.Main.Gui.QueriesControls
         {
             this.ScenarioTextBox.Text = scenario.ToString();
         }
+
+        public Query getQuery()
+        {
+            return null;
+        }
     }
 }

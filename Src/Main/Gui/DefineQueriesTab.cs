@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using KR.Main.Gui.ClauseControls;
 using KR.Main.Entities;
 using KR.Main.Gui.QueriesControls;
+using KR.Main.Engine;
 
 namespace KR.Main.Gui
 {
@@ -20,7 +21,7 @@ namespace KR.Main.Gui
         public DefineQueriesTab()
         {
             InitializeComponent();
-            
+
             currentQuery = 0;
             queryControls = new UserControl[4];
             queryControls[0] = new ExecutableQueryControl();
@@ -58,31 +59,56 @@ namespace KR.Main.Gui
             this.defineQueriesPanel.Controls.Remove(queryControls[currentQuery]);
             currentQuery = chooseQueryComboBox.SelectedIndex;
             this.defineQueriesPanel.Controls.Add(queryControls[currentQuery], 0, 2);
+            this.answerLabel.Text = "?";
         }
 
         private void checkButton_Click(object sender, EventArgs e)
         {
             bool result = false;
-            switch(currentQuery)
+            switch (currentQuery)
             {
-                case 0:
+                case 0: //executable
                     {
+                        Query query = ((ExecutableQueryControl)queryControls[currentQuery]).getQuery();
+                        if (query != null)
+                        {
+                            result = query.Evaluate(World.Instance);
+                            this.answerLabel.Text = result.ToString();
+                        }
                         break;
                     }
-                case 1:
+                case 1: //accesible when
                     {
+                        Query query = ((AccessibleWhenQueryControl)queryControls[currentQuery]).getQuery();
+                        if (query != null)
+                        {
+                            result = query.Evaluate(World.Instance);
+                            this.answerLabel.Text = result.ToString();
+                        }
                         break;
                     }
-                case 2:
+                case 2: //accessible
                     {
+                        Query query = ((AccessibleQueryControl)queryControls[currentQuery]).getQuery();
+                        if (query != null)
+                        {
+                            result = query.Evaluate(World.Instance);
+                            this.answerLabel.Text = result.ToString();
+                        }
                         break;
                     }
-                case 3:
+                case 3: //partakes
                     {
+                        Query query = ((PartakesQueryControl)queryControls[currentQuery]).getQuery();
+                        if (query != null)
+                        {
+                            result = query.Evaluate(World.Instance);
+                            this.answerLabel.Text = result.ToString();
+                        }
                         break;
                     }
             }
-            //this.answerLabel.Text = result.ToString();
+
         }
     }
 }

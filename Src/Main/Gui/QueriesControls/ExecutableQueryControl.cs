@@ -22,5 +22,10 @@ namespace KR.Main.Gui.ClauseControls
         {
             this.ScenarioTextBox.Text = scenario.ToString();
         }
+
+        public Query getQuery()
+        {
+            return null;
+        }
     }
 }

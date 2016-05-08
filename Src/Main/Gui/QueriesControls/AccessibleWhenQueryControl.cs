@@ -28,5 +28,18 @@ namespace KR.Main.Gui.QueriesControls
             this.accessibleFormulaControl.setFluents(_fluents);
             this.ifFormulaControl.setFluents(_fluents);
         }
+
+        public Query getQuery()
+        {
+            return null;
+        }
+
+        private void ifCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ifCheckBox.Checked == true)
+                ifFormulaControl.Enabled = true;
+            else
+                ifFormulaControl.Enabled = false;
+        }
     }
 }

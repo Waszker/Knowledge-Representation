@@ -30,18 +30,18 @@
         {
             this.Panel = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.AlwaysRadioButton = new System.Windows.Forms.RadioButton();
-            this.EverRadioButton = new System.Windows.Forms.RadioButton();
             this.TypicallyRadioButton = new System.Windows.Forms.RadioButton();
+            this.EverRadioButton = new System.Windows.Forms.RadioButton();
+            this.AlwaysRadioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.ScenarioTextBox = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.accessibleFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.ifFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
+            this.ifCheckBox = new System.Windows.Forms.CheckBox();
             this.Panel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -86,19 +86,17 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(592, 47);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
-            // AlwaysRadioButton
+            // TypicallyRadioButton
             // 
-            this.AlwaysRadioButton.AutoSize = true;
-            this.AlwaysRadioButton.Checked = true;
-            this.AlwaysRadioButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.AlwaysRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.AlwaysRadioButton.Location = new System.Drawing.Point(3, 3);
-            this.AlwaysRadioButton.Name = "AlwaysRadioButton";
-            this.AlwaysRadioButton.Size = new System.Drawing.Size(98, 28);
-            this.AlwaysRadioButton.TabIndex = 1;
-            this.AlwaysRadioButton.TabStop = true;
-            this.AlwaysRadioButton.Text = "always";
-            this.AlwaysRadioButton.UseVisualStyleBackColor = true;
+            this.TypicallyRadioButton.AutoSize = true;
+            this.TypicallyRadioButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.TypicallyRadioButton.Location = new System.Drawing.Point(397, 3);
+            this.TypicallyRadioButton.Name = "TypicallyRadioButton";
+            this.TypicallyRadioButton.Size = new System.Drawing.Size(112, 28);
+            this.TypicallyRadioButton.TabIndex = 3;
+            this.TypicallyRadioButton.TabStop = true;
+            this.TypicallyRadioButton.Text = "typically";
+            this.TypicallyRadioButton.UseVisualStyleBackColor = true;
             // 
             // EverRadioButton
             // 
@@ -112,17 +110,19 @@
             this.EverRadioButton.Text = "ever";
             this.EverRadioButton.UseVisualStyleBackColor = true;
             // 
-            // TypicallyRadioButton
+            // AlwaysRadioButton
             // 
-            this.TypicallyRadioButton.AutoSize = true;
-            this.TypicallyRadioButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.TypicallyRadioButton.Location = new System.Drawing.Point(397, 3);
-            this.TypicallyRadioButton.Name = "TypicallyRadioButton";
-            this.TypicallyRadioButton.Size = new System.Drawing.Size(112, 28);
-            this.TypicallyRadioButton.TabIndex = 3;
-            this.TypicallyRadioButton.TabStop = true;
-            this.TypicallyRadioButton.Text = "typically";
-            this.TypicallyRadioButton.UseVisualStyleBackColor = true;
+            this.AlwaysRadioButton.AutoSize = true;
+            this.AlwaysRadioButton.Checked = true;
+            this.AlwaysRadioButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.AlwaysRadioButton.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.AlwaysRadioButton.Location = new System.Drawing.Point(3, 3);
+            this.AlwaysRadioButton.Name = "AlwaysRadioButton";
+            this.AlwaysRadioButton.Size = new System.Drawing.Size(98, 28);
+            this.AlwaysRadioButton.TabIndex = 1;
+            this.AlwaysRadioButton.TabStop = true;
+            this.AlwaysRadioButton.Text = "always";
+            this.AlwaysRadioButton.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -184,24 +184,6 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(592, 59);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // tableLayoutPanel4
-            // 
-            this.tableLayoutPanel4.AutoScroll = true;
-            this.tableLayoutPanel4.AutoSize = true;
-            this.tableLayoutPanel4.ColumnCount = 2;
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.ifFormulaControl, 1, 0);
-            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 106);
-            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
-            this.tableLayoutPanel4.RowCount = 1;
-            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(592, 59);
-            this.tableLayoutPanel4.TabIndex = 3;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -214,18 +196,6 @@
             this.label2.Text = "accessible";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 59);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "if";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // accessibleFormulaControl
             // 
             this.accessibleFormulaControl.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -237,16 +207,49 @@
             this.accessibleFormulaControl.Size = new System.Drawing.Size(124, 34);
             this.accessibleFormulaControl.TabIndex = 4;
             // 
+            // tableLayoutPanel4
+            // 
+            this.tableLayoutPanel4.AutoScroll = true;
+            this.tableLayoutPanel4.AutoSize = true;
+            this.tableLayoutPanel4.ColumnCount = 2;
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel4.Controls.Add(this.ifCheckBox, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.ifFormulaControl, 1, 0);
+            this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 106);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel4.Name = "tableLayoutPanel4";
+            this.tableLayoutPanel4.RowCount = 1;
+            this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(592, 59);
+            this.tableLayoutPanel4.TabIndex = 3;
+            // 
             // ifFormulaControl
             // 
             this.ifFormulaControl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ifFormulaControl.AutoSize = true;
-            this.ifFormulaControl.Location = new System.Drawing.Point(26, 12);
+            this.ifFormulaControl.Location = new System.Drawing.Point(43, 12);
             this.ifFormulaControl.Margin = new System.Windows.Forms.Padding(0);
             this.ifFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
             this.ifFormulaControl.Name = "ifFormulaControl";
             this.ifFormulaControl.Size = new System.Drawing.Size(124, 34);
             this.ifFormulaControl.TabIndex = 4;
+            // 
+            // ifCheckBox
+            // 
+            this.ifCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ifCheckBox.AutoSize = true;
+            this.ifCheckBox.Checked = true;
+            this.ifCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ifCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ifCheckBox.Location = new System.Drawing.Point(3, 17);
+            this.ifCheckBox.Name = "ifCheckBox";
+            this.ifCheckBox.Size = new System.Drawing.Size(37, 25);
+            this.ifCheckBox.TabIndex = 7;
+            this.ifCheckBox.Text = "if";
+            this.ifCheckBox.UseVisualStyleBackColor = true;
+            this.ifCheckBox.CheckedChanged += new System.EventHandler(this.ifCheckBox_CheckedChanged);
             // 
             // AccessibleWhenQueryControl
             // 
@@ -282,8 +285,8 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private ClauseControls.FormulaControl accessibleFormulaControl;
         private ClauseControls.FormulaControl ifFormulaControl;
+        private System.Windows.Forms.CheckBox ifCheckBox;
     }
 }

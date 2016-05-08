@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.Panel = new System.Windows.Forms.TableLayoutPanel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.AlwaysEverTypicallyPanel = new System.Windows.Forms.TableLayoutPanel();
             this.TypicallyRadioButton = new System.Windows.Forms.RadioButton();
             this.EverRadioButton = new System.Windows.Forms.RadioButton();
             this.AlwaysRadioButton = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.ifCheckBox = new System.Windows.Forms.CheckBox();
             this.accessibleFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
             this.ifFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
             this.Panel.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.AlwaysEverTypicallyPanel.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             this.Panel.ColumnCount = 1;
             this.Panel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.Panel.Controls.Add(this.tableLayoutPanel1, 0, 0);
+            this.Panel.Controls.Add(this.AlwaysEverTypicallyPanel, 0, 0);
             this.Panel.Controls.Add(this.tableLayoutPanel3, 0, 1);
             this.Panel.Controls.Add(this.tableLayoutPanel4, 0, 2);
             this.Panel.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -63,23 +63,23 @@
             this.Panel.Size = new System.Drawing.Size(592, 179);
             this.Panel.TabIndex = 0;
             // 
-            // tableLayoutPanel1
+            // AlwaysEverTypicallyPanel
             // 
-            this.tableLayoutPanel1.ColumnCount = 3;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tableLayoutPanel1.Controls.Add(this.TypicallyRadioButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.EverRadioButton, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.AlwaysRadioButton, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(592, 53);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.AlwaysEverTypicallyPanel.ColumnCount = 3;
+            this.AlwaysEverTypicallyPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.AlwaysEverTypicallyPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.AlwaysEverTypicallyPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.AlwaysEverTypicallyPanel.Controls.Add(this.TypicallyRadioButton, 0, 0);
+            this.AlwaysEverTypicallyPanel.Controls.Add(this.EverRadioButton, 0, 0);
+            this.AlwaysEverTypicallyPanel.Controls.Add(this.AlwaysRadioButton, 0, 0);
+            this.AlwaysEverTypicallyPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AlwaysEverTypicallyPanel.Location = new System.Drawing.Point(0, 0);
+            this.AlwaysEverTypicallyPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.AlwaysEverTypicallyPanel.Name = "AlwaysEverTypicallyPanel";
+            this.AlwaysEverTypicallyPanel.RowCount = 1;
+            this.AlwaysEverTypicallyPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.AlwaysEverTypicallyPanel.Size = new System.Drawing.Size(592, 53);
+            this.AlwaysEverTypicallyPanel.TabIndex = 0;
             // 
             // TypicallyRadioButton
             // 
@@ -156,7 +156,7 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel4.Controls.Add(this.label3, 0, 0);
+            this.tableLayoutPanel4.Controls.Add(this.ifCheckBox, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.ifFormulaControl, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 115);
@@ -167,17 +167,20 @@
             this.tableLayoutPanel4.Size = new System.Drawing.Size(592, 64);
             this.tableLayoutPanel4.TabIndex = 3;
             // 
-            // label3
+            // ifCheckBox
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 64);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "if";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.ifCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ifCheckBox.AutoSize = true;
+            this.ifCheckBox.Checked = true;
+            this.ifCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ifCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ifCheckBox.Location = new System.Drawing.Point(3, 19);
+            this.ifCheckBox.Name = "ifCheckBox";
+            this.ifCheckBox.Size = new System.Drawing.Size(37, 25);
+            this.ifCheckBox.TabIndex = 6;
+            this.ifCheckBox.Text = "if";
+            this.ifCheckBox.UseVisualStyleBackColor = true;
+            this.ifCheckBox.CheckedChanged += new System.EventHandler(this.ifCheckBox_CheckedChanged);
             // 
             // accessibleFormulaControl
             // 
@@ -194,7 +197,7 @@
             // 
             this.ifFormulaControl.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.ifFormulaControl.AutoSize = true;
-            this.ifFormulaControl.Location = new System.Drawing.Point(26, 15);
+            this.ifFormulaControl.Location = new System.Drawing.Point(43, 15);
             this.ifFormulaControl.Margin = new System.Windows.Forms.Padding(0);
             this.ifFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
             this.ifFormulaControl.Name = "ifFormulaControl";
@@ -210,8 +213,8 @@
             this.Size = new System.Drawing.Size(592, 179);
             this.Panel.ResumeLayout(false);
             this.Panel.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.AlwaysEverTypicallyPanel.ResumeLayout(false);
+            this.AlwaysEverTypicallyPanel.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
@@ -223,15 +226,15 @@
         #endregion
 
         private System.Windows.Forms.TableLayoutPanel Panel;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel AlwaysEverTypicallyPanel;
         private System.Windows.Forms.RadioButton AlwaysRadioButton;
         private System.Windows.Forms.RadioButton TypicallyRadioButton;
         private System.Windows.Forms.RadioButton EverRadioButton;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private ClauseControls.FormulaControl accessibleFormulaControl;
         private ClauseControls.FormulaControl ifFormulaControl;
+        private System.Windows.Forms.CheckBox ifCheckBox;
     }
 }
