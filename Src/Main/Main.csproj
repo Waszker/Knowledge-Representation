@@ -58,6 +58,7 @@
     <Compile Include="Entities\Conditions\True.cs" />
     <Compile Include="Entities\Domain.cs" />
     <Compile Include="Entities\Queries\AccessibleAlwaysQuery.cs" />
+    <Compile Include="Entities\Queries\AccessibleAlwaysScenarioQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleEverQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleTypicallyQuery.cs" />
     <Compile Include="Entities\Queries\ActorAlwaysPartakesQuery.cs" />
