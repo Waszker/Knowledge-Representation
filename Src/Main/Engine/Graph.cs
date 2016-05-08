@@ -68,7 +68,7 @@ namespace KR.Main.Engine
                  *  Przefiltrować zbiór initialStates tak, żeby zostały zwrócone tylko stany początkowe spełniające wszystkie ograniczenia 
                  *  narzucone przez zdania 'After', 'Typically After', 'Observable After'.
                  * 
-                 *  Jeżeli wyjdzie ich więcej niż jeden albo równe zero, to zwracać odpowiednio wszystkie albo pustą listę - wtedy klasa
+                 *  Jeżeli wyjdzie ich więcej niż jeden albo równe zero, to zwracać odpowiednio je wszystkie albo pustą listę - wtedy klasa
                  *  World wywołująca tę metodę rzuci odpowiedni wyjątek.
                  *  
                  */
