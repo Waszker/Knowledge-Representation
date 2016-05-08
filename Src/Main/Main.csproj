@@ -77,7 +77,7 @@
     <Compile Include="Entities\Statements\Causes.cs" />
     <Compile Include="Entities\Statements\Impossible.cs" />
     <Compile Include="Entities\Statements\Initially.cs" />
-    <Compile Include="Entities\Statements\Observable.cs" />
+    <Compile Include="Entities\Statements\ObservableAfter.cs" />
     <Compile Include="Entities\Statements\Preserves.cs" />
     <Compile Include="Entities\Statements\Releases.cs" />
     <Compile Include="Entities\Statements\TypicallyAfter.cs" />

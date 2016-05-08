@@ -7,7 +7,7 @@ using KR.Main.Entities.Conditions;
 
 namespace KR.Main.Entities.Statements
 {
-    public class Observable
+    public class ObservableAfter
     {
         public ICondition Effect { get; private set; }
         public List<Tuple<Action, bool, List<Actor>>> Sequence { get; private set; }
@@ -17,7 +17,7 @@ namespace KR.Main.Entities.Statements
         /// </summary>
         /// <param name="effect">effect for sentence</param>
         /// <param name="sequence">sequence of action with actors</param>
-        public Observable(ICondition effect, List<Tuple<Action, bool, List<Actor>>> sequence)
+        public ObservableAfter(ICondition effect, List<Tuple<Action, bool, List<Actor>>> sequence)
         {
             Effect = effect;
             Sequence = sequence;
