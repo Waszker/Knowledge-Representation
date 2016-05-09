@@ -9,15 +9,33 @@ namespace KR.Main.Entities.Queries
 {
     public class ActorEverPartakesQuery : ActorPartakesQuery
     {
-        public ActorEverPartakesQuery(Actor actor, Scenario scenario) : base(actor, scenario)
-        {
-
-        }
+        public ActorEverPartakesQuery(Actor actor, Scenario scenario) : base(actor, scenario) { }
 
         public override bool Evaluate(World world)
         {
-            // TODO: implement
-            throw new NotImplementedException();
+            ISet<State> possibleStates = world.GetStates();
+
+            foreach (ScenarioStep step in Scenario.Steps)
+            {
+                ISet<State> newPossibleStates = new HashSet<State>();
+                foreach (State state in possibleStates)
+                {
+                    IEnumerable<Edge> edgesForStep = EdgesForStep(world, state, step);
+
+                    foreach (Edge edge in edgesForStep)
+                    {
+                        // check, if actor partakes
+                        if (edge.Actor.Equals(this.Actor))
+                        {
+                            return true;
+                        }
+                        newPossibleStates.Add(edge.To);
+                    }
+                }
+                possibleStates = newPossibleStates;
+            }
+            // after checking all steps no matching actor found - never partakes
+            return false;
         }
     }
 }

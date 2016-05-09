@@ -13,6 +13,7 @@ namespace KR.Main.Entities
         /// </summary>
         protected IEnumerable<Edge> EdgesForStep(World world, State state, ScenarioStep step)
         {
+            // TODO: handle EPSILON - 'any' actor
             return world.GetEdges(state).Where(egde => egde.Actor.Equals(step.Actor)).Where(edge => edge.Action.Equals(step.Action));
         }
     }
