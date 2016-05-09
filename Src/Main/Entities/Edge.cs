@@ -13,7 +13,7 @@
         public bool Abnormal { get; set; }
         public override string ToString()
         {
-            return From + "->" + To;
+            return "{"+From+"}--("+Action+","+Actor+")->{" + To+"}";
         }
     }
 }

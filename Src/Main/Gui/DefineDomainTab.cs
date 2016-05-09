@@ -189,7 +189,7 @@ namespace KR.Main.Gui
                     }
                 case 9:
                     {
-                        Observable stmt = ((ObservableClauseControl)clauseControls[currentClause]).getClause();
+                        ObservableAfter stmt = ((ObservableClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
                             clausesListBox.Items.Add(stmt);
@@ -241,9 +241,9 @@ namespace KR.Main.Gui
                 {
                     _domain.DeleteTypicallyAfterClause((TypicallyAfter)selectedClause);
                 }
-                else if (selectedClause is Observable)
+                else if (selectedClause is ObservableAfter)
                 {
-                    _domain.DeleteObservableClause((Observable)selectedClause);
+                    _domain.DeleteObservableClause((ObservableAfter)selectedClause);
                 }
 
                 clausesListBox.Items.Remove(selectedClause);

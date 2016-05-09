@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Engine\Graph.cs" />
     <Compile Include="Engine\World.cs" />
+    <Compile Include="Entities\AfterTriple.cs" />
     <Compile Include="Entities\Conditions\Alternative.cs" />
     <Compile Include="Entities\Conditions\Conjunction.cs" />
     <Compile Include="Entities\Conditions\Equivalence.cs" />
@@ -58,14 +59,17 @@
     <Compile Include="Entities\Conditions\True.cs" />
     <Compile Include="Entities\Domain.cs" />
     <Compile Include="Entities\Queries\AccessibleAlwaysQuery.cs" />
+    <Compile Include="Entities\Queries\AccessibleAlwaysScenarioQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleEverQuery.cs" />
+    <Compile Include="Entities\Queries\AccessibleEverScenarioQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleTypicallyQuery.cs" />
     <Compile Include="Entities\Queries\ActorAlwaysPartakesQuery.cs" />
-    <Compile Include="Entities\Queries\ActorPartakesQuery.cs" />
     <Compile Include="Entities\Queries\ActorEverPartakesQuery.cs" />
-    <Compile Include="Entities\Queries\ScenarioEverExecutableQuery.cs" />
+    <Compile Include="Entities\Queries\ActorPartakesQuery.cs" />
+    <Compile Include="Entities\Queries\AccessibleTypicallyScenarioQuery.cs" />
     <Compile Include="Entities\Queries\Query.cs" />
     <Compile Include="Entities\Queries\ScenarioAlwaysExecutableQuery.cs" />
+    <Compile Include="Entities\Queries\ScenarioEverExecutableQuery.cs" />
     <Compile Include="Entities\Queries\ScenarioExecutableQuery.cs" />
     <Compile Include="Entities\Scenario.cs" />
     <Compile Include="Entities\ScenarioStep.cs" />
@@ -74,7 +78,7 @@
     <Compile Include="Entities\Statements\Causes.cs" />
     <Compile Include="Entities\Statements\Impossible.cs" />
     <Compile Include="Entities\Statements\Initially.cs" />
-    <Compile Include="Entities\Statements\Observable.cs" />
+    <Compile Include="Entities\Statements\ObservableAfter.cs" />
     <Compile Include="Entities\Statements\Preserves.cs" />
     <Compile Include="Entities\Statements\Releases.cs" />
     <Compile Include="Entities\Statements\TypicallyAfter.cs" />
