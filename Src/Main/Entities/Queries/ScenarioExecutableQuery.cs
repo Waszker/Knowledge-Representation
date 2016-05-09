@@ -8,11 +8,11 @@ namespace KR.Main.Entities.Queries
 {
     public abstract class ScenarioExecutableQuery : Query
     {
-        protected Scenario scenario;
+        protected Scenario Scenario { get; set; }
 
         public ScenarioExecutableQuery(Scenario scenario)
         {
-            this.scenario = scenario;
+            this.Scenario = scenario;
         }
     }
 }
