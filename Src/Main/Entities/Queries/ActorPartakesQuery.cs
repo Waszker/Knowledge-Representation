@@ -8,14 +8,14 @@ namespace KR.Main.Entities.Queries
 {
     public abstract class ActorPartakesQuery : Query
     {
-        protected Actor actor;
+        protected Actor Actor { get; set; }
 
-        protected Scenario scenario;
+        protected Scenario Scenario { get; set; }
 
         public ActorPartakesQuery(Actor actor, Scenario scenario)
         {
-            this.actor = actor;
-            this.scenario = scenario;
+            Actor = actor;
+            Scenario = scenario;
         }
     }
 }

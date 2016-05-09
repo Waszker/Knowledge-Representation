@@ -60,6 +60,10 @@
     <Compile Include="Entities\Queries\AccessibleAlwaysQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleEverQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleTypicallyQuery.cs" />
+    <Compile Include="Entities\Queries\ActorAlwaysPartakesQuery.cs" />
+    <Compile Include="Entities\Queries\ActorPartakesQuery.cs" />
+    <Compile Include="Entities\Queries\ActorEverPartakesQuery.cs" />
+    <Compile Include="Entities\Queries\ScenarioEverExecutableQuery.cs" />
     <Compile Include="Entities\Queries\Query.cs" />
     <Compile Include="Entities\Queries\ScenarioAlwaysExecutableQuery.cs" />
     <Compile Include="Entities\Queries\ScenarioExecutableQuery.cs" />
