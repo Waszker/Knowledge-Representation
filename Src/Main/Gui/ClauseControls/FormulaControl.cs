@@ -42,10 +42,10 @@ namespace KR.Main.Gui.ClauseControls
 
         public void setFluents(List<Fluent> _fluents)
         {
-            this.formulaElementComboBox.Items.Clear();
             fluents = _fluents;
             foreach (Fluent f in _fluents)
-                this.formulaElementComboBox.Items.Add(f);
+                if (!formulaElementComboBox.Items.Contains(f))
+                    this.formulaElementComboBox.Items.Add(f);
         }
 
         private void formulaElementComboBox_SelectedIndexChanged(object sender, EventArgs e)
