@@ -42,6 +42,7 @@ namespace KR.Main.Gui.ClauseControls
 
         public void setFluents(List<Fluent> _fluents)
         {
+            this.formulaElementComboBox.Items.Clear();
             fluents = _fluents;
             foreach (Fluent f in _fluents)
                 this.formulaElementComboBox.Items.Add(f);

@@ -20,6 +20,7 @@ namespace KR.Main.Gui.ClauseControls
         }
         public void setActions(List<Entities.Action> _actions)
         {
+            ActionComboBox.Items.Clear();
             foreach (Entities.Action a in _actions)
                 ActionComboBox.Items.Add(a);
             if (_actions.Count > 0)
@@ -28,6 +29,7 @@ namespace KR.Main.Gui.ClauseControls
 
         public void setActors(List<Actor> _actors)
         {
+            ActorsCheckedListBox.Items.Clear();
             foreach (Actor a in _actors)
                 ActorsCheckedListBox.Items.Add(a);
         }
