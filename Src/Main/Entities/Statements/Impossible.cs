@@ -39,7 +39,7 @@ namespace KR.Main.Entities.Statements
                 else
                     actorsList = actorsList + ", " + a.ToString();
             }
-            if (Condition == null)
+            if (Condition == null || Condition is True)
                 return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ")";
             else
                 return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") if " + Condition.ToString();
