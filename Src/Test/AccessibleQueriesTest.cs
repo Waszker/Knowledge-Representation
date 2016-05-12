@@ -86,5 +86,26 @@ namespace KR.Test
             Assert.AreEqual(r, true);
             Assert.AreEqual(r2, true);
         }
+
+        [TestMethod]
+        public void Fish()
+        {
+            var fishWorld = World.Instance;
+            var live = new Fluent("live");
+            var kill = new Action("kill");
+            var Tom = new Actor("Tom");
+            fishWorld.SetActions(new List<Action>() { kill });
+            fishWorld.SetActors(new List<Actor>() { Tom });
+            fishWorld.SetFluents(new List<Fluent>() { live });
+            var domain = new Domain();
+            domain.AddInitiallyClause(new Initially(live));
+            domain.AddReleasesClause(new Releases(kill, false, new List<Actor>() { Tom }, live, new True()));
+            fishWorld.SetDomain(domain);
+            fishWorld.Build();
+
+            var q = new AccessibleEverQuery(new Negation(live), live);
+            var r = q.Evaluate(fishWorld);
+            Assert.AreEqual(r, true);
+        }
     }
 }
