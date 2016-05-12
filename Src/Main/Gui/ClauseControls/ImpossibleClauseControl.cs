@@ -41,9 +41,17 @@ namespace KR.Main.Gui.ClauseControls
 
         public Impossible getClause()
         {
-            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || conditionFormulaControl.getFormula() == null)
+            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0)
                 return null;
-            return new Impossible((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), conditionFormulaControl.getFormula());
+            return new Impossible((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), ifCheckBox.Checked ? conditionFormulaControl.getFormula() : null);
+        }
+
+        private void ifCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ifCheckBox.Checked == true)
+                conditionFormulaControl.Enabled = true;
+            else
+                conditionFormulaControl.Enabled = false;
         }
     }
 }
