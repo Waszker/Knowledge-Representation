@@ -15,6 +15,7 @@ namespace KR.Test
 
         public AccessibleQueriesScenarioTest()
         {
+            world = CreateITWorld();
             debugScenario = new Scenario();
             debugScenario.AddScenarioStep(new ScenarioStep(refactor, Fred));
             debugScenario.AddScenarioStep(new ScenarioStep(debug, Bill));

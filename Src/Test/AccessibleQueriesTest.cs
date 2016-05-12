@@ -22,10 +22,9 @@ namespace KR.Test
 
         public AccessibleQueriesTest()
         {
-            world = CreateITWorld();
         }
 
-        private World CreateITWorld()
+        protected World CreateITWorld()
         {
             var world = World.Instance;
             cm = new Fluent("cm");
@@ -54,6 +53,7 @@ namespace KR.Test
         [TestMethod]
         public void AccessibleAlways()
         {
+            world = CreateITWorld();
             var q = new AccessibleAlwaysQuery(new Conjunction(new Negation(cm), new Negation(cc)), new Alternative(cc, cm));
             var q2 = new AccessibleAlwaysQuery(new Alternative(cc, cm), new Conjunction(new Negation(cm), new Negation(cc)));
 
@@ -66,6 +66,7 @@ namespace KR.Test
         [TestMethod]
         public void AccessibleEver()
         {
+            world = CreateITWorld();
             var q = new AccessibleEverQuery(new Conjunction(new Negation( new Fluent("cm")),new Negation( new Fluent("cc"))), new Conjunction(new Fluent("cm"), new Fluent("cc")));
             var q2 = new AccessibleEverQuery(new Conjunction(new Fluent("cm"), new Fluent("cc")), new Conjunction(new Negation(new Fluent("cm")), new Negation(new Fluent("cc"))));
 
