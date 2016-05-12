@@ -39,7 +39,7 @@
             this.fluentComboBox = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
+            this.ifCheckBox = new System.Windows.Forms.CheckBox();
             this.conditionFormulaControl = new KR.Main.Gui.ClauseControls.FormulaControl();
             this.Panel.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -195,7 +195,7 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel3.Controls.Add(this.label4, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.ifCheckBox, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.conditionFormulaControl, 1, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 104);
@@ -206,24 +206,25 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(878, 58);
             this.tableLayoutPanel3.TabIndex = 2;
             // 
-            // label4
+            // ifCheckBox
             // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 58);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "if";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ifCheckBox.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.ifCheckBox.AutoSize = true;
+            this.ifCheckBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.ifCheckBox.Location = new System.Drawing.Point(3, 16);
+            this.ifCheckBox.Name = "ifCheckBox";
+            this.ifCheckBox.Size = new System.Drawing.Size(37, 25);
+            this.ifCheckBox.TabIndex = 7;
+            this.ifCheckBox.Text = "if";
+            this.ifCheckBox.UseVisualStyleBackColor = true;
+            this.ifCheckBox.CheckedChanged += new System.EventHandler(this.ifCheckBox_CheckedChanged);
             // 
             // conditionFormulaControl
             // 
             this.conditionFormulaControl.AutoSize = true;
             this.conditionFormulaControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.conditionFormulaControl.Location = new System.Drawing.Point(18, 10);
+            this.conditionFormulaControl.Enabled = false;
+            this.conditionFormulaControl.Location = new System.Drawing.Point(43, 10);
             this.conditionFormulaControl.Margin = new System.Windows.Forms.Padding(0, 10, 0, 0);
             this.conditionFormulaControl.MinimumSize = new System.Drawing.Size(124, 32);
             this.conditionFormulaControl.Name = "conditionFormulaControl";
@@ -262,7 +263,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private ClauseControls.FormulaControl conditionFormulaControl;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox fluentComboBox;
+        private System.Windows.Forms.CheckBox ifCheckBox;
     }
 }

@@ -48,9 +48,17 @@ namespace KR.Main.Gui.ClauseControls
 
         public Preserves getClause()
         {
-            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || fluentComboBox.SelectedIndex == -1 || conditionFormulaControl.getFormula() == null)
+            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || fluentComboBox.SelectedIndex == -1)
                 return null;
-            return new Preserves((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), (Fluent)fluentComboBox.SelectedItem, conditionFormulaControl.getFormula());
+            return new Preserves((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), (Fluent)fluentComboBox.SelectedItem, ifCheckBox.Checked ? conditionFormulaControl.getFormula() : null);
+        }
+
+        private void ifCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ifCheckBox.Checked == true)
+                conditionFormulaControl.Enabled = true;
+            else
+                conditionFormulaControl.Enabled = false;
         }
     }
 }
