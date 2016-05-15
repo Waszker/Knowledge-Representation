@@ -44,7 +44,7 @@ namespace KR.Main.Gui.ClauseControls
 
         public TypicallyCauses getClause()
         {
-            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || effectFormulaControl.getFormula() == null)
+            if (ActionComboBox.SelectedIndex == -1 || ActorsCheckedListBox.SelectedIndices.Count == 0 || effectFormulaControl.getFormula() == null || (ifCheckBox.Checked && conditionFormulaControl.getFormula() == null))
                 return null;
             return new TypicallyCauses((Entities.Action)ActionComboBox.SelectedItem, ExclusionCheckBox.Checked, ActorsCheckedListBox.CheckedItems.Cast<Actor>().ToList(), effectFormulaControl.getFormula(), ifCheckBox.Checked ? conditionFormulaControl.getFormula() : null);
         }

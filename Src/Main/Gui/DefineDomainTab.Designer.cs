@@ -91,10 +91,7 @@
             "(A,W) releases f if π ",
             "(A,W) preserves f if π",
             "always α",
-            "impossible (A,W) if π",
-            "α after (A1,W1),...,(An,Wn) ",
-            "typically α after (A1,W1),...,(An,Wn)",
-            "observable α after (A1,W1),...,(An,Wn)"});
+            "impossible (A,W) if π"});
             this.chooseClauseComboBox.Location = new System.Drawing.Point(60, 77);
             this.chooseClauseComboBox.Margin = new System.Windows.Forms.Padding(60, 10, 60, 10);
             this.chooseClauseComboBox.Name = "chooseClauseComboBox";

@@ -49,6 +49,10 @@ namespace KR.Main.Gui
             this.defineDomainPanel.Controls.Add(clauseControls[0], 0, 2);
 
             chooseClauseComboBox.SelectedIndex = 0;
+
+            //chooseClauseComboBox.Items.Add("α after (A1,W1),...,(An,Wn)");
+            //chooseClauseComboBox.Items.Add("typically α after (A1,W1),...,(An,Wn)");
+            //chooseClauseComboBox.Items.Add("observable α after (A1,W1),...,(An,Wn)");
         }
 
         public Domain getDomain()
@@ -167,36 +171,36 @@ namespace KR.Main.Gui
                         }
                         break;
                     }
-                /*case 7:
-                    {
-                        After stmt = ((AfterClauseControl)clauseControls[currentClause]).getClause();
-                        if (stmt != null)
+                    /*case 7:
                         {
-                            clausesListBox.Items.Add(stmt);
-                            _domain.AddAfterClause(stmt);
+                            After stmt = ((AfterClauseControl)clauseControls[currentClause]).getClause();
+                            if (stmt != null)
+                            {
+                                clausesListBox.Items.Add(stmt);
+                                _domain.AddAfterClause(stmt);
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 8:
-                    {
-                        TypicallyAfter stmt = ((TypicallyAfterClauseControl)clauseControls[currentClause]).getClause();
-                        if (stmt != null)
+                    case 8:
                         {
-                            clausesListBox.Items.Add(stmt);
-                            _domain.AddTypicallyAfterClause(stmt);
+                            TypicallyAfter stmt = ((TypicallyAfterClauseControl)clauseControls[currentClause]).getClause();
+                            if (stmt != null)
+                            {
+                                clausesListBox.Items.Add(stmt);
+                                _domain.AddTypicallyAfterClause(stmt);
+                            }
+                            break;
                         }
-                        break;
-                    }
-                case 9:
-                    {
-                        ObservableAfter stmt = ((ObservableClauseControl)clauseControls[currentClause]).getClause();
-                        if (stmt != null)
+                    case 9:
                         {
-                            clausesListBox.Items.Add(stmt);
-                            _domain.AddObservableClause(stmt);
-                        }
-                        break;
-                    }*/
+                            ObservableAfter stmt = ((ObservableClauseControl)clauseControls[currentClause]).getClause();
+                            if (stmt != null)
+                            {
+                                clausesListBox.Items.Add(stmt);
+                                _domain.AddObservableClause(stmt);
+                            }
+                            break;
+                        }*/
             }
         }
 
@@ -205,7 +209,7 @@ namespace KR.Main.Gui
             if (clausesListBox.SelectedIndex >= 0)
             {
                 Object selectedClause = clausesListBox.SelectedItem;
-                if(selectedClause is Initially)
+                if (selectedClause is Initially)
                 {
                     _domain.DeleteInitiallyClause((Initially)selectedClause);
                 }
