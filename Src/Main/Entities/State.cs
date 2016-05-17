@@ -25,7 +25,7 @@ namespace KR.Main.Entities
 
         public override string ToString()
         {
-            return string.Join(" ,", Values.Where(v => v.Value).Select(v => v.Key.ToString()));
+            return string.Join(" ,", Values.Select(v => (v.Value ? string.Empty : "-") + v.Key.ToString()));
         }
 
         public bool Equals(State other)
