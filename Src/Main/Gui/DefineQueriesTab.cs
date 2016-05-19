@@ -112,7 +112,8 @@ namespace KR.Main.Gui
 
         private void showGraphButton_Click(object sender, EventArgs e)
         {
-            //TODO: showing graph
+            var graphLayout = new GraphLayout.GraphLayout(World.Instance.GetEdges());
+            graphLayout.Show();
         }
     }
 }
