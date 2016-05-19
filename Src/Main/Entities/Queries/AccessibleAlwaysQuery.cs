@@ -15,7 +15,7 @@ namespace KR.Main.Entities.Queries
             this.pi = pi;
             this.gamma = gamma;
         }
-        public override bool Evaluate(World world)
+        public override bool Evaluate(World world, List<Edge> edges = null)
         {
             var states = world.GetStates(pi);
             var open=new HashSet<State>(states.SelectMany(state=>world.GetEdges(state).Select(edge=>edge.To)));

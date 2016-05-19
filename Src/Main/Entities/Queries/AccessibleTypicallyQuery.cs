@@ -18,7 +18,7 @@ namespace KR.Main.Entities.Queries
             this.pi = pi;
             this.gamma = gamma;
         }
-        public override bool Evaluate(World world)
+        public override bool Evaluate(World world, List<Edge> edges = null)
         {
             var states = world.GetStates(pi);
             return states.All(s => Accessible(world, s));

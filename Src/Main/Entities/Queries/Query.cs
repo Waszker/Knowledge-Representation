@@ -6,7 +6,7 @@ namespace KR.Main.Entities
 {
     public abstract class Query
     {
-        public abstract bool Evaluate(World world);
+        public abstract bool Evaluate(World world, List<Edge> edges=null);
 
         /// <summary>
         /// Returns collection of edges from given state for a scenario step.

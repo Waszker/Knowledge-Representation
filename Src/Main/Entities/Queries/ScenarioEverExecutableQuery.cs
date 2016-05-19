@@ -11,7 +11,7 @@ namespace KR.Main.Entities.Queries
     {
         public ScenarioEverExecutableQuery(Scenario scenario) : base(scenario) { }
 
-        public override bool Evaluate(World world)
+        public override bool Evaluate(World world, List<Edge> edges = null)
         {
             ISet<State> possibleStates = world.GetStates();
 

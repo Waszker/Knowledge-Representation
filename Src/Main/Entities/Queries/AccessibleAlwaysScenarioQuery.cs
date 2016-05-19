@@ -20,7 +20,7 @@ namespace KR.Main.Entities.Queries
             this.gamma = gamma;
             this.scenario = scenario;
         }
-        public override bool Evaluate(World world)
+        public override bool Evaluate(World world, List<Edge> edges = null)
         {
             return world.GetStates(pi).All(s => Accessible(world, s));
         }
