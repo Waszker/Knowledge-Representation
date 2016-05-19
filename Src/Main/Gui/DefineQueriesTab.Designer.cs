@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             this.defineQueriesPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.checkButton = new System.Windows.Forms.Button();
             this.chooseQueryComboBox = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.answerLabel = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.showGraphButton = new System.Windows.Forms.Button();
+            this.answer = new System.Windows.Forms.Label();
+            this.checkQueryButton = new System.Windows.Forms.Button();
             this.defineQueriesPanel.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // defineQueriesPanel
             // 
             this.defineQueriesPanel.ColumnCount = 1;
             this.defineQueriesPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.defineQueriesPanel.Controls.Add(this.checkButton, 0, 3);
             this.defineQueriesPanel.Controls.Add(this.chooseQueryComboBox, 0, 1);
             this.defineQueriesPanel.Controls.Add(this.label1, 0, 0);
-            this.defineQueriesPanel.Controls.Add(this.answerLabel, 0, 4);
+            this.defineQueriesPanel.Controls.Add(this.tableLayoutPanel1, 0, 3);
             this.defineQueriesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.defineQueriesPanel.Location = new System.Drawing.Point(0, 0);
             this.defineQueriesPanel.Name = "defineQueriesPanel";
@@ -55,25 +57,6 @@
             this.defineQueriesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16F));
             this.defineQueriesPanel.Size = new System.Drawing.Size(884, 561);
             this.defineQueriesPanel.TabIndex = 0;
-            // 
-            // checkButton
-            // 
-            this.checkButton.BackColor = System.Drawing.Color.MediumOrchid;
-            this.checkButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.checkButton.FlatAppearance.BorderSize = 0;
-            this.checkButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrchid;
-            this.checkButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Violet;
-            this.checkButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.checkButton.ForeColor = System.Drawing.Color.White;
-            this.checkButton.Location = new System.Drawing.Point(25, 389);
-            this.checkButton.Margin = new System.Windows.Forms.Padding(25, 3, 25, 3);
-            this.checkButton.Name = "checkButton";
-            this.checkButton.Size = new System.Drawing.Size(834, 78);
-            this.checkButton.TabIndex = 8;
-            this.checkButton.Text = "CHECK";
-            this.checkButton.UseVisualStyleBackColor = false;
-            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
             // 
             // chooseQueryComboBox
             // 
@@ -109,17 +92,74 @@
             this.label1.Text = "DEFINE QUERIES";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // answerLabel
+            // tableLayoutPanel1
             // 
-            this.answerLabel.AutoSize = true;
-            this.answerLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.answerLabel.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.answerLabel.Location = new System.Drawing.Point(3, 470);
-            this.answerLabel.Name = "answerLabel";
-            this.answerLabel.Size = new System.Drawing.Size(878, 91);
-            this.answerLabel.TabIndex = 9;
-            this.answerLabel.Text = "?";
-            this.answerLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.showGraphButton, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.answer, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.checkQueryButton, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 389);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.defineQueriesPanel.SetRowSpan(this.tableLayoutPanel1, 2);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(878, 169);
+            this.tableLayoutPanel1.TabIndex = 10;
+            // 
+            // showGraphButton
+            // 
+            this.showGraphButton.BackColor = System.Drawing.Color.DeepPink;
+            this.showGraphButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.showGraphButton.FlatAppearance.BorderSize = 0;
+            this.showGraphButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.MediumVioletRed;
+            this.showGraphButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.HotPink;
+            this.showGraphButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showGraphButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.showGraphButton.ForeColor = System.Drawing.Color.White;
+            this.showGraphButton.Location = new System.Drawing.Point(464, 3);
+            this.showGraphButton.Margin = new System.Windows.Forms.Padding(25, 3, 25, 3);
+            this.showGraphButton.Name = "showGraphButton";
+            this.showGraphButton.Size = new System.Drawing.Size(389, 78);
+            this.showGraphButton.TabIndex = 11;
+            this.showGraphButton.Text = "SHOW GRAPH";
+            this.showGraphButton.UseVisualStyleBackColor = false;
+            this.showGraphButton.Click += new System.EventHandler(this.showGraphButton_Click);
+            // 
+            // answer
+            // 
+            this.answer.AutoSize = true;
+            this.tableLayoutPanel1.SetColumnSpan(this.answer, 2);
+            this.answer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.answer.Font = new System.Drawing.Font("Century Gothic", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.answer.Location = new System.Drawing.Point(3, 84);
+            this.answer.Name = "answer";
+            this.answer.Size = new System.Drawing.Size(872, 85);
+            this.answer.TabIndex = 10;
+            this.answer.Text = "?";
+            this.answer.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // checkQueryButton
+            // 
+            this.checkQueryButton.BackColor = System.Drawing.Color.MediumOrchid;
+            this.checkQueryButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.checkQueryButton.FlatAppearance.BorderSize = 0;
+            this.checkQueryButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkOrchid;
+            this.checkQueryButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Violet;
+            this.checkQueryButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkQueryButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.checkQueryButton.ForeColor = System.Drawing.Color.White;
+            this.checkQueryButton.Location = new System.Drawing.Point(25, 3);
+            this.checkQueryButton.Margin = new System.Windows.Forms.Padding(25, 3, 25, 3);
+            this.checkQueryButton.Name = "checkQueryButton";
+            this.checkQueryButton.Size = new System.Drawing.Size(389, 78);
+            this.checkQueryButton.TabIndex = 9;
+            this.checkQueryButton.Text = "CHECK";
+            this.checkQueryButton.UseVisualStyleBackColor = false;
+            this.checkQueryButton.Click += new System.EventHandler(this.checkQueryButton_Click);
             // 
             // DefineQueriesTab
             // 
@@ -130,6 +170,8 @@
             this.Size = new System.Drawing.Size(884, 561);
             this.defineQueriesPanel.ResumeLayout(false);
             this.defineQueriesPanel.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -139,7 +181,9 @@
         private System.Windows.Forms.TableLayoutPanel defineQueriesPanel;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox chooseQueryComboBox;
-        private System.Windows.Forms.Button checkButton;
-        private System.Windows.Forms.Label answerLabel;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button showGraphButton;
+        private System.Windows.Forms.Label answer;
+        private System.Windows.Forms.Button checkQueryButton;
     }
 }

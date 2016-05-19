@@ -59,10 +59,10 @@ namespace KR.Main.Gui
             this.defineQueriesPanel.Controls.Remove(queryControls[currentQuery]);
             currentQuery = chooseQueryComboBox.SelectedIndex;
             this.defineQueriesPanel.Controls.Add(queryControls[currentQuery], 0, 2);
-            this.answerLabel.Text = "?";
+            this.answer.Text = "?";
         }
 
-        private void checkButton_Click(object sender, EventArgs e)
+        private void checkQueryButton_Click(object sender, EventArgs e)
         {
             bool result = false;
             switch (currentQuery)
@@ -73,7 +73,7 @@ namespace KR.Main.Gui
                         if (query != null)
                         {
                             result = query.Evaluate(World.Instance);
-                            this.answerLabel.Text = result.ToString();
+                            this.answer.Text = result.ToString();
                         }
                         break;
                     }
@@ -83,7 +83,7 @@ namespace KR.Main.Gui
                         if (query != null)
                         {
                             result = query.Evaluate(World.Instance);
-                            this.answerLabel.Text = result.ToString();
+                            this.answer.Text = result.ToString();
                         }
                         break;
                     }
@@ -93,7 +93,7 @@ namespace KR.Main.Gui
                         if (query != null)
                         {
                             result = query.Evaluate(World.Instance);
-                            this.answerLabel.Text = result.ToString();
+                            this.answer.Text = result.ToString();
                         }
                         break;
                     }
@@ -103,12 +103,16 @@ namespace KR.Main.Gui
                         if (query != null)
                         {
                             result = query.Evaluate(World.Instance);
-                            this.answerLabel.Text = result.ToString();
+                            this.answer.Text = result.ToString();
                         }
                         break;
                     }
             }
+        }
 
+        private void showGraphButton_Click(object sender, EventArgs e)
+        {
+            //TODO: showing graph
         }
     }
 }
