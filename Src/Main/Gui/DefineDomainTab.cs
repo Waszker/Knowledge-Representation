@@ -237,18 +237,6 @@ namespace KR.Main.Gui
                 {
                     _domain.DeleteImpossibleClause((Impossible)selectedClause);
                 }
-                else if (selectedClause is After)
-                {
-                    _domain.DeleteAfterClause((After)selectedClause);
-                }
-                if (selectedClause is TypicallyAfter)
-                {
-                    _domain.DeleteTypicallyAfterClause((TypicallyAfter)selectedClause);
-                }
-                else if (selectedClause is ObservableAfter)
-                {
-                    _domain.DeleteObservableClause((ObservableAfter)selectedClause);
-                }
 
                 clausesListBox.Items.Remove(selectedClause);
             }

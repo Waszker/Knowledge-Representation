@@ -19,9 +19,6 @@ namespace KR.Main.Entities
         public readonly List<Releases> ReleasesClauses = new List<Releases>();
         public readonly List<TypicallyCauses> TypicallyCausesClauses = new List<TypicallyCauses>();
         public readonly List<Preserves> PreservesClauses = new List<Preserves>();
-        public readonly List<After> AfterClauses = new List<After>();
-        public readonly List<ObservableAfter> ObservableAfterClauses = new List<ObservableAfter>();
-        public readonly List<TypicallyAfter> TypicallyAfterClauses = new List<TypicallyAfter>();
 
 
         public void AddInitiallyClause(Initially clause)
@@ -85,33 +82,6 @@ namespace KR.Main.Entities
         public void DeletePreservesClause(Preserves clause)
         {
             PreservesClauses.Remove(clause);
-        }
-
-        public void AddAfterClause(After clause)
-        {
-            AfterClauses.Add(clause);
-        }
-        public void DeleteAfterClause(After clause)
-        {
-            AfterClauses.Remove(clause);
-        }
-
-        public void AddObservableClause(ObservableAfter clause)
-        {
-            ObservableAfterClauses.Add(clause);
-        }
-        public void DeleteObservableClause(ObservableAfter clause)
-        {
-            ObservableAfterClauses.Remove(clause);
-        }
-
-        public void AddTypicallyAfterClause(TypicallyAfter clause)
-        {
-            TypicallyAfterClauses.Add(clause);
-        }
-        public void DeleteTypicallyAfterClause(TypicallyAfter clause)
-        {
-            TypicallyAfterClauses.Remove(clause);
         }
     }
 }

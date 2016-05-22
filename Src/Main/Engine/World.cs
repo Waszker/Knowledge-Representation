@@ -126,9 +126,6 @@ namespace KR.Main.Engine
                 candidateStates.RemoveWhere(s => !initiallyClause.Condition.Check(s));
             }
 
-            candidateStates = _graph.GetInitialStates(candidateStates, _domain.AfterClauses,
-                _domain.TypicallyAfterClauses, _domain.ObservableAfterClauses);
-
             if (candidateStates.Count != 1)
                 throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
 
