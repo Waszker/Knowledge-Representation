@@ -23,11 +23,13 @@ namespace KR.Main.Gui
         
         public void setActionsAndActors(List<Entities.Action> actions, List<Actor> actors)
         {
+            actionComboBox.Items.Clear();
             foreach (Entities.Action a in actions)
                 actionComboBox.Items.Add(a);
             if (actions.Count>0)
                 actionComboBox.SelectedIndex = 0;
 
+            actorComboBox.Items.Clear();
             foreach (Actor a in actors)
                 actorComboBox.Items.Add(a);
             if (actors.Count>0)

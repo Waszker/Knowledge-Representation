@@ -79,15 +79,17 @@ namespace KR.Main.Gui
             ((ImpossibleClauseControl)clauseControls[6]).setActions(actions);
             ((ImpossibleClauseControl)clauseControls[6]).setActors(actors);
             ((ImpossibleClauseControl)clauseControls[6]).setFluents(fluents);
-            //((AfterClauseControl)clauseControls[7]).setActions(actions);
-            //((AfterClauseControl)clauseControls[7]).setActors(actors);
-            //((AfterClauseControl)clauseControls[7]).setFluents(fluents);
-            //((TypicallyAfterClauseControl)clauseControls[8]).setActions(actions);
-            //((TypicallyAfterClauseControl)clauseControls[8]).setActors(actors);
-            //((TypicallyAfterClauseControl)clauseControls[8]).setFluents(fluents);
-            //((ObservableClauseControl)clauseControls[9]).setActions(actions);
-            //((ObservableClauseControl)clauseControls[9]).setActors(actors);
-            //((ObservableClauseControl)clauseControls[9]).setFluents(fluents);
+        }
+
+        public void cleanDomain()
+        {
+            clausesListBox.Items.Clear();
+            _domain.Clear();
+        }
+
+        public bool definedInitially()
+        {
+            return _domain.definedInitially();
         }
 
         private void chooseClauseComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,36 +173,6 @@ namespace KR.Main.Gui
                         }
                         break;
                     }
-                    /*case 7:
-                        {
-                            After stmt = ((AfterClauseControl)clauseControls[currentClause]).getClause();
-                            if (stmt != null)
-                            {
-                                clausesListBox.Items.Add(stmt);
-                                _domain.AddAfterClause(stmt);
-                            }
-                            break;
-                        }
-                    case 8:
-                        {
-                            TypicallyAfter stmt = ((TypicallyAfterClauseControl)clauseControls[currentClause]).getClause();
-                            if (stmt != null)
-                            {
-                                clausesListBox.Items.Add(stmt);
-                                _domain.AddTypicallyAfterClause(stmt);
-                            }
-                            break;
-                        }
-                    case 9:
-                        {
-                            ObservableAfter stmt = ((ObservableClauseControl)clauseControls[currentClause]).getClause();
-                            if (stmt != null)
-                            {
-                                clausesListBox.Items.Add(stmt);
-                                _domain.AddObservableClause(stmt);
-                            }
-                            break;
-                        }*/
             }
         }
 

@@ -20,6 +20,10 @@ namespace KR.Main.Entities
         public readonly List<TypicallyCauses> TypicallyCausesClauses = new List<TypicallyCauses>();
         public readonly List<Preserves> PreservesClauses = new List<Preserves>();
 
+        public bool definedInitially()
+        {
+            return (InitiallyClauses.Count > 0);
+        }
 
         public void AddInitiallyClause(Initially clause)
         {
@@ -82,6 +86,17 @@ namespace KR.Main.Entities
         public void DeletePreservesClause(Preserves clause)
         {
             PreservesClauses.Remove(clause);
+        }
+
+        public void Clear()
+        {
+            InitiallyClauses.Clear();
+            AlwaysClauses.Clear();
+            CausesClauses.Clear();
+            ImpossibleClauses.Clear();
+            ReleasesClauses.Clear();
+            TypicallyCausesClauses.Clear();
+            PreservesClauses.Clear();
         }
     }
 }
