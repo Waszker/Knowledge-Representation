@@ -35,10 +35,7 @@ namespace KR.Main.Gui
                 new ReleasesClauseControl(),
                 new PreservesClauseControl(),
                 new AlwaysClauseControl(),
-                new ImpossibleClauseControl(),
-                new AfterClauseControl(),
-                new TypicallyAfterClauseControl(),
-                new ObservableClauseControl() };
+                new ImpossibleClauseControl() };
 
             foreach (UserControl c in clauseControls)
             {
@@ -49,10 +46,6 @@ namespace KR.Main.Gui
             this.defineDomainPanel.Controls.Add(clauseControls[0], 0, 2);
 
             chooseClauseComboBox.SelectedIndex = 0;
-
-            //chooseClauseComboBox.Items.Add("α after (A1,W1),...,(An,Wn)");
-            //chooseClauseComboBox.Items.Add("typically α after (A1,W1),...,(An,Wn)");
-            //chooseClauseComboBox.Items.Add("observable α after (A1,W1),...,(An,Wn)");
         }
 
         public Domain getDomain()
