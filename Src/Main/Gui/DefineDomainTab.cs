@@ -172,6 +172,8 @@ namespace KR.Main.Gui
                         Impossible stmt = ((ImpossibleClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new Impossible(stmt.Action, stmt.Exclusion, availableActors, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddImpossibleClause(stmt);
                         }

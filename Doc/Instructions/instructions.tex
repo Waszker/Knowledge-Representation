@@ -36,7 +36,7 @@
 %----------------------------------------------------------------------------------------
 
 \HRule \\[0.4cm]
-{  \bfseries INSTRUKCJA}\\[1.5cm]
+{  \bfseries INSTRUKCJA DLA UŻYTKOWNIKA}\\[1.5cm]
 
 % authors
 \begin{flushright}
@@ -115,7 +115,7 @@ Następnie pojawi się okno definiowania dziedziny. Tutaj możliwe jest dodanie 
 \item {\large\texttt{impossible $(A,W)$ if $\pi$}}\\
 \item {\large\texttt{always $\alpha$}}\\
 \end{itemize}
-gdzie $A$ jest akcją, zaś $W$ jej niepustą listą wykonawców.
+gdzie $A$ jest akcją, zaś $W$ jej niepustą listą wykonawców, $f$ fluentem, a $\alpha$ oraz $\pi$ formułami.
 \newpage
 
 Aby móc przejść do dalszych etapów programu niezbędne jest zdefiniowanie zdania określającego stan początkowy (\textit{Initially}). 
@@ -145,8 +145,8 @@ Po zdefiniowaniu odpowiedniego zdania należy użyć przycisku \textbf{ADD CLAUS
 \caption{Okno definiowania dziedziny}
 \end{figure}
 
-\newpage
-Przy definiowaniu zdań, w których występują aktorzy, możliwe jest wybranie opcji {\large{$\neg$}}, która oznacza, że akcja jest wykonywana przez wszystkich dostępnych aktorów oprócz tych, którzy zostali zaznaczeni na liście. Po zdefiniowaniu dziedziny można przejść dalej klikając strzałkę w prawą stronę. Z poziomu tego okna możliwy jest również powrót do okna definiowania sygnatury, z tym że wtedy zdefiniowana dziedzina zostaje wyczyszczona (w razie jakichkolwiek zmian w sygnaturze języka):
+
+Możliwe jest usunięcie źle zdefiniowanego zdania, wystarczy wybrać je z listy i użyć przycisku \textbf{DELETE} na dole okna:
 
 \begin{figure}[H]
 \centering
@@ -154,14 +154,28 @@ Przy definiowaniu zdań, w których występują aktorzy, możliwe jest wybranie 
 \caption{Okno definiowania dziedziny}
 \end{figure}
 
-W tym oknie możliwe jest dodanie kolejnych kroków scenariusza:
+\newpage
+Przy definiowaniu zdań, w których występują aktorzy, możliwe jest wybranie opcji {\large{$\neg$}}, która oznacza, że akcja jest wykonywana przez wszystkich dostępnych aktorów \textbf{oprócz} tych, którzy zostali zaznaczeni na liście. 
+
+Dodatkowo z listy aktorów możliwe jest wybranie $\epsilon$, co jest równoznaczne z wybraniem wszystkich dostępnych aktorów. 
+
+Po zdefiniowaniu dziedziny można przejść dalej klikając strzałkę w prawą stronę. Z poziomu tego okna możliwy jest również powrót do okna definiowania sygnatury, z tym że wtedy zdefiniowana dziedzina zostaje wyczyszczona (na wypadek jakichkolwiek zmian w sygnaturze języka):
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{10}
-\caption{Okno definiowania scenariusza}
+\caption{Okno definiowania dziedziny}
 \end{figure}
 \newpage
+
+W tym oknie możliwe jest dodanie kolejnych kroków scenariusza:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{11}
+\caption{Okno definiowania scenariusza}
+\end{figure}
+
 Kolejnym etapem jest zdefiniowanie zapytań. Możliwe do wyboru to:
 \begin{itemize}
 \item {\large\texttt{always/ever executable $Scenario$}} \\
@@ -174,14 +188,7 @@ Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny
 Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?
 \end{itemize}
 
-\begin{figure}[H]
-\centering
-\includegraphics[scale=0.4]{11}
-\caption{Okno definiowania kwerend}
-\end{figure}
 \newpage
-
-Gdy zapytanie jest zdefiniowane, możliwe jest sprawdzenie odpowiedzi na zadane pytanie poprzez kliknięcie przycisku \textbf{CHECK}. Na dole okna pojawi się odpowiedź ($True/False$). 
 
 \begin{figure}[H]
 \centering
@@ -189,11 +196,22 @@ Gdy zapytanie jest zdefiniowane, możliwe jest sprawdzenie odpowiedzi na zadane 
 \caption{Okno definiowania kwerend}
 \end{figure}
 
-Możliwe jest również wyświetlenie grafu zależności poprzez użycie przycisku SHOW \textbf{GRAPH}. 
+
+Gdy zapytanie jest zdefiniowane, możliwe jest sprawdzenie odpowiedzi na zadane pytanie poprzez kliknięcie przycisku \textbf{CHECK}. Na dole okna pojawi się odpowiedź ($True/False$):
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{13}
+\caption{Okno definiowania kwerend}
+\end{figure}
+
+\newpage
+
+Możliwe jest również wyświetlenie grafu zależności poprzez użycie przycisku  \textbf{SHOW GRAPH}:
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{14}
 \caption{Graf zależności}
 \end{figure}
 
