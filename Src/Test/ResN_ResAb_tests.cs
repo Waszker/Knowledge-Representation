@@ -14,13 +14,13 @@ namespace KR.Test
     [TestClass]
     public class ResN_ResAb_tests
     {
-        private readonly IEqualityComparer<State> stateComparer = new State.StateComparer();
+        private readonly IEqualityComparer<State> _stateComparer = new State.StateComparer();
 
         private void AssertResSetsEqual(ISet<State> a, ISet<State> b)
         {
             Assert.IsTrue(a.Count == b.Count);
             foreach (var state in a)
-                Assert.IsTrue(b.Contains(state, stateComparer));
+                Assert.IsTrue(b.Contains(state, _stateComparer));
         }
 
         [TestMethod]
@@ -84,19 +84,19 @@ namespace KR.Test
             var initially = new Initially(new Conjunction(new Negation(hatterMadFluent), new Conjunction(cakeExistsFluent, elixirExistsFluent)));
             domain.AddInitiallyClause(initially);
 
-            var drinkCauses = new Causes(drinkAction, false, new List<Actor>() {hatterActor}, hatterMadFluent, elixirExistsFluent);
+            var drinkCauses = new Causes(drinkAction, false, new List<Actor>() { hatterActor }, hatterMadFluent, elixirExistsFluent);
             domain.AddCausesClause(drinkCauses);
 
-            var eatTypicallyCauses = new TypicallyCauses(eatAction, false, new List<Actor>() {hatterActor}, new Negation(hatterMadFluent), hatterMadFluent);
+            var eatTypicallyCauses = new TypicallyCauses(eatAction, false, new List<Actor>() { hatterActor }, new Negation(hatterMadFluent), hatterMadFluent);
             domain.AddTypicallyCausesClause(eatTypicallyCauses);
 
-            var impossible = new Impossible(eatAction, false, new List<Actor>() {hatterActor}, new Negation(cakeExistsFluent));
+            var impossible = new Impossible(eatAction, false, new List<Actor>() { hatterActor }, new Negation(cakeExistsFluent));
             domain.AddImpossibleClause(impossible);
 
-            var drinkReleases = new Releases(drinkAction, false, new List<Actor>() {hatterActor}, elixirExistsFluent, elixirExistsFluent);
+            var drinkReleases = new Releases(drinkAction, false, new List<Actor>() { hatterActor }, elixirExistsFluent, elixirExistsFluent);
             domain.AddReleasesClause(drinkReleases);
 
-            var eatCauses = new Causes(eatAction, false, new List<Actor>() {hatterActor}, new Negation(cakeExistsFluent), null);
+            var eatCauses = new Causes(eatAction, false, new List<Actor>() { hatterActor }, new Negation(cakeExistsFluent), null);
             domain.AddCausesClause(eatCauses);
 
             world.SetDomain(domain);
@@ -112,7 +112,7 @@ namespace KR.Test
         }
 
         [TestMethod]
-        public void WorldTestSimple()
+        public void Blowfish()
         {
             World world = World.Instance;
 
@@ -123,27 +123,52 @@ namespace KR.Test
 
             var domain = new Domain();
             domain.AddInitiallyClause(new Initially(puffedUpFluent));
-            domain.AddCausesClause(new Causes(inflateAction, false, new List<Actor> { blowfishActor }, puffedUpFluent, new True()));
-            domain.AddCausesClause(new Causes(deflateAction, false, new List<Actor> { blowfishActor }, new Negation(puffedUpFluent), new True()));
+            domain.AddCausesClause(new Causes(inflateAction, false, new List<Actor> { blowfishActor }, puffedUpFluent));
+            domain.AddCausesClause(new Causes(deflateAction, false, new List<Actor> { blowfishActor }, new Negation(puffedUpFluent)));
 
             world.SetFluents(new List<Fluent> { puffedUpFluent });
             world.SetActions(new List<Action> { inflateAction, deflateAction });
             world.SetActors(new List<Actor> { blowfishActor });
             world.SetDomain(domain);
 
-            State puffedUpState = null;
-            State notPuffedUpState = null;
             Assert.IsTrue(world.Build());
-            try
-            {
-                puffedUpState = world.GetStates(puffedUpFluent).Single();
-                notPuffedUpState = world.GetStates(new Negation(puffedUpFluent)).Single();
-            }
-            catch (InvalidOperationException e)
-            {
-                Assert.Fail(e.Message);
-            }
 
+            State state0 = new State(new List<Fluent> { puffedUpFluent }, new List<bool> { true });
+            State state1 = new State(new List<Fluent> { puffedUpFluent }, new List<bool> { false });
+
+            ISet<State> expectedResN, expectedResAb, actualResN, actualResAb;
+
+            // inflate; blowfish; puffedUp
+            expectedResN = new HashSet<State> { state0 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(inflateAction, blowfishActor, state0, false);
+            actualResAb = world.GetStates(inflateAction, blowfishActor, state0, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // inflate; blowfish; -puffedUp
+            expectedResN = new HashSet<State> { state0 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(inflateAction, blowfishActor, state1, false);
+            actualResAb = world.GetStates(inflateAction, blowfishActor, state1, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // deflate; blowfish; puffedUp
+            expectedResN = new HashSet<State> { state1 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(deflateAction, blowfishActor, state0, false);
+            actualResAb = world.GetStates(deflateAction, blowfishActor, state0, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // deflate; blowfish; -puffedUp
+            expectedResN = new HashSet<State> { state1 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(deflateAction, blowfishActor, state1, false);
+            actualResAb = world.GetStates(deflateAction, blowfishActor, state1, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
         }
 
         [TestMethod]
@@ -159,14 +184,14 @@ namespace KR.Test
 
             var domain = new Domain();
             domain.AddInitiallyClause(new Initially(new Conjunction(hungryFluent, new Negation(hasMealFluent))));
-            domain.AddImpossibleClause(new Impossible(eatAction, false, new List<Actor> {johnActor}, new Negation(hasMealFluent)));
-            domain.AddTypicallyCausesClause(new TypicallyCauses(cookAction, false, new List<Actor> {johnActor}, hasMealFluent));
-            domain.AddCausesClause(new Causes(eatAction, false, new List<Actor> {johnActor}, new Negation(hasMealFluent)));
-            domain.AddReleasesClause(new Releases(eatAction, false, new List<Actor> {johnActor}, hungryFluent, hungryFluent));
+            domain.AddImpossibleClause(new Impossible(eatAction, false, new List<Actor> { johnActor }, new Negation(hasMealFluent)));
+            domain.AddTypicallyCausesClause(new TypicallyCauses(cookAction, false, new List<Actor> { johnActor }, hasMealFluent));
+            domain.AddCausesClause(new Causes(eatAction, false, new List<Actor> { johnActor }, new Negation(hasMealFluent)));
+            domain.AddReleasesClause(new Releases(eatAction, false, new List<Actor> { johnActor }, hungryFluent, hungryFluent));
 
-            world.SetActors(new List<Actor> {johnActor});
-            world.SetFluents(new List<Fluent> {hungryFluent, hasMealFluent});
-            world.SetActions(new List<Action> {cookAction, eatAction});
+            world.SetActors(new List<Actor> { johnActor });
+            world.SetFluents(new List<Fluent> { hungryFluent, hasMealFluent });
+            world.SetActions(new List<Action> { cookAction, eatAction });
             world.SetDomain(domain);
 
             Assert.IsTrue(world.Build());
