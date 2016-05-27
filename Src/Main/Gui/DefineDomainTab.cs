@@ -18,6 +18,7 @@ namespace KR.Main.Gui
         UserControl[] clauseControls;
         int currentClause;
         Domain _domain;
+        List<Actor> availableActors = new List<Actor>();
 
         /// <summary>
         /// Initializes domain tab with dynamically changing domain entries.
@@ -55,6 +56,7 @@ namespace KR.Main.Gui
 
         public void setEntities(List<Fluent> fluents, List<Entities.Action> actions, List<Actor> actors)
         {
+            availableActors = actors;
             ((InitiallyClauseControl)clauseControls[0]).setFluents(fluents);
             ((CausesClauseControl)clauseControls[1]).setActions(actions);
             ((CausesClauseControl)clauseControls[1]).setActors(actors);
@@ -94,6 +96,7 @@ namespace KR.Main.Gui
 
         private void addClauseButton_Click(object sender, EventArgs e)
         {
+            Actor epsilonActor = new Actor("ϵ");
             switch (currentClause)
             {
                 case 0:
@@ -111,6 +114,8 @@ namespace KR.Main.Gui
                         Causes stmt = ((CausesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new Causes(stmt.Action, stmt.Exclusion, availableActors, stmt.Effect, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddCausesClause(stmt);
                         }
@@ -121,6 +126,8 @@ namespace KR.Main.Gui
                         TypicallyCauses stmt = ((TypicallyCausesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new TypicallyCauses(stmt.Action, stmt.Exclusion, availableActors, stmt.Effect, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddTypicallyCausesClause(stmt);
                         }
@@ -131,6 +138,8 @@ namespace KR.Main.Gui
                         Releases stmt = ((ReleasesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new Releases(stmt.Action, stmt.Exclusion, availableActors, stmt.Fluent, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddReleasesClause(stmt);
                         }
@@ -141,6 +150,8 @@ namespace KR.Main.Gui
                         Preserves stmt = ((PreservesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new Preserves(stmt.Action, stmt.Exclusion, availableActors, stmt.Fluent, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddPreservesClause(stmt);
                         }

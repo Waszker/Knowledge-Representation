@@ -31,9 +31,9 @@ namespace KR.Main.Gui.ClauseControls
         public void setActors(List<Actor> _actors)
         {
             ActorsCheckedListBox.Items.Clear();
+            ActorsCheckedListBox.Items.Add(new Actor("ϵ"));
             foreach (Actor a in _actors)
                 ActorsCheckedListBox.Items.Add(a);
-            //TODO: ADD EPSILON
         }
 
         public void setFluents(List<Fluent> _fluents)

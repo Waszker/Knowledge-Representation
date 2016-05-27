@@ -44,9 +44,9 @@ namespace KR.Main.Entities.Statements
                     actorsList = actorsList + ", " + a.ToString();
             }
             if (Condition == null || Condition is True)
-                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") releases " + Fluent.ToString();
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") releases " + Fluent.ToString();
             else
-                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") releases " + Fluent.ToString() + " if " + Condition.ToString();
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") releases " + Fluent.ToString() + " if " + Condition.ToString();
         }
     }
 }

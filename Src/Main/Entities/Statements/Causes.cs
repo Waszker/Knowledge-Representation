@@ -23,12 +23,12 @@ namespace KR.Main.Entities.Statements
         /// <param name="actors">actors for sentence</param>
         /// <param name="effect">effect for sentence</param>
         /// <param name="condition">condition for sentence</param>
-        public Causes(Action action, bool exclusion, List<Actor> actors, ICondition effect, ICondition condition=null)
+        public Causes(Action action, bool exclusion, List<Actor> actors, ICondition effect, ICondition condition = null)
         {
             if (condition == null) condition = new True();
             Action = action;
             Exclusion = exclusion;
-            Actors = actors??new List<Actor>();
+            Actors = actors ?? new List<Actor>();
             Effect = effect;
             Condition = condition;
         }
@@ -36,17 +36,17 @@ namespace KR.Main.Entities.Statements
         public override string ToString()
         {
             string actorsList = "";
-            foreach(Actor a in Actors)
+            foreach (Actor a in Actors)
             {
                 if (actorsList == "")
                     actorsList = a.ToString();
                 else
                     actorsList = actorsList + ", " + a.ToString();
             }
-            if(Condition== null || Condition is True)
-                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") causes " + Effect.ToString();
+            if (Condition == null || Condition is True)
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") causes " + Effect.ToString();
             else
-                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") causes " + Effect.ToString() + " if " + Condition.ToString();
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") causes " + Effect.ToString() + " if " + Condition.ToString();
         }
     }
 }

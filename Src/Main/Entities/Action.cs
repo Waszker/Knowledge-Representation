@@ -25,7 +25,7 @@ namespace KR.Main.Entities
 
         public override string ToString()
         {
-            return this._name;
+            return this._name.ToUpper();
         }
     }
 }
