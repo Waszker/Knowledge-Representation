@@ -23,7 +23,7 @@ namespace KR.Main.Entities.Statements
         /// <param name="actors">actors for sentence</param>
         /// <param name="effect">effect for sentence</param>
         /// <param name="condition">condition for sentence</param>
-        public TypicallyCauses(Action action, bool exclusion, List<Actor> actors, ICondition effect, ICondition condition)
+        public TypicallyCauses(Action action, bool exclusion, List<Actor> actors, ICondition effect, ICondition condition = null)
         {
             if (condition == null) condition = new True();
             Action = action;

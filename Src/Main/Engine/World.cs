@@ -165,14 +165,8 @@ namespace KR.Main.Engine
                 if (!causesClause.Condition.Check(from))
                     continue;
 
-                clauseFound = true;
-
                 resZero.RemoveWhere(s => !causesClause.Effect.Check(s));
             }
-
-            // No clauses were found so the action has no effect.
-            if (!clauseFound)
-                resZero = new HashSet<State> { from };
 
             foreach (var preservesClause in _domain.PreservesClauses)
             {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using KR.Main.Engine;
@@ -13,6 +14,15 @@ namespace KR.Test
     [TestClass]
     public class ResN_ResAb_tests
     {
+        private readonly IEqualityComparer<State> stateComparer = new State.StateComparer();
+
+        private void AssertResSetsEqual(ISet<State> a, ISet<State> b)
+        {
+            Assert.IsTrue(a.Count == b.Count);
+            foreach (var state in a)
+                Assert.IsTrue(b.Contains(state, stateComparer));
+        }
+
         [TestMethod]
         public void Simple_ResN_ResAb()
         {
@@ -134,6 +144,103 @@ namespace KR.Test
                 Assert.Fail(e.Message);
             }
 
+        }
+
+        [TestMethod]
+        public void CookingJohn()
+        {
+            World world = World.Instance;
+
+            var hungryFluent = new Fluent("Hungry");
+            var hasMealFluent = new Fluent("Has meal");
+            var cookAction = new Action("Cook");
+            var eatAction = new Action("Eat");
+            var johnActor = new Actor("John");
+
+            var domain = new Domain();
+            domain.AddInitiallyClause(new Initially(new Conjunction(hungryFluent, new Negation(hasMealFluent))));
+            domain.AddImpossibleClause(new Impossible(eatAction, false, new List<Actor> {johnActor}, new Negation(hasMealFluent)));
+            domain.AddTypicallyCausesClause(new TypicallyCauses(cookAction, false, new List<Actor> {johnActor}, hasMealFluent));
+            domain.AddCausesClause(new Causes(eatAction, false, new List<Actor> {johnActor}, new Negation(hasMealFluent)));
+            domain.AddReleasesClause(new Releases(eatAction, false, new List<Actor> {johnActor}, hungryFluent, hungryFluent));
+
+            world.SetActors(new List<Actor> {johnActor});
+            world.SetFluents(new List<Fluent> {hungryFluent, hasMealFluent});
+            world.SetActions(new List<Action> {cookAction, eatAction});
+            world.SetDomain(domain);
+
+            Assert.IsTrue(world.Build());
+
+            State state0 = new State(new List<Fluent> { hungryFluent, hasMealFluent }, new List<bool> { true, false });
+            State state1 = new State(new List<Fluent> { hungryFluent, hasMealFluent }, new List<bool> { true, true });
+            State state2 = new State(new List<Fluent> { hungryFluent, hasMealFluent }, new List<bool> { false, true });
+            State state3 = new State(new List<Fluent> { hungryFluent, hasMealFluent }, new List<bool> { false, false });
+
+            ISet<State> expectedResN, expectedResAb, actualResN, actualResAb;
+
+            // cook; john; hungry & -hasMeal
+            expectedResN = new HashSet<State> { state1 };
+            expectedResAb = new HashSet<State> { state0 };
+            actualResN = world.GetStates(cookAction, johnActor, state0, false);
+            actualResAb = world.GetStates(cookAction, johnActor, state0, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // cook; john; hungry & hasMeal
+            expectedResN = new HashSet<State> { state1 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(cookAction, johnActor, state1, false);
+            actualResAb = world.GetStates(cookAction, johnActor, state1, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // cook; john; -hungry & hasMeal
+            expectedResN = new HashSet<State> { state2 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(cookAction, johnActor, state2, false);
+            actualResAb = world.GetStates(cookAction, johnActor, state2, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // cook; john; -hungry & -hasMeal
+            expectedResN = new HashSet<State> { state2 };
+            expectedResAb = new HashSet<State> { state3 };
+            actualResN = world.GetStates(cookAction, johnActor, state3, false);
+            actualResAb = world.GetStates(cookAction, johnActor, state3, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // eat; john; hungry & -hasMeal
+            expectedResN = new HashSet<State> { };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(eatAction, johnActor, state0, false);
+            actualResAb = world.GetStates(eatAction, johnActor, state0, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // eat; john; hungry & hasMeal
+            expectedResN = new HashSet<State> { state0, state3 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(eatAction, johnActor, state1, false);
+            actualResAb = world.GetStates(eatAction, johnActor, state1, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // eat; john; -hungry & hasMeal
+            expectedResN = new HashSet<State> { state3 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(eatAction, johnActor, state2, false);
+            actualResAb = world.GetStates(eatAction, johnActor, state2, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
+
+            // eat; john; -hungry & -hasMeal
+            expectedResN = new HashSet<State> { };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(eatAction, johnActor, state3, false);
+            actualResAb = world.GetStates(eatAction, johnActor, state3, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
         }
     }
 }
