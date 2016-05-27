@@ -12,7 +12,7 @@ using Action = KR.Main.Entities.Action;
 namespace KR.Test
 {
     [TestClass]
-    public class ResSetCalculationTest
+    public class ResSetsTests
     {
         private readonly IEqualityComparer<State> _stateComparer = new State.StateComparer();
 
@@ -30,10 +30,11 @@ namespace KR.Test
 
             var hatterActor = new Actor("Hatter");
             var drinkAction = new Action("Drink");
+            var eatAction = new Action("Eat");
             var hatterMadFluent = new Fluent("hatterMad");
             var cakeExistsFluent = new Fluent("cakeExists");
             var elixirExistsFluent = new Fluent("elixirExists");
-            var eatAction = new Action("Eat");
+            var fluentList = new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent };
 
             var domain = new Domain();
             var initially1 = new Initially(new Conjunction(new Negation(hatterMadFluent), cakeExistsFluent, elixirExistsFluent));
@@ -48,22 +49,22 @@ namespace KR.Test
             domain.AddImpossibleClause(impossible1);
             domain.AddReleasesClause(releases1);
             domain.AddCausesClause(causes2);
-
+            
             world.SetActions(new List<Action> { drinkAction, eatAction });
             world.SetActors(new List<Actor> { hatterActor });
-            world.SetFluents(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent });
+            world.SetFluents(fluentList);
             world.SetDomain(domain);
 
             Assert.IsTrue(world.Build());
 
-            State state0 = new State(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent }, new List<bool> { false, true, true });
-            State state1 = new State(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent }, new List<bool> { true, true, true });
-            State state2 = new State(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent }, new List<bool> { true, false, true });
-            State state3 = new State(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent }, new List<bool> { false, false, true });
-            State state4 = new State(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent }, new List<bool> { true, false, false });
-            State state5 = new State(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent }, new List<bool> { true, true, false });
-            State state6 = new State(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent }, new List<bool> { false, true, false });
-            State state7 = new State(new List<Fluent> { hatterMadFluent, cakeExistsFluent, elixirExistsFluent }, new List<bool> { false, false, false });
+            State state0 = new State(fluentList, new List<bool> { false, true, true });
+            State state1 = new State(fluentList, new List<bool> { true, true, true });
+            State state2 = new State(fluentList, new List<bool> { true, false, true });
+            State state3 = new State(fluentList, new List<bool> { false, false, true });
+            State state4 = new State(fluentList, new List<bool> { true, false, false });
+            State state5 = new State(fluentList, new List<bool> { true, true, false });
+            State state6 = new State(fluentList, new List<bool> { false, true, false });
+            State state7 = new State(fluentList, new List<bool> { false, false, false });
 
             ISet<State> expectedResN, expectedResAb, actualResN, actualResAb;
 
@@ -200,26 +201,27 @@ namespace KR.Test
         public void Blowfish()
         {
             World world = World.Instance;
-
-            var puffedUpFluent = new Fluent("puffedUp");
+            
             var inflateAction = new Action("Inflate");
             var deflateAction = new Action("Deflate");
             var blowfishActor = new Actor("Blowfish");
+            var puffedUpFluent = new Fluent("puffedUp");
+            var fluentList = new List<Fluent> { puffedUpFluent };
 
             var domain = new Domain();
             domain.AddInitiallyClause(new Initially(puffedUpFluent));
             domain.AddCausesClause(new Causes(inflateAction, false, new List<Actor> { blowfishActor }, puffedUpFluent));
             domain.AddCausesClause(new Causes(deflateAction, false, new List<Actor> { blowfishActor }, new Negation(puffedUpFluent)));
 
-            world.SetFluents(new List<Fluent> { puffedUpFluent });
             world.SetActions(new List<Action> { inflateAction, deflateAction });
             world.SetActors(new List<Actor> { blowfishActor });
+            world.SetFluents(fluentList);
             world.SetDomain(domain);
 
             Assert.IsTrue(world.Build());
-
-            State state0 = new State(new List<Fluent> { puffedUpFluent }, new List<bool> { true });
-            State state1 = new State(new List<Fluent> { puffedUpFluent }, new List<bool> { false });
+            
+            State state0 = new State(fluentList, new List<bool> { true });
+            State state1 = new State(fluentList, new List<bool> { false });
 
             ISet<State> expectedResN, expectedResAb, actualResN, actualResAb;
 
@@ -261,11 +263,12 @@ namespace KR.Test
         {
             World world = World.Instance;
 
-            var hungryFluent = new Fluent("hungry");
-            var hasMealFluent = new Fluent("hasMeal");
             var cookAction = new Action("Cook");
             var eatAction = new Action("Eat");
             var johnActor = new Actor("John");
+            var hungryFluent = new Fluent("hungry");
+            var hasMealFluent = new Fluent("hasMeal");
+            var fluentList = new List<Fluent> { hungryFluent, hasMealFluent };
 
             var domain = new Domain();
             domain.AddInitiallyClause(new Initially(new Conjunction(hungryFluent, new Negation(hasMealFluent))));
@@ -273,18 +276,18 @@ namespace KR.Test
             domain.AddTypicallyCausesClause(new TypicallyCauses(cookAction, false, new List<Actor> { johnActor }, hasMealFluent));
             domain.AddCausesClause(new Causes(eatAction, false, new List<Actor> { johnActor }, new Negation(hasMealFluent)));
             domain.AddReleasesClause(new Releases(eatAction, false, new List<Actor> { johnActor }, hungryFluent, hungryFluent));
-
+            
             world.SetActors(new List<Actor> { johnActor });
-            world.SetFluents(new List<Fluent> { hungryFluent, hasMealFluent });
             world.SetActions(new List<Action> { cookAction, eatAction });
+            world.SetFluents(fluentList);
             world.SetDomain(domain);
 
             Assert.IsTrue(world.Build());
 
-            State state0 = new State(new List<Fluent> { hungryFluent, hasMealFluent }, new List<bool> { true, false });
-            State state1 = new State(new List<Fluent> { hungryFluent, hasMealFluent }, new List<bool> { true, true });
-            State state2 = new State(new List<Fluent> { hungryFluent, hasMealFluent }, new List<bool> { false, true });
-            State state3 = new State(new List<Fluent> { hungryFluent, hasMealFluent }, new List<bool> { false, false });
+            State state0 = new State(fluentList, new List<bool> { true, false });
+            State state1 = new State(fluentList, new List<bool> { true, true });
+            State state2 = new State(fluentList, new List<bool> { false, true });
+            State state3 = new State(fluentList, new List<bool> { false, false });
 
             ISet<State> expectedResN, expectedResAb, actualResN, actualResAb;
 
