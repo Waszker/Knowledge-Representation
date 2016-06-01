@@ -147,7 +147,7 @@ namespace KR.Main.Engine
                     continue;
                 if (impossibleClause.Exclusion && !_actors.Except(impossibleClause.Actors).Contains(actor))
                     continue;
-                if (!impossibleClause.Condition.Check(from))
+                if (impossibleClause.Condition != null && !impossibleClause.Condition.Check(from))
                     continue;
 
                 resZero.Clear();
