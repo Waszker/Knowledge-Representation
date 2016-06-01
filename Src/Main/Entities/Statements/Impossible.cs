@@ -26,7 +26,7 @@ namespace KR.Main.Entities.Statements
             Action = action;
             Exclusion = exclusion;
             Actors = actors??new List<Actor>();
-            Condition = condition;
+            Condition = condition ?? new True();
         }
 
         public override string ToString()

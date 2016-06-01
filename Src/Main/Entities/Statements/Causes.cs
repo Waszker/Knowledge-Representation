@@ -25,12 +25,11 @@ namespace KR.Main.Entities.Statements
         /// <param name="condition">condition for sentence</param>
         public Causes(Action action, bool exclusion, List<Actor> actors, ICondition effect, ICondition condition = null)
         {
-            if (condition == null) condition = new True();
             Action = action;
             Exclusion = exclusion;
             Actors = actors ?? new List<Actor>();
             Effect = effect;
-            Condition = condition;
+            Condition = condition ?? new True();
         }
 
         public override string ToString()
