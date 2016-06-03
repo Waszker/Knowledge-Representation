@@ -17,7 +17,7 @@ namespace KR.Main.Entities.Statements
         /// <param name="condition">condition for sentence</param>
         public Always(ICondition condition)
         {
-            Condition = condition;
+            Condition = condition ?? new True();
         }
 
         public override string ToString()

@@ -8,9 +8,6 @@ namespace KR.Main.Entities
     public class State : IEquatable<State>
     {
         public readonly Dictionary<Fluent, bool> Values = new Dictionary<Fluent, bool>();
-
-
-
         public bool this[Fluent fluent] => Values[fluent];
 
 
@@ -41,5 +38,19 @@ namespace KR.Main.Entities
             }
             return true;
         }
+
+        public class StateComparer : IEqualityComparer<State>
+        {
+            public bool Equals(State x, State y)
+            {
+                return x.Equals(y);
+            }
+
+            public int GetHashCode(State obj)
+            {
+                return obj.ToString().GetHashCode();
+            }
+        }
+
     }
 }

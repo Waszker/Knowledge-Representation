@@ -19,10 +19,11 @@ namespace KR.Main.Entities
         public readonly List<Releases> ReleasesClauses = new List<Releases>();
         public readonly List<TypicallyCauses> TypicallyCausesClauses = new List<TypicallyCauses>();
         public readonly List<Preserves> PreservesClauses = new List<Preserves>();
-        public readonly List<After> AfterClauses = new List<After>();
-        public readonly List<ObservableAfter> ObservableAfterClauses = new List<ObservableAfter>();
-        public readonly List<TypicallyAfter> TypicallyAfterClauses = new List<TypicallyAfter>();
 
+        public bool definedInitially()
+        {
+            return (InitiallyClauses.Count > 0);
+        }
 
         public void AddInitiallyClause(Initially clause)
         {
@@ -87,31 +88,15 @@ namespace KR.Main.Entities
             PreservesClauses.Remove(clause);
         }
 
-        public void AddAfterClause(After clause)
+        public void Clear()
         {
-            AfterClauses.Add(clause);
-        }
-        public void DeleteAfterClause(After clause)
-        {
-            AfterClauses.Remove(clause);
-        }
-
-        public void AddObservableClause(ObservableAfter clause)
-        {
-            ObservableAfterClauses.Add(clause);
-        }
-        public void DeleteObservableClause(ObservableAfter clause)
-        {
-            ObservableAfterClauses.Remove(clause);
-        }
-
-        public void AddTypicallyAfterClause(TypicallyAfter clause)
-        {
-            TypicallyAfterClauses.Add(clause);
-        }
-        public void DeleteTypicallyAfterClause(TypicallyAfter clause)
-        {
-            TypicallyAfterClauses.Remove(clause);
+            InitiallyClauses.Clear();
+            AlwaysClauses.Clear();
+            CausesClauses.Clear();
+            ImpossibleClauses.Clear();
+            ReleasesClauses.Clear();
+            TypicallyCausesClauses.Clear();
+            PreservesClauses.Clear();
         }
     }
 }

@@ -25,12 +25,11 @@ namespace KR.Main.Entities.Statements
         /// <param name="condition">condition for sentence</param>
         public Preserves(Action action, bool exclusion, List<Actor> actors, Fluent fluent, ICondition condition)
         {
-            if (condition == null) condition = new True();
             Action = action;
             Exclusion = exclusion;
             Actors = actors;
             Fluent = fluent;
-            Condition = condition;
+            Condition = condition ?? new True();
         }
 
         public override string ToString()
@@ -44,9 +43,9 @@ namespace KR.Main.Entities.Statements
                     actorsList = actorsList + ", " + a.ToString();
             }
             if (Condition == null || Condition is True)
-                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") preserves " + Fluent.ToString();
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") preserves " + Fluent.ToString();
             else
-                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") preserves " + Fluent.ToString() + " if " + Condition.ToString();
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") preserves " + Fluent.ToString() + " if " + Condition.ToString();
         }
     }
 }

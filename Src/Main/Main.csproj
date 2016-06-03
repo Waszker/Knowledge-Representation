@@ -82,15 +82,12 @@
     <Compile Include="Entities\Queries\ScenarioExecutableQuery.cs" />
     <Compile Include="Entities\Scenario.cs" />
     <Compile Include="Entities\ScenarioStep.cs" />
-    <Compile Include="Entities\Statements\After.cs" />
     <Compile Include="Entities\Statements\Always.cs" />
     <Compile Include="Entities\Statements\Causes.cs" />
     <Compile Include="Entities\Statements\Impossible.cs" />
     <Compile Include="Entities\Statements\Initially.cs" />
-    <Compile Include="Entities\Statements\ObservableAfter.cs" />
     <Compile Include="Entities\Statements\Preserves.cs" />
     <Compile Include="Entities\Statements\Releases.cs" />
-    <Compile Include="Entities\Statements\TypicallyAfter.cs" />
     <Compile Include="Entities\Statements\TypicallyCauses.cs" />
     <Compile Include="GraphLayout\GleeGraphFactory.cs" />
     <Compile Include="GraphLayout\GraphLayout.cs" />
@@ -99,12 +96,6 @@
     </Compile>
     <Compile Include="Gui\ClauseControls\ActionActorsControl.Designer.cs">
       <DependentUpon>ActionActorsControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\ClauseControls\AfterClauseControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Gui\ClauseControls\AfterClauseControl.Designer.cs">
-      <DependentUpon>AfterClauseControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\ClauseControls\AlwaysClauseControl.cs">
       <SubType>UserControl</SubType>
@@ -148,12 +139,6 @@
     <Compile Include="Gui\ClauseControls\ImpossibleClauseControl.Designer.cs">
       <DependentUpon>ImpossibleClauseControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Gui\ClauseControls\ObservableClauseControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Gui\ClauseControls\ObservableClauseControl.Designer.cs">
-      <DependentUpon>ObservableClauseControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Gui\ClauseControls\PreservesClauseControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -165,12 +150,6 @@
     </Compile>
     <Compile Include="Gui\ClauseControls\ReleasesClauseControl.Designer.cs">
       <DependentUpon>ReleasesClauseControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Gui\ClauseControls\TypicallyAfterClauseControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Gui\ClauseControls\TypicallyAfterClauseControl.Designer.cs">
-      <DependentUpon>TypicallyAfterClauseControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\ClauseControls\TypicallyCausesClauseControl.cs">
       <SubType>UserControl</SubType>
@@ -229,9 +208,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Gui\ClauseControls\ActionActorsControl.resx">
       <DependentUpon>ActionActorsControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Gui\ClauseControls\AfterClauseControl.resx">
-      <DependentUpon>AfterClauseControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\ClauseControls\AlwaysClauseControl.resx">
       <DependentUpon>AlwaysClauseControl.cs</DependentUpon>

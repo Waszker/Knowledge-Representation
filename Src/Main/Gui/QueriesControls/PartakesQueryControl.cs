@@ -22,6 +22,7 @@ namespace KR.Main.Gui.QueriesControls
 
         public void setActors(List<Actor> _actors)
         {
+            ActorComboBox.Items.Clear();
             foreach (Actor a in _actors)
                 ActorComboBox.Items.Add(a);
             if (_actors.Count > 0)

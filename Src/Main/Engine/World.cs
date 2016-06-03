@@ -126,9 +126,6 @@ namespace KR.Main.Engine
                 candidateStates.RemoveWhere(s => !initiallyClause.Condition.Check(s));
             }
 
-            candidateStates = _graph.GetInitialStates(candidateStates, _domain.AfterClauses,
-                _domain.TypicallyAfterClauses, _domain.ObservableAfterClauses);
-
             if (candidateStates.Count != 1)
                 throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
 
@@ -168,14 +165,8 @@ namespace KR.Main.Engine
                 if (!causesClause.Condition.Check(from))
                     continue;
 
-                clauseFound = true;
-
                 resZero.RemoveWhere(s => !causesClause.Effect.Check(s));
             }
-
-            // No clauses were found so the action has no effect.
-            if (!clauseFound)
-                resZero = new HashSet<State> { from };
 
             foreach (var preservesClause in _domain.PreservesClauses)
             {

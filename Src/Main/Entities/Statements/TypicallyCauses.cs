@@ -23,14 +23,13 @@ namespace KR.Main.Entities.Statements
         /// <param name="actors">actors for sentence</param>
         /// <param name="effect">effect for sentence</param>
         /// <param name="condition">condition for sentence</param>
-        public TypicallyCauses(Action action, bool exclusion, List<Actor> actors, ICondition effect, ICondition condition)
+        public TypicallyCauses(Action action, bool exclusion, List<Actor> actors, ICondition effect, ICondition condition = null)
         {
-            if (condition == null) condition = new True();
             Action = action;
             Exclusion = exclusion;
             Actors = actors;
             Effect = effect;
-            Condition = condition;
+            Condition = condition ?? new True();
         }
 
         public override string ToString()
@@ -44,9 +43,9 @@ namespace KR.Main.Entities.Statements
                     actorsList = actorsList + ", " + a.ToString();
             }
             if (Condition == null || Condition is True)
-                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") typically causes " + Effect.ToString();
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") typically causes " + Effect.ToString();
             else
-                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") typically causes " + Effect.ToString() + " if " + Condition.ToString();
+                return "(" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") typically causes " + Effect.ToString() + " if " + Condition.ToString();
         }
     }
 }

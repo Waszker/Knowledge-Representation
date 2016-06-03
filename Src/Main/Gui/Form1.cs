@@ -42,23 +42,34 @@ namespace KR.Main.Gui
                     ((DefineDomainTab)tabs[1]).setEntities(fluentList, actionList, actorList);
                     ((DefineScenarioTab)tabs[2]).setActionsAndActors(actionList, actorList);
                     ((DefineQueriesTab)tabs[3]).setFluentsAndActors(fluentList, actorList);
+                    ((DefineDomainTab)tabs[1]).cleanDomain();
                     World.Instance.SetFluents(fluentList);
                     World.Instance.SetActions(actionList);
                     World.Instance.SetActors(actorList);
                     break;
-                case 1:                    
+                case 1:
                     World.Instance.SetDomain(((DefineDomainTab)tabs[1]).getDomain());
-                    World.Instance.Build();
+                    if (((DefineDomainTab)tabs[1]).definedInitially())
+                        World.Instance.Build();
                     ((DefineScenarioTab)tabs[2]).cleanScenario();
                     break;
                 case 2:
                     ((DefineQueriesTab)tabs[3]).setScenario(((DefineScenarioTab)tabs[2]).getScenario());
-                    ((DefineScenarioTab)tabs[2]).cleanScenario();
                     nextButton.Enabled = false;
                     nextButton.Visible = false;
                     break;
             }
 
+            if (currentTab == 1 && !(((DefineDomainTab)tabs[1]).definedInitially()))
+            {
+                MessageBox.Show("Specify initial state!", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (currentTab == 0 && ((((DefineEntitiesTab)tabs[0]).getFluents().Count == 0) || (((DefineEntitiesTab)tabs[0]).getActions().Count == 0) || (((DefineEntitiesTab)tabs[0]).getActors().Count == 0)))
+            {
+                MessageBox.Show("Specify fluents, actions and actors!", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             this.mainLayoutPanel.Controls.Remove(tabs[currentTab]);
             currentTab++;
             this.mainLayoutPanel.Controls.Add(tabs[currentTab], 1, 0);

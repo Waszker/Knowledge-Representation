@@ -18,6 +18,7 @@ namespace KR.Main.Gui
         UserControl[] clauseControls;
         int currentClause;
         Domain _domain;
+        List<Actor> availableActors = new List<Actor>();
 
         /// <summary>
         /// Initializes domain tab with dynamically changing domain entries.
@@ -35,10 +36,7 @@ namespace KR.Main.Gui
                 new ReleasesClauseControl(),
                 new PreservesClauseControl(),
                 new AlwaysClauseControl(),
-                new ImpossibleClauseControl(),
-                new AfterClauseControl(),
-                new TypicallyAfterClauseControl(),
-                new ObservableClauseControl() };
+                new ImpossibleClauseControl() };
 
             foreach (UserControl c in clauseControls)
             {
@@ -49,10 +47,6 @@ namespace KR.Main.Gui
             this.defineDomainPanel.Controls.Add(clauseControls[0], 0, 2);
 
             chooseClauseComboBox.SelectedIndex = 0;
-
-            //chooseClauseComboBox.Items.Add("α after (A1,W1),...,(An,Wn)");
-            //chooseClauseComboBox.Items.Add("typically α after (A1,W1),...,(An,Wn)");
-            //chooseClauseComboBox.Items.Add("observable α after (A1,W1),...,(An,Wn)");
         }
 
         public Domain getDomain()
@@ -62,6 +56,7 @@ namespace KR.Main.Gui
 
         public void setEntities(List<Fluent> fluents, List<Entities.Action> actions, List<Actor> actors)
         {
+            availableActors = actors;
             ((InitiallyClauseControl)clauseControls[0]).setFluents(fluents);
             ((CausesClauseControl)clauseControls[1]).setActions(actions);
             ((CausesClauseControl)clauseControls[1]).setActors(actors);
@@ -79,15 +74,17 @@ namespace KR.Main.Gui
             ((ImpossibleClauseControl)clauseControls[6]).setActions(actions);
             ((ImpossibleClauseControl)clauseControls[6]).setActors(actors);
             ((ImpossibleClauseControl)clauseControls[6]).setFluents(fluents);
-            //((AfterClauseControl)clauseControls[7]).setActions(actions);
-            //((AfterClauseControl)clauseControls[7]).setActors(actors);
-            //((AfterClauseControl)clauseControls[7]).setFluents(fluents);
-            //((TypicallyAfterClauseControl)clauseControls[8]).setActions(actions);
-            //((TypicallyAfterClauseControl)clauseControls[8]).setActors(actors);
-            //((TypicallyAfterClauseControl)clauseControls[8]).setFluents(fluents);
-            //((ObservableClauseControl)clauseControls[9]).setActions(actions);
-            //((ObservableClauseControl)clauseControls[9]).setActors(actors);
-            //((ObservableClauseControl)clauseControls[9]).setFluents(fluents);
+        }
+
+        public void cleanDomain()
+        {
+            clausesListBox.Items.Clear();
+            _domain.Clear();
+        }
+
+        public bool definedInitially()
+        {
+            return _domain.definedInitially();
         }
 
         private void chooseClauseComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -99,6 +96,7 @@ namespace KR.Main.Gui
 
         private void addClauseButton_Click(object sender, EventArgs e)
         {
+            Actor epsilonActor = new Actor("ϵ");
             switch (currentClause)
             {
                 case 0:
@@ -116,6 +114,8 @@ namespace KR.Main.Gui
                         Causes stmt = ((CausesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new Causes(stmt.Action, stmt.Exclusion, availableActors, stmt.Effect, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddCausesClause(stmt);
                         }
@@ -126,6 +126,8 @@ namespace KR.Main.Gui
                         TypicallyCauses stmt = ((TypicallyCausesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new TypicallyCauses(stmt.Action, stmt.Exclusion, availableActors, stmt.Effect, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddTypicallyCausesClause(stmt);
                         }
@@ -136,6 +138,8 @@ namespace KR.Main.Gui
                         Releases stmt = ((ReleasesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new Releases(stmt.Action, stmt.Exclusion, availableActors, stmt.Fluent, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddReleasesClause(stmt);
                         }
@@ -146,6 +150,8 @@ namespace KR.Main.Gui
                         Preserves stmt = ((PreservesClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new Preserves(stmt.Action, stmt.Exclusion, availableActors, stmt.Fluent, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddPreservesClause(stmt);
                         }
@@ -166,41 +172,13 @@ namespace KR.Main.Gui
                         Impossible stmt = ((ImpossibleClauseControl)clauseControls[currentClause]).getClause();
                         if (stmt != null)
                         {
+                            if (stmt.Actors.Contains(epsilonActor))
+                                stmt = new Impossible(stmt.Action, stmt.Exclusion, availableActors, stmt.Condition);
                             clausesListBox.Items.Add(stmt);
                             _domain.AddImpossibleClause(stmt);
                         }
                         break;
                     }
-                    /*case 7:
-                        {
-                            After stmt = ((AfterClauseControl)clauseControls[currentClause]).getClause();
-                            if (stmt != null)
-                            {
-                                clausesListBox.Items.Add(stmt);
-                                _domain.AddAfterClause(stmt);
-                            }
-                            break;
-                        }
-                    case 8:
-                        {
-                            TypicallyAfter stmt = ((TypicallyAfterClauseControl)clauseControls[currentClause]).getClause();
-                            if (stmt != null)
-                            {
-                                clausesListBox.Items.Add(stmt);
-                                _domain.AddTypicallyAfterClause(stmt);
-                            }
-                            break;
-                        }
-                    case 9:
-                        {
-                            ObservableAfter stmt = ((ObservableClauseControl)clauseControls[currentClause]).getClause();
-                            if (stmt != null)
-                            {
-                                clausesListBox.Items.Add(stmt);
-                                _domain.AddObservableClause(stmt);
-                            }
-                            break;
-                        }*/
             }
         }
 
@@ -236,18 +214,6 @@ namespace KR.Main.Gui
                 if (selectedClause is Impossible)
                 {
                     _domain.DeleteImpossibleClause((Impossible)selectedClause);
-                }
-                else if (selectedClause is After)
-                {
-                    _domain.DeleteAfterClause((After)selectedClause);
-                }
-                if (selectedClause is TypicallyAfter)
-                {
-                    _domain.DeleteTypicallyAfterClause((TypicallyAfter)selectedClause);
-                }
-                else if (selectedClause is ObservableAfter)
-                {
-                    _domain.DeleteObservableClause((ObservableAfter)selectedClause);
                 }
 
                 clausesListBox.Items.Remove(selectedClause);

@@ -26,7 +26,7 @@ namespace KR.Main.Entities.Statements
             Action = action;
             Exclusion = exclusion;
             Actors = actors??new List<Actor>();
-            Condition = condition;
+            Condition = condition ?? new True();
         }
 
         public override string ToString()
@@ -40,9 +40,9 @@ namespace KR.Main.Entities.Statements
                     actorsList = actorsList + ", " + a.ToString();
             }
             if (Condition == null || Condition is True)
-                return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ")";
+                return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ")";
             else
-                return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + actorsList + ") if " + Condition.ToString();
+                return "impossible (" + Action.ToString().ToUpper() + (Exclusion ? ",~ " : ", ") + "(" + actorsList + ")" + ") if " + Condition.ToString();
         }
     }
 }

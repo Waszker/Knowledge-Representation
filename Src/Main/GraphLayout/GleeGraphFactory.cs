@@ -14,8 +14,13 @@ namespace KR.Main.GraphLayout
             var graph = new Microsoft.Glee.Drawing.Graph("graph");
 
             foreach (var edge in edges)
-                graph.AddEdge(edge.From.ToString(), edge.ToEdgeLabel(), edge.To.ToString());
-
+            {
+                var gleeEdge = graph.AddEdge(edge.From.ToString(), edge.ToEdgeLabel(), edge.To.ToString());
+                if (edge.Abnormal)
+                {
+                    gleeEdge.EdgeAttr.AddStyle(Microsoft.Glee.Drawing.Style.Dashed);
+                }               
+            }
             return graph;
         }
 

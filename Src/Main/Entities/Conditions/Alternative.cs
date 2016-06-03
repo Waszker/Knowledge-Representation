@@ -1,23 +1,39 @@
-﻿namespace KR.Main.Entities.Conditions
+﻿using System;
+using System.Text;
+
+namespace KR.Main.Entities.Conditions
 {
     public class Alternative : ICondition
     {
-        private ICondition left;
-        private ICondition right;
+        private readonly ICondition[] _components;
 
-        public Alternative(ICondition right, ICondition left)
+        public Alternative(params ICondition[] cond)
         {
-            this.right = right;
-            this.left = left;
+            if (cond.Length < 1)
+                throw new ArgumentException();
+
+            _components = cond;
         }
+
         public bool Check(State state)
         {
-            return right.Check(state) || left.Check(state);
+            foreach (var component in _components)
+            {
+                if (component.Check(state))
+                    return true;
+            }
+            return false;
         }
 
         public override string ToString()
         {
-            return left.ToString() + " v " + right.ToString();
+            StringBuilder builder = new StringBuilder(_components[0].ToString());
+            for (int i = 1; i < _components.Length; i++)
+            {
+                builder.Append(" v ");
+                builder.Append(_components[i].ToString());
+            }
+            return builder.ToString();
         }
     }
 }
