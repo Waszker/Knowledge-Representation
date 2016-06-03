@@ -1,0 +1,114 @@
+\documentclass{article}
+\usepackage{float}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{listings} %code environment
+\frenchspacing
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\lstdefinestyle{main}{
+	keywords={
+		after, always, causes, if, impossible, initially, observable, 
+		partakes, releases, typically
+    },
+    keywordstyle={\bfseries},
+    keywordstyle=[2]\textsc,
+    frame=single,
+}
+
+\begin{document}
+	
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Action}[1]{\textsc{#1}}
+
+\center
+
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Politechnika Warszawska}\\[5mm]
+\textsc{\LARGE Wydział Matematyki i Nauk Informacyjnych}\\[3.5cm]
+ 
+%----------------------------------------------------------------------------------------
+
+\textsc{\Huge Reprezentacja wiedzy}\\[0.5cm]
+
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \LARGE \bfseries Programy działań z efektami domyślnymi - dokumentacja finalna}\\[2.5cm]
+ 
+%----------------------------------------------------------------------------------------
+
+\begin{flushright}
+\Large \emph{Autorzy:}\\[0.5cm]
+Dragan Łukasz\\
+Flis Mateusz\\
+Fusiara Marcin\\
+Izert Piotr\\
+Pielat Mateusz\\
+Rząd Przemysław\\
+Siry Roman\\
+\textbf{Waszkiewicz Piotr}\\
+Zawadzka Anna\\
+
+\end{flushright}
+%----------------------------------------------------------------------------------------
+
+\vfill
+{\large \today}\\[3cm]
+
+\end{titlepage}
+	
+\newpage
+
+\section{Opis zadania}
+
+Zadaniem projektu jest opracowanie i zaimplementowanie języka akcji dla specyfikacji podanej klasy systemów dynamicznych oraz odpowiadający mu język kwerend.\\
+
+System dynamiczny spełnia podane założenia:
+\begin{enumerate}
+\item Prawo inercji
+\item Niedeterminizm i sekwencyjność działań
+\item Pełna informacja o wszystkich akcjach i wszystkich ich skutkach bezpośrednich
+\item Z każdą akcją związany jest:
+\begin{enumerate}
+\item Warunek początkowy (ew. true)
+\item Efekt akcji
+\item Jej wykonawca
+\end{enumerate}
+\item Skutki akcji:
+\begin{enumerate}
+\item Pewne (zawsze występują po zakończeniu akcji)
+\item Domyślne (preferowane. Zachodzą po zakończeniu akcji, o ile nie jest wiadomym, że nie występują)
+\end{enumerate}
+\item Efekty akcji zależą od jej stanu, w którym akcja się zaczyna i wykonawcy tej akcji
+\item W pewnych stanach akcje mogą być niewykonalne przez pewnych (wszystkich) wykonawców
+\end{enumerate}
+
+Programem działań nazywać będziemy ciąg $((A_{1},W_{1}), (A_{2},W_{2}), …, (A_{n},W_{n}))$, 
+gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej listą wykonawców postaci $W_{i} = (w_{1}, w_{2}, \dots, w_{n}), n = 0, 1, 2, \dots$ gdzie dla $n = 0$ $W_{i} = \epsilon$ oznacza dowolnego wykonawcę.\\
+
+
+Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
+\begin{enumerate}
+\item Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?
+\item Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?
+\item Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?
+\item Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?
+\end{enumerate}
+
+\section{Opis klas}
+
+Przygotowany program, realizujący postawiony cel, został napisany w języku programowania C\# i wykonany w technologii WPF. Składa się on z szeregu klas będących odzwierciedleniem pojęć występujących w teorii reprezentacji wiedzy, mających na celu łatwiejsze napisanie i zrozumienie sposobu działania programu. \\
+
+\subsection{Klasy fluentów, aktorów i akcji}
+
+Klasy ta służą do identyfikowania poszczególnych elementów występujących w dziedzinie wprowadzonej przez użytkownika. Rozróżnialne są za pomocą unikalnych nazw. Fluenty dodatkowo posiadają stan (prawa lub fałsz) w którym się znajdują
+
+
+\end{document}
