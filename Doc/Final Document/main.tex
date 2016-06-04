@@ -106,9 +106,32 @@ Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
 
 Przygotowany program, realizujący postawiony cel, został napisany w języku programowania C\# i wykonany w technologii WPF. Składa się on z szeregu klas będących odzwierciedleniem pojęć występujących w teorii reprezentacji wiedzy, mających na celu łatwiejsze napisanie i zrozumienie sposobu działania programu. \\
 
+\subsection{Klasa World}
+
+\subsection{Klasa Graph}
+
+\subsection{Klasa Edge}
+
+Każda ścieżka w konstruowanych grafie stanów łączy te dwa wierzchołki między którymi istnieje połączenie opisane w dziedzinie - akcja wykonywana przez pewny zbiór wykonawców. Ponieważ akcje mogą mieć skutki (nie)typowe istnieje potrzeba wyróżnienia tych możliwych przejść.
+
 \subsection{Klasy fluentów, aktorów i akcji}
 
-Klasy ta służą do identyfikowania poszczególnych elementów występujących w dziedzinie wprowadzonej przez użytkownika. Rozróżnialne są za pomocą unikalnych nazw. Fluenty dodatkowo posiadają stan (prawa lub fałsz) w którym się znajdują
+Klasy ta służą do identyfikowania poszczególnych elementów występujących w dziedzinie wprowadzonej przez użytkownika. Rozróżnialne są za pomocą unikalnych nazw nadawanych im w trakcie działania programu.
 
+\subsection{Klasa domeny}
+
+Klasa ta jest programową reprezentacją domeny wprowadzanej przez użytkownika w trybcie graficznym. Zawiera on listy zdań wszystkich typów, dopuszczalnych w ramach programu. Ponieważ wraz z uzupełnianiem danych liczba i rodzaj zdań może się zmieniać, oferuje ona niezbędne metody służące do ich zmiany, usuwania i modyfikowania.
+
+\subsection{Klasa stanu}
+
+Ponieważ w trakcie działania programu istnieje potrzeba rozróżniania możliwych stanów opisywanego systemu, powstała klasa odpowiadająca takiemu pojedynczemu stanowi. Każda taka klasa zawiera listę wartościowań dla każdego fluentu występującego w dziedzinie i jest ich konstruowanych w programie tyle, ile występuje unikalnych wartościowań ($2^{|fluent set|}$).
+
+\subsection{Klasa scenariusza}
+
+Scenariusz odpowiada liście sekwencyjnie wykonywanych akcji i ich aktorów.
+
+\subsection{Klasy zdań, kwerend i zdań logicznych}
+
+W ramach przygotowanego programu zostały zrealizowane klasy dla każdego z typów zdań, kwerend i zdań logicznych. Zarówno zdania jak i kwerendy korzystają z klas zdań logicznych które są realizacją podstawowych operatorów z logiki klasycznej. Każde zdanie wprowadzone w ramach dziedziny zawiera listę aktorów, skutek (czyli wartościowanie jednego lub więcej fluentów które zachodzi po zrealizowaniu akcji) oraz warunek wstępny. Podobnie jest dla kwerend które oprócz wymienionych wcześniej elementów zawierają jeszcze możliwy scenariusz, którego wykonania ona dotyczy.
 
 \end{document}
