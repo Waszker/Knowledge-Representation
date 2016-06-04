@@ -8,6 +8,7 @@
 \setcounter{tocdepth}{2}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+\usepackage{color}
 
 \lstdefinestyle{main}{
 	keywords={
@@ -111,6 +112,7 @@ Load causes loaded
 Shoot causes $\neg$loaded if loaded
 Shoot causes $\neg$alive if loaded
 \end{lstlisting}
+\vspace{1cm}
 Zadane kwerendy:
 \begin{itemize}
     \item {\large\texttt{ever accessible $\neg$alive}}\\
@@ -143,6 +145,7 @@ Zadane kwerendy:
     \end{figure}
 \end{itemize}
 
+\newpage
 \subsection{Test 2}
 Zdefiniowana dziedzina:
 \bigskip
@@ -162,6 +165,7 @@ Cook causes hasMeal
 Cook releases emptyFridge if emptyFridge
 Eat causes $\neg$hasMeal $\wedge$ $\neg$hungry $\wedge$ $\neg$angry
 \end{lstlisting}
+\vspace{1cm}
 Zadane kwerendy:
 \begin{itemize}
     \item {\large\texttt{always executable COOK, SHOP}}\\
@@ -194,14 +198,71 @@ Zadane kwerendy:
     \end{figure}
 \end{itemize}
 
-\subsection{Test 3}
-\subsection{Test 4}
-\subsection{Test 5}
-\subsection{Test 6}
-\subsection{Test 7}
-\subsection{Test 8}
-\subsection{Test 9}
+\newpage
+\subsection{Test 3 - kapelusznik w krainie czarów}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Drink},
+}
+\begin{lstlisting}[mathescape=true]
+initially $\neg$hatterMad $\wedge$ cakeExists $\wedge$ elixirExists
+drink causes hatterMad if elixirExists
+eat causes $\neg$hatterMad
+impossible eat if $\neg$cakeExists
+drink releases elixirExists if elixirExists
+eat causes $\neg$cakeExists
+\end{lstlisting}
+\vspace{1cm}
+Zadane kwerendy:
+\begin{itemize}
+    \item {\large\texttt{ever cakeExists after eat}}\\
+    Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
+    Odpowiedż jest poprawna, ponieważ jedzenie zawsze powoduje brak ciastka, a w dziedzinie nie ma możliwości przywrócenia ciastka.
+    \item {\large\texttt{always executable drink, drink}}\\
+    Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedż jest poprawna, ponieważ nawet jeśli eliksir się skończy, akcja picia jest wykonywalna.
+    \item {\large\texttt{always accessible hatterMad}}\\
+    Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedź jest poprawna.
+    \item {\large\texttt{ever ~hatterMad after drink, eat, drink, eat}}\\
+    Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
+    Odpowiedż jest poprawna - druga próba zjedzenia ciastka jest niewykonalna.
+    \newpage
+    \item {\large\texttt{ever $\neg$hatterMad after drink, eat, \{ drink, eat\} }}\\
+    Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedż jest poprawna, ścieżkę można zobaczyć na poniższym obrazku.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{test3_5}
+    \end{figure}
+    
+    
+    %\item {\large\texttt{?}}\\
+    %Oczekiwana odpowiedź: \texttt{}\\
+    %Odpowiedź programu: \texttt{}\\
+    %Odpowiedż jest poprawna, ponieważ .
+\end{itemize}
 
+\newpage
+\subsection{Test 4}
+\newpage
+\subsection{Test 5}
+\newpage
+\subsection{Test 6}
+\newpage
+\subsection{Test 7}
+\newpage
+\subsection{Test 8}
+\newpage
+\subsection{Test 9}
+\newpage
 \section{Wnioski}
 
 \end{document}
