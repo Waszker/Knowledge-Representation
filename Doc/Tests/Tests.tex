@@ -1,0 +1,207 @@
+\documentclass{article}
+\usepackage{float}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{listings} %code environment
+\frenchspacing
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\lstdefinestyle{main}{
+	keywords={
+		after, always, causes, if, impossible, initially, observable, 
+		partakes, releases, typically
+    },
+    keywordstyle={\bfseries},
+    keywordstyle=[2]\textsc,
+    frame=single,
+}
+
+\begin{document}
+	
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Action}[1]{\textsc{#1}}
+
+\center
+
+%----------------------------------------------------------------------------------------
+
+\textsc{\LARGE Politechnika Warszawska}\\[0.3cm]
+\textsc{\Large Wydział Matematyki i Nauk Informacyjnych}\\[0.6cm]
+
+% logo
+\includegraphics[width=2cm, height=2cm]{logo}\\[0.6cm]
+
+
+\textsc{\Huge Reprezentacja wiedzy}\\[0.3cm]
+
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{ \LARGE \bfseries Raport z testów projektu grupy nr 4}\\[0.1cm]
+ 
+%----------------------------------------------------------------------------------------
+
+\HRule \\[0.4cm]
+{  \bfseries Programy działań z akcjami współbieżnymi}\\[1.2cm]
+
+% authors
+\begin{flushright}
+\Large \emph{Autorzy:}\\[0.5cm]
+Dragan Łukasz\\
+Flis Mateusz\\
+Izert Piotr\\
+Pielat Mateusz\\
+Rząd Przemysław\\
+Siry Roman\\
+\textbf{Waszkiewicz Piotr}\\
+Zawadzka Anna\\[0.9cm]
+
+\end{flushright}
+
+% date
+\vfill
+{\large \today}\\[1cm]
+	
+\end{center}
+
+\end{titlepage}
+	
+\newpage
+
+\section{Opis projektu}
+Tematem testowanego przez nas projektu są programy działań z akcjami współbieznymi. Rozpatrywana klasa systemów dynamicznych spełnia następujące warunki:
+\begin{itemize}
+    \item Prawo inercji
+    \item Niedeterminizm
+    \item W języku kwerend występują akcje złożone (zbiory co najwyzej k akcji atomowych), w języku akcji jedynie akcje atomowe
+    \item Pełna informacja o wszystkich akcjach atomowych i wszystkich ich skutkach bezpośrednich
+    \item Z każdą akcją atomową zwiazany jest jej warunek wstepny (ew. TRUE) i końcowy (efekt akcji)
+    \item Wykonywane są jedynie akcje bezkonfliktowe (żadne dwie akcje składowe nie mogą mieć wspólnych zmiennych, na które w jakimkolwiek stanie mają wpływ)
+    \item Wynikiem akcji złożonej jest suma skutków wszystkich składowych akcji bezkonfliktowych
+    \item Akcje mogą być niewykonalne w pewnych stanach; jeśli akcja jest niewykonalna, to każda akcja ją zawierająca jest niewykonalna
+    \item Dopuszczalny jest opis częściowy zarówno stanu poczatkowego, jak i pewnych stanów wynikajacych z wykonań sekwencji akcji
+\end{itemize}
+
+Opracowywany jezyk kwerend ma za zadanie umożliwiać tworzenie zapytań,
+pozwalających na uzyskanie odpowiedzi na następujace pytania:
+\begin{itemize}
+    \item Czy podany program P działań jest możliwy do realizacji  zawsze/kiedykolwiek ze stanu początkowego?
+    \item Czy wykonanie programu P działań w stanie początkowym prowadzi zawsze/kiedykolwiek do osiągniecia celu $\gamma$?
+    \item Czy cel $\gamma$ jest osiagalny ze stanu początkowego?
+\end{itemize}
+\newpage
+
+\section{Przeprowadzone testy}
+\subsection{Test 1}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Load, Shoot},
+}
+\begin{lstlisting}[mathescape=true]
+initially alive
+initially $\neg$loaded
+Load causes loaded
+Shoot causes $\neg$loaded if loaded
+Shoot causes $\neg$alive if loaded
+\end{lstlisting}
+Zadane kwerendy:
+\begin{itemize}
+    \item {\large\texttt{ever accessible $\neg$alive}}\\
+    Odpowiedź: \texttt{TRUE}\\
+    Jest to odpowiedź poprawna, ponieważ istnieje ciąg akcji, który prowadzi do stanu spełniającego podany cel, co ilustruje poniższy graf:
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{test1_1}
+    \end{figure}
+    \item {\large\texttt{always accessible $\neg$alive}}\\
+    Odpowiedź: \texttt{FALSE}\\
+    Jest to prawda, ponieważ nie wszystkie ciągi akcji prowadzą do stanu, który spełnia podany warunek.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{test1_2}
+    \end{figure}
+    \item {\large\texttt{ever $\neg$alive after SHOOT, LOAD}}\\
+    Odpowiedź: \texttt{FALSE}\\
+    Jest to odpowiedź poprawna, ponieważ ze stanu początkowego, w którym zmienna $loaded$ nie jest prawdziwa, akcje $SHOOT$ i $LOAD$ nie zmienią stanu zmiennej $alive$.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{test1_3}
+    \end{figure}
+    \item {\large\texttt{always executable SHOOT, LOAD, SHOOT}}\\
+    Odpowiedź: \texttt{TRUE}\\
+    Odpowiedź jest zgodna z prawdą - w dziedzinie nie istnieją zadania, które miałyby uniemożliwiać wykoanie ciągu podanych akcji.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{test1_4}
+    \end{figure}
+\end{itemize}
+
+\subsection{Test 2}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Shop, Cook},
+}
+\begin{lstlisting}[mathescape=true]
+initially hungry $\wedge$ angry
+initially emptyFridge $\wedge$ $\neg$hasMeal $\wedge$ $\neg$chaos 
+impossible Eat if $\neg$hasMeal 
+impossible Cook if emptyFridge
+Shop causes $\neg$emptyFridge
+Shop releases angry if angry
+Cook causes chaos if angry
+Cook causes hasMeal 
+Cook releases emptyFridge if emptyFridge
+Eat causes $\neg$hasMeal $\wedge$ $\neg$hungry $\wedge$ $\neg$angry
+\end{lstlisting}
+Zadane kwerendy:
+\begin{itemize}
+    \item {\large\texttt{always executable COOK, SHOP}}\\
+    Odpowiedź: \texttt{FALSE}\\
+    Odpowiedż jest poprawna, ponieważ zdanie impossible uniemożliwia wykonanie akcji $COOK$ w przypadku gdy zmienna $emptyFridge$ jest prawdziwa.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{test2_1}
+    \end{figure}
+    \item {\large\texttt{always executable \{COOK, SHOP\}}}\\
+    Odpowiedź: \texttt{TRUE}\\
+    Odpowiedż jest poprawna, ponieważ w tym wypadku zdefiniowana została akcja złożona z akcji $COOK$ i $SHOP$. Akcja $COOK$ nie jest wykonywalna ze stanu początkowego, więc pod uwagę brana jest tylko akcja $SHOP$, która jestw wykonywalna ze stanu początkowego. 
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{test2_2}
+    \end{figure}
+    \item {\large\texttt{ever accessible emptyFridge $\wedge$ $\neg$angry $\wedge$ hungry $\wedge$ $\neg$chaos }}\\
+    Odpowiedź: \texttt{TRUE}\\
+    Jest to odpowiedź poprawna, jednak nie jest zrozumiałe, dlaczego w grafie zwróconym przez program widnieją stany, które nie spełniają podanych założeń i nie należą do ścieżki, która prowadzi do takiego stanu.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{test2_3}
+    \end{figure}
+    \item {\large\texttt{ever $\neg$emptyFridge after SHOP, COOK}}\\
+    Odpowiedź: \texttt{TRUE}\\
+    Odpowiedź jest zgodna z prawdą, ponieważ akcja $COOK$ może, ale nie musi zmienić stan zmiennej $emptyFridge$.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.35]{test2_4}
+    \end{figure}
+\end{itemize}
+
+\subsection{Test 3}
+\subsection{Test 4}
+\subsection{Test 5}
+\subsection{Test 6}
+\subsection{Test 7}
+\subsection{Test 8}
+\subsection{Test 9}
+
+\section{Wnioski}
+
+\end{document}
