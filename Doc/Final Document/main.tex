@@ -3,11 +3,25 @@
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{polski}
-\usepackage{listings} %code environment
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{eufrak}
+
 \frenchspacing
 \setcounter{tocdepth}{2}
 \usepackage{graphicx}
 \graphicspath{ {images/} }
+
+%%% fix for \lll
+\let\babellll\lll
+\let\lll\relax
+
+\usepackage{amssymb}
+
+%%% fix for \lll
+\let\mathlll\lll
+\let\lll\babellll
+
 
 \begin{document}
 \begin{titlepage}
@@ -159,8 +173,35 @@ Każda klasa reprezentująca kwerendę udostępnia metodę, która daje odpowied
 \newpage
 
 \section{Algorytmy}
-%TODO
 
+\subsection{Wyznaczanie stanu początkowego}
+
+Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich możliwych kombinacji wszystkich fluentów danego świata oraz \emph{przefiltrowaniu} ich przez zdania \texttt{always}. Otrzymane w ten sposób dozwolone stany świata są następnie kolejno sprawdzane pod kątem zgodności ze zdaniami \texttt{initially}. W poprawnie opisanym świecie powinien istnieć tylko jeden stan który nie zostanie odrzucony w trakcie takiego procesu.
+
+\begin{algorithm}
+\begin{algorithmic}
+\State $H \gets $ zbiór wszystkich kombinacji fluentów $\mathcal{F}$
+\ForAll{\texttt{always} $\alpha$ in $\mathfrak{D}$}
+	\ForAll{$\sigma \in H$}
+		\If{$\sigma \nvDash \alpha$}
+			\State $H \gets H \setminus \{\sigma\}$
+		\EndIf
+	\EndFor
+\EndFor
+\ForAll{\texttt{initially} $\alpha \in \mathfrak{D}$}
+	\ForAll{$\sigma \in H$}
+		\If{$\sigma \nvDash \alpha$}
+			\State $H \gets H \setminus \{\sigma\}$
+		\EndIf
+	\EndFor
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\subsection{Obliczanie zbiorów ResN i ResAb}
+
+Algorytm obliczania zbiorów $ResN$ i $ResAb$ działa na analogicznej zasadzie co poprzedni algorytm. Zbiory $Res_0$, $Res^{-}$, $Res^{+}_{0}$, 
+%TODO
 
 \newpage
 \textbf{Podział prac:}
@@ -168,7 +209,7 @@ Każda klasa reprezentująca kwerendę udostępnia metodę, która daje odpowied
     \item Dragan Łukasz - 
     \item Flis Mateusz - wizualizacja grafu zależności
     \item Izert Piotr - 
-    \item Pielat Mateusz - 
+    \item Pielat Mateusz - wyznaczanie zbiorów $Res$
     \item Rząd Przemysław - konstrukcja grafu zależności
     \item Siry Roman - 
     \item Waszkiewicz Piotr - podstawowe klasy, graficzny interfejs użytkownika
