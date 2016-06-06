@@ -251,7 +251,72 @@ Zadane kwerendy:
 \end{itemize}
 
 \newpage
-\subsection{Test 4}
+\subsection{Test 4 - historia z indykiem i strzelającym Sebastianem}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Drink},
+}
+\begin{lstlisting}[mathescape=true]
+initially loaded & $\neg$walking & alive
+Shoot causes $\neg$loaded
+Unload causes $\neg$loaded
+Load causes loaded
+Shoot causes $\neg$alive if $\neg$walking
+Shoot releases alive if loaded & alive & walking
+Shoot causes $\neg$walking if loaded
+Entice causes walking
+impossible Entice if $\neg$alive
+\end{lstlisting}
+\vspace{1cm}
+Zadane kwerendy:
+\begin{itemize}
+	\item {\large\texttt{ever alive after Entice, Shoot, Load, Entice, Load, Shoot, Load, Shoot}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+	Odpowiedź programu: \texttt{FALSE}\\
+	Odpowiedż jest poprawna, ponieważ indyk zaczyna chodzić po pierwszej akcji Entice co powoduje, że strzał może się nie udać. Jednak po strzale oddanym z nabitej broni indyk przestaje się ruszać (boi się). W takim wypadku strzał zawsze uśmierci biedne zwierzę.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda1}
+	\end{figure}
+	
+	\item {\large\texttt{ever executable Load, Shoot, Entice}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Odpowiedż jest poprawna, ponieważ nawet jeśli eliksir się skończy, akcja picia jest wykonywalna.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda2}
+	\end{figure}
+	
+	\item {\large\texttt{ever executable Unload, Shoot, Entice}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Odpowiedź jest poprawna.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda3}
+	\end{figure}
+	
+	\item {\large\texttt{ever accessible ~alive}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+	Odpowiedź programu: \texttt{FALSE}\\
+	Odpowiedż jest poprawna - druga próba zjedzenia ciastka jest niewykonalna.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda4}
+	\end{figure}
+	
+	\item {\large\texttt{ever walking after Entice, Shoot, Load, Entice}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Odpowiedż jest poprawna, ścieżkę można zobaczyć na poniższym obrazku.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda5}
+	\end{figure}
+
 \newpage
 \subsection{Test 5}
 \newpage
