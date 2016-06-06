@@ -275,16 +275,16 @@ Zadane kwerendy:
 	\item {\large\texttt{ever alive after Entice, Shoot, Load, Entice, Load, Shoot, Load, Shoot}}\\
 	Oczekiwana odpowiedź: \texttt{FALSE}\\
 	Odpowiedź programu: \texttt{FALSE}\\
-	Odpowiedż jest poprawna, ponieważ indyk zaczyna chodzić po pierwszej akcji Entice co powoduje, że strzał może się nie udać. Jednak po strzale oddanym z nabitej broni indyk przestaje się ruszać (boi się). W takim wypadku strzał zawsze uśmierci biedne zwierzę.
+	Odpowiedż jest poprawna, ponieważ indyk zaczyna chodzić po pierwszej akcji Entice co powoduje, że strzał może się nie udać. Jednak po strzale oddanym z nabitej broni indyk przestaje się ruszać (boi się). W takim wypadku strzał zawsze uśmierci biedne zwierzę.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.6]{kwerenda1}
 	\end{figure}
 	
 	\item {\large\texttt{ever executable Load, Shoot, Entice}}\\
-	Oczekiwana odpowiedź: \texttt{TRUE}\\
-	Odpowiedź programu: \texttt{TRUE}\\
-	Odpowiedż jest poprawna, ponieważ nawet jeśli eliksir się skończy, akcja picia jest wykonywalna.
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+	Odpowiedź programu: \texttt{FALSE}\\
+	Odpowiedż jest poprawna, ponieważ w przypadku naładowanej broni, kiedy indyk się nie porusza, strzał zawsze go uśmierci. Nie można wykonać akcji Entice w przypadku uśmierconego indyka.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.6]{kwerenda2}
@@ -293,16 +293,16 @@ Zadane kwerendy:
 	\item {\large\texttt{ever executable Unload, Shoot, Entice}}\\
 	Oczekiwana odpowiedź: \texttt{TRUE}\\
 	Odpowiedź programu: \texttt{TRUE}\\
-	Odpowiedź jest poprawna.
+	Odpowiedź jest poprawna. W przeciwieństwie do poprzedniej kwerendy, tutaj akcja Unload rozładowuje broń. Strzał z takiej broni nie uśmierci zwierzaka.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.6]{kwerenda3}
 	\end{figure}
 	
 	\item {\large\texttt{ever accessible ~alive}}\\
-	Oczekiwana odpowiedź: \texttt{FALSE}\\
-	Odpowiedź programu: \texttt{FALSE}\\
-	Odpowiedż jest poprawna - druga próba zjedzenia ciastka jest niewykonalna.
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Odpowiedż jest poprawna - indyka zawsze można w pewien sposób uśmiercić.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.6]{kwerenda4}
@@ -311,7 +311,7 @@ Zadane kwerendy:
 	\item {\large\texttt{ever walking after Entice, Shoot, Load, Entice}}\\
 	Oczekiwana odpowiedź: \texttt{TRUE}\\
 	Odpowiedź programu: \texttt{TRUE}\\
-	Odpowiedż jest poprawna, ścieżkę można zobaczyć na poniższym obrazku.
+	Odpowiedż jest poprawna - jeśli indyk się porusza strzał może się nie udać. Ponowne wykonanie akcji Entice spowoduje dalsze chodzenie zwierzaka.
 	\begin{figure}[H]
 		\centering
 		\includegraphics[scale=0.6]{kwerenda5}
