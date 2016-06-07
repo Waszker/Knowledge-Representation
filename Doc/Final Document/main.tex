@@ -177,6 +177,30 @@ Każda klasa reprezentująca kwerendę udostępnia metodę, która daje odpowied
 
 \section{Algorytmy}
 
+\subsection{Wyznaczanie zbioru stanów}
+Algorytm na podstawie zbioru fluentów wyznacza zbiór wszystkich stanów. Oparty jest na idei algorytmu z powrotami, który wyznacza wszystkie kombinacje n-elementowego ciągu składającego się z 0 i 1.
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $B \gets $ pusty stos
+\State $n \gets $ liczba fluentów
+\State $k \gets $ 0
+\State $S \gets $ lista stanów
+\Function{Backtrack}{B, n, k}
+	\If{$k = n$}
+    	\Call{append}{$S, B$}
+    \EndIf
+	\State \Call{put}{$B, 1$}
+	\State \Call{BackTrack}{$B, n, k + 1$}
+	\State \Call{pop}{$B$}
+	\State \Call{put}{$B, 0$}
+	\State \Call{BackTrack}{$B, n, k + 1$}
+	\State \Call{pop}{$B$}
+	\State \Return{$S$}
+\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
 \subsection{Wyznaczanie stanu początkowego}
 
 Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich możliwych kombinacji wszystkich fluentów danego świata oraz \textit{przefiltrowaniu} ich przez zdania \texttt{always}. Otrzymane w ten sposób dozwolone stany świata są następnie kolejno sprawdzane pod kątem zgodności ze zdaniami \texttt{initially}. W poprawnie opisanym świecie powinien istnieć tylko jeden stan który nie zostanie odrzucony w trakcie takiego procesu.
@@ -267,7 +291,7 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \newpage
 \textbf{Podział prac:}
 \begin{itemize}
-    \item Dragan Łukasz - 
+    \item Dragan Łukasz - wyznaczanie zbioru stanów, ewaluacja formuł
     \item Flis Mateusz - wizualizacja grafu zależności
     \item Izert Piotr - 
     \item Pielat Mateusz - wyznaczanie zbiorów $Res$
