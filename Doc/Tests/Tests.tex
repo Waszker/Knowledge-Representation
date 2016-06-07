@@ -352,6 +352,57 @@ Zadane kwerendy:
 
 \newpage
 \subsection{Test 6}
+
+\begin{center}
+\includegraphics[scale=1]{test6_1}
+\end{center}
+
+Rozważmy zbiornik z wodą. Posiada on dwie szeregowo zainstalowane śluzy umożliwiające spuszczanie z niego zawartości. Śluzy można dowolnie otwierać i zamykać, przy czym zbiornik opróżnia się tylko wtedy, gdy obie śluzy są otwarte jednocześnie. Raz opróżnionego zbiornika nie można ponownie napełnić. Początkowo obie śluzy są zamknięte, a zbiornik wypełniony.
+
+\bigskip
+\noindent
+Zdefiniowana dziedzina:
+\lstset{
+	style=main,
+	keywords=[2]{OpenA, OpenB, CloseA, CloseB},
+}
+\begin{lstlisting}[mathescape=true]
+initially $\neg openedA \wedge \neg openedB \wedge water $
+OpenA causes $openedA$
+OpenB causes $openedB$
+OpenA causes $\neg water$ if $openedB$
+OpenB causes $\neg water$ if $openedA$
+\end{lstlisting}
+
+\noindent
+(dziedzina początkowo miała wykorzystywać zdanie \textbf{nonintertial}, jednak brak obsługi przez system zdania integralności \textbf{always} uniemożliwia jego praktyczne zastosowanie)
+
+\bigskip
+\noindent
+Zadane kwerendy:
+
+\begin{itemize}
+    \item \textit{Czy sekwencyjne otwarcie śluz sprawia, że woda pozostaje w zbiorniku?}
+    \medskip \\
+    {\large\texttt{ever} $water$ \texttt{after} \normalsize \textsc{OpenA, OpenB}}\\
+    Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}
+    
+    \item \textit{Czy jednoczesne otwarcie śluz sprawia, że woda pozostaje w zbiorniku?}
+    \medskip \\
+    {\large\texttt{ever} $water$ \texttt{after} \normalsize \textsc{\{OpenA, OpenB\}}}\\
+    Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{TRUE}    
+    
+    \item \textit{Czy jest możliwy stan, w którym śluzy są otwarte, a w zbiorniku pozostaje woda?}
+    \medskip \\
+    {\large\texttt{always accessible} $water \wedge openedA \wedge openedB$}\\
+    Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{TRUE}
+    
+    
+\end{itemize}
+
 \newpage
 \subsection{Test 7}
 \newpage
