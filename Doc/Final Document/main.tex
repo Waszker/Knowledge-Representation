@@ -200,19 +200,19 @@ Algorytm na podstawie zbioru fluentów wyznacza zbiór wszystkich stanów. Opart
 
 \subsection{Wyznaczanie stanu początkowego}
 
-Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich możliwych kombinacji wszystkich fluentów danego świata oraz \emph{przefiltrowaniu} ich przez zdania \texttt{always}. Otrzymane w ten sposób dozwolone stany świata są następnie kolejno sprawdzane pod kątem zgodności ze zdaniami \texttt{initially}. W poprawnie opisanym świecie powinien istnieć tylko jeden stan który nie zostanie odrzucony w trakcie takiego procesu.
+Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich możliwych kombinacji wszystkich fluentów danego świata oraz \textit{przefiltrowaniu} ich przez zdania \texttt{always}. Otrzymane w ten sposób dozwolone stany świata są następnie kolejno sprawdzane pod kątem zgodności ze zdaniami \texttt{initially}. W poprawnie opisanym świecie powinien istnieć tylko jeden stan który nie zostanie odrzucony w trakcie takiego procesu.
 
 \begin{algorithm}[H]
 \begin{algorithmic}
 \State $H \gets $ zbiór wszystkich kombinacji fluentów $\mathcal{F}$
-\ForAll{\texttt{always} $\alpha$ in $\mathfrak{D}$}
+\ForAll{ $\texttt{always} \ \alpha \in \mathfrak{D}$}
 	\ForAll{$\sigma \in H$}
 		\If{$\sigma \nvDash \alpha$}
 			\State $H \gets H \setminus \{\sigma\}$
 		\EndIf
 	\EndFor
 \EndFor
-\ForAll{\texttt{initially} $\alpha \in \mathfrak{D}$}
+\ForAll{$\texttt{initially} \ \alpha \in \mathfrak{D}$}
 	\ForAll{$\sigma \in H$}
 		\If{$\sigma \nvDash \alpha$}
 			\State $H \gets H \setminus \{\sigma\}$
@@ -224,8 +224,24 @@ Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich moż
 
 \subsection{Obliczanie zbiorów ResN i ResAb}
 
-Algorytm obliczania zbiorów $ResN$ i $ResAb$ działa na analogicznej zasadzie co poprzedni algorytm. Zbiory $Res_0$, $Res^{-}$, $Res^{+}_{0}$, 
-%TODO
+Algorytm obliczania zbiorów $ResN$ i $ResAb$ oraz zbiorów pośrednich $Res_0$, $Res^{-}$, $Res^{+}_{0}$ działa na analogicznej zasadzie \textit{filtrowania} zbioru stanów zdaniami w algorytmie wyznaczania stanu początkowego. Na wyższym poziomie abstrakcji pseudokod wygląda następująco:\footnote{Dla uproszczenia pseudokodu przez $Res$ i $New$ rozumie się kolejno $Res(A,Akt,\sigma)$ oraz $New(A,Akt,\sigma_0,\sigma_1)$}
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $\Sigma \gets $ zbiór wszystkich kombinacji fluentów $\mathcal{F}$
+\State $\Sigma \gets$ stany $\sigma \in \Sigma$ zgodne ze zdaniami $\texttt{always}$.
+\State $Res_0 \gets \Sigma$
+\If{dowolne zdanie $\texttt{impossible}$ blokuje $A$ dla $Akt$ i $\sigma$}
+	\State $Res_0 \gets \emptyset$ 
+\EndIf
+\State $Res_0 \gets$ stany $\sigma \in Res_0$ zgodne ze zdaniami $\texttt{causes}$ dla $A$ i $Akt$
+\State $Res_0 \gets$ stany $\sigma \in Res_0$ zgodne ze zdaniami $\texttt{preserves}$ dla $A$ i $Akt$
+\State $Res^- \gets$ stany $\sigma \in Res_0$ o minimalnych zbiorach $New$
+\State $Res^+_0 \gets$ stany $\sigma \in Res^+_0$ zgodne ze zdaniami $\texttt{typically causes}$ dla $A$ i $Akt$
+\State $ResN \gets$ stany $\sigma \in Res^+_0$ o minimalnych zbiorach $New$
+\State $ResAb \gets Res^- \setminus ResN$ 
+\end{algorithmic}
+\end{algorithm}
 
 \newpage
 \textbf{Podział prac:}
