@@ -59,6 +59,9 @@ Zawadzka Anna\\[0.9cm]
 \end{titlepage}
 \newpage
 
+\tableofcontents
+
+\newpage
 \section{Opis zadania}
 
 Zadaniem projektu jest opracowanie i zaimplementowanie języka akcji dla specyfikacji podanej klasy systemów dynamicznych oraz odpowiadający mu język kwerend.\\
@@ -178,7 +181,7 @@ Każda klasa reprezentująca kwerendę udostępnia metodę, która daje odpowied
 
 Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich możliwych kombinacji wszystkich fluentów danego świata oraz \textit{przefiltrowaniu} ich przez zdania \texttt{always}. Otrzymane w ten sposób dozwolone stany świata są następnie kolejno sprawdzane pod kątem zgodności ze zdaniami \texttt{initially}. W poprawnie opisanym świecie powinien istnieć tylko jeden stan który nie zostanie odrzucony w trakcie takiego procesu.
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \begin{algorithmic}
 \State $H \gets $ zbiór wszystkich kombinacji fluentów $\mathcal{F}$
 \ForAll{ $\texttt{always} \ \alpha \in \mathfrak{D}$}
@@ -198,11 +201,12 @@ Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich moż
 \end{algorithmic}
 \end{algorithm}
 
+\newpage
 \subsection{Obliczanie zbiorów ResN i ResAb}
 
 Algorytm obliczania zbiorów $ResN$ i $ResAb$ oraz zbiorów pośrednich $Res_0$, $Res^{-}$, $Res^{+}_{0}$ działa na analogicznej zasadzie \textit{filtrowania} zbioru stanów zdaniami w algorytmie wyznaczania stanu początkowego. Na wyższym poziomie abstrakcji pseudokod wygląda następująco:\footnote{Dla uproszczenia pseudokodu przez $Res$ i $New$ rozumie się kolejno $Res(A,Akt,\sigma)$ oraz $New(A,Akt,\sigma_0,\sigma_1)$}
 
-\begin{algorithm}
+\begin{algorithm}[H]
 \begin{algorithmic}
 \State $\Sigma \gets $ zbiór wszystkich kombinacji fluentów $\mathcal{F}$
 \State $\Sigma \gets$ stany $\sigma \in \Sigma$ zgodne ze zdaniami $\texttt{always}$.
@@ -218,6 +222,47 @@ Algorytm obliczania zbiorów $ResN$ i $ResAb$ oraz zbiorów pośrednich $Res_0$,
 \State $ResAb \gets Res^- \setminus ResN$ 
 \end{algorithmic}
 \end{algorithm}
+
+
+\newpage
+\subsection{Konstrukcja grafu zależności}
+
+Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów ResN i ResAb. Pseudokod algorytmu wygląda następująco:
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $States \gets $ zbiór wszystkich stanów
+\State $Actions \gets $ zbiór wszystkich akcji
+\State $Actors \gets $ zbiór wszystkich aktorów
+\State $E \gets \emptyset$
+\ForAll{$\texttt{state} \in States$}
+	\ForAll{$\texttt{action} \in Actions$}
+		\ForAll{$\texttt{actor} \in Actors$}
+			\ForAll{$\texttt{target} \in ResAb_{action, actor, state}$}
+				\State $e \gets$ nowa krawędź
+				\State $e.From \gets \texttt{state}$
+				\State $e.To \gets \texttt{target}$
+				\State $e.Action \gets \texttt{action}$
+				\State $e.Actor \gets \texttt{actor}$
+				\State $e.Abnormal \gets \texttt{True}$
+				\State $E \gets E \cup \{e\}$
+			\EndFor
+			\ForAll{$\texttt{target} \in ResN_{action, actor, state}$}
+				\State $e \gets$ nowa krawędź
+				\State $e.From \gets \texttt{state}$
+				\State $e.To \gets \texttt{target}$
+				\State $e.Action \gets \texttt{action}$
+				\State $e.Actor \gets \texttt{actor}$
+				\State $e.Abnormal \gets \texttt{False}$
+				\State $E \gets E \cup \{e\}$
+			\EndFor
+		\EndFor
+	\EndFor
+\EndFor
+\State $G \gets \left(States, E\right)$
+\end{algorithmic}
+\end{algorithm}
+
 
 \newpage
 \textbf{Podział prac:}
