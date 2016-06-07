@@ -60,8 +60,8 @@ Zawadzka Anna\\[0.9cm]
 \newpage
 
 \tableofcontents
-
 \newpage
+
 \section{Opis zadania}
 
 Zadaniem projektu jest opracowanie i zaimplementowanie języka akcji dla specyfikacji podanej klasy systemów dynamicznych oraz odpowiadający mu język kwerend.\\
@@ -201,6 +201,7 @@ Algorytm na podstawie zbioru fluentów wyznacza zbiór wszystkich stanów. Opart
 \end{algorithmic}
 \end{algorithm}
 
+\newpage
 \subsection{Wyznaczanie stanu początkowego}
 
 Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich możliwych kombinacji wszystkich fluentów danego świata oraz \textit{przefiltrowaniu} ich przez zdania \texttt{always}. Otrzymane w ten sposób dozwolone stany świata są następnie kolejno sprawdzane pod kątem zgodności ze zdaniami \texttt{initially}. W poprawnie opisanym świecie powinien istnieć tylko jeden stan który nie zostanie odrzucony w trakcie takiego procesu.
@@ -247,7 +248,6 @@ Algorytm obliczania zbiorów $ResN$ i $ResAb$ oraz zbiorów pośrednich $Res_0$,
 \end{algorithmic}
 \end{algorithm}
 
-
 \newpage
 \subsection{Konstrukcja grafu zależności}
 
@@ -286,7 +286,6 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \State $G \gets \left(States, E\right)$
 \end{algorithmic}
 \end{algorithm}
-
 
 \newpage
 \textbf{Podział prac:}
