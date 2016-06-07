@@ -251,9 +251,105 @@ Zadane kwerendy:
 \end{itemize}
 
 \newpage
-\subsection{Test 4}
+\subsection{Test 4 - historia z indykiem i strzelającym Sebastianem}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Drink},
+}
+\begin{lstlisting}[mathescape=true]
+initially loaded & $\neg$walking & alive
+Shoot causes $\neg$loaded
+Unload causes $\neg$loaded
+Load causes loaded
+Shoot causes $\neg$alive if $\neg$walking
+Shoot releases alive if loaded & alive & walking
+Shoot causes $\neg$walking if loaded
+Entice causes walking
+impossible Entice if $\neg$alive
+\end{lstlisting}
+\vspace{1cm}
+Zadane kwerendy:
+\begin{itemize}
+	\item {\large\texttt{ever alive after Entice, Shoot, Load, Entice, Load, Shoot, Load, Shoot}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+	Odpowiedź programu: \texttt{FALSE}\\
+	Odpowiedż jest poprawna, ponieważ indyk zaczyna chodzić po pierwszej akcji Entice co powoduje, że strzał może się nie udać. Jednak po strzale oddanym z nabitej broni indyk przestaje się ruszać (boi się). W takim wypadku strzał zawsze uśmierci biedne zwierzę.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda1}
+	\end{figure}
+	
+	\item {\large\texttt{ever executable Load, Shoot, Entice}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+	Odpowiedź programu: \texttt{FALSE}\\
+	Odpowiedż jest poprawna, ponieważ w przypadku naładowanej broni, kiedy indyk się nie porusza, strzał zawsze go uśmierci. Nie można wykonać akcji Entice w przypadku uśmierconego indyka.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda2}
+	\end{figure}
+	
+	\item {\large\texttt{ever executable Unload, Shoot, Entice}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Odpowiedź jest poprawna. W przeciwieństwie do poprzedniej kwerendy, tutaj akcja Unload rozładowuje broń. Strzał z takiej broni nie uśmierci zwierzaka.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda3}
+	\end{figure}
+	
+	\item {\large\texttt{ever accessible ~alive}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Odpowiedż jest poprawna - indyka zawsze można w pewien sposób uśmiercić.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda4}
+	\end{figure}
+	
+	\item {\large\texttt{ever walking after Entice, Shoot, Load, Entice}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Odpowiedż jest poprawna - jeśli indyk się porusza strzał może się nie udać. Ponowne wykonanie akcji Entice spowoduje dalsze chodzenie zwierzaka.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.6]{kwerenda5}
+	\end{figure}
+\end{itemize}
 \newpage
-\subsection{Test 5}
+\subsection{Test 5 - Piwo i czipsy}
+Stefan prowadzi mało zdrowy tryb życia: lubi jeść czipsy, pić piwo i oglądać telewizję. Z tego powodu ma mało pieniędzy. Do sklepu daleko, więc jak Stefan raz pojedzie na zakupy, to nie ma już pieniędzy na kolejny wypad do sklepu. Kiedy je czipsy, przestaje być głodny. Pragnienie może zaspokoić piwkiem, ale istnieje wtedy szansa, że znowu zgłodnieje. Stefan lubi również oglądać telewizję, ale robi to tylko wtedy, gdy nie jest ani głodny, ani spragniony. Szczęście Stefanowi zapewnia bezpośrednio tylko oglądanie telewizji. Obecnie Stefan jest i głodny, i spragniony, ma forsę ale nie jest szczęśliwy.Czy uśmiech ma szansę kiedykolwiek zagościć na jego twarzy?\\
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Drink},
+}
+\begin{lstlisting}[mathescape=true]
+
+drinkBeer causes $\neg$thirsty & $\neg$hasMoney if hasMoney
+drinkBeer releases hungry if $\neg$hungry
+eatChips causes $\neg$hungry & $\neg$hasMoney if hasMoney
+
+watchTv causes happy if $\neg$hungry & $\neg$thirsty
+impossible watchTv if hungry | thirsty
+
+initially hungry & thirsty & $\neg$happy & hasMoney
+\end{lstlisting}
+\vspace{1cm}
+Zadane kwerendy:
+\begin{itemize}
+	\item {\large\texttt{ever accessible happy}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Można dostać się do stanu $happy$, ale tylko, jeżeli wcześniej na raz wykona się akcje $drinkBeer$ i $eatChips$.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{stefan1}
+	\end{figure}
+\end{itemize}
+
 \newpage
 \subsection{Test 6}
 \newpage
