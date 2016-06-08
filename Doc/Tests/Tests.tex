@@ -444,7 +444,44 @@ Zadane kwerendy:
 
 
 \newpage
-\subsection{Test 8}
+\subsection{Test 8 - Student Gustaw}
+Gustaw jest piłkarzem. Jako sportowiec ma dobre zdrowie. Po meczu jest zmęczony. Żeby grać w piłkę musi mieć abonament. Kiedy gra w piłkę nie ma czasu na naukę. Jeśli się nie nauczy może nie zdać sesji i nie dostać stypendium. Jeśli się napije nie ma pieniędzy ani zdrowia. Nie może pić nie mając pieniędzy. Może oglądać telewizję wtedy będzie wypoczęty.
+Zdefiniowana dziedzina:
+\begin{lstlisting}[mathescape=true]
+initially healthy
+initially rich
+initially taught
+initially $\neg$tired
+healthy after Game
+$\neg$taught after Game
+Session releases rich if $\neg$taught
+rich after Session if taught
+observable $\neg$rich after Game
+$\neg$healthy after Drink
+$\neg$rich after Drink
+$\neg$tired after TV
+tired after Game
+impossible Drink if $\neg$rich
+observable taught after Learn
+\end{lstlisting}
+Zadane kwerendy:
+\begin{itemize}
+    \item {\large\texttt{always accessible tired}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Jest to odpowiedź poprawna, gdyż w dowolnym momencie może nauczyć się, zdać sesję, otrzymać stypendium i zagrać w piłkę.
+	
+    \item {\large\texttt{ever executable \{TV, Game\}}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \textcolor{red}{\texttt{TRUE}}\\
+    Odpowiedź jest niepoprawna, gdyż nie można jednocześnie grać w piłkę i oglądać telewizję bo wtedy będzie zmęczony i nie zmęczony jednocześnie.
+
+	\item {\large\texttt{ever rich after Drink}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+	Odpowiedź programu: \textcolor{red}{\texttt{TRUE}}\\
+    Odpowiedź nie jest poprawna, gdyż po napiciu się nie może być bogaty.
+
+\end{itemize}
 \newpage
 \subsection{Test 9}
 \newpage
