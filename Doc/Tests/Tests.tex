@@ -345,6 +345,14 @@ Zadane kwerendy:
 		\centering
 		\includegraphics[scale=0.3]{stefan1}
 	\end{figure}
+	\item {\large\texttt{always accessible happy \& hungry}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+	Program daje dobry wynik, ale graf wcale tego nie potwierdza: żaden z wierzchołków grafu nie zawiera stanu spełniającego $happy \& hungry$
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{stefan2}
+	\end{figure}
 \end{itemize}
 
 \newpage
@@ -444,7 +452,30 @@ Zadane kwerendy:
 
 
 \newpage
-\subsection{Test 8 - Student Gustaw}
+\subsection{Test 8}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Eat, Drink},
+}
+\begin{lstlisting}[mathescape=true]
+initially c | $\neg$c
+\end{lstlisting}
+\vspace{1cm}
+Zadane kwerendy:
+\begin{itemize}
+	\item {\large\texttt{always accessible c}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \textcolor{red}{\texttt{FALSE}}\\
+	Program przyjmuje dziedzinę zawierającą 2 stany początkowe a następnie zwraca zły wynik kwerendy.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[scale=0.3]{c3}
+	\end{figure}
+\end{itemize}
+\newpage
+\subsection{Test 9 - Student Gustaw}
 Gustaw jest piłkarzem. Jako sportowiec ma dobre zdrowie. Po meczu jest zmęczony. Żeby grać w piłkę musi mieć abonament. Kiedy gra w piłkę nie ma czasu na naukę. Jeśli się nie nauczy może nie zdać sesji i nie dostać stypendium. Jeśli się napije nie ma pieniędzy ani zdrowia. Nie może pić nie mając pieniędzy. Może oglądać telewizję wtedy będzie wypoczęty.
 Zdefiniowana dziedzina:
 \begin{lstlisting}[mathescape=true]
@@ -482,8 +513,6 @@ Zadane kwerendy:
     Odpowiedź nie jest poprawna, gdyż po napiciu się nie może być bogaty.
 
 \end{itemize}
-\newpage
-\subsection{Test 9}
 \newpage
 \section{Wnioski}
 
