@@ -5,7 +5,6 @@
 \usepackage{polski}
 \usepackage{algpseudocode}
 \usepackage{algorithm}
-\usepackage{eufrak}
 
 \frenchspacing
 \setcounter{tocdepth}{2}
@@ -55,7 +54,7 @@ Zawadzka Anna\\[0.9cm]
 \end{flushright}
 % date
 \vfill
-{\large \today}\\[1cm]
+{\large 14 czerwca 2016}\\[1cm]
 \end{titlepage}
 \newpage
 
@@ -86,8 +85,8 @@ System dynamiczny spełnia podane założenia:
 \item W pewnych stanach akcje mogą być niewykonalne przez pewnych (wszystkich) wykonawców
 \end{enumerate}
 
-Programem działań nazywać będziemy ciąg $((A_{1},W_{1}), (A_{2},W_{2}), …, (A_{n},W_{n}))$, 
-gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej listą wykonawców postaci $W_{i} = (w_{1}, w_{2}, \dots, w_{n}), n = 0, 1, 2, \dots$ gdzie dla $n = 0$ $W_{i} = \epsilon$ oznacza dowolnego wykonawcę.\\
+Programem działań nazywać będziemy ciąg $((A_{1},w_{1}), (A_{2},w_{2}), …, (A_{n},w_{n}))$, 
+gdzie $A_{i}$ jest akcją, zaś $w_{i}$ jej wykonawcą, $n = 0, 1, 2, \dots$ gdzie $w_{i} = \epsilon$ oznacza dowolnego wykonawcę.\\
 
 
 Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
@@ -290,13 +289,13 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \newpage
 \textbf{Podział prac:}
 \begin{itemize}
-    \item Dragan Łukasz - wyznaczanie zbioru stanów, ewaluacja formuł
+    \item Dragan Łukasz - wyznaczanie zbioru stanów, ewaluacja formuł, testy
     \item Flis Mateusz - wizualizacja grafu zależności
     \item Izert Piotr - 
-    \item Pielat Mateusz - wyznaczanie zbiorów $Res$
-    \item Rząd Przemysław - konstrukcja grafu zależności
+    \item Pielat Mateusz - wyznaczanie zbiorów $Res$, testy
+    \item Rząd Przemysław - konstrukcja grafu zależności, testy
     \item Siry Roman - 
-    \item Waszkiewicz Piotr - podstawowe klasy, graficzny interfejs użytkownika
-    \item Zawadzka Anna - podstawowe klasy, graficzny interfejs użytkownika
+    \item Waszkiewicz Piotr - podstawowe klasy, graficzny interfejs użytkownika, testy
+    \item Zawadzka Anna - podstawowe klasy, graficzny interfejs użytkownika, testy
 \end{itemize}
 \end{document}

@@ -66,7 +66,7 @@ Zawadzka Anna\\[0.9cm]
 
 % date
 \vfill
-{\large \today}\\[1cm]
+{\large 14 czerwca 2016}\\[1cm]
 	
 
 
@@ -116,29 +116,26 @@ Shoot causes $\neg$alive if loaded
 Zadane kwerendy:
 \begin{itemize}
     \item {\large\texttt{ever accessible $\neg$alive}}\\
-    Odpowiedź: \texttt{TRUE}\\
+    Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
     Jest to odpowiedź poprawna, ponieważ istnieje ciąg akcji, który prowadzi do stanu spełniającego podany cel, co ilustruje poniższy graf:
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{test1_1}
     \end{figure}
     \item {\large\texttt{always accessible $\neg$alive}}\\
-    Odpowiedź: \texttt{FALSE}\\
+    Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
     Jest to prawda, ponieważ nie wszystkie ciągi akcji prowadzą do stanu, który spełnia podany warunek.
-    \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.5]{test1_2}
-    \end{figure}
+    \newpage
     \item {\large\texttt{ever $\neg$alive after SHOOT, LOAD}}\\
-    Odpowiedź: \texttt{FALSE}\\
+    Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
     Jest to odpowiedź poprawna, ponieważ ze stanu początkowego, w którym zmienna $loaded$ nie jest prawdziwa, akcje $SHOOT$ i $LOAD$ nie zmienią stanu zmiennej $alive$.
-    \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.5]{test1_3}
-    \end{figure}
     \item {\large\texttt{always executable SHOOT, LOAD, SHOOT}}\\
-    Odpowiedź: \texttt{TRUE}\\
-    Odpowiedź jest zgodna z prawdą - w dziedzinie nie istnieją zadania, które miałyby uniemożliwiać wykoanie ciągu podanych akcji.
+    Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedź jest zgodna z prawdą - w dziedzinie nie istnieją zadania, które miałyby uniemożliwiać wykonanie ciągu podanych akcji. Wykonanie ciągu instrukcji przedstawia graf wynikowy:
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{test1_4}
@@ -169,28 +166,28 @@ Eat causes $\neg$hasMeal $\wedge$ $\neg$hungry $\wedge$ $\neg$angry
 Zadane kwerendy:
 \begin{itemize}
     \item {\large\texttt{always executable COOK, SHOP}}\\
-    Odpowiedź: \texttt{FALSE}\\
+    Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
     Odpowiedż jest poprawna, ponieważ zdanie impossible uniemożliwia wykonanie akcji $COOK$ w przypadku gdy zmienna $emptyFridge$ jest prawdziwa.
-    \begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.5]{test2_1}
-    \end{figure}
     \item {\large\texttt{always executable \{COOK, SHOP\}}}\\
-    Odpowiedź: \texttt{TRUE}\\
-    Odpowiedż jest poprawna, ponieważ w tym wypadku zdefiniowana została akcja złożona z akcji $COOK$ i $SHOP$. Akcja $COOK$ nie jest wykonywalna ze stanu początkowego, więc pod uwagę brana jest tylko akcja $SHOP$, która jestw wykonywalna ze stanu początkowego. 
+    Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedź jest poprawna, ponieważ w tym wypadku zdefiniowana została akcja złożona z akcji $COOK$ i $SHOP$. Akcja $COOK$ nie jest wykonywalna ze stanu początkowego, więc pod uwagę brana jest tylko akcja $SHOP$, która jestw wykonywalna ze stanu początkowego. 
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{test2_2}
     \end{figure}
     \item {\large\texttt{ever accessible emptyFridge $\wedge$ $\neg$angry $\wedge$ hungry $\wedge$ $\neg$chaos }}\\
-    Odpowiedź: \texttt{TRUE}\\
+    Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
     Jest to odpowiedź poprawna, jednak nie jest zrozumiałe, dlaczego w grafie zwróconym przez program widnieją stany, które nie spełniają podanych założeń i nie należą do ścieżki, która prowadzi do takiego stanu.
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.35]{test2_3}
     \end{figure}
     \item {\large\texttt{ever $\neg$emptyFridge after SHOP, COOK}}\\
-    Odpowiedź: \texttt{TRUE}\\
+    Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
     Odpowiedź jest zgodna z prawdą, ponieważ akcja $COOK$ może, ale nie musi zmienić stan zmiennej $emptyFridge$.
     \begin{figure}[H]
     \centering
