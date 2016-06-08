@@ -414,7 +414,8 @@ impossible TURN-ON if broken
 Zadane kwerendy:
 \begin{itemize}
     \item {\large\texttt{ever executable THROW-DOWN, TURN-ON}}\\
-    Odpowiedź: \texttt{FALSE}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
     Jest to odpowiedź poprawna, ponieważ po zrzuceniu lampki nie można już jej włączyć (bo jest rozbita), co ilustruje poniższy graf:
     \begin{figure}[H]
     \centering
@@ -422,7 +423,8 @@ Zadane kwerendy:
     \end{figure}
 	
     \item {\large\texttt{ever lighted after TURN-OFF, TURN-ON, THROW-DOWN}}\\
-    Odpowiedź: \texttt{FALSE}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
     Jest to prawda, ponieważ zrzucenie lampki, poza jej rozbiciem, powoduje również to, że przestaje się ona świecić.
     \begin{figure}[H]
     \centering
@@ -430,8 +432,8 @@ Zadane kwerendy:
     \end{figure}
 
 	\item {\large\texttt{always accessible lighted}}\\
-	Odpowiedź programu: \textcolor{red}{\texttt{TRUE}}\\
 	Oczekiwana odpowiedź: \texttt{FALSE}\\
+	Odpowiedź programu: \textcolor{red}{\texttt{TRUE}}\\
     Nie każdy ciąg akcji spełnia warunek, że lampka jest zapalona - po wykonaniu akcji \texttt{THROW-DOWN} system nigdy nie znajdzie się już w stanie spełniającym warunek \texttt{lighted}.
     \begin{figure}[H]
     \centering
