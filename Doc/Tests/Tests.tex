@@ -394,6 +394,53 @@ Zadane kwerendy:
 
 \newpage
 \subsection{Test 7}
+
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{TURN-ON, TURN-OFF, THROW-DOWN},
+}
+\begin{lstlisting}[mathescape=true]
+initially $\neg$lighted & $\neg$broken
+THROW-DOWN causes broken & $\neg$lighted
+TURN-OFF causes $\neg$lighted
+TURN-ON causes lighted
+impossible TURN-ON if broken
+\end{lstlisting}
+
+\vspace{1cm}
+
+Zadane kwerendy:
+\begin{itemize}
+    \item {\large\texttt{ever executable THROW-DOWN, TURN-ON}}\\
+    Odpowiedź: \texttt{FALSE}\\
+    Jest to odpowiedź poprawna, ponieważ po zrzuceniu lampki nie można już jej włączyć (bo jest rozbita), co ilustruje poniższy graf:
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{7_1}
+    \end{figure}
+	
+    \item {\large\texttt{ever lighted after TURN-OFF, TURN-ON, THROW-DOWN}}\\
+    Odpowiedź: \texttt{FALSE}\\
+    Jest to prawda, ponieważ zrzucenie lampki, poza jej rozbiciem, powoduje również to, że przestaje się ona świecić.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{7_2}
+    \end{figure}
+
+	\item {\large\texttt{always accessible lighted}}\\
+	Odpowiedź programu: \textcolor{red}{\texttt{TRUE}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Nie każdy ciąg akcji spełnia warunek, że lampka jest zapalona - po wykonaniu akcji \texttt{THROW-DOWN} system nigdy nie znajdzie się już w stanie spełniającym warunek \texttt{lighted}.
+    \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{7_3}
+    \end{figure}
+
+\end{itemize}
+
+
 \newpage
 \subsection{Test 8}
 \newpage
