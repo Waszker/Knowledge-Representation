@@ -48,19 +48,18 @@
 \Large \emph{Autorzy:}\\[0.5cm]
 Dragan Łukasz\\
 Flis Mateusz\\
-Fusiara Marcin\\
 Izert Piotr\\
 Pielat Mateusz\\
 Rząd Przemysław\\
 Siry Roman\\
 \textbf{Waszkiewicz Piotr}\\
-Zawadzka Anna\\
+Zawadzka Anna\\[1cm]
 
 \end{flushright}
 %----------------------------------------------------------------------------------------
 
 \vfill
-{\large \today}\\[3cm]
+{\large 14 czerwca 2016}\\[3cm]
 
 \end{titlepage}
 	
@@ -90,8 +89,8 @@ System dynamiczny spełnia podane założenia:
 \item W pewnych stanach akcje mogą być niewykonalne przez pewnych (wszystkich) wykonawców
 \end{enumerate}
 
-Programem działań nazywać będziemy ciąg $((A_{1},W_{1}), (A_{2},W_{2}), …, (A_{n},W_{n}))$, 
-gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej listą wykonawców postaci $W_{i} = (w_{1}, w_{2}, \dots, w_{n}), n = 0, 1, 2, \dots$ gdzie dla $n = 0$ $W_{i} = \epsilon$ oznacza dowolnego wykonawcę.\\
+Programem działań nazywać będziemy ciąg $((A_{1},w_{1}), (A_{2},w_{2}), …, (A_{n},w_{n}))$, 
+gdzie $A_{i}$ jest akcją, zaś $w_{i}$ jej wykonawcą, $n = 0, 1, 2, \dots$ gdzie $w_{i} = \epsilon$ oznacza dowolnego wykonawcę.\\
 
 
 Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
@@ -127,8 +126,6 @@ W języku  $\Omega$ występują następujące typy zdań:
 \begin{itemize}
 \item {\large\texttt{initially $\alpha$}}\\
 formuła $\alpha$ zachodzi w stanie początkowym
-\item {\large\texttt{$\alpha$ after $(A_{1},W_{1}), ..., (A_{n},W_{n})$}}\\
-formuła $\alpha$ zachodzi po wykonaniu sekwencji $(A_{1},W_{1}), ..., (A_{n},W_{n})$, gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej niepustą listą wykonawców
 \item {\large\texttt{$(A,W)$ causes $\alpha$ if $\pi$}}\\
 skutkiem wykonania akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$ jest stan, w którym spełniona jest formuła $\alpha$. Przy czym:
 \begin{itemize}
@@ -139,14 +136,10 @@ skutkiem wykonania akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie sp
     {\large\texttt{impossible $(A,W)$ if $\pi$}}\\
     co oznacza, że niemożliwe jest wykonanie akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$
 \end{itemize}
-\item {\large\texttt{observable $\alpha$ after $(A_{1},W_{1}), ..., (A_{n},W_{n})$}}\\
-po wykonaniu sekwencji $(A_{1},W_{1}), ..., (A_{n},W_{n})$, gdzie $A_{i}$ jest akcją, zaś $W_{i}$ jej potencjalnymi wykonawcami, w stanie początkowym może (ale nie musi) zachodzić formuła $\alpha$
 \item {\large\texttt{$(A,W)$ releases $f$ if $\pi$}}\\
 wykonanie akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$ może (ale nie musi) zmienić wartość zmiennej $f$
 \item {\large\texttt{$(A,W)$ typically causes $\alpha$ if $\pi$}}\\
 skutkiem wykonania akcji $A$ przez któregokolwiek z wykonawców $W$ w stanie spełniającym warunek $\pi$ na ogół jest stan, w którym spełniona jest formuła $\alpha$
-\item {\large\texttt{typically $\alpha$ after $(A_{1},W_{1}), ..., (A_{n},W_{n})$}}\\
-formuła $\alpha$ na ogół zachodzi po wykonaniu sekwencji $(A_{1},W_{1}), ..., (A_{n},W_{n})$, gdzie $A_{i}$ jest akcją, zaś $W_{i}$ listą jej potencjalnych wykonawców
 \item {\large\texttt{always $\alpha$}}\\
 formuła $\alpha$ jest spełniona w każdym stanie
 \item {\large\texttt{$(A,W)$ preserves $f$ if $\pi$}}\\
@@ -591,6 +584,7 @@ Kwerenda Q jest prawdziwa względem dziedziny D wtedy i tylko wtedy gdy
 		\item z warunkiem \texttt{ever}: 
 		$\forall_{S=(\Sigma, \sigma_{0}, ResAb, ResN) \in D}\exists_{\Phi_{S}} \Phi_{S}(((A_{1}, w_{1}), \dots, (A_{n}, w_{n})), \sigma_{0})$ jest określona
 	\end{itemize}
+	\newpage
 	\item Jeśli Q jest zdaniem typu Q2:
 	\begin{itemize}
 		\item z warunkiem \texttt{always}: 
