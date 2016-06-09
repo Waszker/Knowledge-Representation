@@ -514,6 +514,36 @@ Zadane kwerendy:
 
 \end{itemize}
 \newpage
+\subsection{Test 10}
+Zdefiniowana dziedzina:
+\begin{lstlisting}[mathescape=true]
+initially compiles & tested & $\neg$spaghettiCode
+code causes spaghettiCode & $\neg$tested
+code releases compiles if compiles
+refactor causes compiles & $\neg$tested & $\neg$spaghettiCode
+test releases tested if $\neg$tested
+impossible test if $\neg$compiles
+impossible code if spaghettiCode
+\end{lstlisting}
+Zadane kwerendy:
+\begin{itemize}
+    \item {\large\texttt{always executable code, test}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
+    Jest to odpowiedź poprawna, gdyż może zdarzyć się, że program przestanie się kompilować, co uniemożliwia testy.
+	
+    \item {\large\texttt{ever $\neg$spaghettiCode after code, \{test, ref\}}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedź jest poprawna, każdy refactor powoduje, że kod jest zrozumiały, testowanie nie wpływa na wygląd kodu.
+
+	\item {\large\texttt{always accessible spaghettiCode }}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedź jest poprawna, gdyż po każdej zmianie w kodzie, jest on zawiły.
+
+\end{itemize}
+\newpage
 \section{Wnioski}
 
 \end{document}
