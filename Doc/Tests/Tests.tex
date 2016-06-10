@@ -438,11 +438,11 @@ Zadane kwerendy:
     \centering
     \includegraphics[scale=0.5]{7_2}
     \end{figure}
-
-	\item {\large\texttt{always accessible lighted}}\\
-	Oczekiwana odpowiedź: \texttt{FALSE}\\
-	Odpowiedź programu: \textcolor{red}{\texttt{TRUE}}\\
-    Nie każdy ciąg akcji spełnia warunek, że lampka jest zapalona - po wykonaniu akcji \texttt{THROW-DOWN} system nigdy nie znajdzie się już w stanie spełniającym warunek \texttt{lighted}.
+    
+    \item {\large\texttt{always accessible lighted}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Po wykonaniu ze stanu początkowego akcji \texttt{TURN\_ON} system zawsze znajdzie się w stanie \texttt{lighted}.
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{7_3}
