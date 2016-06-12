@@ -289,7 +289,9 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \newpage
 \subsection{Obliczanie odpowiedzi na zadaną kwerendę}
 
-Kwerendy \texttt{always/ever executable Scenario}.sprawdzają, czy dany scenariusz jest wykonywalny zawsze/kiedykolwiek z dowolnego stanu. Pseudokod algorytmu wygląda następująco:
+\subsubsection{Kwerendy \texttt{always/ever executable Scenario}}
+
+Kwerendy \texttt{always/ever executable Scenario} sprawdzają, czy dany scenariusz jest wykonywalny zawsze/kiedykolwiek z dowolnego stanu. Pseudokod algorytmu wygląda następująco:
 
 \begin{algorithm}[H]
 \begin{algorithmic}
@@ -298,21 +300,55 @@ Kwerendy \texttt{always/ever executable Scenario}.sprawdzają, czy dany scenariu
 \ForAll{$\texttt{step} \in Scenario$}
     \State $NewStates \gets \emptyset$
     \ForAll{$\texttt{state} \in States$}
-        \State $Edges \gets $ wszystkie krawędzie dostępne w danym stanie
+        \State $Edges \gets $ wszystkie krawędzie dostępne w danym stanie dla kroku \texttt{step}
         \If{Wersja ALWAYS i $Edges.count() == 0$}
-        	\State return \texttt{FALSE}
+        	\State return \texttt{FALSE} - ścieżka niewykonywalna - brak krawędzi
         \EndIf
         \ForAll{$\texttt{edge} \in Edges$}
             \State $NewStates.add(edge.to)$
         \EndFor
-        \If{Wersja EVER i $NewStates.count() == 0$}
-        	\State return \texttt{FALSE}
-        \EndIf
     \EndFor
+    \If{Wersja EVER i $NewStates.count() == 0$}
+        \State return \texttt{FALSE} - nie było krawędzi z żadnego stanu - żadna ścieżka nie jest wykonywalna
+    \EndIf
     \State $States \gets NewStates$
 \EndFor
 \State return \texttt{TRUE}
 
+\end{algorithmic}
+\end{algorithm}
+
+\newpage
+\subsubsection{Kwerendy \texttt{always/ever Actor partakes when Scenario}}
+
+Kwerendy \texttt{always/ever Actor partakes when Scenario} sprawdzają, czy dany aktor zawsze/kiedykolwiek bierze udział w wykonywaniu podanego scenariusza. Scenariusz może być wykonany z dowolnego niesprzecznego stanu początkowego. Pseudokod algorytmu wygląda następująco:
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+
+\State $Actor \gets $ wybrany aktor
+\State $Scenario \gets $ zadany scenariusz
+\State $States \gets $ zbiór wszystkich dostępnych stanów
+\ForAll{$\texttt{step} \in Scenario$}
+    \State $NewStates \gets \emptyset$
+    \ForAll{$\texttt{state} \in States$}
+        \State $Edges \gets $ wszystkie krawędzie w danym stanie dla kroku \texttt{step}
+        \ForAll{$\texttt{edge} \in Edges$}
+            \If{$edge.Actor == Actor$}
+                \If{Wersja EVER}
+        	        \State return \texttt{TRUE} - dany aktor bierze udział
+        	    \EndIf
+        	\Else - inny aktor
+        	    \State $NewStates.add(edge.to)$ - dalsze przeszukanie ścieżki
+            \EndIf
+        \EndFor
+    \EndFor
+    \If{Wersja ALWAYS i $NewStates.count() == 0$}
+        \State return \texttt{TRUE} - nie dodano żadnego nowego stanu, czyli na wszystkich ścieżkach znalazł sie już szukany aktor
+    \EndIf
+    \State $States \gets NewStates$
+\EndFor
+\State return \texttt{FALSE}
 
 \end{algorithmic}
 \end{algorithm}
