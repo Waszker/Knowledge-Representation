@@ -289,6 +289,34 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \newpage
 \subsection{Obliczanie odpowiedzi na zadaną kwerendę}
 
+Kwerendy \texttt{always/ever executable Scenario}.sprawdzają, czy dany scenariusz jest wykonywalny zawsze/kiedykolwiek z dowolnego stanu. Pseudokod algorytmu wygląda następująco:
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $Scenario \gets $ zadany scenariusz
+\State $States \gets $ zbiór wszystkich dostępnych stanów
+\ForAll{$\texttt{step} \in Scenario$}
+    \State $NewStates \gets \emptyset$
+    \ForAll{$\texttt{state} \in States$}
+        \State $Edges \gets $ wszystkie krawędzie dostępne w danym stanie
+        \If{Wersja ALWAYS i $Edges.count() == 0$}
+        	\State return \texttt{FALSE}
+        \EndIf
+        \ForAll{$\texttt{edge} \in Edges$}
+            \State $NewStates.add(edge.to)$
+        \EndFor
+        \If{Wersja EVER i $NewStates.count() == 0$}
+        	\State return \texttt{FALSE}
+        \EndIf
+    \EndFor
+    \State $States \gets NewStates$
+\EndFor
+\State return \texttt{TRUE}
+
+
+\end{algorithmic}
+\end{algorithm}
+
 
 \newpage
 \section{Moduły dodatkowe}
@@ -311,7 +339,7 @@ Podstawowe funkcjonalności biblioteki:
 \begin{itemize}
     \item Dragan Łukasz - wyznaczanie zbioru stanów, ewaluacja formuł, testy
     \item Flis Mateusz - wizualizacja grafu zależności, testy
-    \item Izert Piotr - 
+    \item Izert Piotr - implementacja kwerend \texttt{executable} i \texttt{partakes}
     \item Pielat Mateusz - wyznaczanie zbiorów $Res$, testy
     \item Rząd Przemysław - konstrukcja grafu zależności, testy
     \item Siry Roman - 
