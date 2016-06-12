@@ -171,7 +171,7 @@ Klasy te zbudowane są analogicznie jak klasy zdefiniowane powyżej, z tym, że 
 \item {\large\texttt{always/ever partakes $w$ when $Scenario$}}\\
 Klasy reprezentujące te kwerendy (odpowiednio $always$ i $ever$) przechowują wykonawcę oraz obiekt klasy Scenariusza.
 \end{itemize}
-Każda klasa reprezentująca kwerendę udostępnia metodę, która daje odpowiedź na zadane pytanie na podstawie zbudowanego wcześniej grafu zależności.
+Każda klasa reprezentująca kwerendę dziedziczy po klasie Query i implementuje metodę Evaluate, która daje odpowiedź na zadane pytanie na podstawie zbudowanego wcześniej grafu zależności.
 \newpage
 
 \section{Algorytmy}
@@ -284,7 +284,35 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \EndFor
 \State $G \gets \left(States, E\right)$
 \end{algorithmic}
+\end{algorithm}\newpage
+
+\subsection{Algorytmy kwerend accessible}
+\subsubsection{Algorytm kwerendy always accessible $\gamma$ if $\pi$ when SC }
+
+Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie scenariusza SC zawsze doprowadzi do stanu spełniającego $\gamma$
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $StatesPi \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
+\State $scenario \gets $ scenariusz kwerendy
+\ForAll{$\texttt{startState} \in StatesPi$}
+    \State $states \gets \{startState\}$
+	\ForAll{$\texttt{step} \in scenario$}
+	    \State $nextS \gets $ zbiór stanów
+		\ForAll{$\texttt{state} \in states$}
+			\State $nextS \gets nextS \cup ($stany z krawędzią z $state$ z krokiem $step)$
+		\EndFor 
+		\State $states \gets nextS$
+	\EndFor
+	\If{$states$ zawiera stan nie spełniający $\gamma$} 
+	    \State \Return{$FALSE$}
+	\EndIf
+\EndFor
+\State \Return{$TRUE$}
+\end{algorithmic}
 \end{algorithm}
+
+
 
 \newpage
 \textbf{Podział prac:}
@@ -294,7 +322,7 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
     \item Izert Piotr - 
     \item Pielat Mateusz - wyznaczanie zbiorów $Res$, testy
     \item Rząd Przemysław - konstrukcja grafu zależności, testy
-    \item Siry Roman - 
+    \item Siry Roman - kwerendy accessible
     \item Waszkiewicz Piotr - podstawowe klasy, graficzny interfejs użytkownika, testy
     \item Zawadzka Anna - podstawowe klasy, graficzny interfejs użytkownika, testy
 \end{itemize}
