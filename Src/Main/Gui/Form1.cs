@@ -40,6 +40,7 @@ namespace KR.Main.Gui
                     List<Fluent> fluentList = ((DefineEntitiesTab)tabs[0]).getFluents();
                     List<Entities.Action> actionList = ((DefineEntitiesTab)tabs[0]).getActions();
                     List<Actor> actorList = ((DefineEntitiesTab)tabs[0]).getActors();
+                    ((DefineDomainTab)tabs[1]).ResetAll();
                     ((DefineDomainTab)tabs[1]).setEntities(fluentList, actionList, actorList);
                     ((DefineScenarioTab)tabs[2]).setActionsAndActors(actionList, actorList);
                     ((DefineQueriesTab)tabs[3]).setFluentsAndActors(fluentList, actorList);
