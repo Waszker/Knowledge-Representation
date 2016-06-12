@@ -54,6 +54,29 @@ namespace KR.Main.Gui
             return _domain;
         }
 
+        public void ResetAll()
+        {
+            this.defineDomainPanel.Controls.Remove(clauseControls[currentClause]);
+            currentClause = 0;
+            clauseControls = new UserControl[] {
+                new InitiallyClauseControl(),
+                new CausesClauseControl(),
+                new TypicallyCausesClauseControl(),
+                new ReleasesClauseControl(),
+                new PreservesClauseControl(),
+                new AlwaysClauseControl(),
+                new ImpossibleClauseControl() };
+
+            foreach (UserControl c in clauseControls)
+            {
+                c.Anchor = AnchorStyles.Right | AnchorStyles.Left;
+            }
+            this.AutoScroll = true;
+
+            this.defineDomainPanel.Controls.Add(clauseControls[0], 0, 2);
+
+            chooseClauseComboBox.SelectedIndex = 0;
+        }
         public void setEntities(List<Fluent> fluents, List<Entities.Action> actions, List<Actor> actors)
         {
             availableActors = actors;

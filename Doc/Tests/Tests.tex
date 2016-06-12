@@ -387,13 +387,13 @@ OpenB causes $\neg water$ if $openedA$
 Zadane kwerendy:
 
 \begin{itemize}
-    \item \textit{Czy sekwencyjne otwarcie śluz sprawia, że woda pozostaje w zbiorniku?}
+    \item \textit{Czy sekwencyjne otwarcie śluz może sprawić, że woda pozostaje w zbiorniku?}
     \medskip \\
     {\large\texttt{ever} $water$ \texttt{after} \normalsize \textsc{OpenA, OpenB}}\\
     Oczekiwana odpowiedź: \texttt{FALSE}\\
     Odpowiedź programu: \texttt{FALSE}
     
-    \item \textit{Czy jednoczesne otwarcie śluz sprawia, że woda pozostaje w zbiorniku?}
+    \item \textit{Czy jednoczesne otwarcie śluz może sprawić, że woda pozostaje w zbiorniku?}
     \medskip \\
     {\large\texttt{ever} $water$ \texttt{after} \normalsize \textsc{\{OpenA, OpenB\}}}\\
     Oczekiwana odpowiedź: \texttt{FALSE}\\
@@ -438,11 +438,11 @@ Zadane kwerendy:
     \centering
     \includegraphics[scale=0.5]{7_2}
     \end{figure}
-
-	\item {\large\texttt{always accessible lighted}}\\
-	Oczekiwana odpowiedź: \texttt{FALSE}\\
-	Odpowiedź programu: \textcolor{red}{\texttt{TRUE}}\\
-    Nie każdy ciąg akcji spełnia warunek, że lampka jest zapalona - po wykonaniu akcji \texttt{THROW-DOWN} system nigdy nie znajdzie się już w stanie spełniającym warunek \texttt{lighted}.
+    
+    \item {\large\texttt{always accessible lighted}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Po wykonaniu ze stanu początkowego akcji \texttt{TURN\_ON} system zawsze znajdzie się w stanie \texttt{lighted}.
     \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{7_3}
@@ -465,7 +465,7 @@ initially c | $\neg$c
 \vspace{1cm}
 Zadane kwerendy:
 \begin{itemize}
-	\item {\large\texttt{always accessible c}}\\
+	\item {\large\texttt{ever accessible c}}\\
 	Oczekiwana odpowiedź: \texttt{TRUE}\\
 	Odpowiedź programu: \textcolor{red}{\texttt{FALSE}}\\
 	Program przyjmuje dziedzinę zawierającą 2 stany początkowe a następnie zwraca zły wynik kwerendy.
@@ -500,8 +500,8 @@ Zadane kwerendy:
     \item {\large\texttt{always accessible tired}}\\
 	Oczekiwana odpowiedź: \texttt{TRUE}\\
     Odpowiedź programu: \texttt{TRUE}\\
-    Jest to odpowiedź poprawna, gdyż w dowolnym momencie może nauczyć się, zdać sesję, otrzymać stypendium i zagrać w piłkę.
-	
+    Jest to odpowiedź poprawna, gdyż w początkowym momencie może nauczyć się, zdać sesję, otrzymać stypendium i zagrać w piłkę.
+
     \item {\large\texttt{ever executable \{TV, Game\}}}\\
 	Oczekiwana odpowiedź: \texttt{FALSE}\\
     Odpowiedź programu: \textcolor{red}{\texttt{TRUE}}\\
@@ -514,6 +514,34 @@ Zadane kwerendy:
 
 \end{itemize}
 \newpage
-\section{Wnioski}
+\subsection{Test 10}
+Zdefiniowana dziedzina:
+\begin{lstlisting}[mathescape=true]
+initially compiles & tested & $\neg$spaghettiCode
+code causes spaghettiCode & $\neg$tested
+code releases compiles if compiles
+refactor causes compiles & $\neg$tested & $\neg$spaghettiCode
+test releases tested if $\neg$tested
+impossible test if $\neg$compiles
+impossible code if spaghettiCode
+\end{lstlisting}
+Zadane kwerendy:
+\begin{itemize}
+    \item {\large\texttt{always executable code, test}}\\
+	Oczekiwana odpowiedź: \texttt{FALSE}\\
+    Odpowiedź programu: \texttt{FALSE}\\
+    Jest to odpowiedź poprawna, gdyż może zdarzyć się, że program przestanie się kompilować, co uniemożliwia testy.
+	
+    \item {\large\texttt{ever $\neg$spaghettiCode after code, \{test, ref\}}}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+    Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedź jest poprawna, każdy refactor powoduje, że kod jest zrozumiały, testowanie nie wpływa na wygląd kodu.
+
+	\item {\large\texttt{always accessible spaghettiCode }}\\
+	Oczekiwana odpowiedź: \texttt{TRUE}\\
+	Odpowiedź programu: \texttt{TRUE}\\
+    Odpowiedź jest poprawna, gdyż po każdej zmianie w kodzie, jest on zawiły.
+
+\end{itemize}
 
 \end{document}
