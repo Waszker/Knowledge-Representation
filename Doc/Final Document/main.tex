@@ -289,7 +289,7 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \subsection{Algorytmy kwerend accessible}
 \subsubsection{Algorytm kwerendy always/ever accessible $\gamma$ if $\pi$ when SC }
 
-Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie scenariusza SC zawsze doprowadzi do stanu spełniającego $\gamma$
+Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie scenariusza SC zawsze/kiedykolwiek doprowadzi do stanu spełniającego $\gamma$
 
 \begin{algorithm}[H]
 \begin{algorithmic}
@@ -310,6 +310,31 @@ Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie 
 	\If{wersja $ever$ i $states$ nie zawiera stanu spełniającego $\gamma$} \State \Return{$FALSE$}
 	\EndIf
 \EndFor
+\State \Return{$TRUE$}
+\end{algorithmic}
+\end{algorithm}
+\subsubsection{Algorytm kwerendy always accessible $\gamma$ if $\pi$}
+
+Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie dowolnego scenariusza zawsze doprowadzi do stanu spełniającego $\gamma$
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $states \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
+\State $open \gets $ zbiór stanów do których można przejść z stanów w $states$
+\State $close$ - pusty zbiór stanów
+\While {$open$ niepusty}
+    \State $state \gets \{$dowolny stan z $open\}$
+    \State usuń $state$ z $open$
+	\State dodaj $state$ do $close$
+	\ForAll{$\texttt{state2} \in$ stany do których można przejść z $state$}
+		\If{$state2 \not\in close$}
+		    \State dodaj $state2$ do $open$
+		\EndIf
+	\EndFor
+\EndWhile
+	\If{$close$ zawiera stan niespełniający $\gamma$}
+	    \State \Return{$FALSE$}
+	\EndIf
 \State \Return{$TRUE$}
 \end{algorithmic}
 \end{algorithm}
