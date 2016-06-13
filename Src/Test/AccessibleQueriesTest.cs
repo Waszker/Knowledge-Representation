@@ -171,7 +171,7 @@ namespace KR.Test
             Assert.AreEqual(r, false);
             var q2 = new AccessibleAlwaysScenarioQuery(burned, new Negation(burned), scenario);
             r = q2.Evaluate(world);
-            Assert.AreEqual(r, false);
+            Assert.AreEqual(r, true);
         }
     }
 }
