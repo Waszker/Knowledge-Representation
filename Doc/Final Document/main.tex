@@ -369,11 +369,15 @@ Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenari
 	\ForAll{$\texttt{step} \in scenario$}
 	    \State $nextS \gets $ zbiór stanów
 		\ForAll{$\texttt{state} \in states$}
-			\State $nextS \gets nextS \cup ($stany z krawędzią z $state$ z krokiem $step)$
+		    \If{wersja $always$ lub $ever$}
+		    	\State $nextS \gets nextS \cup ($stany z krawędzią z $state$ z krokiem $step)$
+		    \Else
+		        \State $nextS \gets nextS \cup ($stany z typową krawędzią z $state$ z krokiem $step)$
+		    \EndIf
 		\EndFor 
 		\State $states \gets nextS$
 	\EndFor
-	\If{wersja $always$ i $states$ zawiera stan nie spełniający $\gamma$} 
+	\If{(wersja $always$ lub $typically$) i $states$ zawiera stan nie spełniający $\gamma$} 
 	    \State \Return{$FALSE$}
 	\EndIf
 	\If{wersja $ever$ i $states$ nie zawiera stanu spełniającego $\gamma$} \State \Return{$FALSE$}
