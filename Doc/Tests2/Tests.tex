@@ -233,6 +233,36 @@ typically accessible $\neg$p $\land$ q if p when (A,Tom)
 \end{lstlisting}
 zwracają odpowiedź $True$, co jest poprawne dla dwóch pierwszych kwerend, natomiast patrząc na graf widać, że trzecia z kwerend zwraca niepoprawny wynik.
 
+
+
+
+\subsection{Test 7}
+Dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{A},
+}
+\begin{lstlisting}[mathescape=true]
+$Ac=\{c\}, F=\{a\}, A=\{S\}$
+initially $\neg$a
+(S,(c)) typically causes a
+\end{lstlisting}
+\vspace{1cm}
+
+Otrzymany graf:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{test7_graf}
+\end{figure}
+
+\begin{lstlisting}[mathescape=true]
+ever accessible $\neg$a
+\end{lstlisting}
+Zwrócona odpowiedź $FALSE$\\
+Oczekiwana odpowiedź: $TRUE$
+
+
 \newpage
 
 \end{document}
