@@ -112,5 +112,35 @@ namespace KR.Test
             var r = q.Evaluate(fishWorld);
             Assert.AreEqual(r, true);
         }
+        [TestMethod]
+        public void PQTest()
+        {
+            var p = new Fluent("p");
+            var q = new Fluent("q");
+            var domain = new Domain();
+            domain.AddInitiallyClause(new Initially(new Conjunction(p, q)));
+            domain.AddAlwaysClause(new Always( new Alternative(p, q)));
+            var A = new Action("A");
+            domain.AddCausesClause(new Causes(A, true, new List<Actor> { }, new Negation(p)));
+            domain.AddTypicallyCausesClause(new TypicallyCauses(A, true, new List<Actor> { }, new Negation(q), p));
+            var world = World.Instance;
+            world.SetActions(new List<Action> { A });
+            var Tom = new Actor("Tom");
+            world.SetActors(new List<Actor> { Tom });
+            world.SetFluents(new List<Fluent> { p, q });
+            world.SetDomain(domain);
+            world.Build();
+            var scenario = new Scenario();
+            scenario.AddScenarioStep(new ScenarioStep(A, Tom));
+            var q1 = new AccessibleAlwaysScenarioQuery(p, new Conjunction(new Negation(p), q), scenario);
+            var r1 = q1.Evaluate(world);
+            Assert.AreEqual(r1, true);
+            var q2 = new AccessibleEverScenarioQuery(p, new Conjunction(new Negation(p), q), scenario);
+            r1=q2.Evaluate(world);
+            Assert.AreEqual(r1, true);
+            var q3 = new AccessibleTypicallyScenarioQuery(p, new Conjunction(new Negation(p), q), scenario);
+            r1 = q3.Evaluate(world);
+            Assert.AreEqual(r1, false);
+        }
     }
 }
