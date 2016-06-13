@@ -203,6 +203,36 @@ typically accessible $\neg$burned when (TORCH,Nero)
 \end{lstlisting}
 zwracają kolejno $False$, $False$ i $True$. Patrząc na graf widać, że trzecia z kwerend zwraca niepoprawny wynik.
 
+
+\subsection{Test 4}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{A},
+}
+\begin{lstlisting}[mathescape=true]
+initially p $\land$ q
+always p $\lor$ q 
+(A,(Tom)) causes $\neg$p
+(A,(Tom)) typically causes $\neg$q if p
+\end{lstlisting}
+\vspace{1cm}
+
+Otrzymany graf:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{test4_graf}
+\end{figure}
+
+Kwerendy:
+\begin{lstlisting}[mathescape=true]
+always accessible $\neg$p $\land$ q if p when (A,Tom)
+ever accessible $\neg$p $\land$ q if p when (A,Tom)
+typically accessible $\neg$p $\land$ q if p when (A,Tom)
+\end{lstlisting}
+zwracają odpowiedź $True$, co jest poprawne dla dwóch pierwszych kwerend, natomiast patrząc na graf widać, że trzecia z kwerend zwraca niepoprawny wynik.
+
 \newpage
 
 \end{document}
