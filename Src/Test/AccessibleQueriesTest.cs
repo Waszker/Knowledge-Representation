@@ -142,5 +142,36 @@ namespace KR.Test
             r1 = q3.Evaluate(world);
             Assert.AreEqual(r1, false); //end
         }
+        [TestMethod]
+        public void NeronTest()
+        {
+            var domain = new Domain();
+            var Neron = new Actor("Nero");
+            var drink = new Action("drink");
+            var torch = new Action("torch");
+            var rest = new Action("rest");
+            var burned = new Fluent("burned");
+            var ent = new Fluent("ent");
+            var world = World.Instance;
+            world.SetActions(new List<Action> { drink, torch, rest });
+            world.SetFluents(new List<Fluent> { burned, ent });
+            world.SetActors(new List<Actor> { Neron });
+            domain.AddInitiallyClause(new Initially(new Conjunction(new Negation(burned), new Negation(ent))));
+            domain.AddReleasesClause(new Releases(drink, false, new List<Actor> { Neron }, ent, new Negation(ent)));
+            domain.AddTypicallyCausesClause(new TypicallyCauses(torch, false, new List<Actor> { Neron }, ent));
+            domain.AddCausesClause(new Causes(torch, false, new List<Actor> { Neron }, burned));
+            domain.AddCausesClause(new Causes(rest, false, new List<Actor> { Neron }, new Negation(ent)));
+            domain.AddImpossibleClause(new Impossible(torch, false, new List<Actor> { Neron }, burned));
+            world.SetDomain(domain);
+            world.Build();
+            var scenario = new Scenario();
+            scenario.AddScenarioStep(new ScenarioStep(torch, Neron));
+            var q = new AccessibleEverScenarioQuery(burned, new Negation(burned), scenario);
+            var r = q.Evaluate(world);
+            Assert.AreEqual(r, false);
+            var q2 = new AccessibleAlwaysScenarioQuery(burned, new Negation(burned), scenario);
+            r = q2.Evaluate(world);
+            Assert.AreEqual(r, false);
+        }
     }
 }
