@@ -143,7 +143,7 @@ namespace KR.Main.Engine
             {
                 if (impossibleClause.Action != action)
                     continue;
-                if (!impossibleClause.Exclusion && !_actors.Contains(actor))
+                if (!impossibleClause.Exclusion && !impossibleClause.Actors.Contains(actor))
                     continue;
                 if (impossibleClause.Exclusion && !_actors.Except(impossibleClause.Actors).Contains(actor))
                     continue;
@@ -158,7 +158,7 @@ namespace KR.Main.Engine
             {
                 if (causesClause.Action != action)
                     continue;
-                if (!causesClause.Exclusion && !_actors.Contains(actor))
+                if (!causesClause.Exclusion && !causesClause.Actors.Contains(actor))
                     continue;
                 if (causesClause.Exclusion && !_actors.Except(causesClause.Actors).Contains(actor))
                     continue;
@@ -172,7 +172,7 @@ namespace KR.Main.Engine
             {
                 if (preservesClause.Action != action)
                     continue;
-                if (!preservesClause.Exclusion && !_actors.Contains(actor))
+                if (!preservesClause.Exclusion && !preservesClause.Actors.Contains(actor))
                     continue;
                 if (preservesClause.Exclusion && !_actors.Except(preservesClause.Actors).Contains(actor))
                     continue;
@@ -218,7 +218,7 @@ namespace KR.Main.Engine
             {
                 if (tCausesClause.Action != action)
                     continue;
-                if (!tCausesClause.Exclusion && !_actors.Contains(actor))
+                if (!tCausesClause.Exclusion && !tCausesClause.Actors.Contains(actor))
                     continue;
                 if (tCausesClause.Exclusion && !_actors.Except(tCausesClause.Actors).Contains(actor))
                     continue;
@@ -245,7 +245,7 @@ namespace KR.Main.Engine
             {
                 if (releaseClause.Action != action)
                     continue;
-                if (!releaseClause.Exclusion && !_actors.Contains(actor))
+                if (!releaseClause.Exclusion && !releaseClause.Actors.Contains(actor))
                     continue;
                 if (releaseClause.Exclusion && !_actors.Except(releaseClause.Actors).Contains(actor))
                     continue;
