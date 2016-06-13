@@ -410,22 +410,22 @@ Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie 
 \State \Return{$TRUE$}
 \end{algorithmic}
 \end{algorithm}
-\subsubsection{Algorytm kwerendy ever accessible $\gamma$ if $\pi$}
+\subsubsection{Algorytm kwerendy ever(typically) accessible $\gamma$ if $\pi$}
 
-Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie dowolnego scenariusza zawsze doprowadzi do stanu spełniającego $\gamma$
+Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie dowolnego scenariusza zawsze (typowo) doprowadzi do stanu spełniającego $\gamma$
 
 \begin{algorithm}[H]
 \begin{algorithmic}
 \State $StatesPi \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
 \ForAll{$\texttt{startState} \in StatesPi$}
-    \State $open \gets$ stany do których można przejść z $startState$
+    \State $open \gets$ stany do których można (typowo) przejść z $startState$
     \State $close \gets$ pusty zbiór stanów
     \While{$open$ niepusty}
         \State $state \gets \{$dowolny stan z $open\}$
         \If{$state$ spełnia warunek $\gamma$}
             \State $continue for all$
         \EndIf
-        \ForAll{$state2 \in$ stany, do których można przejść z $state$}
+        \ForAll{$state2 \in$ stany, do których można (typowo) przejść z $state$}
             \If{$state2 \not\in close$}
                 \State dodaj $state2$ do $open$
             \EndIf
