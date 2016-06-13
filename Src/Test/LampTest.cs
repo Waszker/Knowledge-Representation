@@ -48,7 +48,38 @@ namespace KR.Test
 
             Assert.AreEqual(resultEver, true);
             Assert.AreEqual(resultTypically, false);
-            Assert.AreEqual(resultAlways, false);
+            Assert.AreEqual(resultAlways, true);
+        }
+        [TestMethod]
+        public void LightLampTest2()
+        {
+            var domain = new Domain();
+            var tom = new Actor("Tom");
+            var lighted = new Fluent("lighted");
+            var broken = new Fluent("broken");
+            var turnOn = new Action("TurnOn");
+            var turnOff = new Action("TurnOff");
+            var throwDown = new Action("ThrowDown");
+            var world = World.Instance;
+            world.SetActions(new List<Action> { turnOn, turnOff, throwDown });
+            world.SetFluents(new List<Fluent> { lighted, broken });
+            world.SetActors(new List<Actor> { tom });
+            domain.AddInitiallyClause(new Initially(new Conjunction(new Negation(broken), lighted)));
+            domain.AddTypicallyCausesClause(new TypicallyCauses(throwDown, false, new List<Actor> { tom }, broken));
+            domain.AddCausesClause(new Causes(turnOn, false, new List<Actor> { tom }, lighted));
+            domain.AddCausesClause(new Causes(turnOff, false, new List<Actor> { tom }, new Negation(lighted)));
+            domain.AddAlwaysClause(new Always(new Implication(lighted, new Negation(broken))));
+            domain.AddPreservesClause(new Preserves(turnOn, false, new List<Actor> { tom }, broken, null));
+            world.SetDomain(domain);
+            world.Build();
+            var scenario = new Scenario();
+            scenario.AddScenarioStep(new ScenarioStep(throwDown, tom));
+            scenario.AddScenarioStep(new ScenarioStep(turnOn, tom));
+
+            var q = new ScenarioAlwaysExecutableQuery(scenario);
+            var r = q.Evaluate(world);
+
+            Assert.AreEqual(r, false);
         }
     }
 }
