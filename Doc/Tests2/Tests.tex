@@ -12,8 +12,8 @@
 
 \lstdefinestyle{main}{
 	keywords={
-		after, always, causes, if, impossible, initially, observable, 
-		partakes, releases, typically
+		after, always, ever, causes, if, impossible, initially, observable, 
+		partakes, releases, typically, accessible, executable, when
     },
     keywordstyle={\bfseries},
     keywordstyle=[2]\textsc,
@@ -161,6 +161,47 @@ ever accessible $\neg walking$ after (ENTICE, (PIOTR)) if alive
 \end{lstlisting}
 
 otrzymywaną odpowiedzią było FALSE.
+
+\newpage
+
+\subsection{Test 3}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{DRINK, TORCH, REST},
+}
+\begin{lstlisting}[mathescape=true]
+initially $\neg$burned $\land$ $\neg$entertained
+(DRINK,(Nero)) releases entertained if $\neg$entertained
+(TORCH,(Nero)) typically causes entertained
+(TORCH,(Nero)) causes burned
+(REST,(Nero)) causes $\neg$entertained
+impossible (TORCH,(Nero)) if burned
+\end{lstlisting}
+\vspace{1cm}
+
+Otrzymany graf:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{test3_graf}
+\end{figure}
+
+Kwerendy:
+\begin{lstlisting}[mathescape=true]
+ever executable (DRINK,Nero),(REST,Nero),(TORCH,Nero)
+always executable (DRINK,Nero),(REST,Nero),(TORCH,Nero)
+\end{lstlisting}
+zwracają kolejno $True$ i $False$. W istocie, Neron może podpalić Rzym tylko raz.
+\vspace{0.2cm}
+
+Kwerendy:
+\begin{lstlisting}[mathescape=true]
+ever accessible $\neg$burned if burned when (TORCH,Nero)
+always accessible $\neg$burned if burned when (TORCH,Nero)
+\end{lstlisting}
+zwracają kolejno $False$ i $True$, co nie powinno mieć miejsca (\textit{ever} nie powinno zwracać prawdy rzadziej, niż \textit{always}).
+
 
 \newpage
 
