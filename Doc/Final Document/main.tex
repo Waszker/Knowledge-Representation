@@ -284,64 +284,11 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \EndFor
 \State $G \gets \left(States, E\right)$
 \end{algorithmic}
-\end{algorithm}\newpage
-
-\subsection{Algorytmy kwerend accessible}
-\subsubsection{Algorytm kwerendy always/ever accessible $\gamma$ if $\pi$ when SC }
-
-Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie scenariusza SC zawsze/kiedykolwiek doprowadzi do stanu spełniającego $\gamma$
-
-\begin{algorithm}[H]
-\begin{algorithmic}
-\State $StatesPi \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
-\State $scenario \gets $ scenariusz kwerendy
-\ForAll{$\texttt{startState} \in StatesPi$}
-    \State $states \gets \{startState\}$
-	\ForAll{$\texttt{step} \in scenario$}
-	    \State $nextS \gets $ zbiór stanów
-		\ForAll{$\texttt{state} \in states$}
-			\State $nextS \gets nextS \cup ($stany z krawędzią z $state$ z krokiem $step)$
-		\EndFor 
-		\State $states \gets nextS$
-	\EndFor
-	\If{wersja $always$ i $states$ zawiera stan nie spełniający $\gamma$} 
-	    \State \Return{$FALSE$}
-	\EndIf
-	\If{wersja $ever$ i $states$ nie zawiera stanu spełniającego $\gamma$} \State \Return{$FALSE$}
-	\EndIf
-\EndFor
-\State \Return{$TRUE$}
-\end{algorithmic}
-\end{algorithm}
-\subsubsection{Algorytm kwerendy always accessible $\gamma$ if $\pi$}
-
-Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie dowolnego scenariusza zawsze doprowadzi do stanu spełniającego $\gamma$
-
-\begin{algorithm}[H]
-\begin{algorithmic}
-\State $states \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
-\State $open \gets $ zbiór stanów do których można przejść z stanów w $states$
-\State $close$ - pusty zbiór stanów
-\While {$open$ niepusty}
-    \State $state \gets \{$dowolny stan z $open\}$
-    \State usuń $state$ z $open$
-	\State dodaj $state$ do $close$
-	\ForAll{$\texttt{state2} \in$ stany do których można przejść z $state$}
-		\If{$state2 \not\in close$}
-		    \State dodaj $state2$ do $open$
-		\EndIf
-	\EndFor
-\EndWhile
-	\If{$close$ zawiera stan niespełniający $\gamma$}
-	    \State \Return{$FALSE$}
-	\EndIf
-\State \Return{$TRUE$}
-\end{algorithmic}
 \end{algorithm}
 
 
 
-\newpage
+
 \subsection{Obliczanie odpowiedzi na zadaną kwerendę}
 
 \subsubsection{Kwerendy \texttt{always/ever executable Scenario}}
@@ -409,8 +356,9 @@ Kwerendy \texttt{always/ever Actor partakes when Scenario} sprawdzają, czy dany
 \end{algorithm}
 \newpage
 
-\subsubsection{Kwerendy \texttt{always accessible $\gamma$ if $\pi$ when Scenario} }
-Kwerendy \texttt{always accessible $\gamma$ if $\pi$ when Scenario} sprawdzają, czy wykonanie podanego scenariusza z każdego stanu spełniającego warunek $\pi$ zawsze doprowadzi do stanu spełniającego warunek $\gamma$. Pseudokod algorytmu wygląda następująco:
+\subsubsection{Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenario} }
+
+Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenario} sprawdzają, czy wykonanie podanego scenariusza z każdego stanu spełniającego warunek $\pi$ zawsze/kiedykolwiek/na ogół doprowadzi do stanu spełniającego warunek $\gamma$. Pseudokod algorytmu wygląda następująco:
 
 \begin{algorithm}[H]
 \begin{algorithmic}
@@ -425,13 +373,49 @@ Kwerendy \texttt{always accessible $\gamma$ if $\pi$ when Scenario} sprawdzają,
 		\EndFor 
 		\State $states \gets nextS$
 	\EndFor
-	\If{$states$ zawiera stan nie spełniający $\gamma$} 
+	\If{wersja $always$ i $states$ zawiera stan nie spełniający $\gamma$} 
 	    \State \Return{$FALSE$}
+	\EndIf
+	\If{wersja $ever$ i $states$ nie zawiera stanu spełniającego $\gamma$} \State \Return{$FALSE$}
 	\EndIf
 \EndFor
 \State \Return{$TRUE$}
 \end{algorithmic}
 \end{algorithm}
+\newpage
+
+\subsubsection{Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$} }
+\subsubsection{Algorytm kwerendy always accessible $\gamma$ if $\pi$}
+
+Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie dowolnego scenariusza zawsze doprowadzi do stanu spełniającego $\gamma$
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $states \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
+\State $open \gets $ zbiór stanów do których można przejść z stanów w $states$
+\State $close$ - pusty zbiór stanów
+\While {$open$ niepusty}
+    \State $state \gets \{$dowolny stan z $open\}$
+    \State usuń $state$ z $open$
+	\State dodaj $state$ do $close$
+	\ForAll{$\texttt{state2} \in$ stany do których można przejść z $state$}
+		\If{$state2 \not\in close$}
+		    \State dodaj $state2$ do $open$
+		\EndIf
+	\EndFor
+\EndWhile
+	\If{$close$ zawiera stan niespełniający $\gamma$}
+	    \State \Return{$FALSE$}
+	\EndIf
+\State \Return{$TRUE$}
+\end{algorithmic}
+\end{algorithm}
+%TUTAJ OPIS!!!!
+
+
+
+
+
 
 \newpage
 \section{Moduły dodatkowe}
