@@ -39,6 +39,26 @@ namespace KR.Main.Gui
             chooseQueryComboBox.SelectedIndex = 0;
         }
 
+        public void ResetAll()
+        {
+            this.defineQueriesPanel.Controls.Remove(queryControls[currentQuery]);
+            currentQuery = 0;
+            queryControls = new UserControl[4];
+            queryControls[0] = new ExecutableQueryControl();
+            queryControls[1] = new AccessibleWhenQueryControl();
+            queryControls[2] = new AccessibleQueryControl();
+            queryControls[3] = new PartakesQueryControl();
+
+            queryControls[0].Anchor = AnchorStyles.Top;
+            queryControls[1].Anchor = AnchorStyles.Top;
+            queryControls[2].Anchor = AnchorStyles.Top;
+            queryControls[3].Anchor = AnchorStyles.Top;
+
+
+            this.defineQueriesPanel.Controls.Add(queryControls[0], 0, 2);
+            chooseQueryComboBox.SelectedIndex = 0;
+        }
+
         public void setFluentsAndActors(List<Fluent> fluents, List<Actor> actors)
         {
             ((PartakesQueryControl)queryControls[3]).setActors(actors);
