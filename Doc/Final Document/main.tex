@@ -284,12 +284,43 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \EndFor
 \State $G \gets \left(States, E\right)$
 \end{algorithmic}
-\end{algorithm}
-\newpage
+\end{algorithm}\newpage
 
+\subsection{Algorytmy kwerend accessible}
+\subsubsection{Algorytm kwerendy always/ever accessible $\gamma$ if $\pi$ when SC }
+
+Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie scenariusza SC zawsze doprowadzi do stanu spełniającego $\gamma$
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $StatesPi \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
+\State $scenario \gets $ scenariusz kwerendy
+\ForAll{$\texttt{startState} \in StatesPi$}
+    \State $states \gets \{startState\}$
+	\ForAll{$\texttt{step} \in scenario$}
+	    \State $nextS \gets $ zbiór stanów
+		\ForAll{$\texttt{state} \in states$}
+			\State $nextS \gets nextS \cup ($stany z krawędzią z $state$ z krokiem $step)$
+		\EndFor 
+		\State $states \gets nextS$
+	\EndFor
+	\If{wersja $always$ i $states$ zawiera stan nie spełniający $\gamma$} 
+	    \State \Return{$FALSE$}
+	\EndIf
+	\If{wersja $ever$ i $states$ nie zawiera stanu spełniającego $\gamma$} \State \Return{$FALSE$}
+	\EndIf
+\EndFor
+\State \Return{$TRUE$}
+\end{algorithmic}
+\end{algorithm}
+
+
+
+\newpage
 \subsection{Obliczanie odpowiedzi na zadaną kwerendę}
 
 \subsubsection{Kwerendy \texttt{always/ever executable Scenario}}
+
 Kwerendy \texttt{always/ever executable Scenario} sprawdzają, czy dany scenariusz jest wykonywalny zawsze/kiedykolwiek z dowolnego stanu. Pseudokod algorytmu wygląda następująco:
 
 \begin{algorithm}[H]
@@ -377,7 +408,6 @@ Kwerendy \texttt{always accessible $\gamma$ if $\pi$ when Scenario} sprawdzają,
 \end{algorithmic}
 \end{algorithm}
 
-
 \newpage
 \section{Moduły dodatkowe}
 \subsection{Biblioteka Microsoft Automatic Graph Layout}
@@ -402,8 +432,8 @@ Podstawowe funkcjonalności biblioteki:
     \item Izert Piotr - implementacja kwerend \texttt{executable} i \texttt{partakes}, testy
     \item Pielat Mateusz - wyznaczanie zbiorów $Res$, testy
     \item Rząd Przemysław - konstrukcja grafu zależności, testy
-    \item Siry Roman - implementacja kwerend \texttt{accessible}, testy
-    \item Waszkiewicz Piotr - podstawowe klasy, graficzny interfejs użytkownika, testy
+    \item Siry Roman - implementacja kwerend \texttt{accessible}, testy 
+	\item Waszkiewicz Piotr - podstawowe klasy, graficzny interfejs użytkownika, testy
     \item Zawadzka Anna - podstawowe klasy, graficzny interfejs użytkownika, testy
 \end{itemize}
 \end{document}
