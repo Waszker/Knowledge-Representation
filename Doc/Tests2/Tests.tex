@@ -234,6 +234,48 @@ typically accessible $\neg$p $\land$ q if p when (A,Tom)
 zwracają odpowiedź $True$, co jest poprawne dla dwóch pierwszych kwerend, natomiast patrząc na graf widać, że trzecia z kwerend zwraca niepoprawny wynik.
 
 
+\subsection{Test 5}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{turnon, turnoff, throwdown},
+}
+\begin{lstlisting}[mathescape=true]
+initially lighted $\land$ $\neg$ broken
+always lighted $\to$ $\neg$ broken
+(throwdown,(Tom)) typically causes broken
+(turnon,(Tom)) causes lighted
+(turnoff,(Tom)) causes $\neg$lighted
+(turnon,(Tom)) preserves broken
+\end{lstlisting}
+\vspace{1cm}
+
+Otrzymany graf:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.42]{test5_graf}
+\end{figure}
+
+Przejścia i stany w grafie są poprawne.
+
+Zadano następujące kwerendy:
+\begin{lstlisting}[mathescape=true]
+always accessible lighted if lighted $\land$ $\neg$ broken 
+when (ThrowDown,Tom), (TurnOn, Tom)
+
+ever accessible lighted if lighted $\land$ $\neg$ broken 
+when (ThrowDown,Tom), (TurnOn, Tom)
+
+typically accessible lighted if lighted $\land$ $\neg$ broken 
+when (ThrowDown,Tom), (TurnOn, Tom)
+\end{lstlisting}
+Uzyskane odpowiedzi: \\
+always - $True$, a powinno być false, poniweważ istnieje taka możliwość, że lampka się zbije po jej zrzuceniu \\
+ever - $True$ - OK\\
+typically - $False$ - OK
+
+
 
 
 \subsection{Test 7}
