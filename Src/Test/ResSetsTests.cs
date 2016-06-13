@@ -49,7 +49,7 @@ namespace KR.Test
             domain.AddImpossibleClause(impossible1);
             domain.AddReleasesClause(releases1);
             domain.AddCausesClause(causes2);
-            
+
             world.SetActions(new List<Action> { drinkAction, eatAction });
             world.SetActors(new List<Actor> { hatterActor });
             world.SetFluents(fluentList);
@@ -201,7 +201,7 @@ namespace KR.Test
         public void Blowfish()
         {
             World world = World.Instance;
-            
+
             var inflateAction = new Action("Inflate");
             var deflateAction = new Action("Deflate");
             var blowfishActor = new Actor("Blowfish");
@@ -219,7 +219,7 @@ namespace KR.Test
             world.SetDomain(domain);
 
             Assert.IsTrue(world.Build());
-            
+
             State state0 = new State(fluentList, new List<bool> { true });
             State state1 = new State(fluentList, new List<bool> { false });
 
@@ -276,7 +276,7 @@ namespace KR.Test
             domain.AddTypicallyCausesClause(new TypicallyCauses(cookAction, false, new List<Actor> { johnActor }, hasMealFluent));
             domain.AddCausesClause(new Causes(eatAction, false, new List<Actor> { johnActor }, new Negation(hasMealFluent)));
             domain.AddReleasesClause(new Releases(eatAction, false, new List<Actor> { johnActor }, hungryFluent, hungryFluent));
-            
+
             world.SetActors(new List<Actor> { johnActor });
             world.SetActions(new List<Action> { cookAction, eatAction });
             world.SetFluents(fluentList);
@@ -354,6 +354,55 @@ namespace KR.Test
             actualResAb = world.GetStates(eatAction, johnActor, state3, true);
             AssertResSetsEqual(expectedResN, actualResN);
             AssertResSetsEqual(expectedResAb, actualResAb);
+        }
+
+        [TestMethod]
+        public void OnlyAtypical()
+        {
+            World world = World.Instance;
+
+            var aAction = new Action("A");
+            var nonameActor = new Actor("Noname");
+            var pFluent = new Fluent("p");
+            var qFluent = new Fluent("q");
+            var fluentList = new List<Fluent> { pFluent, qFluent };
+
+            var domain = new Domain();
+            domain.AddInitiallyClause(new Initially(new Conjunction(pFluent, qFluent)));
+            domain.AddAlwaysClause(new Always(new Alternative(pFluent, qFluent)));
+            domain.AddCausesClause(new Causes(aAction, false, new List<Actor> { nonameActor }, new Negation(pFluent)));
+            domain.AddTypicallyCausesClause(new TypicallyCauses(aAction, false, new List<Actor> { nonameActor }, new Negation(qFluent), pFluent));
+
+            world.SetActions(new List<Action> { aAction });
+            world.SetActors(new List<Actor> { nonameActor });
+            world.SetFluents(fluentList);
+            world.SetDomain(domain);
+
+            Assert.IsTrue(world.Build());
+
+            State state0 = new State(fluentList, new List<bool> { true, true });
+            State state1 = new State(fluentList, new List<bool> { true, false });
+            State state2 = new State(fluentList, new List<bool> { false, true });
+
+            ISet<State> expectedResN, expectedResAb, actualResN, actualResAb;
+
+            // A; Noname; p & q
+            expectedResN = new HashSet<State> { };
+            expectedResAb = new HashSet<State> { state2 };
+            actualResN = world.GetStates(aAction, nonameActor, state0, false);
+            actualResAb = world.GetStates(aAction, nonameActor, state0, true);
+
+            // A; Noname; p & -q
+            expectedResN = new HashSet<State> { };
+            expectedResAb = new HashSet<State> { state2 };
+            actualResN = world.GetStates(aAction, nonameActor, state1, false);
+            actualResAb = world.GetStates(aAction, nonameActor, state1, true);
+
+            // A; Noname; -p & q
+            expectedResN = new HashSet<State> { state2 };
+            expectedResAb = new HashSet<State> { };
+            actualResN = world.GetStates(aAction, nonameActor, state2, false);
+            actualResAb = world.GetStates(aAction, nonameActor, state2, true);
         }
     }
 }
