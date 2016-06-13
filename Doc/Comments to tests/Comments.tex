@@ -1,0 +1,74 @@
+\documentclass{article}
+\usepackage{float}
+\usepackage[polish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{polski}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
+\usepackage{hyperref}
+\frenchspacing
+\setcounter{tocdepth}{2}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+%%% fix for \lll
+\let\babellll\lll
+\let\lll\relax
+
+\usepackage{amssymb}
+
+%%% fix for \lll
+\let\mathlll\lll
+\let\lll\babellll
+
+
+\begin{document}
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\Action}[1]{\textsc{#1}}
+\center
+%----------------------------------------------------------------------------------------
+\textsc{\LARGE Politechnika Warszawska}\\[0.3cm]
+\textsc{\Large Wydział Matematyki i Nauk Informacyjnych}\\[0.6cm]
+% logo
+\includegraphics[width=2cm, height=2cm]{logo}\\[0.6cm]
+\textsc{\Huge Reprezentacja wiedzy}\\[0.3cm]
+%---------------------------------------------------------------------------------------
+\HRule \\[0.4cm]
+{ \LARGE \bfseries Programy działań z efektami domyślnymi}\\[0.1cm]
+ 
+%----------------------------------------------------------------------------------------
+\HRule \\[0.4cm]
+{  \bfseries Komentarz do raportu z testów}\\[1.2cm]
+% authors
+\begin{flushright}
+\Large \emph{Autorzy:}\\[0.5cm]
+Dragan Łukasz\\
+Flis Mateusz\\
+Izert Piotr\\
+Pielat Mateusz\\
+Rząd Przemysław\\
+Siry Roman\\
+\textbf{Waszkiewicz Piotr}\\
+Zawadzka Anna\\[0.9cm]
+\end{flushright}
+% date
+\vfill
+{\large 14 czerwca 2016}\\[1cm]
+\end{titlepage}
+\newpage
+
+
+Nasz projekt został przetestowany przez zespół nr 2 (Rafał Szczekutek - szef zespołu, Mateusz Bukowski  Piotr Chmiel, Martyna Grotek, Łukasz Napora, Kamil Żak). \\
+Poniżej znajdują się komentarze odnoszące się do raportu z przeprowadzonych testów.
+\begin{itemize}
+    \item Test 1.1.
+    \item Test 1.2.
+    \item Test 1.3.
+    \item Test 1.4.
+    \item Test 1.5.
+    \item Test 1.6.
+\end{itemize}
+
+
+\end{document}
