@@ -67,7 +67,7 @@ namespace KR.Main.Engine
 
             _states = GenerateAllValidStates();
             _graph = new Graph(_actions, _actors, _states);
-            _initialState = GetInitialState(_states);
+            //_initialState = GetInitialState(_states);
             return true;
         }
 
