@@ -114,7 +114,7 @@ Zdefiniowana dziedzina:
 	keywords=[2]{Load, Shoot},
 }
 \begin{lstlisting}[mathescape=true]
-initially $\neg$ painted
+initially $\neg$painted
 (PAINT, (MALARZ)) causes painted
 (CLEAR, (MALARZ, INFORMATYK)) causes $\neg$ painted
 \end{lstlisting}
@@ -126,7 +126,41 @@ Otrzymany w wyniku zbudowania dziedziny graf wyglądał następująco:
 \includegraphics[scale=0.6]{test1_graf}
 \end{figure}
 
-Jak widać zdefiniowane w nim zostały przejścia dla akcji PAINT wykonanej przez aktora INFORMATYK, prowadzące ze stanu w którym obraz nie był namalowany ($\neg$ painted) do stanu w którym już istniał (painted). Jest to błąd w programie.
+Jak widać zdefiniowane w nim zostały przejścia dla akcji PAINT wykonanej przez aktora INFORMATYK, prowadzące ze stanu w którym obraz nie był namalowany ($\neg$ ainted) do stanu w którym już istniał (painted). Jest to błąd w programie.
+
+\newpage
+
+\subsection{Test 2}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{Load, Shoot},
+}
+\begin{lstlisting}[mathescape=true]
+initially $\neg$loaded $\land$ $\neg$walking $\land$ alive
+(LOAD, ($\epsilon$)) causes loaded
+(SHOOT, ($\epsilon$)) typically causes $\neg$alive $\land$ $\neg$loaded if loaded
+(ENTICE, ($\epsilon$)) preserves alive
+(ENTICE, (Frank)) causes walking
+(ENTICE, (Piotr)) typically causes walking
+\end{lstlisting}
+\vspace{1cm}
+Otrzymana w wyniku zbudowania dziedziny część grafu wyglądała następująco
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{test2_graf}
+\end{figure}
+
+Znajdujący się tutaj błąd polega na braku przejścia w najwyższym stanie ($\neg loaded$, alive, $\neg walking$) dla akcji ENTICE wykonywanej przez aktora Piotr.
+
+Po zdefiniowaniu kwerendy:
+\begin{lstlisting}[mathescape=true]
+ever accessible $\neg walking$ after (ENTICE, (PIOTR)) if alive
+\end{lstlisting}
+
+otrzymywaną odpowiedzią było FALSE.
 
 \newpage
 
