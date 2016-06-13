@@ -140,7 +140,7 @@ namespace KR.Test
             Assert.AreEqual(r1, true);
             var q3 = new AccessibleTypicallyScenarioQuery(p, new Conjunction(new Negation(p), q), scenario);
             r1 = q3.Evaluate(world);
-            Assert.AreEqual(r1, false);
+            Assert.AreEqual(r1, false); //end
         }
     }
 }
