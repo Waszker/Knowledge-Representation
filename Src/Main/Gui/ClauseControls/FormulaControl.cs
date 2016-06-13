@@ -85,7 +85,7 @@ namespace KR.Main.Gui.ClauseControls
                     else return null;
                 case 2:
                     if (right.getFormula() != null && left.getFormula() != null)
-                        return new Implication(right.getFormula(), left.getFormula());
+                        return new Implication(left.getFormula(), right.getFormula());
                     else return null;
                 case 3:
                     if (right.getFormula() != null && left.getFormula() != null)
