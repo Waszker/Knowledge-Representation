@@ -391,18 +391,24 @@ namespace KR.Test
             expectedResAb = new HashSet<State> { state2 };
             actualResN = world.GetStates(aAction, nonameActor, state0, false);
             actualResAb = world.GetStates(aAction, nonameActor, state0, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
 
             // A; Noname; p & -q
             expectedResN = new HashSet<State> { };
             expectedResAb = new HashSet<State> { state2 };
             actualResN = world.GetStates(aAction, nonameActor, state1, false);
             actualResAb = world.GetStates(aAction, nonameActor, state1, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
 
             // A; Noname; -p & q
             expectedResN = new HashSet<State> { state2 };
             expectedResAb = new HashSet<State> { };
             actualResN = world.GetStates(aAction, nonameActor, state2, false);
             actualResAb = world.GetStates(aAction, nonameActor, state2, true);
+            AssertResSetsEqual(expectedResN, actualResN);
+            AssertResSetsEqual(expectedResAb, actualResAb);
         }
     }
 }
