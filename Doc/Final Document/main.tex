@@ -285,7 +285,7 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 \State $G \gets \left(States, E\right)$
 \end{algorithmic}
 \end{algorithm}
-
+\newpage
 
 
 
@@ -389,9 +389,8 @@ Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenari
 \newpage
 
 \subsubsection{Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$} }
-\subsubsection{Algorytm kwerendy always accessible $\gamma$ if $\pi$}
-
-Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie dowolnego scenariusza zawsze doprowadzi do stanu spełniającego $\gamma$
+\textbf{Algorytm kwerendy \texttt{always accessible $\gamma$ if $\pi$}}\\\\
+Kwerenda odpowiada twierdząco, jeżeli z każdego stanu spełniającego warunek $\pi$ wykonanie dowolnego scenariusza zawsze doprowadzi do stanu spełniającego warunek $\gamma$. Pseudokod algorytmu wygląda następująco:
 
 \begin{algorithm}[H]
 \begin{algorithmic}
@@ -414,9 +413,9 @@ Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie 
 \State \Return{$TRUE$}
 \end{algorithmic}
 \end{algorithm}
-\subsubsection{Algorytm kwerendy ever(typically) accessible $\gamma$ if $\pi$}
-
-Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie dowolnego scenariusza zawsze (typowo) doprowadzi do stanu spełniającego $\gamma$
+\newpage
+\textbf{Algorytm kwerendy \texttt{ever/typically accessible $\gamma$ if $\pi$}}\\\\
+Kwerenda odpowiada twierdząco, jeżeli z każdego stanu spełniającego warunek $\pi$ wykonanie dowolnego scenariusza kiedykolwiek/na ogół doprowadzi do stanu spełniającego warunek $\gamma$. Pseudokod algorytmu wygląda następująco:
 
 \begin{algorithm}[H]
 \begin{algorithmic}
@@ -440,13 +439,6 @@ Kwerenda odpowiada tak jeżeli z każdego stanu spełniającego $\pi$ wykonanie 
 \State \Return{$TRUE$}
 \end{algorithmic}
 \end{algorithm}
-%TUTAJ OPIS!!!!
-
-
-
-
-
-
 \newpage
 \section{Moduły dodatkowe}
 \subsection{Biblioteka Microsoft Automatic Graph Layout}
