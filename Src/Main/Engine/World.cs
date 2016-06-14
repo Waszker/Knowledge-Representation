@@ -22,7 +22,7 @@ namespace KR.Main.Engine
         private Domain _domain;
 
         private List<State> _states;
-        private State _initialState;
+        private List<State> _initialStates;
 
         private readonly Dictionary<int, ISet<State>> _resNCache;
         private readonly Dictionary<int, ISet<State>> _resAbCache;
@@ -67,7 +67,7 @@ namespace KR.Main.Engine
 
             _states = GenerateAllValidStates();
             _graph = new Graph(_actions, _actors, _states);
-            //_initialState = GetInitialState(_states);
+            _initialStates = ResolveInitialStates(_states);
             return true;
         }
 
@@ -117,7 +117,7 @@ namespace KR.Main.Engine
 
         #endregion
 
-        private State GetInitialState(List<State> validStates)
+        private List<State> ResolveInitialStates(List<State> validStates)
         {
             HashSet<State> candidateStates = new HashSet<State>(validStates);
 
@@ -126,10 +126,7 @@ namespace KR.Main.Engine
                 candidateStates.RemoveWhere(s => !initiallyClause.Condition.Check(s));
             }
 
-            if (candidateStates.Count != 1)
-                throw new InvalidOperationException("Stan początkowy musi być dokładnie jeden.");
-
-            return candidateStates.Single();
+            return candidateStates.ToList();
         }
 
         #region Res and New sets
@@ -137,7 +134,6 @@ namespace KR.Main.Engine
         private HashSet<State> GetResZero(List<State> validStates, Action action, Actor actor, State from)
         {
             HashSet<State> resZero = new HashSet<State>(validStates);
-            bool clauseFound = false;
 
             foreach (var impossibleClause in _domain.ImpossibleClauses)
             {
@@ -301,6 +297,11 @@ namespace KR.Main.Engine
             if (condition == null)
                 return new HashSet<State>(_states);
             return new HashSet<State>(_states.Where(condition.Check));
+        }
+
+        public ISet<State> GetInitialStates()
+        {
+            return new HashSet<State>(_initialStates);
         }
 
         public ISet<State> GetStates(Action action, Actor actor, State from, bool abnormal)
