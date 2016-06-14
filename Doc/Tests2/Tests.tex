@@ -270,10 +270,14 @@ when (ThrowDown,Tom), (TurnOn, Tom)
 typically accessible lighted if lighted $\land$ $\neg$ broken 
 when (ThrowDown,Tom), (TurnOn, Tom)
 \end{lstlisting}
-Uzyskane odpowiedzi: \\
-always - $True$, a powinno być false, poniweważ istnieje taka możliwość, że lampka się zbije po jej zrzuceniu \\
-ever - $True$ - OK\\
-typically - $False$ - OK
+Uzyskane odpowiedzi:
+\begin{itemize}
+\item always - $True$ - OK - wynik nie jest do końca intuicyjny, ale zakładając, że dany scenariusz wykonał się w całości, jedynym możliwym stanem końcowym jest taki, w którym lampka jest zapalona
+
+\item ever - $True$ - OK
+
+\item typically - $False$ - OK - uzyskany efekt jest nietypowy - lampka spadła, ale dalej się świeci
+\end{itemize}
 
 
 
