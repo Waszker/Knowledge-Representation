@@ -53,7 +53,7 @@
             // 
             // formulaElementComboBox
             // 
-            this.formulaElementComboBox.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.formulaElementComboBox.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.formulaElementComboBox.FormattingEnabled = true;
             this.formulaElementComboBox.Items.AddRange(new object[] {
             "^",
@@ -63,7 +63,7 @@
             "¬"});
             this.formulaElementComboBox.Location = new System.Drawing.Point(3, 3);
             this.formulaElementComboBox.Name = "formulaElementComboBox";
-            this.formulaElementComboBox.Size = new System.Drawing.Size(115, 28);
+            this.formulaElementComboBox.Size = new System.Drawing.Size(115, 27);
             this.formulaElementComboBox.TabIndex = 0;
             // 
             // FormulaControl

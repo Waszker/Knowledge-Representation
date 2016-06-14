@@ -20,7 +20,7 @@ namespace KR.Main.Gui.ClauseControls
         int fiftyShadesOfGray;
         public FormulaControl()
         {
-            fiftyShadesOfGray = 80;
+            fiftyShadesOfGray = 150;
             InitializeComponent();
             this.formulaElementComboBox.BackColor = Color.FromArgb(fiftyShadesOfGray, fiftyShadesOfGray, fiftyShadesOfGray);
             this.formulaElementComboBox.SelectedIndexChanged += new System.EventHandler(this.formulaElementComboBox_SelectedIndexChanged);
@@ -58,12 +58,12 @@ namespace KR.Main.Gui.ClauseControls
             int option = this.formulaElementComboBox.SelectedIndex;
             if (option < 5)
             {
-                right = new FormulaControl(fluents, fiftyShadesOfGray + 50);
+                right = new FormulaControl(fluents, fiftyShadesOfGray + 30);
                 this.Panel.Controls.Add(right, 2, 0);
 
                 if (option < 4)
                 {
-                    left = new FormulaControl(fluents, fiftyShadesOfGray + 50);
+                    left = new FormulaControl(fluents, fiftyShadesOfGray + 30);
                     this.Panel.Controls.Add(left, 0, 0);
                 }
             }
