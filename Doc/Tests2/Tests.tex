@@ -232,11 +232,57 @@ ever accessible $\neg$p $\land$ q if p when (A,Tom)
 typically accessible $\neg$p $\land$ q if p when (A,Tom)
 \end{lstlisting}
 zwracają odpowiedź $True$, co jest poprawne dla dwóch pierwszych kwerend, natomiast patrząc na graf widać, że trzecia z kwerend zwraca niepoprawny wynik.
+\newpage
+
+\subsection{Test 5}
+Zdefiniowana dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{turnon, turnoff, throwdown},
+}
+\begin{lstlisting}[mathescape=true]
+initially lighted $\land$ $\neg$ broken
+always lighted $\to$ $\neg$ broken
+(throwdown,(Tom)) typically causes broken
+(turnon,(Tom)) causes lighted
+(turnoff,(Tom)) causes $\neg$lighted
+(turnon,(Tom)) preserves broken
+\end{lstlisting}
+\vspace{1cm}
+
+Otrzymany graf:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.42]{test5_graf}
+\end{figure}
+
+Przejścia i stany w grafie są poprawne.
+
+Zadano następujące kwerendy:
+\begin{lstlisting}[mathescape=true]
+always accessible lighted if lighted $\land$ $\neg$ broken 
+when (ThrowDown,Tom), (TurnOn, Tom)
+
+ever accessible lighted if lighted $\land$ $\neg$ broken 
+when (ThrowDown,Tom), (TurnOn, Tom)
+
+typically accessible lighted if lighted $\land$ $\neg$ broken 
+when (ThrowDown,Tom), (TurnOn, Tom)
+\end{lstlisting}
+Uzyskane odpowiedzi:
+\begin{itemize}
+\item always - $True$ - OK - wynik nie jest do końca intuicyjny, ale zakładając, że dany scenariusz wykonał się w całości, jedynym możliwym stanem końcowym jest taki, w którym lampka jest zapalona
+
+\item ever - $True$ - OK
+
+\item typically - $False$ - OK - uzyskany efekt jest nietypowy - lampka spadła, ale dalej się świeci
+\end{itemize}
 
 
 
-
-\subsection{Test 7}
+\newpage
+\subsection{Test 6}
 Dziedzina:
 \bigskip
 \lstset{
@@ -261,6 +307,38 @@ ever accessible $\neg$a
 \end{lstlisting}
 Zwrócona odpowiedź $FALSE$\\
 Oczekiwana odpowiedź: $TRUE$
+\newpage
+\subsection{Test 7}
+Dziedzina:
+\bigskip
+\lstset{
+	style=main,
+	keywords=[2]{A},
+}
+\begin{lstlisting}[mathescape=true]
+initially -cleanCode
+(REFACTORING, Witold) typically causes clenCode if -clenCode
+(REFACTORING, Robert) causes clenCode
+(REFACTORING, $\epsilon$ causes clenCode if clenCode
+\end{lstlisting}
+\vspace{1cm}
+
+Otrzymany graf:
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{test8_graf}
+\end{figure}
+
+\begin{lstlisting}[mathescape=true]
+always accessible clenCode if clenCode
+\end{lstlisting}
+Zwrócona odpowiedź $TRUE$\\
+Oczekiwana odpowiedź: $TRUE$
+\begin{lstlisting}[mathescape=true]
+ever accessible -clenCode if clenCode
+\end{lstlisting}
+Zwrócona odpowiedź $FALSE$\\
+Oczekiwana odpowiedź: $FALSE$
 
 
 \newpage

@@ -23,16 +23,18 @@ namespace KR.Main.Gui
             InitializeComponent();
 
             currentQuery = 0;
-            queryControls = new UserControl[4];
+            queryControls = new UserControl[5];
             queryControls[0] = new ExecutableQueryControl();
             queryControls[1] = new AccessibleWhenQueryControl();
             queryControls[2] = new AccessibleQueryControl();
             queryControls[3] = new PartakesQueryControl();
+            queryControls[4] = new AfterScenarioQueryControl();
 
             queryControls[0].Anchor = AnchorStyles.Top;
             queryControls[1].Anchor = AnchorStyles.Top;
             queryControls[2].Anchor = AnchorStyles.Top;
             queryControls[3].Anchor = AnchorStyles.Top;
+            queryControls[4].Anchor = AnchorStyles.Top;
 
 
             this.defineQueriesPanel.Controls.Add(queryControls[0], 0, 2);
@@ -43,16 +45,18 @@ namespace KR.Main.Gui
         {
             this.defineQueriesPanel.Controls.Remove(queryControls[currentQuery]);
             currentQuery = 0;
-            queryControls = new UserControl[4];
+            queryControls = new UserControl[5];
             queryControls[0] = new ExecutableQueryControl();
             queryControls[1] = new AccessibleWhenQueryControl();
             queryControls[2] = new AccessibleQueryControl();
             queryControls[3] = new PartakesQueryControl();
+            queryControls[4] = new AfterScenarioQueryControl();
 
             queryControls[0].Anchor = AnchorStyles.Top;
             queryControls[1].Anchor = AnchorStyles.Top;
             queryControls[2].Anchor = AnchorStyles.Top;
             queryControls[3].Anchor = AnchorStyles.Top;
+            queryControls[4].Anchor = AnchorStyles.Top;
 
 
             this.defineQueriesPanel.Controls.Add(queryControls[0], 0, 2);
@@ -64,6 +68,7 @@ namespace KR.Main.Gui
             ((PartakesQueryControl)queryControls[3]).setActors(actors);
             ((AccessibleWhenQueryControl)queryControls[1]).setFluents(fluents);
             ((AccessibleQueryControl)queryControls[2]).setFluents(fluents);
+            ((AfterScenarioQueryControl)queryControls[4]).setFluents(fluents);
         }
 
         public void setScenario(Scenario scenario)
@@ -71,7 +76,7 @@ namespace KR.Main.Gui
             ((ExecutableQueryControl)queryControls[0]).setScenario(scenario);
             ((AccessibleWhenQueryControl)queryControls[1]).setScenario(scenario);
             ((PartakesQueryControl)queryControls[3]).setScenario(scenario);
-
+            ((AfterScenarioQueryControl)queryControls[4]).setScenario(scenario);
         }
 
         private void chooseQueryComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,6 +125,16 @@ namespace KR.Main.Gui
                 case 3: //partakes
                     {
                         Query query = ((PartakesQueryControl)queryControls[currentQuery]).getQuery();
+                        if (query != null)
+                        {
+                            result = query.Evaluate(World.Instance);
+                            this.answer.Text = result.ToString();
+                        }
+                        break;
+                    }
+                case 4: //after
+                    {
+                        Query query = ((AfterScenarioQueryControl)queryControls[currentQuery]).getQuery();
                         if (query != null)
                         {
                             result = query.Evaluate(World.Instance);
