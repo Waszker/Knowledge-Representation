@@ -9,21 +9,12 @@ namespace KR.Main.GraphLayout
 {
     public class GraphLayout
     {
-        private readonly IEnumerable<Edge> _edges;
-        private readonly IEnumerable<Edge> _highlightedEdges;
-
-        public GraphLayout(IEnumerable<Edge> edges, IEnumerable<Edge> highlightedEdges=null)
+        public void Show(IEnumerable<Edge> edges, IEnumerable<State> highlightedStates = null)
         {
             if (edges == null)
                 throw new ArgumentNullException("edges");
 
-            _edges = edges;
-            _highlightedEdges = highlightedEdges;
-        }
-
-        public void Show()
-        { 
-            var graph = GleeGraphFactory.Create(_edges);
+            var graph = GleeGraphFactory.Create(edges, highlightedStates);
             ShowGraphDialog(graph);          
         }
 

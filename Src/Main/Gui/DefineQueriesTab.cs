@@ -16,6 +16,7 @@ namespace KR.Main.Gui
 {
     public partial class DefineQueriesTab : UserControl
     {
+        private readonly GraphLayout.GraphLayout graphLayout = new GraphLayout.GraphLayout();
         UserControl[] queryControls;
         int currentQuery;
         public DefineQueriesTab()
@@ -146,9 +147,8 @@ namespace KR.Main.Gui
         }
 
         private void showGraphButton_Click(object sender, EventArgs e)
-        {
-            var graphLayout = new GraphLayout.GraphLayout(World.Instance.GetEdges());
-            graphLayout.Show();
+        {            
+            graphLayout.Show(World.Instance.GetEdges(), World.Instance.GetInitialStates());
         }
     }
 }

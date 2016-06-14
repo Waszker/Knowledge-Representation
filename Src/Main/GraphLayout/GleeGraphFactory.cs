@@ -4,24 +4,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Glee.Drawing;
+using Edge = KR.Main.Entities.Edge;
 
 namespace KR.Main.GraphLayout
 {
     public static class GleeGraphFactory
     {
-        public static Microsoft.Glee.Drawing.Graph Create(IEnumerable<Edge> edges)
+        public static Microsoft.Glee.Drawing.Graph Create(IEnumerable<Edge> edges, IEnumerable<State> highlightedStates=null)
         {
             var graph = new Microsoft.Glee.Drawing.Graph("graph");
+            graph.AddEdges(edges);
+            if(highlightedStates != null)
+                graph.AddHighlightedStates(highlightedStates);
+            
+            return graph;
+        }
 
+        private static void AddEdges(this Graph graph, IEnumerable<Edge> edges)
+        {
             foreach (var edge in edges)
             {
                 var gleeEdge = graph.AddEdge(edge.From.ToString(), edge.ToEdgeLabel(), edge.To.ToString());
                 if (edge.Abnormal)
                 {
                     gleeEdge.EdgeAttr.AddStyle(Microsoft.Glee.Drawing.Style.Dashed);
-                }               
+                }
             }
-            return graph;
+        }
+
+        private static void AddHighlightedStates(this Graph graph, IEnumerable<State> highlightedStates)
+        {
+            foreach (var state in highlightedStates)
+            {
+                var node = graph.FindNode(state.ToString());
+                if(node != null)
+                    node.Attr.Shape = Shape.DoubleCircle;
+            }
         }
 
         private static string ToEdgeLabel(this Edge edge)
