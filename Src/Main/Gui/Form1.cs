@@ -70,11 +70,6 @@ namespace KR.Main.Gui
                     break;
             }
 
-            if (currentTab == 1 && !(((DefineDomainTab)tabs[1]).definedInitially()))
-            {
-                MessageBox.Show("Specify initial state!", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
             if (currentTab == 0 && ((((DefineEntitiesTab)tabs[0]).getFluents().Count == 0) || (((DefineEntitiesTab)tabs[0]).getActions().Count == 0) || (((DefineEntitiesTab)tabs[0]).getActors().Count == 0)))
             {
                 MessageBox.Show("Specify fluents, actions and actors!", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

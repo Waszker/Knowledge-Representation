@@ -76,6 +76,9 @@
     <Compile Include="Entities\Queries\ActorEverPartakesQuery.cs" />
     <Compile Include="Entities\Queries\ActorPartakesQuery.cs" />
     <Compile Include="Entities\Queries\AccessibleTypicallyScenarioQuery.cs" />
+    <Compile Include="Entities\Queries\AfterScenarioAlwaysQuery.cs" />
+    <Compile Include="Entities\Queries\AfterScenarioEverQuery.cs" />
+    <Compile Include="Entities\Queries\AfterScenarioTypicallyQuery.cs" />
     <Compile Include="Entities\Queries\Query.cs" />
     <Compile Include="Entities\Queries\ScenarioAlwaysExecutableQuery.cs" />
     <Compile Include="Entities\Queries\ScenarioEverExecutableQuery.cs" />
@@ -120,6 +123,12 @@
     </Compile>
     <Compile Include="Gui\QueriesControls\AccessibleWhenQueryControl.Designer.cs">
       <DependentUpon>AccessibleWhenQueryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\AfterScenarioQueryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Gui\QueriesControls\AfterScenarioQueryControl.Designer.cs">
+      <DependentUpon>AfterScenarioQueryControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Gui\QueriesControls\ExecutableQueryControl.cs">
       <SubType>UserControl</SubType>
@@ -220,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\QueriesControls\AccessibleWhenQueryControl.resx">
       <DependentUpon>AccessibleWhenQueryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Gui\QueriesControls\AfterScenarioQueryControl.resx">
+      <DependentUpon>AfterScenarioQueryControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Gui\QueriesControls\ExecutableQueryControl.resx">
       <DependentUpon>ExecutableQueryControl.cs</DependentUpon>

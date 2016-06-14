@@ -69,7 +69,8 @@
             "always/ever executable Scenario",
             "always/ever/typically accessible γ if π when Scenario",
             "always/ever/typically accessible γ if π ",
-            "always/ever partakes w when Scenario"});
+            "always/ever partakes w when Scenario",
+            "always/ever/typically γ after Scenario "});
             this.chooseQueryComboBox.Location = new System.Drawing.Point(60, 77);
             this.chooseQueryComboBox.Margin = new System.Windows.Forms.Padding(60, 10, 60, 10);
             this.chooseQueryComboBox.Name = "chooseQueryComboBox";
