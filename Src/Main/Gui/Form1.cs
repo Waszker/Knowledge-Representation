@@ -33,7 +33,6 @@ namespace KR.Main.Gui
 
         private void nextButton_Click(object sender, System.EventArgs e)
         {
-            bool excepion = false;
             switch (currentTab)
             {
                 case 0:
@@ -52,15 +51,7 @@ namespace KR.Main.Gui
                     break;
                 case 1:
                     World.Instance.SetDomain(((DefineDomainTab)tabs[1]).getDomain());
-                    if (((DefineDomainTab)tabs[1]).definedInitially())
-                    {
-                        try { World.Instance.Build(); }
-                        catch (Exception ex)
-                        {
-                            excepion = true;
-                        }
-                    }
-
+                    World.Instance.Build();
                     ((DefineScenarioTab)tabs[2]).cleanScenario();
                     break;
                 case 2:
@@ -75,11 +66,7 @@ namespace KR.Main.Gui
                 MessageBox.Show("Specify fluents, actions and actors!", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (excepion)
-            {
-                MessageBox.Show("There can be only one initial state!", "Stop!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            
             this.mainLayoutPanel.Controls.Remove(tabs[currentTab]);
             currentTab++;
             this.mainLayoutPanel.Controls.Add(tabs[currentTab], 1, 0);
