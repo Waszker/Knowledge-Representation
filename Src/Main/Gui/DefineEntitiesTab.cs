@@ -114,6 +114,16 @@ namespace KR.Main.Gui
                 actorListBox.Items.Remove(selectedActor);
             }
         }
+
+        private void clearAllButton_Click(object sender, EventArgs e)
+        {
+            _actors.Clear();
+            actorListBox.Items.Clear();
+            _actions.Clear();
+            actionListBox.Items.Clear();
+            _fluents.Clear();
+            fluentListBox.Items.Clear();
+        }
     }
 }
 

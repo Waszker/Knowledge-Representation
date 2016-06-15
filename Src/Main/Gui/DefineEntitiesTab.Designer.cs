@@ -51,6 +51,7 @@
             this.actionTextBox = new System.Windows.Forms.TextBox();
             this.actorTextBox = new System.Windows.Forms.TextBox();
             this.fluentListBox = new System.Windows.Forms.ListBox();
+            this.clearAllButton = new System.Windows.Forms.Button();
             this.DefineEntitiesPanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -66,6 +67,7 @@
             this.DefineEntitiesPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.DefineEntitiesPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.DefineEntitiesPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.DefineEntitiesPanel.Controls.Add(this.clearAllButton, 0, 6);
             this.DefineEntitiesPanel.Controls.Add(this.deleteActorButton, 2, 5);
             this.DefineEntitiesPanel.Controls.Add(this.deleteActionButton, 1, 5);
             this.DefineEntitiesPanel.Controls.Add(this.deleteFluentButton, 0, 5);
@@ -85,29 +87,30 @@
             this.DefineEntitiesPanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DefineEntitiesPanel.Location = new System.Drawing.Point(0, 0);
             this.DefineEntitiesPanel.Name = "DefineEntitiesPanel";
-            this.DefineEntitiesPanel.RowCount = 6;
+            this.DefineEntitiesPanel.RowCount = 7;
             this.DefineEntitiesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
             this.DefineEntitiesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 14F));
             this.DefineEntitiesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.DefineEntitiesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12F));
-            this.DefineEntitiesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 42F));
+            this.DefineEntitiesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
             this.DefineEntitiesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.DefineEntitiesPanel.Size = new System.Drawing.Size(884, 561);
+            this.DefineEntitiesPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.DefineEntitiesPanel.Size = new System.Drawing.Size(884, 568);
             this.DefineEntitiesPanel.TabIndex = 0;
             // 
             // deleteActorButton
             // 
-            this.deleteActorButton.BackColor = System.Drawing.Color.Silver;
+            this.deleteActorButton.BackColor = System.Drawing.Color.DarkGray;
             this.deleteActorButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deleteActorButton.FlatAppearance.BorderSize = 0;
-            this.deleteActorButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.deleteActorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.deleteActorButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.deleteActorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.deleteActorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteActorButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.deleteActorButton.ForeColor = System.Drawing.Color.White;
-            this.deleteActorButton.Location = new System.Drawing.Point(591, 506);
+            this.deleteActorButton.Location = new System.Drawing.Point(591, 472);
             this.deleteActorButton.Name = "deleteActorButton";
-            this.deleteActorButton.Size = new System.Drawing.Size(290, 52);
+            this.deleteActorButton.Size = new System.Drawing.Size(290, 50);
             this.deleteActorButton.TabIndex = 15;
             this.deleteActorButton.Text = "DELETE";
             this.deleteActorButton.UseVisualStyleBackColor = false;
@@ -115,17 +118,17 @@
             // 
             // deleteActionButton
             // 
-            this.deleteActionButton.BackColor = System.Drawing.Color.Silver;
+            this.deleteActionButton.BackColor = System.Drawing.Color.DarkGray;
             this.deleteActionButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deleteActionButton.FlatAppearance.BorderSize = 0;
-            this.deleteActionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.deleteActionButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.deleteActionButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.deleteActionButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.deleteActionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteActionButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.deleteActionButton.ForeColor = System.Drawing.Color.White;
-            this.deleteActionButton.Location = new System.Drawing.Point(297, 506);
+            this.deleteActionButton.Location = new System.Drawing.Point(297, 472);
             this.deleteActionButton.Name = "deleteActionButton";
-            this.deleteActionButton.Size = new System.Drawing.Size(288, 52);
+            this.deleteActionButton.Size = new System.Drawing.Size(288, 50);
             this.deleteActionButton.TabIndex = 14;
             this.deleteActionButton.Text = "DELETE";
             this.deleteActionButton.UseVisualStyleBackColor = false;
@@ -133,17 +136,17 @@
             // 
             // deleteFluentButton
             // 
-            this.deleteFluentButton.BackColor = System.Drawing.Color.Silver;
+            this.deleteFluentButton.BackColor = System.Drawing.Color.DarkGray;
             this.deleteFluentButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.deleteFluentButton.FlatAppearance.BorderSize = 0;
-            this.deleteFluentButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
-            this.deleteFluentButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.deleteFluentButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.deleteFluentButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
             this.deleteFluentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteFluentButton.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.deleteFluentButton.ForeColor = System.Drawing.Color.White;
-            this.deleteFluentButton.Location = new System.Drawing.Point(3, 506);
+            this.deleteFluentButton.Location = new System.Drawing.Point(3, 472);
             this.deleteFluentButton.Name = "deleteFluentButton";
-            this.deleteFluentButton.Size = new System.Drawing.Size(288, 52);
+            this.deleteFluentButton.Size = new System.Drawing.Size(288, 50);
             this.deleteFluentButton.TabIndex = 13;
             this.deleteFluentButton.Text = "DELETE";
             this.deleteFluentButton.UseVisualStyleBackColor = false;
@@ -156,9 +159,9 @@
             this.actorListBox.FormattingEnabled = true;
             this.actorListBox.HorizontalScrollbar = true;
             this.actorListBox.ItemHeight = 22;
-            this.actorListBox.Location = new System.Drawing.Point(591, 271);
+            this.actorListBox.Location = new System.Drawing.Point(591, 274);
             this.actorListBox.Name = "actorListBox";
-            this.actorListBox.Size = new System.Drawing.Size(290, 229);
+            this.actorListBox.Size = new System.Drawing.Size(290, 192);
             this.actorListBox.TabIndex = 12;
             // 
             // actionListBox
@@ -168,9 +171,9 @@
             this.actionListBox.FormattingEnabled = true;
             this.actionListBox.HorizontalScrollbar = true;
             this.actionListBox.ItemHeight = 22;
-            this.actionListBox.Location = new System.Drawing.Point(297, 271);
+            this.actionListBox.Location = new System.Drawing.Point(297, 274);
             this.actionListBox.Name = "actionListBox";
-            this.actionListBox.Size = new System.Drawing.Size(288, 229);
+            this.actionListBox.Size = new System.Drawing.Size(288, 192);
             this.actionListBox.TabIndex = 11;
             // 
             // label1
@@ -184,7 +187,7 @@
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(3, 0, 3, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(878, 62);
+            this.label1.Size = new System.Drawing.Size(878, 63);
             this.label1.TabIndex = 0;
             this.label1.Text = "DEFINE LANGUAGE SIGNATURE";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -197,7 +200,7 @@
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.pictureBox1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 88);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 90);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -237,7 +240,7 @@
             this.tableLayoutPanel2.Controls.Add(this.label3, 1, 0);
             this.tableLayoutPanel2.Controls.Add(this.pictureBox2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(297, 88);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(297, 90);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 1;
@@ -277,7 +280,7 @@
             this.tableLayoutPanel3.Controls.Add(this.label4, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.pictureBox3, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(591, 88);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(591, 90);
             this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 10, 3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
@@ -319,9 +322,9 @@
             this.addFluentButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addFluentButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addFluentButton.ForeColor = System.Drawing.Color.White;
-            this.addFluentButton.Location = new System.Drawing.Point(3, 204);
+            this.addFluentButton.Location = new System.Drawing.Point(3, 206);
             this.addFluentButton.Name = "addFluentButton";
-            this.addFluentButton.Size = new System.Drawing.Size(288, 61);
+            this.addFluentButton.Size = new System.Drawing.Size(288, 62);
             this.addFluentButton.TabIndex = 4;
             this.addFluentButton.Text = "ADD";
             this.addFluentButton.UseVisualStyleBackColor = false;
@@ -337,9 +340,9 @@
             this.addActionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addActionButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addActionButton.ForeColor = System.Drawing.Color.White;
-            this.addActionButton.Location = new System.Drawing.Point(297, 204);
+            this.addActionButton.Location = new System.Drawing.Point(297, 206);
             this.addActionButton.Name = "addActionButton";
-            this.addActionButton.Size = new System.Drawing.Size(288, 61);
+            this.addActionButton.Size = new System.Drawing.Size(288, 62);
             this.addActionButton.TabIndex = 5;
             this.addActionButton.Text = "ADD";
             this.addActionButton.UseVisualStyleBackColor = false;
@@ -355,9 +358,9 @@
             this.addActorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addActorButton.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.addActorButton.ForeColor = System.Drawing.Color.White;
-            this.addActorButton.Location = new System.Drawing.Point(591, 204);
+            this.addActorButton.Location = new System.Drawing.Point(591, 206);
             this.addActorButton.Name = "addActorButton";
-            this.addActorButton.Size = new System.Drawing.Size(290, 61);
+            this.addActorButton.Size = new System.Drawing.Size(290, 62);
             this.addActorButton.TabIndex = 6;
             this.addActorButton.Text = "ADD";
             this.addActorButton.UseVisualStyleBackColor = false;
@@ -367,7 +370,7 @@
             // 
             this.fluentTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.fluentTextBox.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.fluentTextBox.Location = new System.Drawing.Point(3, 161);
+            this.fluentTextBox.Location = new System.Drawing.Point(3, 163);
             this.fluentTextBox.Name = "fluentTextBox";
             this.fluentTextBox.Size = new System.Drawing.Size(288, 37);
             this.fluentTextBox.TabIndex = 7;
@@ -376,7 +379,7 @@
             // 
             this.actionTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.actionTextBox.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.actionTextBox.Location = new System.Drawing.Point(297, 161);
+            this.actionTextBox.Location = new System.Drawing.Point(297, 163);
             this.actionTextBox.Name = "actionTextBox";
             this.actionTextBox.Size = new System.Drawing.Size(288, 37);
             this.actionTextBox.TabIndex = 8;
@@ -385,7 +388,7 @@
             // 
             this.actorTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.actorTextBox.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.actorTextBox.Location = new System.Drawing.Point(591, 161);
+            this.actorTextBox.Location = new System.Drawing.Point(591, 163);
             this.actorTextBox.Name = "actorTextBox";
             this.actorTextBox.Size = new System.Drawing.Size(290, 37);
             this.actorTextBox.TabIndex = 9;
@@ -397,10 +400,29 @@
             this.fluentListBox.FormattingEnabled = true;
             this.fluentListBox.HorizontalScrollbar = true;
             this.fluentListBox.ItemHeight = 22;
-            this.fluentListBox.Location = new System.Drawing.Point(3, 271);
+            this.fluentListBox.Location = new System.Drawing.Point(3, 274);
             this.fluentListBox.Name = "fluentListBox";
-            this.fluentListBox.Size = new System.Drawing.Size(288, 229);
+            this.fluentListBox.Size = new System.Drawing.Size(288, 192);
             this.fluentListBox.TabIndex = 10;
+            // 
+            // clearAllButton
+            // 
+            this.clearAllButton.BackColor = System.Drawing.Color.Silver;
+            this.DefineEntitiesPanel.SetColumnSpan(this.clearAllButton, 3);
+            this.clearAllButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.clearAllButton.FlatAppearance.BorderSize = 0;
+            this.clearAllButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.DarkGray;
+            this.clearAllButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gainsboro;
+            this.clearAllButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clearAllButton.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.clearAllButton.ForeColor = System.Drawing.Color.White;
+            this.clearAllButton.Location = new System.Drawing.Point(3, 528);
+            this.clearAllButton.Name = "clearAllButton";
+            this.clearAllButton.Size = new System.Drawing.Size(878, 37);
+            this.clearAllButton.TabIndex = 16;
+            this.clearAllButton.Text = "CLEAR ALL";
+            this.clearAllButton.UseVisualStyleBackColor = false;
+            this.clearAllButton.Click += new System.EventHandler(this.clearAllButton_Click);
             // 
             // DefineEntitiesTab
             // 
@@ -409,7 +431,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.DefineEntitiesPanel);
             this.Name = "DefineEntitiesTab";
-            this.Size = new System.Drawing.Size(884, 561);
+            this.Size = new System.Drawing.Size(884, 568);
             this.DefineEntitiesPanel.ResumeLayout(false);
             this.DefineEntitiesPanel.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -450,5 +472,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Button clearAllButton;
     }
 }
