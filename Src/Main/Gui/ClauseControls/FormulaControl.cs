@@ -17,23 +17,23 @@ namespace KR.Main.Gui.ClauseControls
         FormulaControl left;
         FormulaControl right;
         List<Fluent> fluents;
-        int fiftyShadesOfGray;
+        double hue = 220.0;
+        double saturation = 240.0;
+        double luminosity;
+
         public FormulaControl()
         {
-            fiftyShadesOfGray = 150;
+            luminosity = 120.0;
             InitializeComponent();
-            this.formulaElementComboBox.BackColor = Color.FromArgb(fiftyShadesOfGray, fiftyShadesOfGray, fiftyShadesOfGray);
+            this.formulaElementComboBox.BackColor = new HSLColor(hue, saturation, luminosity);
             this.formulaElementComboBox.SelectedIndexChanged += new System.EventHandler(this.formulaElementComboBox_SelectedIndexChanged);
         }
 
-        public FormulaControl(List<Fluent> _fluents, int _fiftyShadesOfGray)
+        public FormulaControl(List<Fluent> _fluents, double _luminosity)
         {
             InitializeComponent();
-            if (_fiftyShadesOfGray <= 255)
-                fiftyShadesOfGray = _fiftyShadesOfGray;
-            else fiftyShadesOfGray = 255;
-
-            this.formulaElementComboBox.BackColor = Color.FromArgb(fiftyShadesOfGray, fiftyShadesOfGray, fiftyShadesOfGray);
+            luminosity = _luminosity;
+            this.formulaElementComboBox.BackColor = new HSLColor(hue, saturation, _luminosity);
             fluents = _fluents;
             foreach (Fluent f in _fluents)
                 this.formulaElementComboBox.Items.Add(f);
@@ -58,12 +58,12 @@ namespace KR.Main.Gui.ClauseControls
             int option = this.formulaElementComboBox.SelectedIndex;
             if (option < 5)
             {
-                right = new FormulaControl(fluents, fiftyShadesOfGray + 30);
+                right = new FormulaControl(fluents, luminosity + 35.0);
                 this.Panel.Controls.Add(right, 2, 0);
 
                 if (option < 4)
                 {
-                    left = new FormulaControl(fluents, fiftyShadesOfGray + 30);
+                    left = new FormulaControl(fluents, luminosity + 35.0);
                     this.Panel.Controls.Add(left, 0, 0);
                 }
             }

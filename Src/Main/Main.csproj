@@ -112,6 +112,7 @@
     <Compile Include="Gui\ClauseControls\CausesClauseControl.Designer.cs">
       <DependentUpon>CausesClauseControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Gui\HSLColor.cs" />
     <Compile Include="Gui\QueriesControls\AccessibleQueryControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
