@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="LastTests.cs" />
     <Compile Include="LampTest.cs" />
+    <Compile Include="HatterTest.cs" />
     <Compile Include="ResSetsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AccessibleQueriesTest.cs" />
