@@ -54,7 +54,7 @@ Zawadzka Anna\\[0.9cm]
 
 % date
 \vfill
-{\large 14 czerwca 2016}\\[1cm]
+{\large 20 czerwca 2016}\\[1cm]
 	
 \end{center}
 
@@ -88,13 +88,15 @@ Nowy element pojawi się na liście:
 \caption{Okno definiowania sygnatury języka}
 \end{figure}
 
-Możliwe jest usunięcie źle zdefiniowanego obiektu, wystarczy wybrać go z listy i użyć przycisku \textbf{DELETE} na dole okna:
+Możliwe jest usunięcie zdefiniowanego obiektu, wystarczy wybrać go z listy i użyć przycisku \textbf{DELETE}:
 
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.4]{04}
 \caption{Okno definiowania sygnatury języka}
 \end{figure}
+
+Program umożliwia także usunięcie wszystkich zdefiniowanych elementów na raz przy użyciu przycisku \textbf{CLEAR ALL} na dole okna.
 \newpage
 
 Po zdefiniowaniu wszystkich elementów możliwe jest przejście do kolejnego okna klikając strzałkę po prawej stronie okna:
@@ -118,7 +120,6 @@ Następnie pojawi się okno definiowania dziedziny. Tutaj możliwe jest dodanie 
 gdzie $A$ jest akcją, zaś $W$ jej niepustą listą wykonawców, $f$ fluentem, a $\alpha$ oraz $\pi$ formułami.
 \newpage
 
-Aby móc przejść do dalszych etapów programu niezbędne jest zdefiniowanie zdania określającego stan początkowy (\textit{Initially}). 
 Przy definiowaniu formuły należy rozpocząć od najbardziej zewnętrznych operacji, możliwe do wyboru to koniunkcja, alternatywa, implikacja, równoważność i negacja, a także wybranie fluentu: 
 
 \begin{figure}[H]
@@ -146,7 +147,7 @@ Po zdefiniowaniu odpowiedniego zdania należy użyć przycisku \textbf{ADD CLAUS
 \end{figure}
 
 
-Możliwe jest usunięcie źle zdefiniowanego zdania, wystarczy wybrać je z listy i użyć przycisku \textbf{DELETE} na dole okna:
+Możliwe jest usunięcie zdefiniowanego zdania, wystarczy wybrać je z listy i użyć przycisku \textbf{DELETE} na dole okna:
 
 \begin{figure}[H]
 \centering
@@ -155,7 +156,7 @@ Możliwe jest usunięcie źle zdefiniowanego zdania, wystarczy wybrać je z list
 \end{figure}
 
 \newpage
-Przy definiowaniu zdań, w których występują aktorzy, możliwe jest wybranie opcji {\large{$\neg$}}, która oznacza, że akcja jest wykonywana przez wszystkich dostępnych aktorów \textbf{oprócz} tych, którzy zostali zaznaczeni na liście. 
+Przy definiowaniu zdań, w których występują wykonawcy, możliwe jest wybranie opcji {\large{$\neg$}}, która oznacza, że akcja jest wykonywana przez wszystkich dostępnych aktorów \textbf{oprócz} tych, którzy zostali zaznaczeni na liście. 
 
 Dodatkowo z listy aktorów możliwe jest wybranie $\epsilon$, co jest równoznaczne z wybraniem wszystkich dostępnych aktorów. 
 
@@ -186,7 +187,13 @@ Czy wykonanie podanego programu działań z dowolnego stanu spełniającego waru
 Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?
 \item {\large\texttt{always/ever partakes $w$ when $Scenario$}} \\
 Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?
+\item {\large\texttt{always/ever/typically $\gamma$ after $SC$ from $\pi$}}\\
+Czy po wykonaniu podanego programu działań zawsze/kiedykolwiek/na ogół formuła $\gamma$ jest spełniona w stanie wynikowym?
 \end{itemize}
+
+
+
+
 
 \newpage
 
@@ -215,5 +222,6 @@ Możliwe jest również wyświetlenie grafu zależności poprzez użycie przycis
 \caption{Graf zależności}
 \end{figure}
 
+Na wygenerowanym grafie zaznaczone są możliwe stany początkowe (podwójna linia) oraz krawędzie reprezentujące przejścia typowe i nietypowe, odpowiednio ciagłą i przerywaną linią.
 
 \end{document}
