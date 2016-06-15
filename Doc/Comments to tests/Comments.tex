@@ -54,7 +54,7 @@ Zawadzka Anna\\[0.9cm]
 \end{flushright}
 % date
 \vfill
-{\large 14 czerwca 2016}\\[1cm]
+{\large 20 czerwca 2016}\\[1cm]
 \end{titlepage}
 \newpage
 
@@ -65,15 +65,15 @@ Poniżej znajdują się komentarze odnoszące się do raportu z przeprowadzonych
 \subsection{Okno 1 - definiowanie sygnatury języka}
 \begin{itemize}
         \item Punkt 4. \textit{Brak funkcjonalności usunięcia wielu  fluentów/akcji/wykonawców jednocześnie}.\\
-        Funkcjonalność ta nie została przewidziana w projekcie. Nie jest ona niezbędna do prawidłowego działania programu.
+        Funkcjonalność ta nie została przewidziana w projekcie, ponieważ nie jest ona niezbędna do prawidłowego działania programu. Dodano jednak możliwość usunięcia wszystkich elementów sygnatury na raz.
     \end{itemize}
     
 \subsection{Okno 2 - definiowanie dziedziny języka}
 \begin{itemize}
         \item Punkt 3. \textit{Brak funkcjonalności usunięcia jednocześnie wielu zdań z języka}.\\
-        Funkcjonalność ta nie została przewidziana w projekcie. Nie jest ona niezbędna do prawidłowego działania programu.
+        Funkcjonalność ta nie została przewidziana w projekcie, ponieważ nie jest ona niezbędna do prawidłowego działania programu. Natomiast przy powrocie do okna definiowania sygnatury języka, zdefiniowana dziedzina zostaje wyczyszczona.
         \item Punkt 4. \textit{Nieobsłużony wyjątek}.\\
-        Rzeczywiście przy definiowaniu dziedziny stan początkowy powinien być tylko jeden, natomiast zdefniowana formuła skutkuje utworzeniem więcej niż jednego stanu początkowego, co spowodowało wyjątek i błąd aplikacji. Problem został obsłużony, a w wypadku zdefiniowania takiej formuły początkowej, która zakłada istnienie wielu stanów początkowych, wyświetlany jest odpowiedni komunikat.
+        Rzeczywiście w początkowej wersji projektu przy definiowaniu dziedziny stan początkowy powinien być tylko jeden, natomiast zdefniowana formuła skutkuje utworzeniem więcej niż jednego stanu początkowego, co spowodowało wyjątek i błąd aplikacji. Obecnie projekt umożliwia zdefiniowanie wielu stanów początkowych i opisany błąd nie występuje. 
         \item Punkt 5. \textit{Brak aktualizacji okna definiowania dziedziny}.\\
         Błąd został poprawiony, okno definiowania dziedziny jest odświeżane przy każdym przejściu z okna definiowania sygnatury języka.
         \item Punkt 7. \textit{Błąd krytyczny przy dodaniu dwóch identycznych zdań \texttt{initially}}.\\
@@ -81,6 +81,12 @@ Poniżej znajdują się komentarze odnoszące się do raportu z przeprowadzonych
         \item Punkt 8. \textit{Nieobsłużony wyjątek}.\\
         Błąd identyczny jak w punkcie 4, naprawiono.
     \end{itemize}
-
+\section{Testy funkcjonalności programu}
+\subsection{Kwerenda 2}
+\subsubsection{Test 1}
+\subsection{Kwerenda 3}
+\subsubsection{Test 2}
+\subsection{Kwerenda 4}
+\subsubsection{Test 1}
 
 \end{document}
