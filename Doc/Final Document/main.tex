@@ -54,7 +54,7 @@ Zawadzka Anna\\[0.9cm]
 \end{flushright}
 % date
 \vfill
-{\large 14 czerwca 2016}\\[1cm]
+{\large 20 czerwca 2016}\\[1cm]
 \end{titlepage}
 \newpage
 
@@ -95,6 +95,7 @@ Język kwerend zapewnia uzyskanie odpowiedzi na następujące pytania:
 \item Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi zawsze/kiedykolwiek/na ogół do stanu spełniającego warunek celu $\gamma$ ?
 \item Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?
 \item Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?
+\item Czy po wykonaniu podanego programu działań zawsze/kiedykolwiek/na ogół formuła $\gamma$ jest spełniona w stanie wynikowym?
 \end{enumerate}
 
 \section{Opis klas}
@@ -170,6 +171,8 @@ Klasy reprezentujące te kwerendy (odpowiednio $always$, $ever$ i $typically$) p
 Klasy te zbudowane są analogicznie jak klasy zdefiniowane powyżej, z tym, że dodatkowo przechowują obiekt klasy Scenariusza.
 \item {\large\texttt{always/ever partakes $w$ when $Scenario$}}\\
 Klasy reprezentujące te kwerendy (odpowiednio $always$ i $ever$) przechowują wykonawcę oraz obiekt klasy Scenariusza.
+\item {\large\texttt{always/ever/typically $\gamma$ after $Scenario$ from $\pi$}} \\
+Klasy reprezentujące te kwerendy (odpowiednio $always$, $ever$ i $typically$) przechowują formuły $\gamma$ i $\pi$ oraz obiekt klasy Scenariusza.
 \end{itemize}
 Każda klasa reprezentująca kwerendę dziedziczy po klasie Query i implementuje metodę Evaluate, która daje odpowiedź na zadane pytanie na podstawie zbudowanego wcześniej grafu zależności.
 \newpage
@@ -203,7 +206,7 @@ Algorytm na podstawie zbioru fluentów wyznacza zbiór wszystkich stanów. Opart
 \newpage
 \subsection{Wyznaczanie stanu początkowego}
 
-Algorytm wyznaczania stanu początkowego polega na wygenerowaniu wszystkich możliwych kombinacji wszystkich fluentów danego świata oraz \textit{przefiltrowaniu} ich przez zdania \texttt{always}. Otrzymane w ten sposób dozwolone stany świata są następnie kolejno sprawdzane pod kątem zgodności ze zdaniami \texttt{initially}. W poprawnie opisanym świecie powinien istnieć tylko jeden stan który nie zostanie odrzucony w trakcie takiego procesu.
+Algorytm wyznaczania stanu początkowego (stanów początkowych) polega na wygenerowaniu wszystkich możliwych kombinacji wszystkich fluentów danego świata oraz \textit{przefiltrowaniu} ich przez zdania \texttt{always}. Otrzymane w ten sposób dozwolone stany świata są następnie kolejno sprawdzane pod kątem zgodności ze zdaniami \texttt{initially}. Dozwolone jest istnienie więcej niż jednego stanu początkowego.
 
 \begin{algorithm}[H]
 \begin{algorithmic}
@@ -441,6 +444,18 @@ Kwerenda odpowiada twierdząco, jeżeli z każdego stanu spełniającego warunek
 \end{algorithmic}
 \end{algorithm}
 \end{itemize}
+
+\newpage
+
+\subsubsection{Kwerendy \texttt{always/ever/typically $\gamma$ after $Scenario$ from $\pi$} }
+Kwerenda ta sprawdza, czy po wykonaniu podanego scenariusza ze stanu spełniającego warunek $\pi$, bądź ze stanu początkowego (w przypadku $\pi \Leftrightarrow \top$) zawsze/kiedykolwiek/na ogół w stanie wynikowym spełniona jest formuła $\gamma$. Pseudokod algorytmu wygląda następująco:
+
+
+
+%TODO!
+
+
+
 
 
 \newpage
