@@ -10,7 +10,7 @@ namespace KR.Main.Entities
     /// <summary>
     /// Represents scenario - actions and actors in given order.
     /// </summary>
-    public class Scenario 
+    public class Scenario :IEnumerable<ScenarioStep>
     {
         /// <summary>
         /// Ordered list of scenario steps.
@@ -42,6 +42,11 @@ namespace KR.Main.Entities
                     s = s + ", " + ss.ToString();
             }
             return s;
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return Steps.GetEnumerator();
         }
     }
 }
