@@ -114,12 +114,12 @@ namespace KR.Test
             sc1.AddScenarioStep(new ScenarioStep(drink, alice));
             sc1.AddScenarioStep(new ScenarioStep(drink, rabbit));
             sc1.AddScenarioStep(new ScenarioStep(eat, alice));
-            var q1 = new ScenarioAlwaysExecutableQuery(sc1);
+            var q1 = new ScenarioEverExecutableQuery(sc1);
 
             var sc2 = new Scenario();
             sc2.AddScenarioStep(new ScenarioStep(eat, alice));
             sc2.AddScenarioStep(new ScenarioStep(eat, alice));
-            var q2 = new ScenarioAlwaysExecutableQuery(sc2);
+            var q2 = new ScenarioEverExecutableQuery(sc2);
 
 
             var r1 = q1.Evaluate(world);
@@ -187,7 +187,6 @@ namespace KR.Test
         }
 
         #endregion
-
 
         #region Q5
 
