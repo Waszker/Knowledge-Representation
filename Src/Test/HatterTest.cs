@@ -156,9 +156,9 @@ namespace KR.Test
         {
             world = CreateITWorld();
 
-            var q1 = new AccessibleAlwaysQuery(new True(), catVisible);
-            var q2 = new AccessibleAlwaysQuery(new True(), new Negation(elixirExists));
-            var q3 = new AccessibleAlwaysQuery(new True(), new Negation(cakeExists));
+            var q1 = new AccessibleEverQuery(new True(), catVisible);
+            var q2 = new AccessibleEverQuery(new True(), new Negation(elixirExists));
+            var q3 = new AccessibleEverQuery(new True(), new Negation(cakeExists));
 
             var r1 = q1.Evaluate(world);
             var r2 = q2.Evaluate(world);
@@ -174,9 +174,9 @@ namespace KR.Test
         {
             world = CreateITWorld();
 
-            var q1 = new AccessibleAlwaysQuery(new True(), catVisible);
-            var q2 = new AccessibleAlwaysQuery(new True(), new Negation(elixirExists));
-            var q3 = new AccessibleAlwaysQuery(new True(), new Negation(cakeExists));
+            var q1 = new AccessibleTypicallyQuery(new True(), catVisible);
+            var q2 = new AccessibleTypicallyQuery(new True(), new Negation(elixirExists));
+            var q3 = new AccessibleTypicallyQuery(new True(), new Negation(cakeExists));
 
             var r1 = q1.Evaluate(world);
             var r2 = q2.Evaluate(world);
