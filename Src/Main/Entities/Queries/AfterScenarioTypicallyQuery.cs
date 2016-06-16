@@ -22,10 +22,10 @@ namespace KR.Main.Entities.Queries
         }
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
-            return world.GetStates(pi).All(s => AccessibleEver(world, s));
+            return world.GetStates(pi).All(s => Accessible(world, s));
         }
 
-        private bool AccessibleEver(World world, State startState)
+        private bool Accessible(World world, State startState)
         {
             var states = new List<State>() { startState };
             foreach (var step in scenario)

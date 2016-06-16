@@ -51,9 +51,9 @@ namespace KR.Test
         public void ShootingTurkeyAccessibleQueries1()
         {
             var world = CreateITWorld();
-            var q1 = new AccessibleTypicallyQuery(null, new Negation(walking));
-            var q2 = new AccessibleEverQuery(null, new Negation(walking));
-            var q3 = new AccessibleAlwaysQuery(null, new Negation(walking));
+            var q1 = new AccessibleTypicallyQuery(new True(), new Negation(walking));
+            var q2 = new AccessibleEverQuery(new True(), new Negation(walking));
+            var q3 = new AccessibleAlwaysQuery(new True(), new Negation(walking));
 
             Assert.AreEqual(q1.Evaluate(world), true); // there's possibility to kill turkey or start in state when it's not walking
             Assert.AreEqual(q2.Evaluate(world), true); // killing turkey is typicall scenario
@@ -68,9 +68,9 @@ namespace KR.Test
         public void ShootingTurkeyAccessibleQueries2()
         {
             var world = CreateITWorld();
-            var q1 = new AccessibleTypicallyQuery(null, loaded);
-            var q2 = new AccessibleEverQuery(null, loaded);
-            var q3 = new AccessibleAlwaysQuery(null, loaded);
+            var q1 = new AccessibleTypicallyQuery(new True(), loaded);
+            var q2 = new AccessibleEverQuery(new True(), loaded);
+            var q3 = new AccessibleAlwaysQuery(new True(), loaded);
 
             Assert.AreEqual(q1.Evaluate(world), true); // loading our gun will always/ever/typically cause it to be loaded!!!
             Assert.AreEqual(q2.Evaluate(world), true);
@@ -85,9 +85,9 @@ namespace KR.Test
         public void ShootingTurkeyAccessibleQueries3()
         {
             var world = CreateITWorld();
-            var q1 = new AccessibleTypicallyQuery(null, walking);
-            var q2 = new AccessibleEverQuery(null, walking);
-            var q3 = new AccessibleAlwaysQuery(null, walking);
+            var q1 = new AccessibleTypicallyQuery(new True(), walking);
+            var q2 = new AccessibleEverQuery(new True(), walking);
+            var q3 = new AccessibleAlwaysQuery(new True(), walking);
 
             Assert.AreEqual(q1.Evaluate(world), true); // enticing turkey will always/ever/typically cause it to walk!!!
             Assert.AreEqual(q2.Evaluate(world), true);
@@ -103,11 +103,48 @@ namespace KR.Test
             var world = CreateITWorld();
             var loadingScenario = new Scenario();
             loadingScenario.AddScenarioStep(new ScenarioStep(load, Bill));
-            var q1 = new AfterScenarioAlwaysQuery(null, loaded, loadingScenario);
-            var q2 = new AfterScenarioEverQuery(null, loaded, loadingScenario);
-            var q3 = new AfterScenarioTypicallyQuery(null, loaded, loadingScenario);
+            var q1 = new AfterScenarioAlwaysQuery(new True(), loaded, loadingScenario);
+            var q2 = new AfterScenarioEverQuery(new True(), loaded, loadingScenario);
+            var q3 = new AfterScenarioTypicallyQuery(new True(), loaded, loadingScenario);
 
             Assert.AreEqual(q1.Evaluate(world), true); // all queries should return true!
+            Assert.AreEqual(q2.Evaluate(world), true);
+            Assert.AreEqual(q3.Evaluate(world), true);
+        }
+
+        /// <summary>
+        /// Checks if state with dead turkey is present after performing (LOAD, BILL), (SHOOT, BILL) scenario
+        /// </summary>
+        [TestMethod]
+        public void ShootingTurkeyAfterQueries2()
+        {
+            var world = CreateITWorld();
+            var loadingScenario = new Scenario();
+            loadingScenario.AddScenarioStep(new ScenarioStep(load, Bill));
+            loadingScenario.AddScenarioStep(new ScenarioStep(shoot, Bill));
+            var q1 = new AfterScenarioAlwaysQuery(new True(), new Negation(alive), loadingScenario);
+            var q2 = new AfterScenarioEverQuery(new True(), new Negation(alive), loadingScenario);
+            var q3 = new AfterScenarioTypicallyQuery(new True(), new Negation(alive), loadingScenario);
+
+            Assert.AreEqual(q1.Evaluate(world), false);
+            Assert.AreEqual(q2.Evaluate(world), true);
+            Assert.AreEqual(q3.Evaluate(world), true);
+        }
+
+        /// <summary>
+        /// Checks if state with walking turkey is present after performing (ENTICE, BILL) scenario from initiall state
+        /// </summary>
+        [TestMethod]
+        public void ShootingTurkeyAfterQueries3()
+        {
+            var world = CreateITWorld();
+            var loadingScenario = new Scenario();
+            loadingScenario.AddScenarioStep(new ScenarioStep(entice, Bill));
+            var q1 = new AfterScenarioAlwaysQuery(new True(), walking, loadingScenario);
+            var q2 = new AfterScenarioEverQuery(new True(), walking, loadingScenario);
+            var q3 = new AfterScenarioTypicallyQuery(new True(), walking, loadingScenario);
+
+            Assert.AreEqual(q1.Evaluate(world), true);
             Assert.AreEqual(q2.Evaluate(world), true);
             Assert.AreEqual(q3.Evaluate(world), true);
         }
