@@ -55,9 +55,9 @@ namespace KR.Test
             var q2 = new AccessibleEverQuery(new True(), new Negation(walking));
             var q3 = new AccessibleAlwaysQuery(new True(), new Negation(walking));
 
-            Assert.AreEqual(q1.Evaluate(world), true); // there's possibility to kill turkey or start in state when it's not walking
-            Assert.AreEqual(q2.Evaluate(world), true); // killing turkey is typicall scenario
-            Assert.AreEqual(q3.Evaluate(world), false); // not always shooting will kill turkey
+            Assert.AreEqual(true, q1.Evaluate(world)); // there's possibility to kill turkey or start in state when it's not walking
+            Assert.AreEqual(true, q2.Evaluate(world)); // killing turkey is typicall scenario
+            Assert.AreEqual(false, q3.Evaluate(world)); // not always shooting will kill turkey
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace KR.Test
             domain.AddCausesClause(new Causes(load, true, emptyList, loaded));
             domain.AddCausesClause(new Causes(shoot, true, emptyList, new Negation(loaded)));
             domain.AddCausesClause(new Causes(entice, true, emptyList, walking));
-            domain.AddTypicallyCausesClause(new TypicallyCauses(shoot, true, emptyList, new Negation(alive)));
+            domain.AddTypicallyCausesClause(new TypicallyCauses(shoot, true, emptyList, new Negation(alive), loaded));
             domain.AddAlwaysClause(new Always(new Implication(walking, alive)));
             domain.AddPreservesClause(new Preserves(entice, true, emptyList, alive, null));
 

@@ -67,10 +67,10 @@ namespace KR.Test
         public void PaintingTestAlwaysAccessibleQuery()
         {
             world = CreateITWorld();
-            var q = new AccessibleAlwaysQuery(new Negation(painted), new Negation(painted));
+            var q = new AccessibleAlwaysQuery(new Negation(painted), (painted));
 
             var r = q.Evaluate(world);
-            Assert.AreEqual(r, false);
+            Assert.AreEqual(false, r);
         }
     }
 }
