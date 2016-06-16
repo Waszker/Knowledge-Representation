@@ -54,7 +54,7 @@ namespace KR.Main.Entities.Queries
                         // Recursively check if it leads to gamma-satisfying state
                         if (!DFSearch(world, close, s)) isAtLeastOneUnSuccessful = true;
                     }
-                    // If there is at least one succesfull path, then we're good to go
+                    // If all paths are leading to satisfying state we're good to go
                     if(!isAtLeastOneUnSuccessful) hasGammaBeenAchieved = true;
                 }
             }
