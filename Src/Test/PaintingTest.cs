@@ -36,7 +36,7 @@ namespace KR.Test
 
             var domain = new Domain();
             domain.AddInitiallyClause(new Initially(new Negation(painted)));
-            domain.AddCausesClause(new Causes(clear, false, null, new Negation(painted)));
+            domain.AddCausesClause(new Causes(clear, true, new List<Actor>(), new Negation(painted)));
             domain.AddTypicallyCausesClause(new TypicallyCauses(paint, false, new List<Actor>() { Fred }, painted));
             world.SetDomain(domain);
             world.Build();
@@ -44,7 +44,7 @@ namespace KR.Test
         }
 
         [TestMethod]
-        public void TypicallyAccessibleQuery()
+        public void PaintingTestTypicallyAccessibleQuery()
         {
             world = CreateITWorld();
             var q = new AccessibleTypicallyQuery(new Negation(painted), new Negation(painted));
@@ -54,7 +54,7 @@ namespace KR.Test
         }
 
         [TestMethod]
-        public void EverAccessibleQuery()
+        public void PaintingTestEverAccessibleQuery()
         {
             world = CreateITWorld();
             var q = new AccessibleEverQuery(new Negation(painted), new Negation(painted));
@@ -64,7 +64,7 @@ namespace KR.Test
         }
 
         [TestMethod]
-        public void AlwaysAccessibleQuery()
+        public void PaintingTestAlwaysAccessibleQuery()
         {
             world = CreateITWorld();
             var q = new AccessibleAlwaysQuery(new Negation(painted), new Negation(painted));

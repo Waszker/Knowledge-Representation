@@ -61,6 +61,7 @@
     <Compile Include="AccessibleQueriesTest.cs" />
     <Compile Include="AccessibleQueriesScenarioTest.cs" />
     <Compile Include="PaintingTest.cs" />
+    <Compile Include="ShootingTurkeyTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Main\Main.csproj">
