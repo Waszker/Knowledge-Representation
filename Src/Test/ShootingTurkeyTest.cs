@@ -95,6 +95,23 @@ namespace KR.Test
         }
 
         /// <summary>
+        /// This method checks answers for all possible accessible queries (always/ever/typically)
+        /// when asking about possibilty to end up in state with walking turkey from the dead state.
+        /// </summary>
+        [TestMethod]
+        public void ShootingTurkeyAccessibleQueries4()
+        {
+            var world = CreateITWorld();
+            var q1 = new AccessibleTypicallyQuery(new Negation(alive), walking);
+            var q2 = new AccessibleEverQuery(new Negation(alive), walking);
+            var q3 = new AccessibleAlwaysQuery(new Negation(alive), walking);
+
+            Assert.AreEqual(q1.Evaluate(world), false); // enticing dead turkey will never cause it to walk!!!
+            Assert.AreEqual(q2.Evaluate(world), false);
+            Assert.AreEqual(q3.Evaluate(world), false);
+        }
+
+        /// <summary>
         /// Checks if state with loaded gun is present after performing (LOAD, BILL) scenario
         /// </summary>
         [TestMethod]

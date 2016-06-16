@@ -72,5 +72,15 @@ namespace KR.Test
             var r = q.Evaluate(world);
             Assert.AreEqual(false, r);
         }
+
+        [TestMethod]
+        public void PaintingTestAlwaysAccessibleQuery2()
+        {
+            world = CreateITWorld();
+            var q = new AccessibleAlwaysQuery(new Negation(painted), new Negation(painted));
+
+            var r = q.Evaluate(world);
+            Assert.AreEqual(true, r);
+        }
     }
 }
