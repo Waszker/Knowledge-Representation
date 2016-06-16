@@ -294,7 +294,7 @@ namespace KR.Main.Engine
 
         public ISet<State> GetStates(ICondition condition = null)
         {
-            if (condition == null || condition.ToString().Equals("True"))
+            if (condition == null || condition is True)
                 return new HashSet<State>(_initialStates);
             return new HashSet<State>(_states.Where(condition.Check));
         }
