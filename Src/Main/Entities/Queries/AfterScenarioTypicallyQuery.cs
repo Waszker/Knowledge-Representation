@@ -33,8 +33,8 @@ namespace KR.Main.Entities.Queries
                 states = states.SelectMany(s => world.GetEdges(s)
                 .Where(e => e.Action.Equals(step.Action) && e.Actor.Equals(step.Actor) && !e.Abnormal).Select(e => e.To)).ToList();
             }
-            if (states.Count == 0) return false;
-            return states.Any(s => gamma.Check(s));
+            // if (states.Count == 0) return false;
+            return states.All(s => gamma.Check(s));
         }
     }
 }
