@@ -101,11 +101,11 @@ namespace KR.Test
         public void ShootingTurkeyAfterQueries1()
         {
             var world = CreateITWorld();
-            var loadingScenario = new Scenario();
-            loadingScenario.AddScenarioStep(new ScenarioStep(load, Bill));
-            var q1 = new AfterScenarioAlwaysQuery(new True(), loaded, loadingScenario);
-            var q2 = new AfterScenarioEverQuery(new True(), loaded, loadingScenario);
-            var q3 = new AfterScenarioTypicallyQuery(new True(), loaded, loadingScenario);
+            var scenario = new Scenario();
+            scenario.AddScenarioStep(new ScenarioStep(load, Bill));
+            var q1 = new AfterScenarioAlwaysQuery(new True(), loaded, scenario);
+            var q2 = new AfterScenarioEverQuery(new True(), loaded, scenario);
+            var q3 = new AfterScenarioTypicallyQuery(new True(), loaded, scenario);
 
             Assert.AreEqual(q1.Evaluate(world), true); // all queries should return true!
             Assert.AreEqual(q2.Evaluate(world), true);
@@ -119,12 +119,12 @@ namespace KR.Test
         public void ShootingTurkeyAfterQueries2()
         {
             var world = CreateITWorld();
-            var loadingScenario = new Scenario();
-            loadingScenario.AddScenarioStep(new ScenarioStep(load, Bill));
-            loadingScenario.AddScenarioStep(new ScenarioStep(shoot, Bill));
-            var q1 = new AfterScenarioAlwaysQuery(new True(), new Negation(alive), loadingScenario);
-            var q2 = new AfterScenarioEverQuery(new True(), new Negation(alive), loadingScenario);
-            var q3 = new AfterScenarioTypicallyQuery(new True(), new Negation(alive), loadingScenario);
+            var scenario = new Scenario();
+            scenario.AddScenarioStep(new ScenarioStep(load, Bill));
+            scenario.AddScenarioStep(new ScenarioStep(shoot, Bill));
+            var q1 = new AfterScenarioAlwaysQuery(new True(), new Negation(alive), scenario);
+            var q2 = new AfterScenarioEverQuery(new True(), new Negation(alive), scenario);
+            var q3 = new AfterScenarioTypicallyQuery(new True(), new Negation(alive), scenario);
 
             Assert.AreEqual(q1.Evaluate(world), false);
             Assert.AreEqual(q2.Evaluate(world), true);
@@ -138,11 +138,11 @@ namespace KR.Test
         public void ShootingTurkeyAfterQueries3()
         {
             var world = CreateITWorld();
-            var loadingScenario = new Scenario();
-            loadingScenario.AddScenarioStep(new ScenarioStep(entice, Bill));
-            var q1 = new AfterScenarioAlwaysQuery(new True(), walking, loadingScenario);
-            var q2 = new AfterScenarioEverQuery(new True(), walking, loadingScenario);
-            var q3 = new AfterScenarioTypicallyQuery(new True(), walking, loadingScenario);
+            var scenario = new Scenario();
+            scenario.AddScenarioStep(new ScenarioStep(entice, Bill));
+            var q1 = new AfterScenarioAlwaysQuery(new True(), walking, scenario);
+            var q2 = new AfterScenarioEverQuery(new True(), walking, scenario);
+            var q3 = new AfterScenarioTypicallyQuery(new True(), walking, scenario);
 
             Assert.AreEqual(q1.Evaluate(world), true);
             Assert.AreEqual(q2.Evaluate(world), true);
