@@ -19,19 +19,12 @@ namespace KR.Main.Entities.Queries
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
             var states = world.GetStates(pi);
-            bool returnValue = false;
+            bool returnValue = true;
 
-            try
+            foreach (State s in states)
             {
-                foreach(State s in states)
-                {
-                    if (DFSearch(world, new HashSet<State>(), s))
-                        returnValue = true;
-                }
-            }
-            catch(System.ArgumentException)
-            {
-                returnValue = false;
+                if (!DFSearch(world, new HashSet<State>(), s))
+                    returnValue = false;
             }
 
             return returnValue;
@@ -50,7 +43,6 @@ namespace KR.Main.Entities.Queries
                 // Check states grouped by their actions
                 foreach(var group in actionGroups)
                 {
-                    bool isAtLeastOneSuccessful = false;
                     bool isAtLeastOneUnSuccessful = false;
 
                     foreach (Edge e in group)
@@ -60,15 +52,10 @@ namespace KR.Main.Entities.Queries
                         // If there's action that leads to already visited state we have a cycle - may cause always query to fail!
                         if (close.Contains(s)) { isAtLeastOneUnSuccessful = true; continue; }
                         // Recursively check if it leads to gamma-satisfying state
-                        if (DFSearch(world, close, s)) isAtLeastOneSuccessful = true;
-                        // If another state does not satisfy gamma (but previous did) throw an exception - always query will not be satisfied!
-                        else if (isAtLeastOneSuccessful) throw new System.ArgumentException();
+                        if (!DFSearch(world, close, s)) isAtLeastOneUnSuccessful = true;
                     }
-
-                    // If one of the paths took us to successful state, but there was other that did not -> always query is wrong
-                    if (isAtLeastOneUnSuccessful && isAtLeastOneSuccessful) throw new System.ArgumentException();
                     // If there is at least one succesfull path, then we're good to go
-                    if(isAtLeastOneSuccessful) hasGammaBeenAchieved = isAtLeastOneSuccessful;
+                    if(!isAtLeastOneUnSuccessful) hasGammaBeenAchieved = true;
                 }
             }
 
