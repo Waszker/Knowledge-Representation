@@ -22,7 +22,19 @@ namespace KR.Main.Entities.Queries
         }
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
-            return false;
+            return world.GetStates(pi).All(s => AccessibleEver(world, s));
+        }
+
+        private bool AccessibleEver(World world, State startState)
+        {
+            var states = new List<State>() { startState };
+            foreach (var step in scenario)
+            {
+                states = states.SelectMany(s => world.GetEdges(s)
+                .Where(e => e.Action.Equals(step.Action) && e.Actor.Equals(step.Actor) && !e.Abnormal).Select(e => e.To)).ToList();
+            }
+            if (states.Count == 0) return false;
+            return states.Any(s => gamma.Check(s));
         }
     }
 }

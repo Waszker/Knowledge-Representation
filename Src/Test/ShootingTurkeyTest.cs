@@ -94,6 +94,24 @@ namespace KR.Test
             Assert.AreEqual(q3.Evaluate(world), true);
         }
 
+        /// <summary>
+        /// Checks if state with loaded gun is present after performing (LOAD, BILL) scenario
+        /// </summary>
+        [TestMethod]
+        public void ShootingTurkeyAfterQueries1()
+        {
+            var world = CreateITWorld();
+            var loadingScenario = new Scenario();
+            loadingScenario.AddScenarioStep(new ScenarioStep(load, Bill));
+            var q1 = new AfterScenarioAlwaysQuery(null, loaded, loadingScenario);
+            var q2 = new AfterScenarioEverQuery(null, loaded, loadingScenario);
+            var q3 = new AfterScenarioTypicallyQuery(null, loaded, loadingScenario);
+
+            Assert.AreEqual(q1.Evaluate(world), true); // all queries should return true!
+            Assert.AreEqual(q2.Evaluate(world), true);
+            Assert.AreEqual(q3.Evaluate(world), true);
+        }
+
         private Domain createDomain()
         {
             Domain domain = new Domain();
