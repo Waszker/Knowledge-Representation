@@ -32,8 +32,9 @@ namespace KR.Main.Entities.Queries
             {
                 states = states.SelectMany(s => world.GetEdges(s)
                 .Where(e => e.Action.Equals(step.Action) && e.Actor.Equals(step.Actor)).Select(e => e.To)).ToList();
+                if (states.Count == 0) return false;
             }
-            //if (states.Count == 0) return false;
+
             var query = new AccessibleAlwaysQuery(null, gamma, states);
             return query.Evaluate(world);
         }
