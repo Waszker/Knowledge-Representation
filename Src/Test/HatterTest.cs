@@ -131,6 +131,63 @@ namespace KR.Test
 
         #endregion
 
+        #region Q2
+
+        [TestMethod]
+        public void AlwaysAccessibleWhenQuery()
+        {
+            world = CreateITWorld();
+
+            var sc1 = new Scenario();
+            sc1.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q1 = new AccessibleAlwaysScenarioQuery(new True(), cakeExists, sc1);
+
+            var sc2 = new Scenario();
+            sc2.AddScenarioStep(new ScenarioStep(drink, alice));
+            var q2 = new AccessibleAlwaysScenarioQuery(new True(), new Negation(elixirExists), sc2);
+
+            var r1 = q1.Evaluate(world);
+            var r2 = q2.Evaluate(world);
+            Assert.AreEqual(r1, true);
+            Assert.AreEqual(r2, false); // po wykonaniu sc2 elixir moze istniec, i nie da sie zawsze zrobic zeby go nie bylo
+        }
+
+
+        [TestMethod]
+        public void EverAccessibleWhenQuery()
+        {
+            world = CreateITWorld();
+
+            var sc1 = new Scenario();
+            sc1.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q1 = new AccessibleAlwaysScenarioQuery(new True(), cakeExists, sc1);
+
+            var sc2 = new Scenario();
+            sc2.AddScenarioStep(new ScenarioStep(drink, alice));
+            var q2 = new AccessibleAlwaysScenarioQuery(new True(), new Negation(elixirExists), sc2);
+
+            var sc3 = new Scenario();
+            sc3.AddScenarioStep(new ScenarioStep(eat, alice));
+            sc3.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q3 = new AccessibleAlwaysScenarioQuery(new True(), new Negation(elixirExists), sc3);
+
+            var r1 = q1.Evaluate(world);
+            var r2 = q2.Evaluate(world);
+            var r3 = q3.Evaluate(world);
+            Assert.AreEqual(r1, true);
+            Assert.AreEqual(r2, true);
+            Assert.AreEqual(r3, false); // sc3 jest niewykonalne
+        }
+
+
+        //[TestMethod]
+        //public void TypicallyAccessibleWhenQuery()
+        //{
+            
+        //}
+
+        #endregion
+
         #region Q3
 
         [TestMethod]
@@ -184,6 +241,82 @@ namespace KR.Test
             Assert.AreEqual(r1, true);
             Assert.AreEqual(r2, false);
             Assert.AreEqual(r3, true);
+        }
+
+        #endregion
+
+        #region Q4
+
+        [TestMethod]
+        public void AlwaysPartakesQuery()
+        {
+            world = CreateITWorld();
+
+            var sc1 = new Scenario();
+            sc1.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q1 = new ActorAlwaysPartakesQuery(alice, sc1);
+
+            var sc2 = new Scenario();
+            sc1.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q2 = new ActorAlwaysPartakesQuery(hatter, sc2);
+
+            var sc3 = new Scenario();
+            sc3.AddScenarioStep(new ScenarioStep(eat, alice));
+            sc3.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q3 = new ActorAlwaysPartakesQuery(alice, sc3);
+
+            var sc4 = new Scenario();
+            sc4.AddScenarioStep(new ScenarioStep(eat, alice));
+            sc4.AddScenarioStep(new ScenarioStep(drink, rabbit));
+            sc4.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q4 = new ActorAlwaysPartakesQuery(alice, sc4);
+
+
+            var r1 = q1.Evaluate(world);
+            var r2 = q2.Evaluate(world);
+            var r3 = q3.Evaluate(world);
+            var r4 = q4.Evaluate(world);
+            
+            Assert.AreEqual(r1, true);
+            Assert.AreEqual(r2, false);
+            Assert.AreEqual(r3, false);
+            Assert.AreEqual(r4, false);
+        }
+
+        [TestMethod]
+        public void EverPartakesQuery()
+        {
+            world = CreateITWorld();
+
+            var sc1 = new Scenario();
+            sc1.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q1 = new ActorEverPartakesQuery(alice, sc1);
+
+            var sc2 = new Scenario();
+            sc1.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q2 = new ActorEverPartakesQuery(hatter, sc2);
+
+            var sc3 = new Scenario();
+            sc3.AddScenarioStep(new ScenarioStep(eat, alice));
+            sc3.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q3 = new ActorEverPartakesQuery(alice, sc3);
+
+            var sc4 = new Scenario();
+            sc4.AddScenarioStep(new ScenarioStep(eat, alice));
+            sc4.AddScenarioStep(new ScenarioStep(drink, rabbit));
+            sc4.AddScenarioStep(new ScenarioStep(eat, alice));
+            var q4 = new ActorEverPartakesQuery(alice, sc4);
+
+
+            var r1 = q1.Evaluate(world);
+            var r2 = q2.Evaluate(world);
+            var r3 = q3.Evaluate(world);
+            var r4 = q4.Evaluate(world);
+
+            Assert.AreEqual(r1, true);
+            Assert.AreEqual(r2, false);
+            Assert.AreEqual(r3, false);
+            Assert.AreEqual(r4, true);
         }
 
         #endregion
