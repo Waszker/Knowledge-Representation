@@ -162,20 +162,14 @@ namespace KR.Test
             sc1.AddScenarioStep(new ScenarioStep(eat, alice));
             var q1 = new AccessibleAlwaysScenarioQuery(new True(), cakeExists, sc1);
 
-            var sc2 = new Scenario();
-            sc2.AddScenarioStep(new ScenarioStep(drink, alice));
-            var q2 = new AccessibleAlwaysScenarioQuery(new True(), new Negation(elixirExists), sc2);
-
             var sc3 = new Scenario();
             sc3.AddScenarioStep(new ScenarioStep(eat, alice));
             sc3.AddScenarioStep(new ScenarioStep(eat, alice));
             var q3 = new AccessibleAlwaysScenarioQuery(new True(), new Negation(elixirExists), sc3);
 
             var r1 = q1.Evaluate(world);
-            var r2 = q2.Evaluate(world);
             var r3 = q3.Evaluate(world);
             Assert.AreEqual(r1, true);
-            Assert.AreEqual(r2, true);
             Assert.AreEqual(r3, false); // sc3 jest niewykonalne
         }
 
