@@ -3,14 +3,18 @@ using KR.Main.Entities;
 using KR.Main.Entities.Conditions;
 using KR.Main.Entities.Queries;
 using KR.Main.Entities.Statements;
+using KR.Main.GraphLayout;
+using KR.Main.Gui;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace KR.Test
 {
     [TestClass]
     public class AccessibleQueriesTest
     {
+
         protected Fluent cm;
         protected World world;
         protected Fluent cc;
@@ -54,6 +58,8 @@ namespace KR.Test
         public void AccessibleAlways()
         {
             world = CreateITWorld();
+
+
             var q = new AccessibleAlwaysQuery(new Conjunction(new Negation(cm), new Negation(cc)), new Alternative(cc, cm));
             var q2 = new AccessibleAlwaysQuery(new Alternative(cc, cm), new Conjunction(new Negation(cm), new Negation(cc)));
 
