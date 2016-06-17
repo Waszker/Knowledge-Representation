@@ -12,16 +12,18 @@ namespace KR.Main.Entities.Queries
     {
         private ICondition gamma;
         private ICondition pi;
+        private IEnumerable<State> _startingStates;
 
-        public AccessibleTypicallyQuery(ICondition pi, ICondition gamma)
+        public AccessibleTypicallyQuery(ICondition pi, ICondition gamma, IEnumerable<State> startingStates = null)
         {
             this.pi = pi;
             this.gamma = gamma;
+            this._startingStates = startingStates;
         }
 
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
-            var states = world.GetStates(pi);
+            var states = _startingStates == null ? world.GetStates(pi) : _startingStates;
             bool returnValue = true;
 
             foreach (State s in states)
@@ -41,6 +43,7 @@ namespace KR.Main.Entities.Queries
             // If there are some unvisited states and we haven't already found desired state
             if (!hasGammaBeenAchieved)
             {
+                // Remove abnormal edges
                 var edges = world.GetEdges(state).Where(edge => !edge.Abnormal);
                 var actionGroups = edges.GroupBy(edge => new { edge.Action, edge.Actor });
 

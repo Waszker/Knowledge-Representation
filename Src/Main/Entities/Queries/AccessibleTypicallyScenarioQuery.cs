@@ -22,7 +22,7 @@ namespace KR.Main.Entities.Queries
         }
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
-            return world.GetStates(pi).Any(s => Accessible(s, world));
+            return world.GetStates(pi).All(s => Accessible(s, world));
         }
 
         private bool Accessible(State startState, World world)
@@ -33,8 +33,9 @@ namespace KR.Main.Entities.Queries
                 states = states.SelectMany(s => world.GetEdges(s)
                 .Where(e => !e.Abnormal && e.Action.Equals(step.Action) && e.Actor.Equals(step.Actor)).Select(e => e.To)).ToList();
             }
-            if (states.Count == 0) return false;
-            return states.All(s => gamma.Check(s));
+
+            var query = new AccessibleTypicallyQuery(null, gamma, states);
+            return query.Evaluate(world);
         }
     }
 }
