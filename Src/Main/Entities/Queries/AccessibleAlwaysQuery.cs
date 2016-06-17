@@ -9,21 +9,18 @@ namespace KR.Main.Entities.Queries
     {
         private ICondition gamma;
         private ICondition pi;
+        private IEnumerable<State> _startingStates;
 
-        public AccessibleAlwaysQuery(ICondition pi, ICondition gamma)
+        public AccessibleAlwaysQuery(ICondition pi, ICondition gamma, IEnumerable<State> startingStates = null)
         {
             this.pi = pi;
             this.gamma = gamma;
+            this._startingStates = startingStates;
         }
 
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
-            var states = world.GetStates(pi);
-            return Evaluate2(world, states);
-        }
-
-        public bool Evaluate2(World world, IEnumerable<State> states)
-        {
+            var states = _startingStates == null ? world.GetStates(pi) : _startingStates;
             bool returnValue = true;
 
             foreach (State s in states)

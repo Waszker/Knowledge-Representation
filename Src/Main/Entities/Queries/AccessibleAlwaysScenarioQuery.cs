@@ -34,25 +34,8 @@ namespace KR.Main.Entities.Queries
                 .Where(e => e.Action.Equals(step.Action) && e.Actor.Equals(step.Actor)).Select(e => e.To)).ToList();
             }
             //if (states.Count == 0) return false;
-            var query = new AccessibleAlwaysQuery(null, gamma);
-            return query.Evaluate2(world, states);
-        }
-
-        private bool Accessible(World world, List<State> states)
-        {
-            var open = new HashSet<State>(states.SelectMany(state => world.GetEdges(state).Select(edge => edge.To)));
-            var close = new HashSet<State>();
-            while (open.Count > 0)
-            {
-                var state = open.First();
-                open.Remove(state);
-                close.Add(state);
-                foreach (var state2 in world.GetEdges(state).Select(edge => edge.To))
-                {
-                    if (!close.Contains(state2)) open.Add(state2);
-                }
-            }
-            return close.All(state => gamma.Check(state));
+            var query = new AccessibleAlwaysQuery(null, gamma, states);
+            return query.Evaluate(world);
         }
     }
 }

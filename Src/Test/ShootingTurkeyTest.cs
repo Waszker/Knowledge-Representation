@@ -112,6 +112,24 @@ namespace KR.Test
         }
 
         /// <summary>
+        /// This method checks if turkey can be dead after performing LOAD scenario.
+        /// </summary>
+        [TestMethod]
+        public void ShootingTurkeyAccessibleAfterScenarioQueries1()
+        {
+            var world = CreateITWorld();
+            var scenario = new Scenario();
+            scenario.AddScenarioStep(new ScenarioStep(load, Bill));
+            var q1 = new AccessibleTypicallyScenarioQuery(new True(), new Negation(alive), scenario);
+            var q2 = new AccessibleEverScenarioQuery(new True(), new Negation(alive), scenario);
+            var q3 = new AccessibleAlwaysScenarioQuery(new True(), new Negation(alive), scenario);
+
+            Assert.AreEqual(true, q1.Evaluate(world)); // there's possibility to kill turkey or start in state when it's not walking
+            Assert.AreEqual(true, q2.Evaluate(world)); // killing turkey is typicall scenario
+            Assert.AreEqual(false, q3.Evaluate(world)); // not always shooting will kill turkey
+        }
+
+        /// <summary>
         /// Checks if state with loaded gun is present after performing (LOAD, BILL) scenario
         /// </summary>
         [TestMethod]
