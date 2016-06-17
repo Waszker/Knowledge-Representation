@@ -450,13 +450,35 @@ Kwerenda odpowiada twierdząco, jeżeli z każdego stanu spełniającego warunek
 \subsubsection{Kwerendy \texttt{always/ever/typically $\gamma$ after $Scenario$ from $\pi$} }
 Kwerenda ta sprawdza, czy po wykonaniu podanego scenariusza ze stanu spełniającego warunek $\pi$, bądź ze stanu początkowego (w przypadku $\pi \Leftrightarrow \top$) zawsze/kiedykolwiek/na ogół w stanie wynikowym spełniona jest formuła $\gamma$. Pseudokod algorytmu wygląda następująco:
 
-
-
-%TODO!
-
-
-
-
+\begin{algorithm}[H]
+	\begin{algorithmic}
+		\State $Scenario \gets $ zadany scenariusz
+		\State $States \gets $ zbiór wszystkich dostępnych stanów
+		\ForAll{$\texttt{step} \in Scenario$}
+		\State $NewStates \gets \emptyset$
+		\ForAll{$\texttt{state} \in States$}
+		\State $Edges \gets $ wszystkie krawędzie dostępne w danym stanie dla kroku \texttt{step}
+		\If{Wersja ALWAYS i $Edges.count() == 0$}
+		\State return \texttt{FALSE} - ścieżka niewykonywalna - brak krawędzi
+		\EndIf
+		\ForAll{$\texttt{edge} \in Edges$}
+		\State $NewStates.add(edge.to)$
+		\EndFor
+		\EndFor
+		\If{Wersja EVER i $NewStates.count() == 0$}
+		\State return \texttt{FALSE} - nie było krawędzi z żadnego stanu - żadna ścieżka nie jest wykonywalna
+		\EndIf
+		\State $States \gets NewStates$
+		\EndFor
+		\ForAll{$\texttt{state} \in States$}
+		\If{state does not satisfy $\gamma$}
+		\State return \texttt{FALSE}
+		\EndIf		
+		\EndFor		
+		\State return \texttt{TRUE}
+		
+	\end{algorithmic}
+\end{algorithm}
 
 \newpage
 \section{Moduły dodatkowe}
