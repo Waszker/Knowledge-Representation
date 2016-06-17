@@ -130,6 +130,28 @@ namespace KR.Test
         }
 
         /// <summary>
+        /// This method checks if turkey can be walking after performing LOAD, SHOOT, ENTICE scenario.
+        /// This is quite tricky test - always and ever return true because ENTICE action implies that turkey
+        /// did not die after SHOOTING (otherwise ENTICE would be impossible to do).
+        /// </summary>
+        [TestMethod]
+        public void ShootingTurkeyAccessibleAfterScenarioQueries2()
+        {
+            var world = CreateITWorld();
+            var scenario = new Scenario();
+            scenario.AddScenarioStep(new ScenarioStep(load, Bill));
+            scenario.AddScenarioStep(new ScenarioStep(shoot, Bill));
+            scenario.AddScenarioStep(new ScenarioStep(entice, Bill));
+            var q1 = new AccessibleTypicallyScenarioQuery(new True(), walking, scenario);
+            var q2 = new AccessibleEverScenarioQuery(new True(), walking, scenario);
+            var q3 = new AccessibleAlwaysScenarioQuery(new True(), walking, scenario);
+
+            Assert.AreEqual(false, q1.Evaluate(world));
+            Assert.AreEqual(true, q2.Evaluate(world));
+            Assert.AreEqual(true, q3.Evaluate(world));
+        }
+
+        /// <summary>
         /// Checks if state with loaded gun is present after performing (LOAD, BILL) scenario
         /// </summary>
         [TestMethod]
