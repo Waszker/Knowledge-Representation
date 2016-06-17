@@ -34,7 +34,8 @@ namespace KR.Main.Entities.Queries
                 .Where(e => e.Action.Equals(step.Action) && e.Actor.Equals(step.Actor)).Select(e => e.To)).ToList();
             }
             //if (states.Count == 0) return false;
-            return Accessible(world, states);
+            var query = new AccessibleAlwaysQuery(null, gamma);
+            return query.Evaluate2(world, states);
         }
 
         private bool Accessible(World world, List<State> states)

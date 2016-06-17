@@ -18,28 +18,53 @@ namespace KR.Main.Entities.Queries
             this.pi = pi;
             this.gamma = gamma;
         }
+
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
             var states = world.GetStates(pi);
-            return states.All(s => Accessible(world, s));
-        }
+            bool returnValue = true;
 
-        private bool Accessible(World world, State state)
-        {
-            var open = new HashSet<State>(world.GetEdges(state).Where(edge=>!edge.Abnormal).Select(edge => edge.To));
-            var close = new HashSet<State>();
-            while (open.Count > 0)
+            foreach (State s in states)
             {
-                var state2 = open.First();
-                if (gamma.Check(state2)) return true;
-                open.Remove(state2);
-                close.Add(state2);
-                foreach (var state3 in world.GetEdges(state2).Where(edge => !edge.Abnormal).Select(edge => edge.To).Distinct())
+                if (!DFSearch(world, new HashSet<State>(), s))
+                    returnValue = false;
+            }
+
+            return returnValue;
+        }
+        
+        private bool DFSearch(World world, HashSet<State> close, State state)
+        {
+            bool hasGammaBeenAchieved = gamma.Check(state);
+            close.Add(state);
+
+            // If there are some unvisited states and we haven't already found desired state
+            if (!hasGammaBeenAchieved)
+            {
+                var edges = world.GetEdges(state).Where(edge => !edge.Abnormal);
+                var actionGroups = edges.GroupBy(edge => new { edge.Action, edge.Actor });
+
+                // Check states grouped by their actions
+                foreach (var group in actionGroups)
                 {
-                    if (!close.Contains(state3)) open.Add(state3);
+                    bool isAtLeastOneUnSuccessful = false;
+
+                    foreach (Edge e in group)
+                    {
+                        // Check if state can be visited
+                        State s = e.To;
+                        // If there's action that leads to already visited state we have a cycle - may cause always query to fail!
+                        if (close.Contains(s)) { isAtLeastOneUnSuccessful = true; continue; }
+                        // Recursively check if it leads to gamma-satisfying state
+                        if (!DFSearch(world, close, s)) isAtLeastOneUnSuccessful = true;
+                    }
+                    // If all paths are leading to satisfying state we're good to go
+                    if (!isAtLeastOneUnSuccessful) hasGammaBeenAchieved = true;
                 }
             }
-            return false;
+
+            close.Remove(state);
+            return hasGammaBeenAchieved;
         }
     }
 }

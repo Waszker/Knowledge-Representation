@@ -19,6 +19,11 @@ namespace KR.Main.Entities.Queries
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
             var states = world.GetStates(pi);
+            return Evaluate2(world, states);
+        }
+
+        public bool Evaluate2(World world, IEnumerable<State> states)
+        {
             bool returnValue = true;
 
             foreach (State s in states)
@@ -38,7 +43,7 @@ namespace KR.Main.Entities.Queries
             // If there are some unvisited states and we haven't already found desired state
             if (!hasGammaBeenAchieved)
             {
-                var actionGroups = world.GetEdges(state).GroupBy(edge => edge.Action);
+                var actionGroups = world.GetEdges(state).GroupBy(edge => new { edge.Action, edge.Actor });
 
                 // Check states grouped by their actions
                 foreach(var group in actionGroups)
