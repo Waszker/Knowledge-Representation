@@ -1,4 +1,5 @@
-﻿using System;
+﻿using KR.Main.Engine;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,5 +18,19 @@ namespace KR.Main.Entities.Queries
             Actor = actor;
             Scenario = scenario;
         }
+
+        public override bool Evaluate(World world, List<Edge> edges = null)
+        {
+            ScenarioEverExecutableQuery executable = new ScenarioEverExecutableQuery(Scenario);
+            if(!executable.Evaluate(world))
+            {
+                // scenario is never executable - actor can not partake
+                return false;
+            }
+
+            return DoEvaluate(world);
+        }
+
+        protected abstract bool DoEvaluate(World world);
     }
 }

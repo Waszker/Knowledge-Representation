@@ -251,7 +251,7 @@ namespace KR.Test
             var q1 = new ActorAlwaysPartakesQuery(alice, sc1);
 
             var sc2 = new Scenario();
-            sc1.AddScenarioStep(new ScenarioStep(eat, alice));
+            sc2.AddScenarioStep(new ScenarioStep(eat, alice));
             var q2 = new ActorAlwaysPartakesQuery(hatter, sc2);
 
             var sc3 = new Scenario();
@@ -274,7 +274,7 @@ namespace KR.Test
             Assert.AreEqual(r1, true);
             Assert.AreEqual(r2, false);
             Assert.AreEqual(r3, false);
-            Assert.AreEqual(r4, false);
+            Assert.AreEqual(r4, true);
         }
 
         [TestMethod]
@@ -287,7 +287,7 @@ namespace KR.Test
             var q1 = new ActorEverPartakesQuery(alice, sc1);
 
             var sc2 = new Scenario();
-            sc1.AddScenarioStep(new ScenarioStep(eat, alice));
+            sc2.AddScenarioStep(new ScenarioStep(eat, alice));
             var q2 = new ActorEverPartakesQuery(hatter, sc2);
 
             var sc3 = new Scenario();

@@ -11,9 +11,9 @@ namespace KR.Main.Entities.Queries
     {
         public ActorEverPartakesQuery(Actor actor, Scenario scenario) : base(actor, scenario) { }
 
-        public override bool Evaluate(World world, List<Edge> edges = null)
+        protected override bool DoEvaluate(World world)
         {
-            ISet<State> possibleStates = world.GetStates();
+            ISet<State> possibleStates = world.GetInitialStates();
 
             foreach (ScenarioStep step in Scenario.Steps)
             {

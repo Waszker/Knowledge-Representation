@@ -11,9 +11,9 @@ namespace KR.Main.Entities.Queries
     {
         public ActorAlwaysPartakesQuery(Actor actor, Scenario scenario) : base(actor, scenario) { }
 
-        public override bool Evaluate(World world, List<Edge> edges = null)
+        protected override bool DoEvaluate(World world)
         {
-            ISet<State> possibleStates = world.GetStates();
+            ISet<State> possibleStates = world.GetInitialStates();
 
             foreach (ScenarioStep step in Scenario.Steps)
             {
@@ -40,7 +40,6 @@ namespace KR.Main.Entities.Queries
                 {
                     // all paths contained the actor - ok ('end of search' condition)
                     return true;
-                    // TODO: unexecutable scenarios?
                 }
                 possibleStates = newPossibleStates;
             }
