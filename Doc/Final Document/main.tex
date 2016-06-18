@@ -458,10 +458,13 @@ Kwerenda ta sprawdza, czy po wykonaniu podanego scenariusza ze stanu spełniają
 		\State $NewStates \gets \emptyset$
 		\ForAll{$\texttt{state} \in States$}
 		\State $Edges \gets $ wszystkie krawędzie dostępne w danym stanie dla kroku \texttt{step}
-		\If{Wersja ALWAYS i $Edges.count() == 0$}
+		\If{Wersja ALWAYS/TYPICALLY i $Edges.count() == 0$}
 		\State return \texttt{FALSE} - ścieżka niewykonywalna - brak krawędzi
 		\EndIf
 		\ForAll{$\texttt{edge} \in Edges$}
+		\If{Wersja TYPICALLY i $\texttt{edge.Abnormal}$}
+		continue;
+		\EndIf
 		\State $NewStates.add(edge.to)$
 		\EndFor
 		\EndFor
