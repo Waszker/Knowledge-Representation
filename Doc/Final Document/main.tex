@@ -366,7 +366,8 @@ Kwerendy \texttt{always/ever Actor partakes when Scenario} sprawdzają, czy dany
 
 Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenario} sprawdzają, czy wykonanie podanego scenariusza z każdego stanu spełniającego warunek $\pi$ zawsze/kiedykolwiek/na ogół doprowadzi do stanu spełniającego warunek $\gamma$. Pseudokod algorytmu wygląda następująco:\\
 
-    \item \textbf{Algorytm kwerendy}\\
+\begin{itemize}
+    \item \textbf{Algorytm kwerendy $always$}\\
 
 \begin{algorithm}[H]
 \begin{algorithmic}
@@ -377,11 +378,70 @@ Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenari
 	\ForAll{$\texttt{step} \in scenario$}
 	    \State $nextS \gets $ zbiór stanów
 		\ForAll{$\texttt{state} \in states$}
-		    \If{wersja $always$ lub $ever$}
+	    	\State $nextS \gets nextS \cup ($stany z krawędzią z $state$ z krokiem $step)$
+
+		\EndFor 
+		\State $states \gets nextS$
+	\EndFor
+	\ForAll{$\texttt{state} \in states$}
+	    \If{$\neg DFSearch(\emptyset, state)$}
+	        \State \Return{$FALSE$}
+        \EndIf
+    \EndFor
+\EndFor
+\State \Return{$TRUE$}
+\end{algorithmic}
+\end{algorithm}
+
+    \item \textbf{Algorytm kwerendy $ever$}\\
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $StatesPi \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
+\State $scenario \gets $ scenariusz kwerendy
+\ForAll{$\texttt{startState} \in StatesPi$}
+    \State $states \gets$ zbiór stanów
+    \State dodaj $startState$ do $states$
+    \ForAll{$step \in scenario$}
+        \ForAll{$\texttt{state} \in states$}
 		    	\State $nextS \gets nextS \cup ($stany z krawędzią z $state$ z krokiem $step)$
-		    \Else
-		        \State $nextS \gets nextS \cup ($stany z typową krawędzią z $state$ z krokiem $step)$
-		    \EndIf
+
+	    \EndFor
+		\State $states \gets nextS$
+	\EndFor
+\EndFor
+\ForAll{$\texttt{startState} \in states$}
+    \State $open \gets$ stany do których można przejść z $startState$
+    \State $close \gets$ pusty zbiór stanów
+    \While{$open$ niepusty}
+        \State $state \gets \{$dowolny stan z $open\}$
+        \If{$state$ spełnia warunek $\gamma$}
+            \State $continue for all$
+        \EndIf
+        \ForAll{$state2 \in$ stany, do których można przejść z $state$}
+            \If{$state2 \not\in close$}
+                \State dodaj $state2$ do $open$
+            \EndIf
+        \EndFor
+    \EndWhile
+    \State \Return{$FALSE$}
+\EndFor
+\State \Return{$TRUE$}
+\end{algorithmic}
+\end{algorithm}
+
+ \item \textbf{Algorytm kwerendy $typically$}\\
+
+\begin{algorithm}[H]
+\begin{algorithmic}
+\State $StatesPi \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
+\State $scenario \gets $ scenariusz kwerendy
+\ForAll{$\texttt{startState} \in StatesPi$}
+    \State $states \gets \{startState\}$
+	\ForAll{$\texttt{step} \in scenario$}
+	    \State $nextS \gets $ zbiór stanów
+		\ForAll{$\texttt{state} \in states$}
+	    	\State $nextS \gets nextS \cup ($stany z typową krawędzią z $state$ z krokiem $step)$
 		\EndFor 
 		\State $states \gets nextS$
 	\EndFor
@@ -406,7 +466,13 @@ Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenari
 \EndIf
 \State dodaj $state$ do $close$
 \If{$\neg hasGammaBeenAchieved$}
-    \State $actionGroups \gets $ krawędzie wychodzące ze $state$ zgrupowane wg par (Akcja, Aktor)
+    \If{wersja $typically$}
+        \State $actionGroups \gets$ typowe krawędzie z $state$ zgrupowane wg par (Akcja, Aktor)
+   \EndIf
+   \If{wersja $always$}
+    \State $actionGroups \gets $ krawędzie z $state$ zgrupowane wg par (Akcja, Aktor)
+    \EndIf
+
     \ForAll{$group \in actionGroups$}
         \State $isAtLeastOneUnSuccessful \gets FALSE$
         \ForAll{$e \in group$}
@@ -425,6 +491,8 @@ Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenari
 \Return{$hasGammaBeenAchieved$}
 \end{algorithmic}
 \end{algorithm}
+    
+\end{itemize}
 \newpage
 
 \subsubsection{Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$} }
