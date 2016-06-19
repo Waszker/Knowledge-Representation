@@ -1,4 +1,4 @@
-\documentclass{article}
+ \documentclass{article}
 \usepackage{float}
 \usepackage[polish]{babel}
 \usepackage[utf8]{inputenc}
@@ -364,7 +364,9 @@ Kwerendy \texttt{always/ever Actor partakes when Scenario} sprawdzają, czy dany
 
 \subsubsection{Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenario} }
 
-Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenario} sprawdzają, czy wykonanie podanego scenariusza z każdego stanu spełniającego warunek $\pi$ zawsze/kiedykolwiek/na ogół doprowadzi do stanu spełniającego warunek $\gamma$. Pseudokod algorytmu wygląda następująco:
+Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenario} sprawdzają, czy wykonanie podanego scenariusza z każdego stanu spełniającego warunek $\pi$ zawsze/kiedykolwiek/na ogół doprowadzi do stanu spełniającego warunek $\gamma$. Pseudokod algorytmu wygląda następująco:\\
+
+    \item \textbf{Algorytm kwerendy}\\
 
 \begin{algorithm}[H]
 \begin{algorithmic}
@@ -383,13 +385,44 @@ Kwerendy \texttt{always/ever/typically accessible $\gamma$ if $\pi$ when Scenari
 		\EndFor 
 		\State $states \gets nextS$
 	\EndFor
-	\If{(wersja $always$ lub $typically$) i $states$ zawiera stan nie spełniający $\gamma$} 
-	    \State \Return{$FALSE$}
-	\EndIf
-	\If{wersja $ever$ i $states$ nie zawiera stanu spełniającego $\gamma$} \State \Return{$FALSE$}
-	\EndIf
+	\ForAll{$\texttt{state} \in states$}
+	    \If{$\neg DFSearch(\emptyset, state)$}
+	        \State \Return{$FALSE$}
+        \EndIf
+    \EndFor
 \EndFor
 \State \Return{$TRUE$}
+\end{algorithmic}
+\end{algorithm}
+
+    \item \textbf{Algorytm procedury DFSearch($close$, $state$)}\\
+    
+\begin{algorithm}[H]
+\begin{algorithmic}
+\If{$state$ spełnia warunek $\gamma$}
+    \State $hasGammaBeenAchieved$ = $TRUE$
+\Else
+    \State $hasGammaBeenAchieved$ = $FALSE$
+\EndIf
+\State dodaj $state$ do $close$
+\If{$\neg hasGammaBeenAchieved$}
+    \State $actionGroups \gets $ krawędzie wychodzące ze $state$ zgrupowane wg par (Akcja, Aktor)
+    \ForAll{$group \in actionGroups$}
+        \State $isAtLeastOneUnSuccessful \gets FALSE$
+        \ForAll{$e \in group$}
+            \State $s \gets e.To$
+            \If{$s \in close$}                         \State $isAtLeastOneUnSuccessful \gets TRUE$
+                \State CONTINUE
+            \EndIf
+            \If{$\neg DFSearch(close, s)$}             \State $isAtLeastOneUnSuccessful \gets TRUE$
+            \EndIf
+        \EndFor
+        \If{$\neg isAtLeastOneUnSuccessful$}           \State $hasGammaBeenAchieved \gets TRUE$
+        \EndIf
+    \EndFor
+\EndIf
+\State usuń $state$ z $close$\\
+\Return{$hasGammaBeenAchieved$}
 \end{algorithmic}
 \end{algorithm}
 \newpage
