@@ -296,12 +296,12 @@ Graf przejść między stanami generowany jest na podstawie obliczonych zbiorów
 
 \subsubsection{Kwerendy \texttt{always/ever executable Scenario}}
 
-Kwerendy \texttt{always/ever executable Scenario} sprawdzają, czy dany scenariusz jest wykonywalny zawsze/kiedykolwiek z dowolnego stanu. Pseudokod algorytmu wygląda następująco:
+Kwerendy \texttt{always/ever executable Scenario} sprawdzają, czy dany scenariusz jest wykonywalny zawsze/kiedykolwiek ze stanu początkowego. Pseudokod algorytmu wygląda następująco:
 
 \begin{algorithm}[H]
 \begin{algorithmic}
 \State $Scenario \gets $ zadany scenariusz
-\State $States \gets $ zbiór wszystkich dostępnych stanów
+\State $States \gets $ zbiór stanów początkowych
 \ForAll{$\texttt{step} \in Scenario$}
     \State $NewStates \gets \emptyset$
     \ForAll{$\texttt{state} \in States$}
@@ -326,14 +326,17 @@ Kwerendy \texttt{always/ever executable Scenario} sprawdzają, czy dany scenariu
 \newpage
 \subsubsection{Kwerendy \texttt{always/ever Actor partakes when Scenario}}
 
-Kwerendy \texttt{always/ever Actor partakes when Scenario} sprawdzają, czy dany aktor zawsze/kiedykolwiek bierze udział w wykonywaniu podanego scenariusza. Scenariusz może być wykonany z dowolnego niesprzecznego stanu początkowego. Pseudokod algorytmu wygląda następująco:
+Kwerendy \texttt{always/ever Actor partakes when Scenario} sprawdzają, czy dany aktor zawsze/kiedykolwiek bierze udział w wykonywaniu podanego scenariusza. Scenariusz jest wykonywany z dowolnego stanu początkowego. Pseudokod algorytmu wygląda następująco:
 
 \begin{algorithm}[H]
 \begin{algorithmic}
 
 \State $Actor \gets $ wybrany aktor
 \State $Scenario \gets $ zadany scenariusz
-\State $States \gets $ zbiór wszystkich dostępnych stanów
+\State $States \gets $ zbiór stanów początkowych
+\If{$Scenario$ jest niewykonywalny}
+    \State return \texttt{FALSE}
+\EndIf
 \ForAll{$\texttt{step} \in Scenario$}
     \State $NewStates \gets \emptyset$
     \ForAll{$\texttt{state} \in States$}
