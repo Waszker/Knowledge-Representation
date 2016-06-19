@@ -22,7 +22,7 @@ namespace KR.Main.Entities.Queries
         }
         public override bool Evaluate(World world, List<Edge> edges = null)
         {
-            return world.GetStates(pi).Any(s => Accessible(s, world));
+            return world.GetStates(pi).All(s => Accessible(s, world));
         }
 
         private bool Accessible(State startState, World world)
