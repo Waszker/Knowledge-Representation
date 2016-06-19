@@ -523,32 +523,7 @@ Kwerenda odpowiada twierdząco, jeżeli z każdego stanu spełniającego warunek
 \end{algorithm}
 \newpage
     \item \textbf{Algorytm kwerendy \texttt{ever/typically accessible $\gamma$ if $\pi$}}\\\\
-Kwerenda odpowiada twierdząco, jeżeli z każdego stanu spełniającego warunek $\pi$ wykonanie dowolnego scenariusza kiedykolwiek/na ogół doprowadzi do stanu spełniającego warunek $\gamma$. Pseudokod algorytmu wygląda następująco:
-
-\begin{algorithm}[H]
-\begin{algorithmic}
-\State $StatesPi \gets $ zbiór wszystkich stanów spełniających warunek $\pi$ 
-\ForAll{$\texttt{startState} \in StatesPi$}
-    \State $open \gets$ stany do których można (typowo) przejść z $startState$
-    \State $close \gets$ pusty zbiór stanów
-    \While{$open$ niepusty}
-        \State $state \gets \{$dowolny stan z $open\}$
-        \If{$state$ spełnia warunek $\gamma$}
-            \State $continue for all$
-        \EndIf
-        \ForAll{$state2 \in$ stany, do których można (typowo) przejść z $state$}
-            \If{$state2 \not\in close$}
-                \State dodaj $state2$ do $open$
-            \EndIf
-        \EndFor
-    \EndWhile
-    \State \Return{$FALSE$}
-\EndFor
-\State \Return{$TRUE$}
-\end{algorithmic}
-\end{algorithm}
-\end{itemize}
-
+Kwerenda odpowiada twierdząco, jeżeli z każdego stanu spełniającego warunek $\pi$ wykonanie dowolnego scenariusza kiedykolwiek/na ogół doprowadzi do stanu spełniającego warunek $\gamma$. Algorytm tych kwerend jest analogiczny jak dla kwerend ze scenariuszem, zakładając ze scenariusz ma zerową ilość kroków. 
 \newpage
 
 \subsubsection{Kwerendy \texttt{always/ever/typically $\gamma$ after $Scenario$ from $\pi$} }
