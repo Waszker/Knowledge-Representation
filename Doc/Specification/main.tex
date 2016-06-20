@@ -549,18 +549,18 @@ W celu zadawania pytań dotyczących świata opisanego powyższym językiem zost
 \item Q1 - Czy podany program działań jest wykonywalny zawsze/kiedykolwiek?\\
 % TODO: A może executable from ...?
 {\large\texttt{always/ever executable $SC$}} \\
-Zdanie to mówi, że wykonując podany ciąg akcji $SC$ z dowolnego, niesprzecznego stanu zawsze(\texttt{always}) osiągnięty zostanie niesprzeczny stan końcowy, lub istnieje przynajmniej jedna ścieżka z dowolnego z tych stanów do poprawnego stanu wynikowego(\texttt{ever}).
+Zdanie to mówi, że wykonując podany ciąg akcji $SC$ z dowolnego ze stanów początkowych zawsze(\texttt{always}) osiągnięty zostanie niesprzeczny stan końcowy, lub istnieje przynajmniej jedna ścieżka z dowolnego ze stanów początkowych do poprawnego stanu wynikowego(\texttt{ever}).
 
 
-\item Q2 - Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ prowadzi do stanu z którego osiągalny jest (zawsze/kiedykolwiek/typowo) stan spełniający warunek celu $\gamma$ ?\\
+\item Q2 - Czy wykonanie podanego programu działań z dowolnego stanu spełniającego warunek $\pi$ (brak $\pi$ oznacza start ze stanów początkowych) prowadzi do stanu z którego osiągalny jest (zawsze/kiedykolwiek/typowo) stan spełniający warunek celu $\gamma$ ?\\
 {\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$ when $SC$}} \\
  
 
-\item Q3 - Czy z dowolnego stanu spełniającego warunek $\pi$ cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?\\
+\item Q3 - Czy z dowolnego stanu spełniającego warunek $\pi$ (brak $\pi$ oznacza start ze stanów początkowych) cel $\gamma$ jest osiągalny zawsze/kiedykolwiek/na ogół?\\
 {\large\texttt{always/ever/typically accessible $\gamma$ if $\pi$}}
 
 
-\item Q4 - Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek?\\
+\item Q4 - Czy wskazany wykonawca jest zaangażowany w realizację programu zawsze/kiedykolwiek? Program wykonywany jest z dowolnego stanu początkowego.\\
 {\large\texttt{always/ever partakes $w$ when $SC$}} 
 
 \item Q5 - Czy po wykonaniu podanego programu działań zawsze/kiedykolwiek/na ogół formuła $\gamma$ jest spełniona w stanie wynikowym?\\
