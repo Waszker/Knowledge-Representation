@@ -63,7 +63,7 @@ namespace KR.Test
         public void NeroAlwaysExecutableQuery()
         {
             var query = new ScenarioAlwaysExecutableQuery(_drinkRestTorchScenario);
-            Assert.IsFalse(query.Evaluate(_world));
+            Assert.IsTrue(query.Evaluate(_world));
         }
 
         [TestMethod]
